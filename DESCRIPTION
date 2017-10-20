@@ -1,0 +1,19 @@
+Package: PTCA4CATA
+Type: Package
+Title: Partial Triadic Analysis for Check All That Apply CATA 
+Version: 0.1.0
+Author: Herve Abdi
+Maintainer: Herve Abdi  <herve@utdallas.edu>
+Description:
+    PTCA4CATA is a collection of routines to
+    1) analyze check all that apply (CATA) data
+    with Partial Triadic Correspondence Analysis (PTCA),
+     2) display the results graphically, and 3)
+     perform the correct inferences.
+         In addition to correspondence analysis, Hellinger analysis
+         can also be used.
+License: GPL-2
+Imports: coin, car,  prettyGraphs, graphics, stats, ggplot2, ggrepel, readxl, reshape
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
