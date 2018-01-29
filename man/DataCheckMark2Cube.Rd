@@ -2,8 +2,11 @@
 % Please edit documentation in R/BootRatio.R
 \name{DataCheckMark2Cube}
 \alias{DataCheckMark2Cube}
-\title{DataCheckMark2Cube Create a cube of Data
-from the results from "Check-Mark" CATA data.}
+\title{\code{DataCheckMark2Cube:} create a cube of data
+from the results of a "pick-1" (aka Check-1 or "Best That Apply",
+BeTA)  data task
+(i.e., describe one object with one descriptor from a finite list
+of descriptors).}
 \usage{
 DataCheckMark2Cube(DataChecks, NameOfDescriptor = NULL)
 }
@@ -13,27 +16,37 @@ The Stimuli are the columns of DataChecks,
  The Participants are the rows of DataChecks,
 The Descriptors are the numbers in DataChecks
     (i.e., 5 for X[2,3] means that Participant 2,
-        choosed Descriptor 5 for Stimulus 3)}
+        chose Descriptor 5 for Stimulus 3)}
 
 \item{NameOfDescriptor}{a length K vector of names of
-the descriptors. if NULL (default) descriptors are}
+the descriptors. if \code{NULL} (default) descriptors are
+named \code{Descriptor-1} to \code{Descriptor-K}.}
 }
 \value{
-a Stimuli*Descriptors*Participants brick of counts
+a Stimuli*Descriptors*Participants brick (i.e., an array)
+of counts.
 }
 \description{
-Create a cube of Data from the results of a "Check-Mark"
-data set collected in DataChecks
+Create a cube of data from the results of a pick one
+ descriptor to describe stimuli.
+The result of the check mark task is a
+data frame stored in \code{DataChecks}.
 These data correspond to participants matching one descriptor to
-each stimulus of a set of stimuli
-The Stimuli are the columns of DataChecks,
- The Participants are the rows of DataChecks,
-The Descriptors are the numbers in DataChecks
+each stimulus of a set of stimuli, this task is called
+pick-1, check-1, or BeTA (BEst That Apply).
+The Stimuli are the columns of \code{DataChecks},
+ the Participants are the rows of \code{DataChecks}, and
+the Descriptors are the numbers in \code{DataChecks}
     (i.e., 5 for X[2,3] means that Participant 2,
-        choosed Descriptor 5 for Stimulus 3)
+        chose Descriptor 5 for Stimulus 3).
 }
 \examples{
-# le.grey <- vec2gray(1:10)
+# use the colorOfMusic data set. See help(colorOfMusic)
+data{"colorOfMusic"}
+cubeOfMusic <- DataCheckMark2Cube(
+colorOfMusic$participantsChoice, colorOfMusic$colorInformation[,1]) )
+# cubeOfMusic is an array with dimensions:
+# 10 (colors) *9 (pieces of music) * 22 (participant)
 }
 \author{
 Hervé Abdi

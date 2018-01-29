@@ -378,29 +378,43 @@ InertiaTable = function(X){
 
 # ************************************************************************
 # DataCheckMark2Cube function to create the Cube of Data from the checks
-#' DataCheckMark2Cube Create a cube of Data
-#' from the results from "Check-Mark" CATA data.
+#' \code{DataCheckMark2Cube:} create a cube of data
+#' from the results of a "pick-1" (aka Check-1 or "Best That Apply",
+#' BeTA)  data task
+#' (i.e., describe one object with one descriptor from a finite list
+#' of descriptors).
 #'
-#'  Create a cube of Data from the results of a "Check-Mark"
-#' data set collected in DataChecks
+#'  Create a cube of data from the results of a pick one
+#'  descriptor to describe stimuli.
+#' The result of the check mark task is a
+#' data frame stored in \code{DataChecks}.
 #' These data correspond to participants matching one descriptor to
-#' each stimulus of a set of stimuli
-#' The Stimuli are the columns of DataChecks,
-#'  The Participants are the rows of DataChecks,
-#' The Descriptors are the numbers in DataChecks
+#' each stimulus of a set of stimuli, this task is called
+#' pick-1, check-1, or BeTA (BEst That Apply).
+#' The Stimuli are the columns of \code{DataChecks},
+#'  the Participants are the rows of \code{DataChecks}, and
+#' the Descriptors are the numbers in \code{DataChecks}
 #'     (i.e., 5 for X[2,3] means that Participant 2,
-#'         choosed Descriptor 5 for Stimulus 3)
+#'         chose Descriptor 5 for Stimulus 3).
 #' @author Hervé Abdi
 #' @param DataChecks A Stimuli by Participants table of checks
 #' The Stimuli are the columns of DataChecks,
 #'  The Participants are the rows of DataChecks,
 #' The Descriptors are the numbers in DataChecks
 #'     (i.e., 5 for X[2,3] means that Participant 2,
-#'         choosed Descriptor 5 for Stimulus 3)
+#'         chose Descriptor 5 for Stimulus 3)
 #' @param NameOfDescriptor a length K vector of names of
-#' the descriptors. if NULL (default) descriptors are
-#' @return a Stimuli*Descriptors*Participants brick of counts
-#' @examples # le.grey <- vec2gray(1:10)
+#' the descriptors. if \code{NULL} (default) descriptors are
+#' named \code{Descriptor-1} to \code{Descriptor-K}.
+#' @return a Stimuli*Descriptors*Participants brick (i.e., an array)
+#' of counts.
+#' @examples
+#' # use the colorOfMusic data set. See help(colorOfMusic)
+#' data{"colorOfMusic"}
+#' cubeOfMusic <- DataCheckMark2Cube(
+#' colorOfMusic$participantsChoice, colorOfMusic$colorInformation[,1]) )
+#' # cubeOfMusic is an array with dimensions:
+#' # 10 (colors) *9 (pieces of music) * 22 (participant)
 #' @export
 DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
   # Create a cube of Data from the results of a "Check-Mark"
@@ -423,7 +437,7 @@ DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
   # nK # number of Descriptors
   if (is.null(NameOfDescriptor)){
     nK = max(DataChecks)
-    NameOfDescriptors <- paste('Descriptor',1:nJ)}
+    NameOfDescriptors <- paste('Descriptor-',1:nJ)}
   else {nK = length(NameOfDescriptor)}
   ZeDataCube = array(0,dim=c(nK,nJ,nI))
   # Descriptor by Stimuli by Participants

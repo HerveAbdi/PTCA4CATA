@@ -145,7 +145,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                           na.rm = TRUE,
                           level = p.level,
                           color = items.colors[i],
-                                  size=line.size,
+                          size=line.size,
                           linetype=line.type)
     } else {# Plot convex hulls with ggConvexHull
       row2keep <-  complete.cases(X2plot[,c(axis1,axis2)])
@@ -157,6 +157,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            col.line = items.colors[i],
                            alpha.line = alpha.line,
                            line.size = line.size,
+                           line.type = line.type,
                            col.hull = items.colors[i],
                            alpha.hull = alpha.ellipse,
                            names.of.factors = names.of.factors
@@ -285,7 +286,7 @@ ggConvexHull <- function(data,
                           y_axis = 2,
                           percentage = .66,
                           col.line = 'darkorchid4',
-                          alpha.line    = 1,
+                          alpha.line = 1,
                           # alpha value (transparency) for the lines.
                           line.size = 1,
                           # thickness of the line for the Hull

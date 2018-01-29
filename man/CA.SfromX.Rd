@@ -3,7 +3,7 @@
 \name{CA.SfromX}
 \alias{CA.SfromX}
 \title{Compute the cross-product matrix for CA from
-a contigency table}
+a contingency table}
 \usage{
 CA.SfromX(X, center = TRUE)
 }

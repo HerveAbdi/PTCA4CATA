@@ -6,7 +6,9 @@
 # createFactorMap
 # map4DotsAndLabels
 #
-
+# Revision October/21/2017. in createFactorMap
+# fix problem with axis different from 1 and 2
+#
 
 
 #--------------------------------------------------------------------
@@ -53,7 +55,8 @@ createBaseMap <- function(data,
   if (is.null(col.background)){col.background = 'transparent'}
   data <- as.data.frame(data)
   if (is.null(constraints)) {
-    constraints <- prettyGraphs::minmaxHelper(data)
+    # lapply(prettyGraphs::minmaxHelper(Fj[,3:4]),'*',1.1)
+    constraints <- lapply(prettyGraphs::minmaxHelper(data),'*',1.1)
   }
   V1 = as.name(colnames(data)[1])
   V2 = as.name(colnames(data)[2])
@@ -199,12 +202,14 @@ createFactorMap <- function(X,
   if (is.null(colnames(X))){
     colnames(X) <- paste0('Dimension ',1:ncol(X))
   }
-  G = as.data.frame(X[,c(axis1,axis2)])
+  # G = as.data.frame(X[,c(axis1,axis2)])
+  G = as.data.frame(X)
   #V1 = as.name(colnames(G)[1])
   #V2 = as.name(colnames(G)[2])
   # NB default uses  minmaxHelper from prettyPlots
   if (is.null(constraints)){
-    constraints <- prettyGraphs::minmaxHelper(G)
+    constraints <-
+      lapply(prettyGraphs::minmaxHelper(G[,c(axis1,axis2)]),'*',1.1)
   }
   #  #-----------------------------------------------------------------------------
   # NB geom_text_repel is from ggrepel

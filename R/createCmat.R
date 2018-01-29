@@ -8,7 +8,7 @@
 #
 #---------------------------------------------------------------------
 #' @title Compute the cross-product matrix for CA from
-#' a contigency table
+#' a contingency table
 #' @description \code{CA.SfromX} computes
 #' the I*I row cross-product matrix S for CA from
 #' a I * J contingency table X.
@@ -72,34 +72,41 @@ CA.SfromX <-function(X, center = TRUE){
 # sinew::makeOxygen(createCmat4PTCA)
 #
 #---------------------------------------------------------------------
-#' @title Create a matrix of cross-product or RV coefficients
+#' @title Create a matrix of cross-products or RV coefficients
 #' for the 3rd dimension of a brick of non-negative numbers
 #' (i.e., a brick of data for a CATA test).
 #' @description \code{createCmat4PTCA}
-#' Creates a matrix of cross-product or RV coefficients
+#' creates a matrix of cross-product (i.e., scalar products
+#' between two matrices)
+#' or RV coefficients
 #' for the 3rd dimension of an I*J*K brick of non-negative numbers
 #' (i.e., a brick of data for a CATA test).
 #' The coefficients
 #' are computed from the I row-profiles (observations) and stored
 #' in a I*I semi-positive definite matrix that can be analyzed by
-#' an eigen-decomposition to provide a STATIS-like RV/cosine-map.
+#' an eigen-decomposition to provide a STATIS-like
+#' scalar-product/RV-map.
 #' @param dataCube  an I*J*K brick of non-negative numbers
 #' (i.e., a brick of data for a CATA test)
 #' @param normalization Type of normalization
-#' can be 'cos' (Default) or 'Rv' (for the Rv coefficient)
-#' @return An I*I cosine or Rv Matrix
+#' can be 'cp' (Default) or 'Rv' (for the Rv coefficient)
+#' @return An K*K cross-product or Rv Matrix depending upon
+#' the value of the parameter \code{normalization}.
 #' @details Each of the K slices of the I*J*K brick
-#' of data is first transformed into an I*I S matrix using the
+#' of data is first transformed into an I*I S (for a CA analysis)
+#' matrix using the
 #' function \code{PTCA4CATA::CA.SfromX}
 #'  (Empty columns are eliminated before computing the matrix S).
-#'  This creates an I*I*K brick of S matrices wichi then used to
-#'  compute the I*I cosine/Rv matrix that measures the similarity
-#'  between all slice of \code{dataCube}.
-#'  Note that matrice can used in a STATIS apporach to re-weight the
+#'  This creates an I*I*K brick of S matrices which is then used to
+#'  compute the I*I scalar-product/Rv matrix
+#'  that measures the similarity
+#'  between all slices of \code{dataCube}.
+#'  Note: that this matrice can be used
+#'  in a STATIS approach to re-weight the
 #'  slices of the \code{dataCube}.
-#'  Note that the rows of each silice are supposed to have
+#'  Note: that the rows of each slice are supposed to have
 #'  at least one non-zero entry.
-#'  Slices with zeros rows are eliminated and a warning
+#'  Slices with zero rows are eliminated and a warning
 #'  message is issued
 #' @examples
 #' \dontrun{
@@ -111,9 +118,9 @@ CA.SfromX <-function(X, center = TRUE){
 #' @author Herve Abdi
 #' @rdname createCmat4PTCA
 #' @export
-createCmat4PTCA <- function(dataCube, normalization = 'cos'){
+createCmat4PTCA <- function(dataCube, normalization = 'cp'){
    lesDims <- dim(dataCube)
-   if (length(lesDims) != 3){'dataCube should be a 3-Way Array'}
+   if (length(lesDims) != 3){'dataCube should be a 3-Way array'}
    nI <- lesDims[1]
    # nJ <- lesDims[2]
    nK <- lesDims[3]
