@@ -15,21 +15,21 @@ print.str_colorsOfMusic <- function (x, ...) {
   # cat("\n List name: ",deparse(eval(substitute(substitute(x)))),"\n")
   cat(rep("-", ndash), sep = "")
   cat("\n$participantsChoice      ", "A df. Rows: participants, Columns: music pieces")
-  cat("\n$participantsDescription ", "Age (Child vs Adult) and Gender of participants")
+  cat("\n$participantsDescription ", "Age (Child/Adult) and Gender (F/M) of participants")
   cat("\n$colorInformation        ", "Name and code of the colors")
   cat("\n$cubeOfData              ", "The 10-Color*9-Music*22-Participant cube of 0/1 data")
   cat("\n$contingencyTable        ", "The 10-Color*9-Music (pseudo) contingency Table")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
-} # end of function print.readCATACube
+} # end of function print.str_colorsOfMusic
 #--------------------------------------------------------------------
 # Description for colorOfMusic
-#' colorOfMusic 12 Children and 10 Adults pick up
+#' \code{colorOfMusic}: 12 Children and 10 Adults picked up
 #' one color to describe each of 9 pieces of music.
 #'
 #' \code{colorOfMusic}. A data set:
-#'  12 Children and 10 Adults pick up
+#'  12 Children and 10 Adults picked up
 #' one color to describe 9 pieces of music (one at a time).
 #' The participants are described by their
 #' age (children vs adults) and by their gender
@@ -51,7 +51,7 @@ print.str_colorsOfMusic <- function (x, ...) {
 #' (from 1 to 10) of the chosen color
 #' for the music (column) by the participant (row).
 #' The name of the colors are given in the data frame stored in
-#' $colorInformation.}
+#' \code{$colorInformation}.}
 #'\item{\code{participantsDescription}}{A 22 by 2
 #'data frame  describing the
 #'participants according to \code{Age} (Child vs Adult) and
@@ -72,7 +72,8 @@ print.str_colorsOfMusic <- function (x, ...) {
 #'  table is typically analyzed with correspondence analysis.
 #'  (e.g., see Abdi and Bera, 2018). }
 #' }
-#' @source Abdi, H. and Bera, M. (2018)  Correspondence Analysis.
-#' Encyclopedia of Social Network Analysis and Mining (2nd Edition).
+#' @source Abdi, H. and Bera, M. (2018).  Correspondence Analysis.
+#' _Encyclopedia of Social Network Analysis and Mining_ (2nd Edition).
+#' New York: Springer Verlag.
 #' @author Herve Abdi
 "colorOfMusic"

@@ -3,7 +3,7 @@
 \docType{data}
 \name{colorOfMusic}
 \alias{colorOfMusic}
-\title{colorOfMusic 12 Children and 10 Adults pick up
+\title{\code{colorOfMusic}: 12 Children and 10 Adults picked up
 one color to describe each of 9 pieces of music.}
 \format{A list with 5 data frames or arrays
 describing respectively
@@ -20,7 +20,7 @@ of a row and a column gives the number-code
 (from 1 to 10) of the chosen color
 for the music (column) by the participant (row).
 The name of the colors are given in the data frame stored in
-$colorInformation.}
+\code{$colorInformation}.}
 \item{\code{participantsDescription}}{A 22 by 2
 data frame  describing the
 participants according to \code{Age} (Child vs Adult) and
@@ -42,15 +42,16 @@ data).}
  (e.g., see Abdi and Bera, 2018). }
 }}
 \source{
-Abdi, H. and Bera, M. (2018)  Correspondence Analysis.
-Encyclopedia of Social Network Analysis and Mining (2nd Edition).
+Abdi, H. and Bera, M. (2018).  Correspondence Analysis.
+_Encyclopedia of Social Network Analysis and Mining_ (2nd Edition).
+New York: Springer Verlag.
 }
 \usage{
 data("colorOfMusic")
 }
 \description{
 \code{colorOfMusic}. A data set:
- 12 Children and 10 Adults pick up
+ 12 Children and 10 Adults picked up
 one color to describe 9 pieces of music (one at a time).
 The participants are described by their
 age (children vs adults) and by their gender

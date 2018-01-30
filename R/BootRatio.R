@@ -368,6 +368,7 @@ InertiaTable = function(X){
   Inertia = sum((StochPerm -
                    as.matrix(rowSums(StochPerm))
                  %*%  t(as.matrix(colSums(StochPerm))) )^2)
+  return(Inertia)
 }
 
 
@@ -410,9 +411,9 @@ InertiaTable = function(X){
 #' of counts.
 #' @examples
 #' # use the colorOfMusic data set. See help(colorOfMusic)
-#' data{"colorOfMusic"}
+#' data("colorOfMusic")
 #' cubeOfMusic <- DataCheckMark2Cube(
-#' colorOfMusic$participantsChoice, colorOfMusic$colorInformation[,1]) )
+#' colorOfMusic$participantsChoice, colorOfMusic$colorInformation[,1])
 #' # cubeOfMusic is an array with dimensions:
 #' # 10 (colors) *9 (pieces of music) * 22 (participant)
 #' @export
