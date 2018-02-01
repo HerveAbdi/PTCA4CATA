@@ -415,7 +415,7 @@ InertiaTable = function(X){
 #' cubeOfMusic <- DataCheckMark2Cube(
 #' colorOfMusic$participantsChoice, colorOfMusic$colorInformation[,1])
 #' # cubeOfMusic is an array with dimensions:
-#' # 10 (colors) *9 (pieces of music) * 22 (participant)
+#' # 10 (colors) * 9 (pieces of music) * 22 (participant)
 #' @export
 DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
   # Create a cube of Data from the results of a "Check-Mark"
