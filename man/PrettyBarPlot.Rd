@@ -2,12 +2,10 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{PrettyBarPlot}
 \alias{PrettyBarPlot}
-\title{"pretty-plots" as bars the bootstrap ratios for a set of items
-(e.g., observations or variables) analyzed with multivariate
-methods such as PCA, CA, MCA, PLS etc.
-Used to display the bootstrap ratios for CA/MCA/PCA/PLS.
-Significant items are plotted in color, non-significant
-items are plotted in gray.}
+\title{\code{PrettyBarPlot} create bar plots for a series of variables
+Use for plotting bootstrap ratios or contributions from
+prncipal component analysis or related methodes
+(e.g. correspondence analysis).}
 \usage{
 PrettyBarPlot(bootratio, threshold = 2, ylim = NULL,
   color.bar = c("lavender", "darkolivegreen3", "gray90"),
@@ -16,7 +14,7 @@ PrettyBarPlot(bootratio, threshold = 2, ylim = NULL,
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) to be plotted
-(typically obtained from Boot4PTCA).}
+(e.g.,  obtained from \code{Boot4PTCA}).}
 
 \item{threshold}{critical.value The critical value for significance
 (default = 2, which matches a $p < .05$ significance level)
@@ -45,11 +43,12 @@ Default is c("mediumpurple4",'darkolivegreen4','gray75')}
 A list: 1) ylim min and max for y, 2) threshold
 }
 \description{
-"pretty-plots" as bars the bootstrap ratios for a set of items
+\code{PrettyBarPlot} create bar plots for a set of items
 (e.g., observations or variables) analyzed with multivariate
 methods such as PCA, CA, MCA, PLS etc.
-Used to display the bootstrap ratios for CA/MCA/PCA/PLS.
-Significant items are plotted in color, non-significant
+Used to display the bootstrap ratios or contributions plots
+for CA/MCA/PCA/PLS.
+Significant or important items are plotted in color, non-significant
 items are plotted in gray.
 }
 \author{

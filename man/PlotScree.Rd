@@ -7,7 +7,8 @@ of an SVD based multivariate analysis}
 \usage{
 PlotScree(ev, p.ev = NULL, max.ev = NULL, alpha = 0.05,
   col.ns = "#006D2C", col.sig = "#54278F",
-  title = "Explained Variance per Dimension")
+  title = "Explained Variance per Dimension", plotKaiser = FALSE,
+  color4Kaiser = "darkorchid4", lwd4Kaiser = 2.5)
 }
 \arguments{
 \item{ev}{the eigen values to plot. no default}
@@ -18,32 +19,46 @@ eigen-values}
 \item{max.ev}{the max eigen-value
 needed because ExPosition does not return all ev
 but only the requested one. but return all tau
-so if max.ev is specified, it is used to recompute
-all eigen-values}
+so if \code{max.ev} is specified, it is used to recompute
+all eigen-values.}
 
 \item{alpha}{threshold for significance. Default = .05}
 
 \item{col.ns}{color for the non significant
-ev. Default is Green}
+ev. Default is Green.}
 
 \item{col.sig}{color for significant eigen-values.
-Default is Violet}
+Default is Violet.}
 
 \item{title}{a title for the graph
-default is "Explained Variance per Dimension"
+default is "Explained Variance per Dimension"}
+
+\item{plotKaiser}{when \code{TRUE} plot
+plot a line corresponding to the average inertia
+(Kaiser criterion); do not plot when
+\code{FALSE} (default).}
+
+\item{color4Kaiser}{color for Kaiser's criterion
+(default is \code{'darkorchid4'})}
+
+\item{lwd4Kaiser}{\code{lwd} value (i.e., width)
+for Kaiser's criterion line.
+(default is \code{'2.5'})
 # @examples  # PlotScree(ev)}
 }
 \description{
-Plot the scree for the eigen-values
-of an SVD based multivariate analysis.
+\code{PlotScree}: Plot the scree for the eigen-values
+of an SVD-based multivariate analysis.
 Note that the function can recompute the
 eigen-values when a percentage is given.
-For example  ExPosition does not return all ev
+For example  \code{ExPosition} does not return all ev
        but only the requested one. but return all percentage
        so if max.ev is specified, it is used to recompute
-       all eigenvalues
- If provide wit probabilities, PlotScree will
- color differently the "significant" eigenvalues
+       all eigenvalues.
+ By default \code{PlotScree} will not plot the line corresponding to
+ the average inertia (i.e., Kaiser criterion).
+ If provided with probabilities, \code{PlotScree} will
+ color differently the "significant" eigenvalues.
 }
 \author{
 Hervé Abdi

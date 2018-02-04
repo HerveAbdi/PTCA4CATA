@@ -4,7 +4,7 @@
 \alias{createxyLabels}
 \title{createxyLabels creates x and y labels for ggplots2 scaterplots}
 \usage{
-createxyLabels(resCA, x_axis = 1, y_axis = 2, axisName = "Dimension")
+createxyLabels(resCA, x_axis = 1, y_axis = 2, axisName = "Dimension ")
 }
 \arguments{
 \item{resCA}{the results of epCA or epPCA}

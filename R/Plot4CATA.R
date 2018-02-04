@@ -1,7 +1,7 @@
 #
 # This file contains the graphic routines for PTCA4CATA
 # These ones are based on prettyPlots
-# a second set baseD on ggplots is in developments
+# a second set baseD on ggplots is in development
 #
 # Herve Abdi. August 7, 2016
 # Current functions here:
@@ -11,7 +11,7 @@
 # GraphPTCABoot()
 # Created August 05, 2016 by Hervé Abdi
 # Documented with roxygen2
-# Last Uptdate. August 07. HA
+# Last Uptdate. February 04, 2018. HA
 
 # *****************************************************************************
 # The functions start below
@@ -19,15 +19,21 @@
 # *****************************************************************************
 # function PrettyBarPlot. Create plot à la Wires (MATLAB)
 
-#' "pretty-plots" as bars the bootstrap ratios for a set of items
+#' \code{PrettyBarPlot} create bar plots for a series of variables
+#' Use for plotting bootstrap ratios or contributions from
+#' prncipal component analysis or related methodes
+#' (e.g. correspondence analysis).
+#'
+#' \code{PrettyBarPlot} create bar plots for a set of items
 #' (e.g., observations or variables) analyzed with multivariate
 #' methods such as PCA, CA, MCA, PLS etc.
-#' Used to display the bootstrap ratios for CA/MCA/PCA/PLS.
-#' Significant items are plotted in color, non-significant
+#' Used to display the bootstrap ratios or contributions plots
+#' for CA/MCA/PCA/PLS.
+#' Significant or important items are plotted in color, non-significant
 #' items are plotted in gray.
 #' @author Hervé Abdi
 #' @param bootratio the bootstrap ratios (BR) to be plotted
-#' (typically obtained from Boot4PTCA).
+#' (e.g.,  obtained from \code{Boot4PTCA}).
 #' @param threshold critical.value The critical value for significance
 #' (default = 2, which matches a $p < .05$ significance level)
 #' |BR| < threshold are plotted in gray
@@ -109,17 +115,19 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
 #' ShadesColor Create create lighter and darker versions of a color
 #'
 #' ShadesColor Create create lighter and darker versions of a color
-#'  used by PrettyBarPlotColor to create fake transparent colors
+#'  used by PrettyBarPlotColor to create faked transparent colors.
+#'
 #' @author Hervé Abdi
 #' @param AColor the color to use
 #' @param jiffy  A small amount to make darker or clearer
-#' default = 40
+#' default = 40.
 #' @return A list:
 #' 1) TestColorDarker the darker
 #' version of AColor
 #' 2) TestColorLighter the lighter
 #' version of AColor
-#' # @examples #  twoColors <- ShadesColor('Red',50)
+#' # @examples
+#' twoColors <- ShadesColor('Red',50)
 #' @export
 
 ShadesColor <- function(AColor,jiffy=40){
@@ -138,32 +146,32 @@ ShadesColor <- function(AColor,jiffy=40){
                          lighter_color[3],
                          maxColorValue=255)
   # return the color as a list
-  return(c(TestColorDarker ,TestColorLighter))
+  return(c(TestColorDarker, TestColorLighter))
 }
 # ******************************************************************************
 # function PrettyBarPlotColor.
 
-#' Create pretty bar plot
-#'  with defined color for the sigificant columns
+#' \code{PrettyBarPlotColor}: create pretty bar plots
+#'  with defined colors for the sigificant columns
 #'
-#'  Create pretty bar plot
+#'  \code{PrettyBarPlotColor}: Create pretty bar plots
 #'  with defined colors for the sigificant columns.
-#'  Variation over prettyBarPlot
+#'  NB \code{PrettyBarPlotColor} is a variation over \code{prettyBarPlot}.
 #' @author Hervé Abdi
 #' @param bootratio the bootstrap ratios (BR) to be plotted
 #' (typically obtained from Boot4PTCA).
 #' @param threshold critical.value The critical value for significance
 #' (default = 2, which matches a $p < .05$ significance level)
-#' |BR| < threshold are plotted in gray
+#' |BR| < threshold are plotted in gray.
 #' @param ylim a 2-element vector giving min and mac for y
-#' if NULL (default) set to c(-abs(BR),abs(BR))
+#' if NULL (default) set to c(-abs(BR),abs(BR)).
 #' @param color4bar a vector of color names (same dimension as BR)
 #' @param  color4ns  (default 'gray75') color
-#' for the non-significant BR
-#' @param  plotnames if TRUE (default) write the names of the items
-#' @param main  (default is NULL) a title for the graph
-#' @param ylab  (default is NULL) a label for the y axis (i.e., BR)
-#' @return A list: 1) ylim min and max for y, 2) threshold
+#' for the non-significant BR.
+#' @param  plotnames if TRUE (default) write the names of the items.
+#' @param main  (default is NULL) a title for the graph.
+#' @param ylab  (default is NULL) a label for the y axis (i.e., BR).
+#' @return A list: 1) ylim min and max for y, 2) threshold.
 #' # @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 #' @export
 PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
@@ -232,43 +240,54 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 # ****************************   Boot PTCA graphs   ***************************
 #'GraphPTCABoot plots the bootstrapped results of a CA
 #'
-#' plots the results of a CA
+#' \code{GraphPTCABoot} plots the results of a CA
 #' with boostrap computed  Ellipsoids
 #' or Convex Hulls confidence interval
-#' needs packages prettyGraphs (for the graph)
+#' needs packages \code{prettyGraphs} (for the graph)
 #' and the convex Hulls
-#' car (for the ellipses)
+#' and \code{car} (for the ellipses).
 #' @author Hervé Abdi
 #' @param FS (factor scores) The coordinates
-#' of the items to be plotted
-#' @param FBoot The Bootstrap cube of factor scores
-#' @param   axis1 (default is 1)  position in FS of the  horizontal axis
-#' @param   axis2 (default is 2),  position in FS of the  vertical axis
-#' @param item.colors (defaul is NULL),  a color matrix/vector for the items
-#'  could be provided from a previous call to the graph routine
-#' @param   ZeTitle (default is  'PTCA-Bootstrap') a Title for the plot
-#' @param   constraints (default is NULL) the dimensions of the plot as a list
+#' of the items to be plotted.
+#' @param FBoot The Bootstrap cube of factor scores.
+#' @param axis1 (default is 1)  position in \code{FS}
+#' of the  horizontal axis
+#' @param axis2 (default is 2),  position in \code{FS}
+#'  of the  vertical axis
+#' @param item.colors (default is \code{NULL}),
+#' a color matrix/vector for the items
+#'  (could be provided from a previous call to the graph routine).
+#' @param ZeTitle (default is  'PTCA-Bootstrap') a Title for the plot
+#' @param constraints (default is \code{NULL})
+#' the dimensions of the plot as a list
 #' giving the constraints
 #' = list(minx=number1,miny=number2, maxx=number3,maxy=number4)
-#' often provided from a previous plot
-#' @param nude  (default is FALSE),  when TRUE do not plot names
-#' @param   Ctr (default is NULL), if TRUE  have the dots for the item
-#'  proportional to their contributions to the plane
-#' @param   lwd  (default is  3.5)  line width for the ellipse
-#' (from dataEllipse)
-#' @param   ellipses (default is TRUE)  when FALSE plot convex hulls
-#' @param   fill  (default is TRUE)  fill in the ellipses with lighter colors
-#' @param   fill.alpha (default is .27)  alpha-transparency for fill
+#' often provided from a previous plot.
+#' @param nude  (default is \code{FALSE}),
+#' when \code{TRUE} do not plot names.
+#' @param Ctr (default is \code{NULL}),
+#' if \code{TRUE}  have the dots for the item
+#'  proportional to their contributions to the plane.
+#' @param lwd  (default is  3.5)  line width for the ellipse
+#' (from dataEllipse).
+#' @param   ellipses (default is \code{TRUE})
+#' when \code{TRUE} plot ellipses,
+#' when \code{FALSE} plot convex hulls,
+#' @param   fill  (default is \code{TRUE})
+#' when \code{TRUE}
+#' fill in the ellipses with lighter colors.
+#' @param fill.alpha (default is .27)  alpha-transparency for filling
+#' (see parameter \code{fill}) ellipses/convex-hulls.
 #' @param   percentage (default is 0.95)  critical value for the CIs
-#' @param   dev.new  (default is TRUE)  when TRUE
-#' create a new window for plotting
-#' @param   new.plot  when  TRUE (default)  Clean the devise
+#' @param   dev.new  (default is \code{TRUE})  when \code{TRUE}
+#' create a new window for plotting.
+#' @param   new.plot  when  \code{TRUE} (default)  Clean the devise
 #' @param   cex  (default is 1)   size of the dots
 #' @param   text.cex (default is  .8) # size of text
 #' (to avoid conflicts with cex)
 #' @param   pos  (default is 2)  position of the text
 #'  can be a scalar or a vector
-#' @return PTCA.out the output from prettyPlot
+#' @return PTCA.out: the output from prettyPlot
 #' @import prettyGraphs
 #' @import car
 #' @export
@@ -364,7 +383,7 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 # From Derek's function for pretty distributions
 # October 17, 2013
 #' Plot a sampling distribution
-#' along with a value of a criterion
+#' along with a value of a criterion.
 #'
 #'  Plot a sampling distribution
 #'  (typically derived from a permutation test as
@@ -378,7 +397,7 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 #' @param distribution the empirical distribution
 #' (e.g., from a permutation test).
 #' @param observed the observaed value of the criterion
-#' @param show.observed if TRUE (default) plot the value of the criterion.
+#' @param show.observed if \code{TRUE} (default) plot the value of the criterion.
 #' @param observed.col color for the criterion (default is "mediumorchid4").
 #' @param xlim default is c(-1.2,1.2): value for the x-axis.
 #' The default
@@ -407,12 +426,18 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 ##User is _required_ to provide a distribution
 ##  and an observed value
 prettyHist <- function(distribution,observed,
-                       show.observed=TRUE,observed.col="mediumorchid4",
-                       xlim=c(-1.2,1.2),breaks=10,border="white",
-                       distr.col="darkseagreen",main="",xlab="",ylab="",
-                       counts=TRUE,cutoffs=c(0.025,0.975),
-                       show.cutoffs=TRUE,cutoff.col="firebrick3",
-                       gray.distr=TRUE,tail.dir="+"){
+                       show.observed=TRUE,
+                       observed.col="mediumorchid4",
+                       xlim=c(-1.2,1.2),
+                       breaks=10,border="white",
+                       distr.col="darkseagreen",
+                       main="",xlab="",ylab="",
+                       counts=TRUE,
+                       cutoffs=c(0.025,0.975),
+                       show.cutoffs=TRUE,
+                       cutoff.col="firebrick3",
+                       gray.distr=TRUE,
+                       tail.dir="+"){
   # function starts here
   #	print(length(cutoffs)!=1 || length(cutoffs)!=2)
   if(!(length(cutoffs)!=1 || length(cutoffs)!=2)){
@@ -486,15 +511,14 @@ prettyHist <- function(distribution,observed,
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
 ## -------------------------------------------------------------------
+#' \code{PrettyBarPlotColor4Q}
 #' Plot the result of Cochran's Q for the columns of a CATA
 #' table of data
 #'
-#' #' Plot the result of Cochran's Q for the columns of a CATA
-#' table of data along with the critical values (user provided)
-#'
-#'  Plot the result of Cochran's Q for the columns of a CATA
-#' table of data along with the critical values (user provided)
-#' This version is temporary and will likely be rewriten
+#' \code{PrettyBarPlotColor4Q}:
+#' Plot the result of Cochran's Q for the columns of a CATA
+#' table of data along with the critical value (user provided)
+#' NB: This version is temporary and will likely be rewriten
 #' @author Hervé Abdi
 #' @param  bootratio  the Q values to be plotted
 #' @param threshold (no default)
@@ -505,12 +529,12 @@ prettyHist <- function(distribution,observed,
 #' (default is 'darkorchid4')
 #' @param color4ns the color for a non significant item
 #' (default is 'gray75')
-#' @param PrintSignificantOnly  when TRUE (default)
+#' @param PrintSignificantOnly  when \code{TRUE} (default)
 #' print only the significant items
-#' @param plotnames when TRUE (default),
+#' @param plotnames when \code{TRUE} (default),
 #'  plot the names in the bars
-#' @param main a title for the plot (default is NULL)
-#' @param ylab a label for the y axis (default is NULL)
+#' @param main a title for the plot (default is \code{NULL})
+#' @param ylab a label for the y axis (default is \code{NULL})
 #' # @examples # PrettyBarPlotColor4Q(bootratio,threshold)
 #' @export
 PrettyBarPlotColor4Q <- function(bootratio,threshold,
@@ -519,7 +543,8 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
                                  color4ns = 'gray75',
                                  PrintSignificantOnly=TRUE,
                                  plotnames = TRUE,
-                                 main = NULL, ylab = NULL
+                                 main = NULL,
+                                 ylab = NULL
 ){
   # bootratio: the bootstrap ratios (BR) to be plotted
   # threshold: Treshold for significance, BR > threshold are plotted in gray
@@ -584,16 +609,18 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 #' plot the scree for the eigen values
 #' of an SVD based multivariate analysis
 #'
-#' Plot the scree for the eigen-values
-#' of an SVD based multivariate analysis.
+#' \code{PlotScree}: Plot the scree for the eigen-values
+#' of an SVD-based multivariate analysis.
 #' Note that the function can recompute the
 #' eigen-values when a percentage is given.
-#' For example  ExPosition does not return all ev
+#' For example  \code{ExPosition} does not return all ev
 #'        but only the requested one. but return all percentage
 #'        so if max.ev is specified, it is used to recompute
-#'        all eigenvalues
-#'  If provide wit probabilities, PlotScree will
-#'  color differently the "significant" eigenvalues
+#'        all eigenvalues.
+#'  By default \code{PlotScree} will not plot the line corresponding to
+#'  the average inertia (i.e., Kaiser criterion).
+#'  If provided with probabilities, \code{PlotScree} will
+#'  color differently the "significant" eigenvalues.
 #' @author Hervé Abdi
 #' @param ev the eigen values to plot. no default
 #' @param p.ev the probabilities associated to the
@@ -601,21 +628,33 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 #' @param max.ev the max eigen-value
 #'        needed because ExPosition does not return all ev
 #'        but only the requested one. but return all tau
-#'        so if max.ev is specified, it is used to recompute
-#'        all eigen-values
+#'        so if \code{max.ev} is specified, it is used to recompute
+#'        all eigen-values.
 #' @param alpha threshold for significance. Default = .05
 #' @param col.ns color for the non significant
-#' ev. Default is Green
+#' ev. Default is Green.
 #' @param col.sig  color for significant eigen-values.
-#' Default is Violet
+#' Default is Violet.
 #' @param title a title for the graph
 #' default is "Explained Variance per Dimension"
+#' @param plotKaiser  when \code{TRUE} plot
+#' plot a line corresponding to the average inertia
+#' (Kaiser criterion); do not plot when
+#' \code{FALSE} (default).
+#' @param color4Kaiser color for Kaiser's criterion
+#' (default is \code{'darkorchid4'})
+#' @param lwd4Kaiser \code{lwd} value (i.e., width)
+#' for Kaiser's criterion line.
+#' (default is \code{'2.5'})
 #' # @examples  # PlotScree(ev)
 #' @export
 PlotScree <- function(ev,p.ev=NULL,max.ev=NULL,
                       alpha=.05,
                       col.ns = '#006D2C',col.sig='#54278F',
-                      title = "Explained Variance per Dimension"
+                      title = "Explained Variance per Dimension",
+                      plotKaiser = FALSE,
+                      color4Kaiser = 'darkorchid4',
+                      lwd4Kaiser = 2.5
 ){
   # percentage of inertia
   val.tau = (100*ev/sum(ev))
@@ -648,9 +687,12 @@ PlotScree <- function(ev,p.ev=NULL,max.ev=NULL,
   par(new = TRUE)
   par(mar=c(5,6,4,4)+.5)
   le.max.vp = Top.y*(ev[1]/val.tau[1])
-  plot(ev, ann=FALSE,axes=FALSE,type="n",#line=3,
+  plot(ev, ann = FALSE,axes = FALSE,type = "n",#line=3,
        ylim = c(0,le.max.vp))
-  mtext("Inertia Extracted by the Components",side=4,line=3)
+  if (plotKaiser){
+  abline(h = 1/length(ev),  col = color4Kaiser, lwd = lwd4Kaiser)
+  }
+  mtext("Inertia Extracted by the Components", side = 4, line = 3)
   axis(4)
 } # end of function
 
@@ -673,12 +715,15 @@ PlotScree <- function(ev,p.ev=NULL,max.ev=NULL,
 #'@export
 #'
 createLabel <- function(resCA, zeAxis,
-                        axisName = 'Dimension'){
+                        axisName = 'Dimension'
+                      ){
   lambda <- round(resCA$ExPosition.Data$eigs[zeAxis],3)
   tau <- round(resCA$ExPosition.Data$t[zeAxis],0)
+  genLabel <- createLabel.gen(zeAxis = zeAxis,
+                              lambda = lambda,tau = tau,
+                              axisName = axisName
+  )
   genLabel <-
-    bquote(.(axisName)*.(zeAxis)*.(
-      '. ')~~lambda==.(lambda)*.~~tau==.(tau)*.('%'))
   return(genLabel)
 } # End of function createLabel
 # function createxyLabels
@@ -696,9 +741,73 @@ createLabel <- function(resCA, zeAxis,
 createxyLabels <- function(resCA,
                            x_axis = 1,
                            y_axis = 2,
-                           axisName = 'Dimension'){
+                           axisName = 'Dimension '){
   xyLabels = labs(x = createLabel(resCA, x_axis,axisName),
                   y = createLabel(resCA, y_axis,axisName) )
+  return(xyLabels)
+}
+#====================================================================
+# --------------------------------------------------------------------
+#        1         2         3         4         5         6         7
+#234567890123456789012345678901234567890123456789012345678901234567890
+# --------------------------------------------------------------------
+#===============================================================================
+# X and Y Labels generic functions
+#
+# a function for labels
+#'createLabel.gen creates x and y labels for ggplots2 scatterplots
+#'
+#'createLabel.gen creates x and y labels for ggplots2 scatterplots
+#'(e.g., correspondence analysis or principal component analysis).
+#' Compared to \code{createLabels},   \code{createLabels.gen}
+#' does not require the results from ExPosition.
+#'@param zeAxis the number of the axis (no default)
+#'@param lambda the eigen-value associated with this dimension
+#'@param tau the percentage of variance associated with this dimension
+#'@param axisName the name for the axes (default = 'Dimension')
+#'@author Herve Abdi
+#'@export
+#'
+createLabel.gen <- function(zeAxis, lambda,tau,
+                          axisName = 'Dimension '
+){
+  lambda <- round(lambda,3)
+  tau    <- round(tau,0)
+  genLabel <-
+    bquote(.(axisName)*.(zeAxis)*.(
+      '. ')~~lambda==.(lambda)*.~~tau==.(tau)*.('%'))
+  return(genLabel)
+} # End of function createLabel
+# function createxyLabels
+#'createxyLabels.gen creates x and y labels for ggplots2 scaterplots
+#'
+#'createxyLabels.gen creates x and y labels for ggplots2 scaterplots
+#'(e.g., correspondence analysis or principal component analysis).
+#' Compared to \code{createxylabels},   \code{createxylabels.gen}
+#' does not require the results from ExPosition.
+#'@param x_axis the number of the x axis; default = 1
+#'@param y_axis the number of the y axis; default = 2
+#'@param lambda a vector of eigenvalues (should have as many entries
+#' as max(axis_1,axis_2)).
+#'@param tau a vector of percentage of explained variance
+#'(should have as many entries
+#' as max(axis_1,axis_2)).
+#'@param axisName the name for the axes (default = 'Dimension')
+#'@author Herve Abdi
+#'@export
+#'
+createxyLabels.gen <- function(
+                           x_axis = 1,
+                           y_axis = 2,
+                           lambda,
+                           tau,
+                           axisName = 'Dimension '){
+  xyLabels = labs(x = createLabel.gen(zeAxis = x_axis,
+                                      lambda = lambda[x_axis],
+                                      tau = tau[x_axis],axisName),
+                  y = createLabel.gen(zeAxis = y_axis,
+                                       lambda = lambda[y_axis],
+                                       tau = tau[y_axis],axisName))
   return(xyLabels)
 }
 #====================================================================

@@ -2,8 +2,8 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{PrettyBarPlotColor}
 \alias{PrettyBarPlotColor}
-\title{Create pretty bar plot
- with defined color for the sigificant columns}
+\title{\code{PrettyBarPlotColor}: create pretty bar plots
+ with defined colors for the sigificant columns}
 \usage{
 PrettyBarPlotColor(bootratio, threshold = 2, ylim = NULL, color4bar,
   color4ns = "gray75", plotnames = TRUE, main = NULL, ylab = NULL)
@@ -14,30 +14,30 @@ PrettyBarPlotColor(bootratio, threshold = 2, ylim = NULL, color4bar,
 
 \item{threshold}{critical.value The critical value for significance
 (default = 2, which matches a $p < .05$ significance level)
-|BR| < threshold are plotted in gray}
+|BR| < threshold are plotted in gray.}
 
 \item{ylim}{a 2-element vector giving min and mac for y
-if NULL (default) set to c(-abs(BR),abs(BR))}
+if NULL (default) set to c(-abs(BR),abs(BR)).}
 
 \item{color4bar}{a vector of color names (same dimension as BR)}
 
 \item{color4ns}{(default 'gray75') color
-for the non-significant BR}
+for the non-significant BR.}
 
-\item{plotnames}{if TRUE (default) write the names of the items}
+\item{plotnames}{if TRUE (default) write the names of the items.}
 
-\item{main}{(default is NULL) a title for the graph}
+\item{main}{(default is NULL) a title for the graph.}
 
-\item{ylab}{(default is NULL) a label for the y axis (i.e., BR)}
+\item{ylab}{(default is NULL) a label for the y axis (i.e., BR).}
 }
 \value{
-A list: 1) ylim min and max for y, 2) threshold
+A list: 1) ylim min and max for y, 2) threshold.
 # @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 }
 \description{
-Create pretty bar plot
+\code{PrettyBarPlotColor}: Create pretty bar plots
  with defined colors for the sigificant columns.
- Variation over prettyBarPlot
+ NB \code{PrettyBarPlotColor} is a variation over \code{prettyBarPlot}.
 }
 \author{
 Hervé Abdi

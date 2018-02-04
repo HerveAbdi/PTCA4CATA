@@ -34,7 +34,7 @@ data).}
  chose (resp. did not choose)
  the color to match the piece of music}
 \item{\code{contingencyTable}}{The 10-Colors
- by 9-Music Pieces (pseudo) contingency Table.
+ by 9-Music Pieces (pseudo) contingency table.
  The value at the intersection of a row (color) and a column
  (piece of music) is the number of participants who chose this
  color to match this piece of music. This contingency

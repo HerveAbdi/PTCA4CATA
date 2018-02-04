@@ -10,7 +10,7 @@ ShadesColor(AColor, jiffy = 40)
 \item{AColor}{the color to use}
 
 \item{jiffy}{A small amount to make darker or clearer
-default = 40}
+default = 40.}
 }
 \value{
 A list:
@@ -18,11 +18,12 @@ A list:
 version of AColor
 2) TestColorLighter the lighter
 version of AColor
-# @examples #  twoColors <- ShadesColor('Red',50)
+# @examples
+twoColors <- ShadesColor('Red',50)
 }
 \description{
 ShadesColor Create create lighter and darker versions of a color
- used by PrettyBarPlotColor to create fake transparent colors
+ used by PrettyBarPlotColor to create faked transparent colors.
 }
 \author{
 Hervé Abdi

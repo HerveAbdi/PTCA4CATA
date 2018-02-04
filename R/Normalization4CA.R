@@ -159,11 +159,40 @@ CARenormalization <- function(#
                   byrow = FALSE) * G_A
     return.list$G_P = as.data.frame(G_P)
   }
-
-  return(return.list)
+  return.class.list <- structure(
+  return.list,
+  class = 'CArenormed')
+  return(return.class.list)
 }
 # End of function CArenormalization
 #--------------------------------------------------------------------
+#--------------------------------------------------------------------
+# Change the print function for
+# the createNormedFactors environment
+#
+#' Change the print function for CARenormalization
+#'
+#'  Change the print function for CARenormalization
+#'
+#' @param x a list: output of CARenormalization
+#' @param ... everything else for the functions
+#' @author Herve Abdi
+#' @export
+print.CArenormed <- function (x, ...) {
+  ndash = 78 # How many dashes for separation lines
+  cat(rep("-", ndash), sep = "")
+  cat("\nThree Re-Normalization Schemes for CA  (see also createAllNormedFactors)\n")
+  # cat("\n List name: ",deparse(eval(substitute(substitute(x)))),"\n")
+  cat(rep("-", ndash), sep = "")
+  cat("\n$G_A        ", "Asymmetric factor scores (G_A'*M*G_A = I)")
+  cat("\n$G_B        ", "True Barycentric factor scores (G_B'*M*G_B = L^2)")
+  cat("\n$G_S        ", "SPSS Biplot factor scores (G_S'*M*G_S = L^(1/2)")
+  cat("\n",rep("-", ndash), sep = "")
+  cat("\n")
+  invisible(x)
+} # end of function print.createNormedFactors
+#--------------------------------------------------------------------
+
 
 #--------------------------------------------------------------------
 #
@@ -198,7 +227,23 @@ CARenormalization <- function(#
 #'  (default is 'Dimension')
 #' @author Herve Abdi
 #' @return a list with the normalized factor scores
-#'  \code{Fi}, \code{Fi_A}, \code{Fi_B},\code{Fj},\code{Fj_A}, \code{Fj_B}.
+#'  \code{Fi} (I-set original factor scores), \code{Fi_A}
+#'  (I-set asymmetric normalization),
+#'   \code{Fi_B} (I-set true barycentric),
+#'   \code{Fi_P} (I-set Greenacre's Biplot),
+#'   \code{Fi_S} (I-set SPSS strange biplot),
+#'  \code{Fj} (J-set original factor scores),
+#'  \code{Fj_A}
+#'  (J-set asymmetric normalization),
+#'   \code{Fj_B} (J-set true barycentric),
+#'   \code{Fj_P} (J-set Greenacre's Biplot),
+#'   \code{Fj_S} (J-set SPSS strange biplot)
+#'   @examples
+#'# Use the colorOfMusic data example
+#'  data("colorOfMusic")
+#'# NB need to have ExPosition installed
+#'  resCA <- ExPosition::epCA(colorCT, graphs = FALSE)
+#'  renormedFactors <- createAllNormedFactors(resCA)
 #' @export
 
 createAllNormedFactors <- function(ResFrom.epCA,
@@ -253,19 +298,19 @@ createAllNormedFactors <- function(ResFrom.epCA,
 print.createNormedFactors <- function (x, ...) {
   ndash = 78 # How many dashes for separation lines
   cat(rep("-", ndash), sep = "")
-  cat("\nDifferent Normalization Schemes for CA \n")
+  cat("\nFour Different Normalization Schemes for CA \n")
   # cat("\n List name: ",deparse(eval(substitute(substitute(x)))),"\n")
   cat(rep("-", ndash), sep = "")
-  cat("\n$Fi          ", "I-Set (row) Symmetric        factor scores (Fi'M*Fi = L)")
-  cat("\n$Fi_A        ", "I-Set (row) Asymmetric       factor scores (Fi_A'M*Fi_A = I)")
-  cat("\n$Fi_B        ", "I-Set (row) true Barycentric factor scores (Fi_B'M*Fi_B = L^2)")
+  cat("\n$Fi          ", "I-Set (row) Symmetric        factor scores (Fi'*M*Fi = L)")
+  cat("\n$Fi_A        ", "I-Set (row) Asymmetric       factor scores (Fi_A'*M*Fi_A = I)")
+  cat("\n$Fi_B        ", "I-Set (row) true Barycentric factor scores (Fi_B'*M*Fi_B = L^2)")
   cat("\n$Fi_P        ", "I-Set (row) Biplot           Fi_P = M^(1/2) * Fi_A")
-  cat("\n$Fi_S        ", "I-Set (row) SPSS Biplot      factor scores (Fi_S'M*Fi_S = L^(1/2)")
-  cat("\n$Fj          ", "J-Set (col) Symmetric        factor scores (Fj'W*Fj = L)")
-  cat("\n$Fj_A        ", "J-Set (col) Asymmetric       factor scores (Fj_A'W*Fj_A = I)")
-  cat("\n$Fj_B        ", "J-Set (col) true Barycentric factor scores (Fj_B'W*Fj_B = L^2)")
+  cat("\n$Fi_S        ", "I-Set (row) SPSS Biplot      factor scores (Fi_S'*M*Fi_S = L^(1/2)")
+  cat("\n$Fj          ", "J-Set (col) Symmetric        factor scores (Fj'*W*Fj = L)")
+  cat("\n$Fj_A        ", "J-Set (col) Asymmetric       factor scores (Fj_A'*W*Fj_A = I)")
+  cat("\n$Fj_B        ", "J-Set (col) true Barycentric factor scores (Fj_B'*W*Fj_B = L^2)")
   cat("\n$Fj_P        ", "J-Set (row) Biplot           Fj_P = W^(1/2) * Fj_A")
-  cat("\n$Fi_S        ", "J-Set (row) SPSS Biplot      factor scores (Fj_S'W*F_S = L^(1/2)")
+  cat("\n$Fi_S        ", "J-Set (row) SPSS Biplot      factor scores (Fj_S'*W*F_S = L^(1/2)")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)

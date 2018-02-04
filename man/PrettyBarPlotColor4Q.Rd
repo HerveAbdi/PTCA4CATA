@@ -2,7 +2,8 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{PrettyBarPlotColor4Q}
 \alias{PrettyBarPlotColor4Q}
-\title{Plot the result of Cochran's Q for the columns of a CATA
+\title{\code{PrettyBarPlotColor4Q}
+Plot the result of Cochran's Q for the columns of a CATA
 table of data}
 \usage{
 PrettyBarPlotColor4Q(bootratio, threshold, ylim = NULL,
@@ -25,25 +26,22 @@ if NULL (default) set to c(-max(abs(y)) , max(abs(y)) )}
 \item{color4ns}{the color for a non significant item
 (default is 'gray75')}
 
-\item{PrintSignificantOnly}{when TRUE (default)
+\item{PrintSignificantOnly}{when \code{TRUE} (default)
 print only the significant items}
 
-\item{plotnames}{when TRUE (default),
+\item{plotnames}{when \code{TRUE} (default),
 plot the names in the bars}
 
-\item{main}{a title for the plot (default is NULL)}
+\item{main}{a title for the plot (default is \code{NULL})}
 
-\item{ylab}{a label for the y axis (default is NULL)
+\item{ylab}{a label for the y axis (default is \code{NULL})
 # @examples # PrettyBarPlotColor4Q(bootratio,threshold)}
 }
 \description{
-#' Plot the result of Cochran's Q for the columns of a CATA
-table of data along with the critical values (user provided)
-}
-\details{
+\code{PrettyBarPlotColor4Q}:
 Plot the result of Cochran's Q for the columns of a CATA
-table of data along with the critical values (user provided)
-This version is temporary and will likely be rewriten
+table of data along with the critical value (user provided)
+NB: This version is temporary and will likely be rewriten
 }
 \author{
 Hervé Abdi

@@ -3,7 +3,7 @@
 \name{prettyHist}
 \alias{prettyHist}
 \title{Plot a sampling distribution
-along with a value of a criterion}
+along with a value of a criterion.}
 \usage{
 prettyHist(distribution, observed, show.observed = TRUE,
   observed.col = "mediumorchid4", xlim = c(-1.2, 1.2), breaks = 10,
@@ -18,7 +18,7 @@ prettyHist(distribution, observed, show.observed = TRUE,
 
 \item{observed}{the observaed value of the criterion}
 
-\item{show.observed}{if TRUE (default) plot the value of the criterion.}
+\item{show.observed}{if \code{TRUE} (default) plot the value of the criterion.}
 
 \item{observed.col}{color for the criterion (default is "mediumorchid4").}
 

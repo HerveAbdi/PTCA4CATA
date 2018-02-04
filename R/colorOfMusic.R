@@ -11,14 +11,14 @@
 print.str_colorsOfMusic <- function (x, ...) {
   ndash = 78 # How many dashes for separation lines
   cat(rep("-", ndash), sep = "")
-  cat("\n 12 children and 10 Adults pick one color (out of 10) for 9 pieces of music  \n")
+  cat("\n 12 children and 10 Adults pick one color (out of 10) to describe 9 pieces of music  \n")
   # cat("\n List name: ",deparse(eval(substitute(substitute(x)))),"\n")
   cat(rep("-", ndash), sep = "")
   cat("\n$participantsChoice      ", "A df. Rows: participants, Columns: music pieces")
   cat("\n$participantsDescription ", "Age (Child/Adult) and Gender (F/M) of participants")
   cat("\n$colorInformation        ", "Name and code of the colors")
   cat("\n$cubeOfData              ", "The 10-Color*9-Music*22-Participant cube of 0/1 data")
-  cat("\n$contingencyTable        ", "The 10-Color*9-Music (pseudo) contingency Table")
+  cat("\n$contingencyTable        ", "The 10-Color*9-Music (pseudo) contingency table")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
@@ -65,7 +65,7 @@ print.str_colorsOfMusic <- function (x, ...) {
 #'  chose (resp. did not choose)
 #'  the color to match the piece of music}
 #' \item{\code{contingencyTable}}{The 10-Colors
-#'  by 9-Music Pieces (pseudo) contingency Table.
+#'  by 9-Music Pieces (pseudo) contingency table.
 #'  The value at the intersection of a row (color) and a column
 #'  (piece of music) is the number of participants who chose this
 #'  color to match this piece of music. This contingency

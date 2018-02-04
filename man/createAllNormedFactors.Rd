@@ -17,7 +17,23 @@ createAllNormedFactors(ResFrom.epCA, namesOfFactors = "Dimension")
 }
 \value{
 a list with the normalized factor scores
- \code{Fi}, \code{Fi_A}, \code{Fi_B},\code{Fj},\code{Fj_A}, \code{Fj_B}.
+ \code{Fi} (I-set original factor scores), \code{Fi_A}
+ (I-set asymmetric normalization),
+  \code{Fi_B} (I-set true barycentric),
+  \code{Fi_P} (I-set Greenacre's Biplot),
+  \code{Fi_S} (I-set SPSS strange biplot),
+ \code{Fj} (J-set original factor scores),
+ \code{Fj_A}
+ (J-set asymmetric normalization),
+  \code{Fj_B} (J-set true barycentric),
+  \code{Fj_P} (J-set Greenacre's Biplot),
+  \code{Fj_S} (J-set SPSS strange biplot)
+  @examples
+# Use the colorOfMusic data example
+ data("colorOfMusic")
+# NB need to have ExPosition installed
+ resCA <- ExPosition::epCA(colorCT, graphs = FALSE)
+ renormedFactors <- createAllNormedFactors(resCA)
 }
 \description{
 Create all the different normalization for the rows
