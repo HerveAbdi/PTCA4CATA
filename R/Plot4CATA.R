@@ -1,4 +1,4 @@
-#
+﻿#
 # This file contains the graphic routines for PTCA4CATA
 # These ones are based on prettyPlots
 # a second set baseD on ggplots is in development
@@ -19,15 +19,16 @@
 # *****************************************************************************
 # function PrettyBarPlot. Create plot à la Wires (MATLAB)
 
-#' \code{PrettyBarPlot} create bar plots for a series of variables
-#' Use for plotting bootstrap ratios or contributions from
-#' prncipal component analysis or related methodes
+#' \code{PrettyBarPlot}: creates bar plots for a series of variables.
+#' It is use for plotting bootstrap ratios or contributions from
+#' principal component analysis or related methods
 #' (e.g. correspondence analysis).
 #'
-#' \code{PrettyBarPlot} create bar plots for a set of items
+#' \code{PrettyBarPlot}: creates bar plots for a set of items
 #' (e.g., observations or variables) analyzed with multivariate
 #' methods such as PCA, CA, MCA, PLS etc.
-#' Used to display the bootstrap ratios or contributions plots
+#'  \code{PrettyBarPlot} is
+#' used to display the bootstrap ratios or contributions plots
 #' for CA/MCA/PCA/PLS.
 #' Significant or important items are plotted in color, non-significant
 #' items are plotted in gray.
@@ -84,12 +85,14 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
   lafont[abs(bootratio) < threshold] = 1
 
   # Plot
-  graphics::barplot(bootratio,names="",space=.1,width=.9,col=lescouleurs,las=2,
-          ylim = ylim,main=main,ylab = ylab,
-          border=lescouleurs.font)
+  graphics::barplot(bootratio,names = "",
+                    space = .1, width = .9,
+                    col = lescouleurs,las=2,
+          ylim = ylim,main = main, ylab = ylab,
+          border = lescouleurs.font)
   graphics::abline(coef = c(0,0))
-  graphics::abline(coef=c( threshold,0),col="red",lwd=.3)
-  graphics::abline(coef=c(-threshold,0),col="red",lwd=.3)
+  graphics::abline(coef = c( threshold,0),col="red",lwd=.3)
+  graphics::abline(coef = c(-threshold,0),col="red",lwd=.3)
   # now go for an ugly loop
   for (i in 1:nel){
     if (sign(bootratio[i]) == -1){

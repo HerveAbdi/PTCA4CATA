@@ -2,13 +2,13 @@
 % Please edit documentation in R/BootRatio.R
 \name{Boot4PTCA}
 \alias{Boot4PTCA}
-\title{Boot4PTCA. Compute the Bootstrapped Factors scores
+\title{\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
 for the  I and J sets from
 a Partial Triadic Correspondence analysis
-(PTCA)}
+(PTCA).}
 \usage{
 Boot4PTCA(ZeDataCube, fi, fj, eigs, nf2keep = 2, nBootIter = 100,
-  compact = FALSE)
+  compact = FALSE, eigen = FALSE, eigen.compact = TRUE)
 }
 \arguments{
 \item{ZeDataCube}{An I*J*K data cube (K are observations)
@@ -25,31 +25,44 @@ The third dimension (K) is bootstrapped}
 \item{nBootIter}{How many Bootstrap samples, default to 100
 (RowsBoot = ZeBootCube_I,ColumnsBoot = ZeBootCube_J)}
 
-\item{compact}{(default = FALSE) if \code{TRUE} gives a compact
-version with only the result for the symmetric approch.}
+\item{compact}{(default = \code{FALSE})
+if \code{TRUE} gives a compact
+version with only the results for the symmetric approch.}
+
+\item{eigen}{if \code{FALSE} compute also the bootstraped
+eigenvalues. NB It seems that the bootstrapped eigenvalues are
+biased (i.e., their mean is not equal
+to the corresponding eigenvalue).
+So this feature
+is experimental.}
+
+\item{eigen.compact}{when \code{TRUE} return the whole
+matrix of botstrapped eigenvalues. Default is \code{FALSE}.
+When \code{eigen} is \code{FALSE},
+\code{eigen.compact} has no effect.}
 }
 \value{
-A list: if compact false:
-1a) RowsBoot a I*L*B cube of Bootstrapped
+A list: if compact \code{FALSE}:
+1a) \code{RowsBoot} a I*L*B cube of Bootstrapped
 coordinates for the I-set
-1b) RowsBoot.asym a I*L*B cube of Bootstrapped
+1b) \code{RowsBoot.asym} a I*L*B cube of Bootstrapped
 coordinates for the I-set
 (asymmetric projections);
- 2a)  ColumnsBoot a J*L*B cube of Bootstrapped coordinates
+ 2a)  \code{ColumnsBoot} a J*L*B cube of Bootstrapped coordinates
  for the J-set
- if compact false 2b)
- ColumnsBoot.asym a J*L*B cube of Bootstrapped
+ if compact \code{FALSE} 2b)
+ \code{ColumnsBoot.asym} a J*L*B cube of Bootstrapped
  coordinates for the J-set
- with I: number of rows, J: number of columns
- L: number of factors kept (i.e., nf2keep),
- B: number of Bootstrap replicates (i.e., nBootIter)
+ with \eqn{I}: number of rows, J: number of columns
+ L: number of factors kept (i.e., \code{nf2keep}),
+ B: number of Bootstrap replicates (i.e., \code{nBootIter})
 }
 \description{
-This function bootstraps the Kth dimension of a data cube
-and computes bootstraped factor scores
+\code{Boot4PTCA} bootstraps the Kth dimension of a data cube
+and computes bootstraped factor scores.
 }
 \examples{
-#  BootFactorsIJ <-Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+#  BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
 }
 \author{
 Herve Abdi

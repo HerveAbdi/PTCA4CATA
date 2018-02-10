@@ -17,7 +17,8 @@ data table
 "byRows', 'byCols', or 'byMat}
 }
 \description{
-truc4ptca a private function: create a permuted version of a data cube
+truc4ptca a private function:
+create a permuted version of a data cube
 from a PTCA analysis. Used by the function \code{perm4PTCA}.
 }
 \author{

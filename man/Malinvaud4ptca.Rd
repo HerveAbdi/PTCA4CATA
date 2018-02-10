@@ -23,7 +23,8 @@ to use to print the results}
 : A dataframe with the results of the test
 }
 \description{
-Compute the Malinvaud-Saporta test for significance
+\code{Malinvaud4ptca}: Compute the Malinvaud-Saporta
+test for significance
 in Correspondence Analysis. Provides asymptotic
 Chis-square based p-values, and if a set
 of permuted eigenvalues is provided

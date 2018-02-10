@@ -30,7 +30,7 @@ the groups by variables bootstrapped means of
 \code{BootCube}.
 }
 \description{
-\code{Boot4Mean} computes a brick  of bootstrap
+\code{Boot4Mean} computes a brick of bootstrap
 estimates for the means of groups of observations
 described by several variables,  as for example,
 for groups of observations described by factors scores

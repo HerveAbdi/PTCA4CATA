@@ -10,31 +10,45 @@
 # Documented with roxygen2
 # Uptdates. August 07. HA / October 17 / 2016.
 # June 9 2017. HA
+# February 9 2018. HA
+#---------------------------------------------------------------------
 
-# *****************************************************************************
+# ********************************************************************
 # The functions start below
-# *****************************************************************************
-# function from Derek for bootstrap ratios
+# ********************************************************************
+# function from Derek's fucntion for bootstrap ratios
 #' boot.ratio.test computes bootstrap ratios
-#' from a "bootstrap cube"
+#' from a "bootstrap cube."
 #'
 #' boot.ratio.test computes bootstrap ratios
 #' from a "bootstrap cube" (created, e.g., by
-#' BOOT4PTCA)
+#' \code{Boot4PTCA}).
+#' NB: this function is a "modified clone"
+#' of \code{InPosition::boot.ratio.test},
+#' it differs from \code{InPosition::boot.ratio.test} only by
+#' the suppression of the critical value in the returned list and
+#' by the addition of \code{prob.boot.ratios} and
+#' \code{prob.boot.ratios.cor} in the ereturned list
+#' (see \code{Value} below).
 #'
 #' @author Derek Beaton & Hervé Abdi
 #' @param boot.cube An I*L*B bootstrap brick
-#' (typically obtained from Boot4PTCA).
+#' (typically obtained from \code{Boot4PTCA}).
 #' The third dimension (B) corresponds to the
 #' random factor of the
 #' "to-be-bootstrapped-units"
-#' (e.g., judges, participants, assessors)
+#' (e.g., judges, participants, assessors).
 #' @param critical.value The critical value for significance
 #' (default = 2, which matches a \eqn{p <} .05 significance level)
-#' @return A list: 1) sig.boot.ratios: A logical vector that identifies the
-#' significant items. 2)  boot.ratios: the bootstrap ratios
-#' 3) prob.boot.ratios: the (uncorrected) probability associated to the
-#' bootstrap ratios 4) prob.boot.ratios.cor:
+#' @return A list:
+#' 1) \code{sig.boot.ratios}:
+#' A logical vector that identifies the
+#' significant items.
+#' 2)  \code{boot.ratios}: the bootstrap ratios
+#' 3) \code{prob.boot.ratios}:
+#' the (uncorrected) probability associated to the
+#' bootstrap ratios
+#' 4) \code{prob.boot.ratios.cor}:
 #' the (Sidak/Bonferonni) corrected probability associated to the
 #' bootstrap ratios
 #' @examples #  BR <- boot.ratio.test(BootI)
@@ -62,8 +76,8 @@ boot.ratio.test <- function(boot.cube,critical.value=2){
 
   return(return.list)
 }
-# *****************************************************************************
-# *******************************************************************************
+# ********************************************************************
+# ********************************************************************
 #' Change the print function for bootRatios
 #'
 #'  Change the print function for bootRatios
@@ -90,15 +104,16 @@ print.bootRatios <- function (x, ...) {
 
 
 
-# *****************************************************************************
-# function Boot4PTCA. Compute the Bootstrapped Factors scores for I and J sets
-#'Boot4PTCA. Compute the Bootstrapped Factors scores
+# ********************************************************************
+# function Boot4PTCA.
+#   Compute the Bootstrapped Factors scores for I and J sets
+#'\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
 #' for the  I and J sets from
 #' a Partial Triadic Correspondence analysis
-#' (PTCA)
+#' (PTCA).
 #'
-#' This function bootstraps the Kth dimension of a data cube
-#' and computes bootstraped factor scores
+#' \code{Boot4PTCA} bootstraps the Kth dimension of a data cube
+#' and computes bootstraped factor scores.
 #' @param ZeDataCube An I*J*K data cube (K are observations)
 #' The third dimension (K) is bootstrapped
 #' @param fi  The factor scores for I (rows) from the epCA program
@@ -107,24 +122,35 @@ print.bootRatios <- function (x, ...) {
 #' @param nf2keep  how many factors to keep,  default to 2
 #' @param nBootIter How many Bootstrap samples, default to 100
 #' (RowsBoot = ZeBootCube_I,ColumnsBoot = ZeBootCube_J)
-#' @param compact (default = FALSE) if \code{TRUE} gives a compact
-#' version with only the result for the symmetric approch.
-#' @return A list: if compact false:
-#' 1a) RowsBoot a I*L*B cube of Bootstrapped
+#' @param compact (default = \code{FALSE})
+#' if \code{TRUE} gives a compact
+#' version with only the results for the symmetric approch.
+#' @param eigen if \code{FALSE} compute also the bootstraped
+#' eigenvalues. NB It seems that the bootstrapped eigenvalues are
+#' biased (i.e., their mean is not equal
+#' to the corresponding eigenvalue).
+#' So this feature
+#' is experimental.
+#' @param eigen.compact when \code{TRUE} return the whole
+#' matrix of botstrapped eigenvalues. Default is \code{FALSE}.
+#' When \code{eigen} is \code{FALSE},
+#' \code{eigen.compact} has no effect.
+#' @return A list: if compact \code{FALSE}:
+#' 1a) \code{RowsBoot} a I*L*B cube of Bootstrapped
 #' coordinates for the I-set
-#' 1b) RowsBoot.asym a I*L*B cube of Bootstrapped
+#' 1b) \code{RowsBoot.asym} a I*L*B cube of Bootstrapped
 #' coordinates for the I-set
 #' (asymmetric projections);
-#'  2a)  ColumnsBoot a J*L*B cube of Bootstrapped coordinates
+#'  2a)  \code{ColumnsBoot} a J*L*B cube of Bootstrapped coordinates
 #'  for the J-set
-#'  if compact false 2b)
-#'  ColumnsBoot.asym a J*L*B cube of Bootstrapped
+#'  if compact \code{FALSE} 2b)
+#'  \code{ColumnsBoot.asym} a J*L*B cube of Bootstrapped
 #'  coordinates for the J-set
-#'  with I: number of rows, J: number of columns
-#'  L: number of factors kept (i.e., nf2keep),
-#'  B: number of Bootstrap replicates (i.e., nBootIter)
+#'  with \eqn{I}: number of rows, J: number of columns
+#'  L: number of factors kept (i.e., \code{nf2keep}),
+#'  B: number of Bootstrap replicates (i.e., \code{nBootIter})
 #' @author Herve Abdi
-#' @examples #  BootFactorsIJ <-Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+#' @examples #  BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
 #' @export
 Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
   # factor scores for I & J set
@@ -138,18 +164,21 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
   eigs, # The eigenvalues from the CA analysis
   nf2keep = 2, # how many factors to keep,  default to 2
   nBootIter = 100 , # How many Bootstrap samples, default to 100
-  compact = FALSE # If compact == TRUE: give only the symetric version
+  compact = FALSE, # If compact == TRUE: give only the symetric version
+  eigen = FALSE, # if eigen is TRUE compute bootstrapped eigenvalues
+  eigen.compact = TRUE # if eigen.compact is FALSE return the
+     # bootstrapped eigenvalues
 ){
   # ***************************************************************
   # Output:
-  #     RowsBoot   : a I * nf2keep * nBootIter array
+  #     RowsBoot   : an I * nf2keep * nBootIter array
   #                  of bootstraped factor scores (row)
   #     ColumnsBoot: a J * nf2keep * nBootIter array
   #                   of bootstraped factor scores (columns)
   # first check that nf2keep is not too big
   nL = length(eigs)
   if (nf2keep > nL){nf2keep = nL}
-  nI = dim(ZeDataCube)[3] # how many observation do we have
+  nI = dim(ZeDataCube)[3] # how many observations do we have
   # compute the multiplication matrices
   Lefj = fj[,1:nf2keep] # the columns factor scores
   Lefi = fi[,1:nf2keep] # the row factor scores
@@ -175,7 +204,15 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
                               #, dimnames=c('J-set','Factors','Replicates')
   )
   }
-
+  if (eigen == TRUE){
+  # Compute the fixed effect with all eigenvalues
+  fixedCT <- apply(ZeDataCube,c(1,2),sum)
+  # Get the eigenvalues by calling eigCA
+  fixedEig <- eig4CA(fixedCT)
+  leRang <-   min(dim(fixedCT)) - 1
+  if (length(fixedEig) > leRang) {fixedEig <- fixedEig[1:leRang]}
+  bootEig <- matrix(0, nrow = nBootIter, ncol = leRang)
+  }
   # Now create I & J Bootstrap Factors Scores for the Cube
   # now go for an ugly loop
   for (m in 1:nBootIter){
@@ -183,20 +220,29 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
     # get the Fi scores
     ZeBootCube_I.asym[,,m] = apply(BootCT,2,
                                    function(la) {
-                                     la/as.matrix(rowSums(BootCT))}) %*%
-      MultmatJ.asym
+                              la/as.matrix(rowSums(BootCT))}) %*%
+                                  MultmatJ.asym
     ZeBootCube_J[,,m] = apply(t(BootCT),2,
             function(la) {
                 la/as.matrix(rowSums(t(BootCT)))}) %*% MultmatI
     if (!compact){
       ZeBootCube_I[,,m] = apply(BootCT,2,
                                 function(la) {
-                                  la/as.matrix(rowSums(BootCT))}) %*% MultmatJ
+                        la/as.matrix(rowSums(BootCT))}) %*% MultmatJ
     ZeBootCube_J.asym[,,m] <- apply(t(BootCT),2,
-                                     function(la) {
-                                   la/as.matrix(rowSums(t(BootCT)))}) %*%
-                                   MultmatI.asym
+                              function(la) {
+                   la/as.matrix(rowSums(t(BootCT)))}) %*%
+                                                      MultmatI.asym
                      } # end of !compact
+
+    # Compute the eigenvalues of BootCT
+    if (eigen == TRUE){
+      #print(paste0('ICI le Rang = ',leRang))
+      boot.eig <- eig4CA(BootCT)
+      lindex <- 1:min(length(boot.eig),leRang)
+      # print(paste0('ICI lindex = ',lindex))
+      bootEig[m , lindex] <- boot.eig[lindex]
+       }
          } # End of m-loop
   # Return the ZeBootCubes
   Names_of_I <- rownames(ZeDataCube)
@@ -223,11 +269,32 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
     return.list$RowsBoot = ZeBootCube_I
     return.list$ColumnsBoot.asym = ZeBootCube_J.asym
   }
+  if (eigen){
+    # to expand and put this function as a parameter
+    desDis <- function(X, limits = c(c(.025, .975)) ){# private F
+                                     quantile(X,c(.025, .975))}
+    fixed.Inertia <- sum(fixedEig)
+    boot.Inertia <- rowSums(bootEig)
+    mean.Inertia <- mean(boot.Inertia)
+    CI.Inertia <- desDis(boot.Inertia)
+    Total <- c(fixed.Inertia,mean.Inertia,CI.Inertia)
+    res.bootEig.tmp <- rbind(fixedEig, colMeans(bootEig),
+                         apply(bootEig,2, desDis))
+    res.bootEig <- cbind(Total, res.bootEig.tmp)
+    rownames(res.bootEig) <- c('Fixed Inertia', 'Mean Boot Inertia',
+                                'Inertia CI 2.5%', 'Inertia CI 97.5%')
+    colnames(res.bootEig) <- c('Total', paste0('Dimension ',
+                                                    seq(1: leRang)))
+
+
+    return.list$bootEigen =  res.bootEig
+    if(!eigen.compact) return.list$bootMatrixEV = bootEig
+  }
 
   return(return.list)
 
 }  # End of function Boot4PTCA
-# *******************************************************************************
+# ********************************************************************
 #' Change the print function for Boot4PTCA
 #'
 #'  Change the print function for Boot4PTCA
@@ -246,6 +313,8 @@ print.Boot4PTCA <- function (x, ...) {
   cat("\n$ColumnsBoot      ", "a  J*L*nIter Brick of BFSs for the J-Set")
   cat("\n$RowsBoot         ", "an I*L*nIter Brick of BFSs for the I-Set")
   cat("\n$ColumnsBoot.asym ", "a  J*L*nIter Brick of BFSs for the J-Set (Asymmetric)")
+  cat("\n$bootEigen        ", "Bootstrap: summary for the Inertia (Totol and per Dimension) ")
+  cat("\n$BootMatrixEV     ", "an nIter*L matrix of the bootstrapped eigenvalues ")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
@@ -259,11 +328,11 @@ print.Boot4PTCA <- function (x, ...) {
 #*********************************************************************
 # Random permutations
 # uses the InertiaTable function
-#'InertiaPermutedTables
+#' \code{InertiaPermutedTables}
 #' A function to Compute the inertia of a set of random permutations
 #' of the "Check-Mark" (e.g. CATA) type of data.
 #'
-#' InertiaPermutedTables creates a cube of data
+#' \code{InertiaPermutedTables} creates a cube of data
 #' from the results of a "Check-Mark"
 #' data set collected in DataChecks.
 #' These data correspond to participants matching (or not)
@@ -357,7 +426,8 @@ InertiaPermutedTables <- function(DataChecks, nPerm = 1000){
 #' Used for permutation tests.
 #' @author Hervé Abdi
 #' @param X A contingency table (non negative numbers)
-#' @return the inertia (a la correspondence analysis) of the contingency table
+#' @return the inertia (a la correspondence analysis)
+#' of the contingency table
 #' @examples # RandomnInertia<- InertiaPermutedTables(ACubeOfDataChecks)
 #' @examples # InertiaOfATable <- InertiaTable(X)
 #' @export

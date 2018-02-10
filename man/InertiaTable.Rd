@@ -10,7 +10,8 @@ InertiaTable(X)
 \item{X}{A contingency table (non negative numbers)}
 }
 \value{
-the inertia (a la correspondence analysis) of the contingency table
+the inertia (a la correspondence analysis)
+of the contingency table
 }
 \description{
 InertiaTable  computes the inertia (i.e., phi square or chi-square / N)

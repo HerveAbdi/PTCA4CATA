@@ -3,33 +3,45 @@
 \name{boot.ratio.test}
 \alias{boot.ratio.test}
 \title{boot.ratio.test computes bootstrap ratios
-from a "bootstrap cube"}
+from a "bootstrap cube."}
 \usage{
 boot.ratio.test(boot.cube, critical.value = 2)
 }
 \arguments{
 \item{boot.cube}{An I*L*B bootstrap brick
-(typically obtained from Boot4PTCA).
+(typically obtained from \code{Boot4PTCA}).
 The third dimension (B) corresponds to the
 random factor of the
 "to-be-bootstrapped-units"
-(e.g., judges, participants, assessors)}
+(e.g., judges, participants, assessors).}
 
 \item{critical.value}{The critical value for significance
 (default = 2, which matches a \eqn{p <} .05 significance level)}
 }
 \value{
-A list: 1) sig.boot.ratios: A logical vector that identifies the
-significant items. 2)  boot.ratios: the bootstrap ratios
-3) prob.boot.ratios: the (uncorrected) probability associated to the
-bootstrap ratios 4) prob.boot.ratios.cor:
+A list:
+1) \code{sig.boot.ratios}:
+A logical vector that identifies the
+significant items.
+2)  \code{boot.ratios}: the bootstrap ratios
+3) \code{prob.boot.ratios}:
+the (uncorrected) probability associated to the
+bootstrap ratios
+4) \code{prob.boot.ratios.cor}:
 the (Sidak/Bonferonni) corrected probability associated to the
 bootstrap ratios
 }
 \description{
 boot.ratio.test computes bootstrap ratios
 from a "bootstrap cube" (created, e.g., by
-BOOT4PTCA)
+\code{Boot4PTCA}).
+NB: this function is a "modified clone"
+of \code{InPosition::boot.ratio.test},
+it differs from \code{InPosition::boot.ratio.test} only by
+the suppression of the critical value in the returned list and
+by the addition of \code{prob.boot.ratios} and
+\code{prob.boot.ratios.cor} in the ereturned list
+(see \code{Value} below).
 }
 \examples{
 #  BR <- boot.ratio.test(BootI)

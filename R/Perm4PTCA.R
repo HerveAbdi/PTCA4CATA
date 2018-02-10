@@ -1,13 +1,27 @@
 #
-# Work File For the correct permutation test for CATA
+# File For the correct permutation test for CATA
 #
-# Contains functions: eig4CA
+# Contains functions:
+# 1. eig4CA:
+#     computes the eigenvalues for CA
+# 2.  truc4ptca:
+#      a private function: creates a permuted version of a data cube
+# 3. perm4PTCA
+#     Permutation test for the inertia and eigenvalues for PTCA
+# 4. print.perm4ptca
+#     the print function for objects of class perm4ptca
+#     (output of perm4PTCA)
+# 5. Malinvaud4ptca:
+#     Computes the Malinvaud-Saporta test for significance for CA.
+#
+# last changes: Februry 09 2017. HA.
+#---------------------------------------------------------------------
 
 # function to give the eigenvalues of a CA matrix
-#'  computes the eigenvalues for
+#'  \code{eig4CA} computes the eigenvalues for
 #' correspondence analysis (CA)
 #'
-#' eig4CA computes the eigenvalues for
+#' \code{eig4CA} computes the eigenvalues for
 #' correspondence analysis (CA). Needs a matrix
 #' of non-negative numbers. The trivial eigenvalue
 #' equals to 1, is not computed.
@@ -19,8 +33,8 @@
 #' to avoid infinities.
 #' @param X a matrix of non-negative numbers
 #' @author Herve Abdi
-#' # @export
-eig4CA <- function(X){# give the eigenvalues of a CA matrix
+#' @export
+eig4CA <- function(X){# gives the eigenvalues of a CA matrix
   # NB the matrix diagonalized is NOT the
   # matrix diagonalized in CA but it has the
   # same eigenvalues.
@@ -40,7 +54,7 @@ eig4CA <- function(X){# give the eigenvalues of a CA matrix
   c_12 <- 1/sqrt(c)
   c_12[c==0] <- 0 # fix problem with divide by 0
   # Two ways of avoiding multiplication by diag matrices
-  # so 
+  # so
   # Y <- diag(r_12) %*% Pcent %*% diag(c_12)
   # 1. a la repmat ...
   #nI <- NROW(P)
@@ -59,11 +73,12 @@ eig4CA <- function(X){# give the eigenvalues of a CA matrix
   eig4CA <- eig4CA[eig4CA >= 0]
   return(eig4CA)
 } # End eig4CA
-#==============================================================================
+#=====================================================================
 
 #' truc4ptca: a private function
 #'
-#' truc4ptca a private function: create a permuted version of a data cube
+#' truc4ptca a private function:
+#' create a permuted version of a data cube
 #' from a PTCA analysis. Used by the function \code{perm4PTCA}.
 #' @param aCube A cube of PTCA Data.
 #' @param longueur the number of eigenvalues of the
@@ -112,12 +127,12 @@ truc4ptca <- function(aCube,
 # function perm4PTCA
 #
 #--------------------------------------------------------------------
-#' perm4PTCA Permutation test for the inertia and eugenvalues for PTCA
+#' \code{perm4PTCA} Permutation test for the inertia and eigenvalues for PTCA
 #'
-#' Permutation for PTCA4CATA.
+#' \code{perm4PTCA} Permutation for PTCA4CATA.
 #' Computes an omnibus permutation test and
 #' specific tests for the eigenvalues when
-#' performing a PTCA analysis on Check All That Apply
+#' performing a PTCA analysis on Check All That Apply (CATA)
 #' Data. Input is a Cube of data (products*Descriptors*Assessors).
 #' Three different permutation schemes
 #' are currently available (see paramater
@@ -125,7 +140,7 @@ truc4ptca <- function(aCube,
 #' @param aCube an I*J*K (i.e., products*Descriptors*Assessors)
 #' of CATA Data.
 #' @param nIter (Default = 1000). Number of Iterations
-#' (i.e. number of permuted samples computed).
+#' (i.e., number of permuted samples computed).
 #' @param permType what type of permutation is used
 #' if 'byRows' (default) the data are permuted within
 #' the rows (i.e., products) for each assessor.
@@ -276,7 +291,8 @@ print.perm4ptca <- function (x, ...) {
 #'                    derived p-values
 #'
 #'
-#' Compute the Malinvaud-Saporta test for significance
+#' \code{Malinvaud4ptca}: Compute the Malinvaud-Saporta
+#' test for significance
 #' in Correspondence Analysis. Provides asymptotic
 #' Chis-square based p-values, and if a set
 #' of permuted eigenvalues is provided
@@ -332,7 +348,7 @@ Malinvaud4ptca  <-   function(Data, # The original data table
   Le.pQ = c(pQ,NA)
   Le.Q.nu = c(Q.nu,0)
   #
-  NamesOf.Q = c('Malinvaud-Saporta Test. Ho: Omnibus', paste0('Dim-',seq(1:nL)))
+  NamesOf.Q = c('M-S Test. Ho: Omnibus', paste0('Dim-',seq(1:nL)))
   names(Le.Q)    <- NamesOf.Q
   names(Le.pQ)   <- NamesOf.Q
   names(Le.Q.nu) <- NamesOf.Q

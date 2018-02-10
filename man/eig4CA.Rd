@@ -2,7 +2,7 @@
 % Please edit documentation in R/Perm4PTCA.R
 \name{eig4CA}
 \alias{eig4CA}
-\title{computes the eigenvalues for
+\title{\code{eig4CA} computes the eigenvalues for
 correspondence analysis (CA)}
 \usage{
 eig4CA(X)
@@ -11,7 +11,7 @@ eig4CA(X)
 \item{X}{a matrix of non-negative numbers}
 }
 \description{
-eig4CA computes the eigenvalues for
+\code{eig4CA} computes the eigenvalues for
 correspondence analysis (CA). Needs a matrix
 of non-negative numbers. The trivial eigenvalue
 equals to 1, is not computed.
@@ -24,5 +24,4 @@ to avoid infinities.
 }
 \author{
 Herve Abdi
-# @export
 }

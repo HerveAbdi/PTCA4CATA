@@ -1,7 +1,11 @@
 # A set of additional functions for PTCA4CATA
 # Hervé Abdi. September 22, 2017.
 #
-# Boot4Mean:
+# Boot4Mean: Bootstrap function for means of groups of observations
+# (typically computed from factor scores)
+#
+# print.bootGroup: the print function for bootGroiup objects
+# (a list output of Boot4Mean)
 #
 # SupProjPartVariablesCA a function for
 # correspondence analysis to project a supplemenray
@@ -18,7 +22,7 @@
 #' estimates for the means of groups of observations
 #' described by several variables (e.g., factor scores).
 #'
-#' @description \code{Boot4Mean} computes a brick  of bootstrap
+#' @description \code{Boot4Mean} computes a brick of bootstrap
 #' estimates for the means of groups of observations
 #' described by several variables,  as for example,
 #' for groups of observations described by factors scores

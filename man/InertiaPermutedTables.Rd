@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{InertiaPermutedTables}
 \alias{InertiaPermutedTables}
-\title{InertiaPermutedTables
+\title{\code{InertiaPermutedTables}
 A function to Compute the inertia of a set of random permutations
 of the "Check-Mark" (e.g. CATA) type of data.}
 \usage{
@@ -24,7 +24,7 @@ as the largest number is the dataset}
  of the inertia computed with the nPerm random Permutations
 }
 \description{
-InertiaPermutedTables creates a cube of data
+\code{InertiaPermutedTables} creates a cube of data
 from the results of a "Check-Mark"
 data set collected in DataChecks.
 These data correspond to participants matching (or not)

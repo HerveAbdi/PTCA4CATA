@@ -2,9 +2,9 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{PrettyBarPlot}
 \alias{PrettyBarPlot}
-\title{\code{PrettyBarPlot} create bar plots for a series of variables
-Use for plotting bootstrap ratios or contributions from
-prncipal component analysis or related methodes
+\title{\code{PrettyBarPlot}: creates bar plots for a series of variables.
+It is use for plotting bootstrap ratios or contributions from
+principal component analysis or related methods
 (e.g. correspondence analysis).}
 \usage{
 PrettyBarPlot(bootratio, threshold = 2, ylim = NULL,
@@ -43,10 +43,11 @@ Default is c("mediumpurple4",'darkolivegreen4','gray75')}
 A list: 1) ylim min and max for y, 2) threshold
 }
 \description{
-\code{PrettyBarPlot} create bar plots for a set of items
+\code{PrettyBarPlot}: creates bar plots for a set of items
 (e.g., observations or variables) analyzed with multivariate
 methods such as PCA, CA, MCA, PLS etc.
-Used to display the bootstrap ratios or contributions plots
+ \code{PrettyBarPlot} is
+used to display the bootstrap ratios or contributions plots
 for CA/MCA/PCA/PLS.
 Significant or important items are plotted in color, non-significant
 items are plotted in gray.

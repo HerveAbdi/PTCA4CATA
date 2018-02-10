@@ -2,7 +2,7 @@
 % Please edit documentation in R/Perm4PTCA.R
 \name{perm4PTCA}
 \alias{perm4PTCA}
-\title{perm4PTCA Permutation test for the inertia and eugenvalues for PTCA}
+\title{\code{perm4PTCA} Permutation test for the inertia and eigenvalues for PTCA}
 \usage{
 perm4PTCA(aCube, nIter = 1000, permType = "byRows", compact = FALSE,
   Malinvaud = TRUE)
@@ -12,7 +12,7 @@ perm4PTCA(aCube, nIter = 1000, permType = "byRows", compact = FALSE,
 of CATA Data.}
 
 \item{nIter}{(Default = 1000). Number of Iterations
-(i.e. number of permuted samples computed).}
+(i.e., number of permuted samples computed).}
 
 \item{permType}{what type of permutation is used
 if 'byRows' (default) the data are permuted within
@@ -48,10 +48,10 @@ If \code{compact} is is \code{FALSE}, return also
 the permuted eigenvalues.
 }
 \description{
-Permutation for PTCA4CATA.
+\code{perm4PTCA} Permutation for PTCA4CATA.
 Computes an omnibus permutation test and
 specific tests for the eigenvalues when
-performing a PTCA analysis on Check All That Apply
+performing a PTCA analysis on Check All That Apply (CATA)
 Data. Input is a Cube of data (products*Descriptors*Assessors).
 Three different permutation schemes
 are currently available (see paramater
