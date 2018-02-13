@@ -1,7 +1,7 @@
 ﻿#
 # This file contains the graphic routines for PTCA4CATA
 # These ones are based on prettyPlots
-# a second set baseD on ggplots is in development
+# a second set based on ggplots is in development
 #
 # Herve Abdi. August 7, 2016
 # Current functions here:
@@ -197,10 +197,12 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
     ylim = c(-lemax, lemax)
   }
   # get the colors for the bars
-  nel = length(bootratio) # how many observation to plot
+  nel = length(bootratio) # how many observations to plot
+  if (is.factor(color4bar)) color4bar <- as.character(color4bar)
+  # color4bar factor creates a strange error later oon
   lescouleurs = color4bar
   lescouleurs[abs(bootratio) < threshold]  = color4ns
-  ZeShades =  t(sapply(lescouleurs,ShadesColor,jiffy=40))
+  ZeShades =  t(sapply(lescouleurs, ShadesColor, jiffy=40))
   Lighter = ZeShades[,2]
   #lighter = lescouleurs
   Darker = ZeShades[,1]
@@ -232,8 +234,8 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
     }
     # font = 2 for bold
     if (plotnames){#When plotnames is TRUE we plot the names
-      text(x=lex,y=loc,labels=lesnoms[i],pos=lapos,
-           col=lescouleurs.font[i],srt=90,font=lafont[i])
+      text(x = lex, y = loc, labels = lesnoms[i], pos = lapos,
+           col = lescouleurs.font[i], srt = 90,font = lafont[i])
     }
   } # End for loop
   return(list(ylim=ylim,threshold=threshold))
