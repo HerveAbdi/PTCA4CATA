@@ -37,7 +37,9 @@ The Descriptors are the numbers in DataChecks
 choosed Descriptor 5 for Stimulus 3)
 }
 \examples{
-# RandomnInertia <- InertiaPermutedTables(ACubeOfDataChecks)
+\dontrun{
+RandomnInertia <- InertiaPermutedTables(ACubeOfDataChecks)
+}
 }
 \author{
 Hervé Abdi

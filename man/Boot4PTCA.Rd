@@ -11,19 +11,21 @@ Boot4PTCA(ZeDataCube, fi, fj, eigs, nf2keep = 2, nBootIter = 100,
   compact = FALSE, eigen = FALSE, eigen.compact = TRUE)
 }
 \arguments{
-\item{ZeDataCube}{An I*J*K data cube (K are observations)
-The third dimension (K) is bootstrapped}
+\item{ZeDataCube}{An \eqn{I*J*K} data cube (\eqn{K} are observations)
+The third dimension (i.e., \eqn{K}) is bootstrapped.}
 
-\item{fi}{The factor scores for I (rows) from the epCA program}
+\item{fi}{The factor scores for \eqn{I} (rows)
+from the epCA program}
 
-\item{fj}{The factor scores for J (columns) from the epCA program}
+\item{fj}{The factor scores for \eqn{J}
+(columns) from the epCA program}
 
 \item{eigs}{The eigenvalues from the epCA program}
 
 \item{nf2keep}{how many factors to keep,  default to 2}
 
 \item{nBootIter}{How many Bootstrap samples, default to 100
-(RowsBoot = ZeBootCube_I,ColumnsBoot = ZeBootCube_J)}
+\code{(RowsBoot = ZeBootCube_I, ColumnsBoot = ZeBootCube_J)}.}
 
 \item{compact}{(default = \code{FALSE})
 if \code{TRUE} gives a compact
@@ -36,8 +38,8 @@ to the corresponding eigenvalue).
 So this feature
 is experimental.}
 
-\item{eigen.compact}{when \code{TRUE} return the whole
-matrix of botstrapped eigenvalues. Default is \code{FALSE}.
+\item{eigen.compact}{when \code{TRUE} returns the whole
+matrix of bootstrapped eigenvalues. Default is \code{FALSE}.
 When \code{eigen} is \code{FALSE},
 \code{eigen.compact} has no effect.}
 }
@@ -51,18 +53,21 @@ coordinates for the I-set
  2a)  \code{ColumnsBoot} a J*L*B cube of Bootstrapped coordinates
  for the J-set
  if compact \code{FALSE} 2b)
- \code{ColumnsBoot.asym} a J*L*B cube of Bootstrapped
- coordinates for the J-set
- with \eqn{I}: number of rows, J: number of columns
- L: number of factors kept (i.e., \code{nf2keep}),
- B: number of Bootstrap replicates (i.e., \code{nBootIter})
+ \code{ColumnsBoot.asym} a \eqn{J*L*B} cube of Bootstrapped
+ coordinates for the \eqn{J}-set
+ with \eqn{I}: number of rows,
+  \eqn{J}: number of columns
+ \eqn{L}: number of factors kept (i.e., \code{nf2keep}),
+ \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter})
 }
 \description{
-\code{Boot4PTCA} bootstraps the Kth dimension of a data cube
+\code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube
 and computes bootstraped factor scores.
 }
 \examples{
-#  BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+\dontrun{
+BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+}
 }
 \author{
 Herve Abdi

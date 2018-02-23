@@ -20,8 +20,9 @@ from the correspondence analysis of the contingency table.
 Used for permutation tests.
 }
 \examples{
-# RandomnInertia<- InertiaPermutedTables(ACubeOfDataChecks)
-# InertiaOfATable <- InertiaTable(X)
+\dontrun{
+InertiaOfATable <- InertiaTable(X)
+}
 }
 \author{
 Hervé Abdi

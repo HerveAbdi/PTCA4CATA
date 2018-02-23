@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{boot.ratio.test}
 \alias{boot.ratio.test}
-\title{boot.ratio.test computes bootstrap ratios
+\title{\code{boot.ratio.test} computes bootstrap ratios
 from a "bootstrap cube."}
 \usage{
 boot.ratio.test(boot.cube, critical.value = 2)
@@ -32,19 +32,21 @@ the (Sidak/Bonferonni) corrected probability associated to the
 bootstrap ratios
 }
 \description{
-boot.ratio.test computes bootstrap ratios
+\code{boot.ratio.test} computes bootstrap ratios
 from a "bootstrap cube" (created, e.g., by
 \code{Boot4PTCA}).
 NB: this function is a "modified clone"
-of \code{InPosition::boot.ratio.test},
-it differs from \code{InPosition::boot.ratio.test} only by
+of \code{InPosition::boot.ratio.test};
+It differs from \code{InPosition::boot.ratio.test} only by
 the suppression of the critical value in the returned list and
 by the addition of \code{prob.boot.ratios} and
-\code{prob.boot.ratios.cor} in the ereturned list
+\code{prob.boot.ratios.cor} in the returned list
 (see \code{Value} below).
 }
 \examples{
-#  BR <- boot.ratio.test(BootI)
+\dontrun{
+BR <- boot.ratio.test(BootI)
+}
 }
 \author{
 Derek Beaton & Hervé Abdi
