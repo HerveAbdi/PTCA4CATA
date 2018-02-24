@@ -1,10 +1,12 @@
-# Filenames: SaveAllGraphsIntoPttx
+#---------------------------------------------------------------------
+# Filename: SaveAllGraphsIntoPttx
+# Contains saveGraph2pptx:
 # A nifty routine
 # save all the graphs present in the Gloval Environment
 # Created February 20, 2018. by Hervé Abdi
 # Current version February 23, 2018
 #
-# this file contains the functions
+# This file contains the functions
 # saveGraphics() (includes the internal function sauveImage() )
 # print.savePptx  (print function
 # for objects of class savePptx created by saveGraphics() )
@@ -40,6 +42,7 @@
 #' }
 #' @importFrom officer add_slide ph_with_text read_pptx
 #' @importFrom rvg ph_with_vg
+#' @export
 
 
 saveGraph2pptx <- function(file2Save.pptx, title = NULL){

@@ -2,7 +2,7 @@
 % Please edit documentation in R/saveAllGraphsIntPptx.R
 \name{saveGraph2pptx}
 \alias{saveGraph2pptx}
-\title{\code{saveGraphics}:  saves all the graphics
+\title{\code{saveGraph2pptx}:  saves all the graphics
 from the Global Environment into a powerpoint file.}
 \usage{
 saveGraph2pptx(file2Save.pptx, title = NULL)
@@ -25,7 +25,7 @@ saved)  and
 the graphics are saved).
 }
 \description{
-\code{saveGraphics}: a nifty function that
+\code{saveGraph2pptx}: a nifty function that
 saves all the graphics
 from the Global Environment (i.e., \code{.GlobalEnv})
 into a powerpoint file. Requires packages \code{rsv}
