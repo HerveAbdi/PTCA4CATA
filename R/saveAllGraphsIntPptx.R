@@ -167,6 +167,7 @@ print.savePptx <- function (x, ...) {
   # cat("\n List name: ",deparse(eval(substitute(substitute(x)))),"\n")
   cat(rep("-", ndash), sep = "")
   cat("\n$listOfsavedGraphs     ", "The list of the names of the saved graphs")
+  cat("\n                       ", "  NB To print a graph use print(get())")
   cat("\n$nameOfSavingFile4pptx ", "The powerpoint file where the graphs were saved")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
