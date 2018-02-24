@@ -31,12 +31,21 @@
 #' @param title main title of the powerpoint file.
 #' \code{default:} "All Graphics for Current Analysis. As of: " +
 #' date.
+#' @param addGraphNames when TRUE: use the name of
+#' the graph as its title for the powerpoint slide
+#' (default is \code{FALSE}).
 #' @return a list (of class \code{"savePptx"})
 #' with  \code{listOfsavedGraphs} (the list of the graph objects
 #' saved)  and
 #' \code{nameOfSavingFile4pptx} (name of the files where
 #' the graphics are saved).
-#' @author Herve Abdi.
+#' Note: to print one of the graphs from
+#' \code{nameOfSavingFile4pptx}, use
+#' \code{print(get())}. For example,
+#' to print the first graph of the list
+#' saved as \code{listOfGraph} use
+#' \code{print(get(listOfGraph$listOfsavedGraphs[[1]]))}.
+#' @author Herve Abdi
 #' @examples \dontrun{
 #' toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
 #' }
@@ -45,7 +54,10 @@
 #' @export
 
 
-saveGraph2pptx <- function(file2Save.pptx, title = NULL){
+saveGraph2pptx <- function(file2Save.pptx,
+                           title = NULL,
+                           addGraphNames = FALSE
+                           ){
   # First a private function
   # A helper function to save recorded plots and ggplots
   # function in development to save the graphs in officer format
@@ -111,8 +123,9 @@ saveGraph2pptx <- function(file2Save.pptx, title = NULL){
     isGraph <- class(eval(as.symbol(alist[[i]])))[[1]]
     if ((isGraph == 'gg') | (isGraph == "recordedplot") ){
       anImage <- get(alist[[i]], pos = -1)
+      if (addGraphNames) {aTitle <- alist[[i]]} else {aTitle = ""}
       suppressMessages(
-        sauveImage(doc, anImage )
+        sauveImage(doc, anImage , title = aTitle )
       )
       k = k + 1
       listOfGraphs[[k]] <- alist[[i]]

@@ -5,7 +5,7 @@
 \title{\code{saveGraph2pptx}:  saves all the graphics
 from the Global Environment into a powerpoint file.}
 \usage{
-saveGraph2pptx(file2Save.pptx, title = NULL)
+saveGraph2pptx(file2Save.pptx, title = NULL, addGraphNames = FALSE)
 }
 \arguments{
 \item{file2Save.pptx}{the name of the powerpoint
@@ -16,6 +16,10 @@ in the console.}
 \item{title}{main title of the powerpoint file.
 \code{default:} "All Graphics for Current Analysis. As of: " +
 date.}
+
+\item{addGraphNames}{when TRUE: use the name of
+the graph as its title for the powerpoint slide
+(default is \code{FALSE}).}
 }
 \value{
 a list (of class \code{"savePptx"})
@@ -23,6 +27,12 @@ with  \code{listOfsavedGraphs} (the list of the graph objects
 saved)  and
 \code{nameOfSavingFile4pptx} (name of the files where
 the graphics are saved).
+Note: to print one of the graphs from
+\code{nameOfSavingFile4pptx}, use
+\code{print(get())}. For example,
+to print the first graph of the list
+saved as \code{listOfGraph} use
+\code{print(get(listOfGraph$listOfsavedGraphs[[1]]))}.
 }
 \description{
 \code{saveGraph2pptx}: a nifty function that
@@ -38,5 +48,5 @@ toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
 }
 }
 \author{
-Herve Abdi.
+Herve Abdi
 }
