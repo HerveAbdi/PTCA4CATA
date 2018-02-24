@@ -2,14 +2,14 @@
 # Filename: SaveAllGraphsIntoPttx
 # Contains saveGraph2pptx:
 # A nifty routine
-# save all the graphs present in the Gloval Environment
+# save all the graphs present in the Global Environment
 # Created February 20, 2018. by Hervé Abdi
 # Current version February 23, 2018
 #
 # This file contains the functions
-# saveGraphics() (includes the internal function sauveImage() )
+# saveGraph2pptx() (includes the internal function sauveImage() )
 # print.savePptx  (print function
-# for objects of class savePptx created by saveGraphics() )
+# for objects of class savePptx created by saveGraph2pptx() )
 #
 #*********************************************************************
 
