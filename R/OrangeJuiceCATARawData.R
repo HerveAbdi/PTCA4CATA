@@ -19,7 +19,8 @@
 #' @name OrangeJuiceCATARawData
 #' @section OrangeJuiceCATARawData.xlsx
 #' @author Herve Abdi
-#' @example
+#' @examples
 #' path2file <- system.file("extdata", "OrangeJuiceCATARawData.xlsx", package = 'PTCA4CATA')
 #' OrangeData <- read.xls.CATA(path2file = path2file, sheet2read = 'CATA')
-#' "OrangeJuiceCATARawData"
+NULL
+
