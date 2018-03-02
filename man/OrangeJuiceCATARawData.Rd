@@ -2,17 +2,17 @@
 % Please edit documentation in R/OrangeJuiceCATARawData.R
 \name{OrangeJuiceCATARawData}
 \alias{OrangeJuiceCATARawData}
-\title{\code{OrangeJuiceCATARawData} example of an excel file
-with CATA data. Can be read by
+\title{\code{OrangeJuiceCATARawData}: an example of an excel file
+with CATA data. This excel file can be read by
 \code{read.xls.CATA}.}
 \description{
-#' \code{OrangeJuiceCATARawData} example of an excel file
+\code{OrangeJuiceCATARawData} example of an excel file
 with CATA data. Can be read by
 \code{read.xls.CATA}.
 In this example of a "Check All That Apply" (CATA) task,
 42 assessors evaluated 10 orange juices described by
 33 descriptors.
-To read this data use \code{system.file()}
+To fetch this dataset use \code{system.file()}
 (see example below).
 }
 \section{OrangeJuiceCATARawData.xlsx}{

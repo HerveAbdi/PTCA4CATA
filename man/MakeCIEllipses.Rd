@@ -5,9 +5,10 @@
 \title{\code{MakeCIEllipses}.
 Add Confidence interval ellipses to a CA-like plots.}
 \usage{
-MakeCIEllipses(data, axis1 = 1, axis2 = 2, names.of.factors = "Dimension",
-  col = NULL, centers = NULL, line.size = 1, line.type = 1,
-  alpha.ellipse = 0.3, alpha.line = 0.5, p.level = 0.95)
+MakeCIEllipses(data, axis1 = 1, axis2 = 2,
+  names.of.factors = paste0("Dimension ", c(axis1, axis2)), col = NULL,
+  centers = NULL, line.size = 1, line.type = 1, alpha.ellipse = 0.3,
+  alpha.line = 0.5, p.level = 0.95)
 }
 \arguments{
 \item{data}{A cube of bootstraped factor scores
@@ -17,47 +18,45 @@ with: I number of items,
       K number of factors (at least 2)
       nIter number of Bootstrap samples}
 
-\item{axis1}{= 1 the horizontal axis}
+\item{axis1}{(default = 1): the horizontal axis}
 
-\item{axis2}{= 2 the vertical axise}
+\item{axis2}{(default = 2): the vertical axise}
 
-\item{names.of.factors}{= 'Dimension',
-names of the factors.
- if NULL   name.of.factors is dimnames(data)[2],
+\item{names.of.factors}{(default is \code{paste0('Dimension ',c(axis1,axis2)}),
+names of the factors, needs to be a 2-components vector.
+ if NULL \code{name.of.factors}
+ is \code{dimnames(data)[2]}. This argument is
  Needed to avoid conflict when plotting
  these names need to be the same as the names of the
- data used to make the BaseMap plot (i.e., Fi/Fj/Fij)}
+ data used to make the BaseMap plot (i.e., Fi/Fj/Fij).}
 
-\item{col}{= NULL
+\item{col}{(default = \code{NULL})
 a string or a vector of strings with color names
-if NULL use prettyGraphs scheme with
+if \code{NULL} use \code{prettyGraphs} scheme with
 \code{prettyGraphs::prettyGraphsColorSelection}}
 
-\item{centers}{= NULL
-if NULL centers the ellipses on their barycenter
-to center on another canter (i.e., item factor scores)
-provide an I * K data frame or matrix}
+\item{centers}{(default = \code{NULL}):
+if \code{NULL} centers the ellipses on their barycenter
+to center on another canters (i.e., item factor scores)
+provide an \eqn{I * K} data frame or matrix}
 
-\item{line.size}{= 1
+\item{line.size}{(default = 1)
 thickness of the line for the ellipses}
 
-\item{line.type}{= 1]
-the type of line ofr the ellipses}
+\item{line.type}{(default = 1)
+the type of line for the ellipses}
 
-\item{alpha.ellipse}{= .3
-alpha value (transparency) for the ellipses}
+\item{alpha.ellipse}{(default = .3)
+alpha value (i.e., transparency) for the ellipses}
 
-\item{alpha.line}{= .5,
-alpha value (transparency) for the lines}
+\item{alpha.line}{(default = .5):
+alpha value (i.e., transparency) for the lines}
 
-\item{p.level}{= .95
-p value for the CI}
-}
-\value{
-LeGraph.elli
+\item{p.level}{(default = .95),
+\eqn{p}-value for the CI}
 }
 \description{
-MakeCIEllipses. Create the Confidence Intervals (CI) ellipses
+\code{MakeCIEllipses}: Create the Confidence Intervals (CI) ellipses
 for plots for the I or J sets of a CA or STATIS type of analysis
 The results of \code{MakeCIEllipses} should be added to BaseMap
 created, for example, by the function \code{CreateBaseMap()}

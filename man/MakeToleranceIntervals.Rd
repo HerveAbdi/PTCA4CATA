@@ -8,9 +8,9 @@ ellipses to factor score plots
 (e.g., PCA, CA).}
 \usage{
 MakeToleranceIntervals(data, design, axis1 = 1, axis2 = 2,
-  names.of.factors = "Dimension", col = NULL, centers = NULL,
-  line.size = 1, line.type = 1, alpha.ellipse = 0.3, alpha.line = 0.5,
-  p.level = 0.95, type = "hull")
+  names.of.factors = paste0("Dimension ", c(axis1, axis2)), col = NULL,
+  centers = NULL, line.size = 1, line.type = 1, alpha.ellipse = 0.3,
+  alpha.line = 0.5, p.level = 0.66, type = "hull")
 }
 \arguments{
 \item{data}{A set of I*L factor scores
@@ -19,50 +19,52 @@ MakeToleranceIntervals(data, design, axis1 = 1, axis2 = 2,
 \item{design}{an I by 1 factor giving the group membership
 of the Ith observations.}
 
-\item{axis1}{= 1 the horizontal axis}
+\item{axis1}{(default = 1): the horizontal axis}
 
-\item{axis2}{= 2 the vertical axise}
+\item{axis2}{(default = 2): the vertical axise}
 
-\item{names.of.factors}{= 'Dimension',
+\item{names.of.factors}{(default is \code{paste0('Dimension ',c(axis1,axis2)}):
 names of the factors.
- if NULL   name.of.factors is dimnames(data)[2],
- if dimnames(data)[2] is NULL, the dimensions
- will be labelled "Dimension". This paramter is needed
+ if \code{NULL},  \code{name.of.factors} is dimnames(data)[2],
+ if dimnames(data)[2] is \code{NULL}, the dimensions
+ will be labelled \code{"Dimension"}.
+ This paramater is needed
  to avoid conflict when plotting
  these names as they must be the same as the names of the
  data used to make the BaseMap plot (i.e., Fi/Fj/Fij)}
 
-\item{col}{= NULL
+\item{col}{(default = \code{NULL})
 a string or a vector of strings with color names
-if NULL use prettyGraphs scheme with
+if \code{NULL} use \code{prettyGraphs} scheme with
 \code{prettyGraphs::prettyGraphsColorSelection}}
 
-\item{centers}{= NULL
-if NULL centers the ellipses on their barycenter
+\item{centers}{(default = \code{NULL}),
+if \code{NULL} centers the ellipses on their barycenter
 to center on another center (i.e., item factor scores)
-provide an I * K data frame or matrix.}
+provide an \eqn{I * K} data frame or matrix.}
 
-\item{line.size}{= 1
+\item{line.size}{(default = 1):
 thickness of the line for the ellipses}
 
-\item{line.type}{= 1
+\item{line.type}{(default = 1):
 the type of line for the ellipses}
 
-\item{alpha.ellipse}{= .3
+\item{alpha.ellipse}{(default = .3):
 alpha value (transparency) for the ellipses.}
 
-\item{alpha.line}{= .5,
+\item{alpha.line}{(default = .5):
 alpha value (transparency) for the lines.}
 
-\item{p.level}{= .66
-p value for the TI}
+\item{p.level}{= (default = .66)
+"\eqn{p}-value for the TI}
 
 \item{type}{(Default = \code{'hull'})
 type of interval can be c('ellipse','hull')}
 }
 \value{
 LeGraph.elli a graph with convex hulls
-or ellipse to be added to the base map as created
+or ellipse to be added to the base map as created,
+for example,
 by the function  \code{CreateBaseMap()}.
 }
 \description{

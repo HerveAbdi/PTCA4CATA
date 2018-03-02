@@ -6,7 +6,7 @@
 #' \code{MakeCIEllipses}.
 #' Add Confidence interval ellipses to a CA-like plots.
 #'
-#' MakeCIEllipses. Create the Confidence Intervals (CI) ellipses
+#' \code{MakeCIEllipses}: Create the Confidence Intervals (CI) ellipses
 #' for plots for the I or J sets of a CA or STATIS type of analysis
 #' The results of \code{MakeCIEllipses} should be added to BaseMap
 #' created, for example, by the function \code{CreateBaseMap()}
@@ -17,33 +17,36 @@
 #' with: I number of items,
 #'       K number of factors (at least 2)
 #'       nIter number of Bootstrap samples
-#' @param axis1 = 1 the horizontal axis
-#' @param axis2 = 2 the vertical axise
-#' @param names.of.factors = 'Dimension',
-#' names of the factors.
-#'  if NULL   name.of.factors is dimnames(data)[2],
+#' @param axis1 (default = 1): the horizontal axis
+#' @param axis2 (default = 2): the vertical axise
+#' @param names.of.factors
+#' (default is \code{paste0('Dimension ',c(axis1,axis2)}),
+#' names of the factors, needs to be a 2-components vector.
+#'  if NULL \code{name.of.factors}
+#'  is \code{dimnames(data)[2]}. This argument is
 #'  Needed to avoid conflict when plotting
 #'  these names need to be the same as the names of the
-#'  data used to make the BaseMap plot (i.e., Fi/Fj/Fij)
-#' @param col = NULL
+#'  data used to make the BaseMap plot (i.e., Fi/Fj/Fij).
+#' @param col (default = \code{NULL})
 #' a string or a vector of strings with color names
-#' if NULL use prettyGraphs scheme with
+#' if \code{NULL} use \code{prettyGraphs} scheme with
 #' \code{prettyGraphs::prettyGraphsColorSelection}
-#' @param  centers = NULL
-#' if NULL centers the ellipses on their barycenter
-#' to center on another canter (i.e., item factor scores)
-#' provide an I * K data frame or matrix
-#' @param  line.size = 1
+#' @param  centers (default = \code{NULL}):
+#' if \code{NULL} centers the ellipses on their barycenter
+#' to center on another canters (i.e., item factor scores)
+#' provide an \eqn{I * K} data frame or matrix
+#' @param  line.size (default = 1)
 #' thickness of the line for the ellipses
-#' @param line.type = 1]
-#' the type of line ofr the ellipses
-#' @param   alpha.ellipse = .3
-#' alpha value (transparency) for the ellipses
-#' @param alpha.line    = .5,
-#' alpha value (transparency) for the lines
-#' @param   p.level = .95
-#' p value for the CI
-#' @return LeGraph.elli
+#' @param line.type (default = 1)
+#' the type of line for the ellipses
+#' @param   alpha.ellipse (default = .3)
+#' alpha value (i.e., transparency) for the ellipses
+#' @param alpha.line    (default = .5):
+#' alpha value (i.e., transparency) for the lines
+#' @param   p.level (default = .95),
+#' \eqn{p}-value for the CI
+#' @return LeGraph.elli the ellipses to be added to main plot
+#' [e.g., as created by \code{\code{CreateBaseMap()}].
 #' @author Herve Abdi
 #' @import ggplot2  prettyGraphs
 #' @examples
@@ -59,8 +62,9 @@
 # function MakeCIEllipses.
 MakeCIEllipses <- function(data, # A cube of Bootstrap from Boot4PTCA
                            # I * #factor * nBooistrapIterations
-                           axis1 = 1, axis2 =2, # Axes to plots
-                           names.of.factors = 'Dimension', # colnames(Fij),
+                           axis1 = 1, axis2 = 2, # Axes to plots
+                           names.of.factors =
+                             paste0('Dimension ',c(axis1,axis2)), #
                            # Needed to avoid conflict when plotting
                            # these names need to be the same as Fi/Fj/Fij
                            col = NULL,

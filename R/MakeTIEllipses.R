@@ -28,38 +28,41 @@
 #' (as obtained, for example, from \code{ExPosition::epCA})
 #' @param design an I by 1 factor giving the group membership
 #' of the Ith observations.
-#' @param axis1 = 1 the horizontal axis
-#' @param axis2 = 2 the vertical axise
-#' @param names.of.factors = 'Dimension',
+#' @param axis1 (default = 1): the horizontal axis
+#' @param axis2 (default = 2): the vertical axise
+#' @param names.of.factors
+#' (default is \code{paste0('Dimension ',c(axis1,axis2)}):
 #' names of the factors.
-#'  if NULL   name.of.factors is dimnames(data)[2],
-#'  if dimnames(data)[2] is NULL, the dimensions
-#'  will be labelled "Dimension". This paramter is needed
+#'  if \code{NULL},  \code{name.of.factors} is dimnames(data)[2],
+#'  if dimnames(data)[2] is \code{NULL}, the dimensions
+#'  will be labelled \code{"Dimension"}.
+#'  This paramater is needed
 #'  to avoid conflict when plotting
 #'  these names as they must be the same as the names of the
 #'  data used to make the BaseMap plot (i.e., Fi/Fj/Fij)
-#' @param col = NULL
+#' @param col (default = \code{NULL})
 #' a string or a vector of strings with color names
-#' if NULL use prettyGraphs scheme with
+#' if \code{NULL} use \code{prettyGraphs} scheme with
 #' \code{prettyGraphs::prettyGraphsColorSelection}
-#' @param  centers = NULL
-#' if NULL centers the ellipses on their barycenter
+#' @param  centers (default = \code{NULL}),
+#' if \code{NULL} centers the ellipses on their barycenter
 #' to center on another center (i.e., item factor scores)
-#' provide an I * K data frame or matrix.
-#' @param  line.size = 1
+#' provide an \eqn{I * K} data frame or matrix.
+#' @param  line.size (default = 1):
 #' thickness of the line for the ellipses
-#' @param line.type = 1
+#' @param line.type (default = 1):
 #' the type of line for the ellipses
-#' @param   alpha.ellipse = .3
+#' @param   alpha.ellipse (default = .3):
 #' alpha value (transparency) for the ellipses.
-#' @param alpha.line    = .5,
+#' @param alpha.line    (default = .5):
 #' alpha value (transparency) for the lines.
-#' @param   p.level = .66
-#' p value for the TI
+#' @param   p.level = (default = .66)
+#' "\eqn{p}-value for the TI
 #' @param type (Default = \code{'hull'})
 #' type of interval can be c('ellipse','hull')
 #' @return LeGraph.elli a graph with convex hulls
-#' or ellipse to be added to the base map as created
+#' or ellipse to be added to the base map as created,
+#' for example,
 #' by the function  \code{CreateBaseMap()}.
 #' @author Herve Abdi
 #' @import ggplot2  prettyGraphs
@@ -78,7 +81,8 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            design, # A design factor
                            # I * #factor * nBooistrapIterations
                            axis1 = 1, axis2 = 2, # Axes to plots
-                           names.of.factors = 'Dimension',
+                           names.of.factors =
+                             paste0('Dimension ',c(axis1,axis2)),
                            # colnames(Fij),
                            # Needed to avoid conflict when plotting
                            # these names need to be the same
@@ -93,7 +97,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            line.type = 1,
                            alpha.ellipse = .3,
                            alpha.line    = .5,
-                           p.level = .95,
+                           p.level = .66,
                            type = 'hull' # 'hull' or 'ellipse'
 ){ design   <- factor(design)
   Nom2Rows  <- levels(design)

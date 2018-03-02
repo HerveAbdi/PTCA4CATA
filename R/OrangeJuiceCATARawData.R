@@ -4,17 +4,17 @@
 # part of the PTCA4CATA package.
 #
 
-#' \code{OrangeJuiceCATARawData} example of an excel file
-#' with CATA data. Can be read by
+#' \code{OrangeJuiceCATARawData}: an example of an excel file
+#' with CATA data. This excel file can be read by
 #' \code{read.xls.CATA}.
 #'
-#' #' \code{OrangeJuiceCATARawData} example of an excel file
+#'  \code{OrangeJuiceCATARawData} example of an excel file
 #' with CATA data. Can be read by
 #' \code{read.xls.CATA}.
 #' In this example of a "Check All That Apply" (CATA) task,
 #' 42 assessors evaluated 10 orange juices described by
 #' 33 descriptors.
-#' To read this data use \code{system.file()}
+#' To fetch this dataset use \code{system.file()}
 #' (see example below).
 #' @name OrangeJuiceCATARawData
 #' @section OrangeJuiceCATARawData.xlsx
