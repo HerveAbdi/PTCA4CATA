@@ -2,21 +2,21 @@
 % Please edit documentation in R/createCmat.R
 \name{createCmat4PTCA}
 \alias{createCmat4PTCA}
-\title{Create a matrix of cross-products or RV coefficients
+\title{Creates a matrix of cross-products or RV coefficients
 for the 3rd dimension of a brick of non-negative numbers
 (i.e., a brick of data for a CATA test).}
 \usage{
 createCmat4PTCA(dataCube, normalization = "cp")
 }
 \arguments{
-\item{dataCube}{an I*J*K brick of non-negative numbers
+\item{dataCube}{an \eqn{I*J*K} brick of non-negative numbers
 (i.e., a brick of data for a CATA test)}
 
 \item{normalization}{Type of normalization
-can be 'cp' (Default) or 'Rv' (for the Rv coefficient)}
+can be 'cp' ( cross-product, Default) or 'Rv' (for the Rv coefficient)}
 }
 \value{
-An K*K cross-product or Rv Matrix depending upon
+A K*K cross-product or Rv Matrix depending upon
 the value of the parameter \code{normalization}.
 }
 \description{
@@ -24,11 +24,11 @@ the value of the parameter \code{normalization}.
 creates a matrix of cross-product (i.e., scalar products
 between two matrices)
 or RV coefficients
-for the 3rd dimension of an I*J*K brick of non-negative numbers
+for the 3rd dimension of an \eqn{I*J*K} brick of non-negative numbers
 (i.e., a brick of data for a CATA test).
 The coefficients
 are computed from the I row-profiles (observations) and stored
-in a I*I semi-positive definite matrix that can be analyzed by
+in a \eqn{K*K} semi-positive definite matrix that can be analyzed by
 an eigen-decomposition to provide a STATIS-like
 scalar-product/RV-map.
 }
@@ -42,7 +42,7 @@ function \code{PTCA4CATA::CA.SfromX}
  compute the I*I scalar-product/Rv matrix
  that measures the similarity
  between all slices of \code{dataCube}.
- Note: that this matrice can be used
+ Note: that this matrix can be used
  in a STATIS approach to re-weight the
  slices of the \code{dataCube}.
  Note: that the rows of each slice are supposed to have

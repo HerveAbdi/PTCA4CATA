@@ -7,7 +7,8 @@
 #' Add Confidence interval ellipses to a CA-like plots.
 #'
 #' \code{MakeCIEllipses}: Create the Confidence Intervals (CI) ellipses
-#' for plots for the I or J sets of a CA or STATIS type of analysis
+#' for plots for the \eqn{I} or \eqn{J}
+#' sets of a CA or STATIS type of analysis
 #' The results of \code{MakeCIEllipses} should be added to BaseMap
 #' created, for example, by the function \code{CreateBaseMap()}
 #'
@@ -45,8 +46,8 @@
 #' alpha value (i.e., transparency) for the lines
 #' @param   p.level (default = .95),
 #' \eqn{p}-value for the CI
-#' @return LeGraph.elli the ellipses to be added to main plot
-#' [e.g., as created by \code{\code{CreateBaseMap()}].
+#' @return LeGraph.elli the ellipses to be added to the main plot
+#' [e.g., as created by \code{CreateBaseMap()}].
 #' @author Herve Abdi
 #' @import ggplot2  prettyGraphs
 #' @examples

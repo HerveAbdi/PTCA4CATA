@@ -50,7 +50,7 @@ minmaxHelper4Brick <-function(aBrick,
     nr <- nrow(toto)
     toto <- toto[ round(nr*trimPercent) : round(nr*(1-trimPercent)), ]
   }
-  return(lapply(minmaxHelper(toto,
+  return(lapply(prettyGraphs::minmaxHelper(toto,
                              axis1 = axis1,
                              axis2 = axis2,
                              ...),'*',expandFactor))

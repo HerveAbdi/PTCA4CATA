@@ -55,9 +55,14 @@ alpha value (i.e., transparency) for the lines}
 \item{p.level}{(default = .95),
 \eqn{p}-value for the CI}
 }
+\value{
+LeGraph.elli the ellipses to be added to the main plot
+[e.g., as created by \code{CreateBaseMap()}].
+}
 \description{
 \code{MakeCIEllipses}: Create the Confidence Intervals (CI) ellipses
-for plots for the I or J sets of a CA or STATIS type of analysis
+for plots for the \eqn{I} or \eqn{J}
+sets of a CA or STATIS type of analysis
 The results of \code{MakeCIEllipses} should be added to BaseMap
 created, for example, by the function \code{CreateBaseMap()}
 }
