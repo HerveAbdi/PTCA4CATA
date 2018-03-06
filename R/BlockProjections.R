@@ -225,7 +225,7 @@ RV4Brick <- function(aBrickOfData){
       }
     }
     pRV <- pRV + t(pRV)
-    RV <-  RV + t( RV)
+    RV <-  RV + t( RV) + diag(rep(1, ncol(RV)))
     return.list <- list(RV = RV, pRV = pRV)
   return(return.list)
 }
