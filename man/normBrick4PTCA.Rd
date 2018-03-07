@@ -2,14 +2,14 @@
 % Please edit documentation in R/normBrick4PTCA_Cube.R
 \name{normBrick4PTCA}
 \alias{normBrick4PTCA}
-\title{\code{normBrick4PTCA} norms an I*J*N CATA array.}
+\title{\code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array.}
 \usage{
 normBrick4PTCA(array2Norm, normingConstant = 1, normalization = "byRow",
   code4Groups = NULL)
 }
 \arguments{
 \item{array2Norm}{a "to be normed" 3-D
- I*J*N CATA array
+ \eqn{I*J*N} CATA array
 (i.e., an array such that x_{i,j,k} >= 0).}
 
 \item{normingConstant}{(default = 1), the constant to which
@@ -18,21 +18,22 @@ is chosen and \code{normingConstant = 1},
  each row of the array is normalized so that its sum is equal to 1.}
 
 \item{normalization}{type of normalization,
-Current options are \code{"byRow"} (default),
+Current options are: \code{"byRow"} (default),
 \code{"byCol"}, \code{"byMat"}, and \code{"byGroup"}.
 Note that if \code{normalization = "byGroup"},
 the parameter \code{code4Group} needs to be specified.}
 
-\item{code4Groups}{= \code{NULL}, an N by one factor or string vector
+\item{code4Groups}{(default = \code{NULL}),
+an \eqn{N} by one factor or string vector
 speficying to what group each matrix
-(i.e., each of the I*J N slides) belongs.
+(i.e., each of the \eqn{I*J} \eqn{N} slides) belongs.
 Used only and required when \code{normalization = "byGroup"},
 ignored otherwise.}
 }
 \value{
-a list with the I*J*N normalized cube. With the option
+a list with the \eqn{I*J*N} normalized cube. With the option
 \code{"byGroup"}.
-\code{normBrick4PTCA} will also return a I*J*K array with the
+\code{normBrick4PTCA} will also return a \eqn{I*J*K} array with the
 summed values for the groups.
 Note that the normalizated array should be access as list.
 So with the call \code{toto <- normBrick4PTCA(array2Norm)},
@@ -40,8 +41,9 @@ the returned normlized
 array is in \code{toto$normedArray}.
 }
 \description{
-\code{normBrick4PTCA} norms an I*J*N CATA array
-(i.e., an array such that x_{i,j,k} >= 0), by rows, by columns, by matrix
+\code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array
+(i.e., an array such that \eqn{x_{i,j,k} >= 0}),
+by rows, by columns, by matrix
 (i.e. by "Slice"), or by group of Participants.
 The normalization implemented makes the sum of the normalized unit
 (i.e., rows, columns, matrices) equal to a constant
