@@ -42,7 +42,7 @@ array is in \code{toto$normedArray}.
 }
 \description{
 \code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array
-(i.e., an array such that \eqn{x_{i,j,k} >= 0}),
+(i.e., an array such that \eqn{x_{i,j,k}} >= 0),
 by rows, by columns, by matrix
 (i.e. by "Slice"), or by group of Participants.
 The normalization implemented makes the sum of the normalized unit

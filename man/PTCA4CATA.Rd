@@ -5,7 +5,7 @@
 \alias{PTCA4CATA}
 \alias{PTCA4CATA-package}
 \title{PTCA4CATA  package to perform Partial Triadic Correspondence Analysis
-(PTCA) for Chek All That Apply  (CATA) Data.}
+(PTCA) for Check All That Apply  (CATA) Data.}
 \description{
 The PTCA4CATA package provides a set of tools to analyze "Check All That Apply (CATA)" Data.
 PTCA4CATA uses Partial Triadic Correspondence Analysis (PTCA) to analyze the 

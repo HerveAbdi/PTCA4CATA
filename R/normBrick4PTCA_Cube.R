@@ -1,13 +1,13 @@
-#===============================================================================
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
+#=====================================================================
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
 # A function here to norm an array
-#-------------------------------------------------------------------------------
+#---------------------------------------------------------------------
 #'
 #' \code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array.
 #'
 #' \code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array
-#' (i.e., an array such that \eqn{x_{i,j,k} >= 0}),
+#' (i.e., an array such that \eqn{x_{i,j,k}} >= 0),
 #' by rows, by columns, by matrix
 #' (i.e. by "Slice"), or by group of Participants.
 #' The normalization implemented makes the sum of the normalized unit
@@ -47,7 +47,7 @@ normBrick4PTCA <- function(array2Norm, # A brick of CATA data
                     normalization = 'byRow', # Type of normalization
                     code4Groups = NULL # vector for the groups
 ){
-  #-------------------------------------------------------------------------------
+  #-------------------------------------------------------------------
   # First an internal function
   # Normalization function
   norma <- function(x, normingConstant = 1 ){
@@ -57,7 +57,7 @@ normBrick4PTCA <- function(array2Norm, # A brick of CATA data
       x <- normingConstant*(x / sum(x))}
     return(x)
   }
-  #-------------------------------------------------------------------------------
+  #-------------------------------------------------------------------
   CurrentNormedOptions <- c("byRow", # (default),
                             "byCol","byMat", "byGroup")
   if( (normalization == 'byGroup') & (is.null(code4Groups) )){
@@ -102,7 +102,7 @@ normBrick4PTCA <- function(array2Norm, # A brick of CATA data
       mat4Group <- apply(array2Norm[,,id4Group], c(1,2),sum )
       # Normalized the Group matrix
       normedArray.Groups[,,k] <- norma(mat4Group,
-                                       normingConstant = normingConstant)
+                                    normingConstant = normingConstant)
       # Normalize the cube-slices to the norming constant
       normedArray[,,id4Group] <- array2Norm[,,id4Group] *
         (normingConstant / sum(mat4Group))
@@ -124,6 +124,6 @@ normBrick4PTCA <- function(array2Norm, # A brick of CATA data
 
   return(return.list)
 } # end of function normBrick4PTCA
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-#===============================================================================
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#=====================================================================

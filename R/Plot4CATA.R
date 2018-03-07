@@ -1,4 +1,5 @@
-﻿#
+#=====================================================================
+#---------------------------------------------------------------------
 # This file contains the graphic routines for PTCA4CATA
 # These ones are based on prettyPlots
 # a second set based on ggplots is in development
@@ -12,15 +13,19 @@
 # Created August 05, 2016 by Hervé Abdi
 # Documented with roxygen2
 # Last Uptdate. February 04, 2018. HA
+# Small changes March 07. HA.
+# Problem with strange error when building the package on R
+#=====================================================================
+#---------------------------------------------------------------------
 
-# *****************************************************************************
+# ********************************************************************
 # The functions start below
-# *****************************************************************************
+# ********************************************************************
 # *****************************************************************************
 # function PrettyBarPlot. Create plot à la Wires (MATLAB)
 
 #' \code{PrettyBarPlot}: creates bar plots for a series of variables.
-#' It is use for plotting bootstrap ratios or contributions from
+#' It is used for plotting bootstrap ratios or contributions from
 #' principal component analysis or related methods
 #' (e.g. correspondence analysis).
 #'
@@ -35,22 +40,23 @@
 #' @author Hervé Abdi
 #' @param bootratio the bootstrap ratios (BR) to be plotted
 #' (e.g.,  obtained from \code{Boot4PTCA}).
-#' @param threshold critical.value The critical value for significance
-#' (default = 2, which matches a $p < .05$ significance level)
-#' |BR| < threshold are plotted in gray
+#' @param threshold
+#' The critical value for significance
+#' (default = 2, which matches a \eqn{p < }.05 significance level)
+#' \code{|BR|} < threshold are plotted in gray
 #' @param ylim a 2-element vector giving min and max for the y-axis;
-#'  when NULL (default) set to c(-max(abs(y)),max(abs(y)))
+#'  when NULL (default) set to \code{c(-max(abs(y)), max(abs(y)))}
 #' @param color.bar a 3-element vector of color names
 #' for the bars for (respectively)
 #' significant positive, significant negative, and non-significant.
-#' Default is c('lavender','darkolivegreen3','gray90')
+#' Default is \code{c('lavender','darkolivegreen3','gray90')}
 #' @param color.letter a 3-element vector of color names
 #' for the names of the items for (respectively)
 #' significant positive, significant negative, and non-significant.
-#' Default is c("mediumpurple4",'darkolivegreen4','gray75')
+#' Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}
 #' @param  plotnames if TRUE (default) write the names of the items
-#' @param main  (default is NULL) a title for the graph
-#' @param ylab  (default is NULL) a label for the y axis (i.e., BR)
+#' @param main  (default is \code{NULL}) a title for the graph
+#' @param ylab  (default is \code{NULL}) a label for the y axis (i.e., BR)
 #' @return A list: 1) ylim min and max for y, 2) threshold
 #' @import graphics
 #' @export

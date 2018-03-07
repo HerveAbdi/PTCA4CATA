@@ -97,7 +97,7 @@ Boot4Mean <- function(Data , design,
   rownames(FixedMeans) <- Nom2Row
   nG = nrow(FixedMeans)
   nVar = ncol(FixedMeans)
-  ZeCubeOfMeans = array(, dim = c(nG,nVar,niter))
+  ZeCubeOfMeans = array(NA, dim = c(nG,nVar,niter))
   if (suppressProgressBar != TRUE){
     print('Starting Bootstrap.')
     pb <-txtProgressBar(min = 0, max = niter,

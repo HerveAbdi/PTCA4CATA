@@ -255,7 +255,7 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
   Names_of_I <- rownames(ZeDataCube)
   Names_of_J <- colnames(ZeDataCube)
   Names_of_F <- paste0('Factor ',seq(1,nf2keep))
-  Names_of_Iter <- paste0('Iter ',seq(1,nBootIter))
+  # Names_of_Iter <- paste0('Iter ',seq(1,nBootIter))
   rownames(ZeBootCube_I.asym) <- Names_of_I
   rownames(ZeBootCube_J) <- Names_of_J
   colnames(ZeBootCube_I.asym) <- Names_of_F
@@ -518,7 +518,7 @@ DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
   # nK # number of Descriptors
   if (is.null(NameOfDescriptor)){
     nK = max(DataChecks)
-    NameOfDescriptors <- paste('Descriptor-',1:nJ)}
+    NameOfDescriptor <- paste('Descriptor-', 1:nJ)}
   else {nK = length(NameOfDescriptor)}
   ZeDataCube = array(0,dim=c(nK,nJ,nI))
   # Descriptor by Stimuli by Participants

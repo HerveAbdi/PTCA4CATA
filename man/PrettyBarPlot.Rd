@@ -3,7 +3,7 @@
 \name{PrettyBarPlot}
 \alias{PrettyBarPlot}
 \title{\code{PrettyBarPlot}: creates bar plots for a series of variables.
-It is use for plotting bootstrap ratios or contributions from
+It is used for plotting bootstrap ratios or contributions from
 principal component analysis or related methods
 (e.g. correspondence analysis).}
 \usage{
@@ -16,28 +16,28 @@ PrettyBarPlot(bootratio, threshold = 2, ylim = NULL,
 \item{bootratio}{the bootstrap ratios (BR) to be plotted
 (e.g.,  obtained from \code{Boot4PTCA}).}
 
-\item{threshold}{critical.value The critical value for significance
-(default = 2, which matches a $p < .05$ significance level)
-|BR| < threshold are plotted in gray}
+\item{threshold}{The critical value for significance
+(default = 2, which matches a \eqn{p < }.05 significance level)
+\code{|BR|} < threshold are plotted in gray}
 
 \item{ylim}{a 2-element vector giving min and max for the y-axis;
-when NULL (default) set to c(-max(abs(y)),max(abs(y)))}
+when NULL (default) set to \code{c(-max(abs(y)), max(abs(y)))}}
 
 \item{color.bar}{a 3-element vector of color names
 for the bars for (respectively)
 significant positive, significant negative, and non-significant.
-Default is c('lavender','darkolivegreen3','gray90')}
+Default is \code{c('lavender','darkolivegreen3','gray90')}}
 
 \item{color.letter}{a 3-element vector of color names
 for the names of the items for (respectively)
 significant positive, significant negative, and non-significant.
-Default is c("mediumpurple4",'darkolivegreen4','gray75')}
+Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}}
 
 \item{plotnames}{if TRUE (default) write the names of the items}
 
-\item{main}{(default is NULL) a title for the graph}
+\item{main}{(default is \code{NULL}) a title for the graph}
 
-\item{ylab}{(default is NULL) a label for the y axis (i.e., BR)}
+\item{ylab}{(default is \code{NULL}) a label for the y axis (i.e., BR)}
 }
 \value{
 A list: 1) ylim min and max for y, 2) threshold
