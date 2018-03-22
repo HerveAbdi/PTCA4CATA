@@ -24,21 +24,22 @@ Note that if \code{normalization = "byGroup"},
 the parameter \code{code4Group} needs to be specified.}
 
 \item{code4Groups}{(default = \code{NULL}),
-an \eqn{N} by one factor or string vector
+an \eqn{N} by 1 factor or string vector
 speficying to what group each matrix
 (i.e., each of the \eqn{I*J} \eqn{N} slides) belongs.
 Used only and required when \code{normalization = "byGroup"},
 ignored otherwise.}
 }
 \value{
-a list with the \eqn{I*J*N} normalized cube. With the option
+a list with the \eqn{I*J*N} normalized cube.
+With the option
 \code{"byGroup"}.
-\code{normBrick4PTCA} will also return a \eqn{I*J*K} array with the
+\code{normBrick4PTCA} will also return an \eqn{I*J*K} array with the
 summed values for the groups.
-Note that the normalizated array should be access as list.
+Note that the normalizated array should be accessed as a list.
 So with the call \code{toto <- normBrick4PTCA(array2Norm)},
-the returned normlized
-array is in \code{toto$normedArray}.
+the returned normalized
+array is in the list item \code{toto$normedArray}.
 }
 \description{
 \code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array

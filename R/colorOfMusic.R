@@ -73,7 +73,8 @@ print.str_colorsOfMusic <- function (x, ...) {
 #'  (e.g., see Abdi and Bera, 2018). }
 #' }
 #' @source Abdi, H. and Bera, M. (2018).  Correspondence Analysis.
-#' _Encyclopedia of Social Network Analysis and Mining_ (2nd Edition).
+#' \emph{Encyclopedia of Social Network Analysis and Mining} (2nd Edition).
 #' New York: Springer Verlag.
+#' \url{www.utdallas.edu/~herve}.
 #' @author Herve Abdi
 "colorOfMusic"
