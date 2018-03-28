@@ -20,7 +20,7 @@ of the plot. Default 1.}
 \item{axis2}{the column of X used for the vertical axis
 of the plot. Default 2.}
 
-\item{display.points}{if  TRUE (Default)
+\item{display.points}{if  \code{TRUE} (Default)
 create the map for the points.}
 
 \item{col.points}{the color of the points/dots.
@@ -38,36 +38,36 @@ Default is 19 (Circles).}
 
 \item{cex}{size of the dots. Default = 2.5}
 
-\item{display.labels}{if TRUE, create the
-map for the labels. Default is TRUE.}
+\item{display.labels}{if \code{TRUE} (default), create the
+map for the labels.}
 
 \item{col.labels}{the color of the labels
 Can be one color or a vector of colors. If a vector it needs
 to have exactly the number of items to be plotted.
-Default =  'darkorchid'.}
+Default =  \code{'darkorchid'}.}
 
 \item{alpha.labels}{(default = 1), the alpha
 (transparency) for the labels, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{force}{= 1. How much ggrepel repels the labels.}
+\item{force}{= 1. How much \code{ggrepel} repels the labels.}
 
 \item{segment.size}{= 0,
-size of segment line for ggrpel}
+size of segment line for \code{ggrpel}.}
 
 \item{text.cex}{= 4, font size for labels.}
 
-\item{font.face}{= 'bold', font for labels.}
+\item{font.face}{(default = \code{'bold'}) font for labels.}
 
-\item{font.family}{= 'sans',
+\item{font.family}{(default = \code{'sans'}),
 font family for labels.}
 
-\item{nudge_x}{= 0. From ggrepel,
+\item{nudge_x}{(default = 0). From \code{ggrepel},
 nudge value for starting point for
  labels: x dimension.}
 
-\item{nudge_y}{= 0. From ggrepel,
+\item{nudge_y}{(default = 0). From \code{ggrepel},
 nudge value for starting point for
  labels: y dimension.
  @param alpha.point (default = .5), the alpha
@@ -78,18 +78,31 @@ nudge value for starting point for
 \item{...}{eveythings else for the functions}
 }
 \value{
-a list
-zeMap: The Complete Map (background Dots and Labels)
-zeMap_dots: The dots
-zeMap_text: The Labels
-factorScores:  The factor scores
-constraints: The list of the contraints
+a list with
+1) \code{zeMap}: The Complete Map (background Dots and Labels);
+2) \code{zeMap_background}: The Background map;
+3) \code{zeMap_dots:} The dots;
+4) \code{zeMap_text:} The Labels;
+5) \code{factorScores:}  The factor scores; and
+6) \code{constraints:} The list of the contraints
+(could be used to generate other graphs
+ with the same scaling factors).
 }
 \description{
 Create ggplot2 factorial map for dots and labels.
 NB needs a base map to work correctly.
 #' create the base plot maps for CA type graphs with ggplot2
 }
+\section{Important_Note}{
+ When creating multiple layers graphs,
+because of the way \code{ggplot2} create graphs, all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
+}
+
 \seealso{
 createFactorMaps createbaseMap
 }

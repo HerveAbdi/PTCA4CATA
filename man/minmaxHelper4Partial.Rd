@@ -48,3 +48,6 @@ partial factor scores should be describing the same set of
 testminmax <- minmaxHelper4Partial(someScores, somePartialScores )
 }
 }
+\author{
+Herve Abdi & Derek Beaton
+}

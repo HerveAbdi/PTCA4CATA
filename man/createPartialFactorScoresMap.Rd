@@ -129,6 +129,16 @@ map should be computed (with \code{minmaxHelper4Partial()})
 before creating the main of the main factor scores
 (see example).
 }
+\section{Important_Note}{
+ When creating multiple layers graphs
+because of the way \code{ggplot2} create graphs all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
+}
+
 \examples{
 \dontrun{
 # fS are factor scores and pFS are partial factor scores

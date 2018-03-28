@@ -19,38 +19,39 @@ createAllMaps4CA(allNormedFactors, axis1 = 1, axis2 = 2, title = NULL,
 \arguments{
 \item{allNormedFactors, }{A list with all the
 factor scores normed
-typically from createAllNormedFactors}
+typically from \code{createAllNormedFactors}.}
 
 \item{axis1}{the column of X used for the horizontal axis
-of the plot. Default 1.}
+of the plot. Default =  1.}
 
 \item{axis2}{the column of X used for the vertical axis
-of the plot. Default 2.}
+of the plot. Default = 2.}
 
-\item{title}{A main title (default is NULL).}
+\item{title}{A main title (default is \code{NULL}).}
 
-\item{col.points.i}{the color of the points/dots for the I-set.
-Can be one color or a vector of colors. If a vector it needs
+\item{col.points.i}{the color of the points/dots
+for the \eqn{I}-set.
+Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default = 'blueviolet'.}
+Default = \code{'blueviolet'}.}
 
 \item{alpha.points.i}{(default = .5), the alpha
 (transparency) for the points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{pch.i}{the character for the points for the I-set.
+\item{pch.i}{the character for the points for the \eqn{I}-set.
 Default is 19 (Circles).}
 
-\item{cex.i}{size of the dots for the I-set. Default = 2.5}
+\item{cex.i}{size of the dots for the \eqn{I}-set. Default = 2.5}
 
 \item{segment.size.i}{= 0, # size of segment}
 
 \item{col.labels.i}{the color of the labels for
-the I-set.
+the \eqn{I}-set.
 Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default =  'darkorchid'.}
+Default =  \code{'darkorchid'}.}
 
 \item{alpha.labels.i}{(default = 1), the alpha
 (transparency) for the labels, should be
@@ -59,95 +60,118 @@ between 1 (no transparency) and 0
 
 \item{text.cex.i}{= 4,  font size for labels for the I-set.}
 
-\item{font.face.i}{=   'bold',  font for labels for the I-set.}
+\item{font.face.i}{(Default = \code{'bold'})
+font for labels for the \eqn{I}-set.}
 
-\item{font.family.i}{= 'sans' , font family for the I-set.}
+\item{font.family.i}{(Default = \code{'sans'})
+font family for the \eqn{I}-set.}
 
-\item{force.i}{= 1. How much ggrepel repels the labels
-for the  I-set.
-#' for the  I-set.}
+\item{force.i}{(Default = 1)
+How much \code{ggrepel} repels the labels
+for the  \eqn{I}-set.}
 
-\item{col.points.j}{the color of the points/dots for the J-set.
-Can be one color or a vector of colors. If a vector it needs
-to have exactly the number of items to be plotted.
-Default = 'darkolivegreen4'.}
-
-\item{alpha.points.j}{(default = .5), the alpha
-(transparency) for the J-points, should be
-between 1 (no transparency) and 0
-(completely transparent).}
-
-\item{pch.j}{the character for the points for the J-set.
-Default is 18 (Diamonds).}
-
-\item{cex.j}{size of the dots for the J-set. Default = 2.5}
-
-\item{segment.size.j}{= 0, # size of segment for J-set}
-
-\item{col.labels.j}{the color of the labels for
-the J-set.
+\item{col.points.j}{the color of the points/dots for the \eqn{J}-set.
 Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default =  'darkolivegreen'.}
+Default = \code{'darkolivegreen4'}.}
 
-\item{alpha.labels.j}{(default = 1), the alpha
-(transparency) for the J-labels, should be
+\item{alpha.points.j}{(Default = .5), the alpha
+(transparency) for the \eqn{J}-points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{text.cex.j}{= 4,  font size for labels for the J-set.}
+\item{pch.j}{the character for the points for the \eqn{J}-set.
+Default is 18 (Diamonds).}
 
-\item{font.face.j}{=   'bold',  font for labels for the J-set.}
+\item{cex.j}{size of the dots for the \eqn{J}-set.
+Default = 2.5}
 
-\item{font.family.j}{= 'sans' , font family for the J-set.}
+\item{segment.size.j}{= 0, # size of segment for \eqn{J}-set}
 
-\item{force.j}{= 1. How much ggrepel repels
-the labels for the J-set.}
+\item{col.labels.j}{the color of the labels for
+the \eqn{J}-set.
+Can be one color or a vector of colors. If a vector, it needs
+to have exactly the number of items to be plotted.
+Default =  \code{'darkolivegreen'}.}
 
-\item{col.axes}{= 'darkorchid', color for the axes}
+\item{alpha.labels.j}{(default = 1), the alpha
+(transparency) for the \eqn{J}-labels, should be
+between 1 (no transparency) and 0
+(completely transparent).}
 
-\item{alpha.axes}{= .2 transoarency factors for the
+\item{text.cex.j}{(Default = 4)
+font size for labels for the \eqn{J}-set.}
+
+\item{font.face.j}{(Default = \code{'bold'}
+font for the labels for the \eqn{J}-set.}
+
+\item{font.family.j}{(Default = \code{'sans'})
+font family for the \eqn{J}-set.}
+
+\item{force.j}{(Default = 1). How much \code{ggrepel} repels
+the labels for the \eqn{J}-set.}
+
+\item{col.axes}{(Default = \code{'darkorchid'})
+color for the axes.}
+
+\item{alpha.axes}{(Default = .2) transparency factors for the
 color of the axes.}
 
-\item{width.axes}{= 1.1,the width of the axes}
+\item{width.axes}{(Default = 1.1) the width of the axes}
 
-\item{col.background}{=  adjustcolor('lavender',
-alpha.f = .2), The color of the background.}
+\item{col.background}{[Default =  \code{adjustcolor('lavender', alpha.f = .2)}],
+The color of the background.}
 
 \item{...}{eveythings else for the functions.}
 }
 \value{
-a list
-baseMap_S: The Background (Symmetric)
-I_labels_S  The labels I-set.
-I_points_S  The dots I-set.
-J_labels_S  The labels J-set.
- J_points_S The dots J-set.
- baseMap_A The Background (Asymmetric)
-  I_labels_A  The labels I-set.
- I_points_A The dots I-set.
-  J_labels_A  The labels J-set.
-  J_points_A  The dots J-set.
- baseMap_B The Background (Barycentric)
-  I_labels_B The labels I-set.
-  I_points_B  The dots I-set.
-  J_labels_B The labels J-set.
- J_points_B  The dots J-set.
-zeMap: The Complete Map (background Dots and Labels)
-zeMap_dots:
-zeMap_text:
-factorScores:  The factor scores
-constraints: The list of the contraints
+a list with
+\code{baseMap_S:} The Background (Symmetric)
+\code{I_labels_S}  The labels I-set (Symmetric).
+\code{I_points_S}  The dots I-set (Symmetric).
+\code{J_labels_S}  The labels J-set (Symmetric).
+ \code{J_points_S} The dots J-set(Symmetric).
+ \code{baseMap_A} The Background (Asymmetric)
+  \code{I_labels_A}  The labels I-set (Asymmetric).
+\code{I_points_A} The dots I-set (Asymmetric).
+  \code{J_labels_A}  The labels J-set (Asymmetric).
+  \code{J_points_A}  The dots J-set (Asymmetric).
+ \code{baseMap_B} The Background (Barycentric).
+  \code{I_labels_B} The labels I-set (Barycentric).
+  \code{I_points_B}  The dots I-set (Barycentric).
+  \code{J_labels_B} The labels J-set (Barycentric).
+ \code{J_points_B}  The dots J-set (Barycentric).
 }
 \description{
-\code{createAllMaps4CA } uses
+\code{createAllMaps4CA} uses
  \code{ggplot2} to create all the partial maps for CA
 with the different types of normalizations: Asymmetric,
-Symmetric, True-Barycentric, Biplots and SPSS pseudo Biplots.
+Symmetric, True-Barycentric, Biplots, and SPSS pseudo Biplots.
  Create ggplot2 factorial maps for dots and labels
 create the base plot maps for CA type graphs with ggplot2.
-Creates maps for the I (rows) and the J (column) -sets.
+Creates maps for the \eqn{I} (rows) and the
+\eqn{J} (column) -sets.
 }
+\details{
+The final map are buit by combining the elementary maps.
+For example a map with the \eqn{J}-set being asymmetric
+and the \eqn{I}-set being Symmetric would be made
+by creating the Ja_Is as
+\code{Ja_Is <- baseMap_A + J_labels_A + I_labels_S}.
+Note than, in general, the \code{Asymmetric} is larger than the
+\code{Symmetric} map which is in trun larger than the
+\code{Barycentric} map.
+}
+\section{Important_Note}{
+ When creating multiple layers graphs
+because of the way \code{ggplot2} create graphs all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
+}
+
 \seealso{
 createFactorMaps createbaseMap
 }

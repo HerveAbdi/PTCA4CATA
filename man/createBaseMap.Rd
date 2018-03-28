@@ -13,30 +13,30 @@ createBaseMap(data, constraints = NULL, col.axes = "darkorchid",
 
 \item{constraints}{a list with minx miny maxx maxy
 typically obtained from  \code{prettyGraphs::minmaxHelper()}.
-If NULL
+If \code{NULL}
 (default) it  is computed with the function
  \code{prettyGraphs::minmaxHelper()}.}
 
 \item{col.axes}{color for the axes, default is
-'darkorchid'}
+\code{'darkorchid'}.}
 
 \item{alpha.axes}{alpha parametere (transparency)
-for the axes, default is .2}
+for the axes, default is .2.}
 
-\item{width.axes}{the width of the axes, default is 1.1}
+\item{width.axes}{the width of the axes, default is 1.1.}
 
 \item{col.background}{the color theme of the background,
-default is adjustcolor('lavender', alpha.f = .2)}
+default is \code{adjustcolor('lavender', alpha.f = .2)}.}
 
-\item{title}{a main title, default is NULL (no title)}
+\item{title}{a main title, default is \code{NULL} (no title)}
 }
 \value{
 a basemap
 }
 \description{
 Create a ggplot2 basemap for CA type graphs.
-The final maps are created by using overlays
-See als: \code{makeCAmap}.
+The final maps are created by using overlays.
+See also: \code{makeCAmap}.
 A map CA is created with first the baseMap and
 then adding a text/dot map.
 }
@@ -48,4 +48,11 @@ aBaseMap <- createBaseMap{Fi}
 }
 \author{
 Herve Abdi
+#' @section Important_Note: When creating multiple layers graphs,
+because of the way \code{ggplot2} create graphs, all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
 }

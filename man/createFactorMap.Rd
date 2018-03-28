@@ -14,7 +14,7 @@ createFactorMap(X, axis1 = 1, axis2 = 2, constraints = NULL,
   segment.size = 0, ...)
 }
 \arguments{
-\item{X}{the factor scores to plot}
+\item{X}{the factor scores to plot.}
 
 \item{axis1}{the column of X used for the horizontal axis
 of the plot. Default 1.}
@@ -22,24 +22,24 @@ of the plot. Default 1.}
 \item{axis2}{the column of X used for the vertical axis
 of the plot. Default 2.}
 
-\item{constraints}{a list with minx miny maxx maxy
-typically obtained from \code{ExPosition}. If NULL
+\item{constraints}{a list with \code{minx miny maxx maxy},
+typically obtained from \code{ExPosition}. If \code{NULL}
 (default) it  is computed with the function
  \code{prettyGraphs::minmaxHelper()}.}
 
-\item{title}{A title for the graph. Default is NULL}
+\item{title}{A title for the graph. Default is \code{NULL}.}
 
 \item{col.points}{the color of the points/dots.
-Can be one color or a vector of colors. If a vector it needs
+Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default = 'blueviolet'.}
+Default = \code{'blueviolet'}.}
 
 \item{alpha.points}{(default = .5), the alpha
 (transparency) for the points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{display.points}{if  TRUE (Default)
+\item{display.points}{if  \code{TRUE} (Default)
 create the map for the points.}
 
 \item{pch}{the character for the points,
@@ -47,13 +47,14 @@ Default is 19 (Circles).}
 
 \item{cex}{size of the dots. Default = 2.5}
 
-\item{display.labels}{if TRUE, create the
-map for the labels. Default is TRUE.}
+\item{display.labels}{if \code{TRUE} (Default),
+create the
+map for the labels.}
 
 \item{col.labels}{the color of the labels
 Can be one color or a vector of colors. If a vector it needs
 to have exactly the number of items to be plotted.
-Default =  'darkorchid'.}
+Default =  \code{'darkorchid'}.}
 
 \item{alpha.labels}{(default = 1), the alpha
 (transparency) for the points, should be
@@ -62,36 +63,37 @@ between 1 (no transparency) and 0
 
 \item{text.cex}{= 4, font size for labels.}
 
-\item{font.face}{= 'bold', font for labels.}
+\item{font.face}{(Default = \code{'bold'}) font for labels.}
 
-\item{font.family}{= 'sans',
-font family for labels}
+\item{font.family}{(Default =  \code{'sans'})
+font family for labels.}
 
 \item{col.axes}{color for the axes, default is
-'darkorchid'}
+\code{'darkorchid'}.}
 
 \item{alpha.axes}{alpha parametere (transparency)
-for the axes, default is .2}
+for the axes, default is .2.}
 
-\item{width.axes}{the width of the axes, default is 1.1}
+\item{width.axes}{the width of the axes, default is 1.1.}
 
 \item{col.background}{the color theme of the background,
-default is adjustcolor('lavender', alpha.f = .2)}
+default is \code{adjustcolor('lavender', alpha.f = .2)}.}
 
-\item{force}{= 1. How much ggrepel repels the label}
+\item{force}{(default = 1). How much \code{ggrepel} repels the label}
 
-\item{segment.size}{= 0,
-size of segment line for ggrpel}
+\item{segment.size}{(default = 0)
+size of segment line for \code{ggrpel}}
 
 \item{...}{stuff to be passed to other functions.}
 }
 \value{
 a list
-zeMap: The Complete Map (background Dots and Labels)
-zeMap_dots: The dots
-zeMap_text: The Labels
-factorScores:  The factor scores
-constraints: The list of the contraints
+1) \code{zeMap}: The Complete Map (background Dots and Labels);
+2) \code{zeMap_background}: The Background;
+3) \code{zeMap_dots:} The dots;
+4) \code{zeMap_text:} The Labels;
+5) \code{factorScores:}  The factor scores; and
+6) \code{constraints:} The list of the contraints'
 }
 \description{
 Create the ggplot2 basic factor maps for CA type graphs.
@@ -100,11 +102,21 @@ See also \code{makeCAmap}.
 A map for CA is created with the baseMap to which
 is added text/dot map.
 \code{createFactorMap} calls the functions \code{map4DotsAndLabels}
-and \code{ createBaseMap}.
+and \code{createBaseMap}.
 }
+\section{Important_Note}{
+ When creating multiple layers graphs,
+because of the way \code{ggplot2} create graphs, all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
+}
+
 \seealso{
 \code{map4DotsAndLabels}
-\code{ createBaseMap}.
+\code{createBaseMap}.
 }
 \author{
 Herve Abdi

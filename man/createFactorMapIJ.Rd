@@ -2,8 +2,8 @@
 % Please edit documentation in R/CreateFactorMaps4CA.R
 \name{createFactorMapIJ}
 \alias{createFactorMapIJ}
-\title{Create \code{createFactorMapIJ}
-ggplot2 factorial maps for CA-type pf maps dots and labels.}
+\title{Create
+ggplot2 factorial maps for CA-type of maps dots and labels.}
 \usage{
 createFactorMapIJ(Fi, Fj, axis1 = 1, axis2 = 2, constraints = NULL,
   title = NULL, col.points.i = "blueviolet", alpha.points.i = 0.5,
@@ -19,9 +19,9 @@ createFactorMapIJ(Fi, Fj, axis1 = 1, axis2 = 2, constraints = NULL,
   nudge_y = 0, ...)
 }
 \arguments{
-\item{Fi}{the I-set factor scores to plot}
+\item{Fi}{the \eqn{I}-set factor scores to plot}
 
-\item{Fj}{the J-set factor scores to plot}
+\item{Fj}{the \eqn{J}-set factor scores to plot}
 
 \item{axis1}{the column of X used for the horizontal axis
 of the plot. Default 1.}
@@ -31,120 +31,138 @@ of the plot. Default 2.}
 
 \item{constraints}{a list with minx miny maxx maxy
 typically obtained from  \code{prettyGraphs::minmaxHelper()}.
-If NULL
+If \code{NULL}
 (default) it  is computed with the function
  \code{prettyGraphs::minmaxHelper()}.}
 
-\item{title}{mina title for the plots}
+\item{title}{a title for the plots.}
 
-\item{col.points.i}{the color of the points/dots for the I-set.
+\item{col.points.i}{the color of the points/dots for the \eqn{I}-set.
 Can be one color or a vector of colors. If a vector it needs
 to have exactly the number of items to be plotted.
-Default = 'blueviolet'.}
+Default = \code{'blueviolet'}.}
 
 \item{alpha.points.i}{(default = .5), the alpha
 (transparency) for the points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{pch.i}{the character for the points for the I-set.
+\item{pch.i}{the character for the points for the \eqn{I}-set.
 Default is 19 (Circles).}
 
-\item{cex.i}{size of the dots for the I-set. Default = 2.5}
+\item{cex.i}{size of the dots for the \eqn{I}-set. Default = 2.5}
 
 \item{segment.size.i}{= 0, # size of segment}
 
 \item{col.labels.i}{the color of the labels for
-the I-set.
+the \eqn{I}-set.
 Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default =  'darkorchid'.}
+Default =  \code{'darkorchid'}.}
 
 \item{alpha.labels.i}{(default = 1), the alpha
-(transparency) for the i-labels, should be
+(transparency) for the \eqn{I}-labels, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
 \item{text.cex.i}{= 4,  font size for labels for the I-set.}
 
-\item{font.face.i}{=   'bold',  font for labels for the I-set.}
+\item{font.face.i}{(Default = \code{'bold'},
+font for labels for the \eqn{I}-set.}
 
-\item{font.family.i}{= 'sans' , font family for the I-set.}
+\item{font.family.i}{(Default = \code{'sans'})
+font family for the \eqn{I}-set.}
 
-\item{force.i}{= 1. How much ggrepel repels the labels
-for the  I-set.
-#' for the  I-set.}
+\item{force.i}{(Default = 1). How much ggrepel repels the labels
+for the  \eqn{I}-set.}
 
-\item{col.points.j}{the color of the points/dots for the J-set.
+\item{col.points.j}{the color of the points/dots
+for the \eqn{J}-set.
 Can be one color or a vector of colors. If a vector it needs
 to have exactly the number of items to be plotted.
-Default = 'darkolivegreen4'.}
+Default = \code{'darkolivegreen4'}.}
 
 \item{alpha.points.j}{(default = .5), the alpha
 (transparency) for the points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{pch.j}{the character for the points for the J-set.
+\item{pch.j}{the character for the points for the \code{J}-set.
 Default is 18 (Diamonds).}
 
-\item{cex.j}{size of the dots for the J-set. Default = 2.5}
+\item{cex.j}{size of the dots for the \eqn{J}-set. Default = 2.5}
 
-\item{segment.size.j}{= 0, # size of segment for J-set}
+\item{segment.size.j}{= 0, # size of segment for \eqn{J}-set}
 
 \item{col.labels.j}{the color of the labels for
-the J-set.
+the \eqn{J}-set.
 Can be one color or a vector of colors. If a vector, it needs
 to have exactly the number of items to be plotted.
-Default =  'darkolivegreen'.}
+Default =  \code{'darkolivegreen'}.}
 
 \item{alpha.labels.j}{(default = 1), the alpha
-(transparency) for the j-labels, should be
+(transparency) for the \eqn{J}-labels, should be
 between 1 (no transparency) and 0
 (completely transparent).}
 
-\item{text.cex.j}{= 4,  font size for labels for the J-set.}
+\item{text.cex.j}{(Default = 4),  font size for labels for the J-set.}
 
-\item{font.face.j}{=   'bold',  font for labels for the J-set.}
+\item{font.face.j}{(Default = \code{'bold'}),
+font for labels for the \eqn{J}-set.}
 
-\item{font.family.j}{= 'sans' , font family for the J-set.}
+\item{font.family.j}{(Default = \code{'sans'})
+font family for the \eqn{J}-set.}
 
 \item{force.j}{= 1. How much ggrepel repels
-the labels for the J-set.}
+the labels for the \eqn{J}-set.}
 
-\item{col.axes}{= 'darkorchid', color for the axes}
+\item{col.axes}{(Default = \code{'darkorchid'})
+color for the axes}
 
-\item{alpha.axes}{= .2 transoarency factors for the
+\item{alpha.axes}{(Default = .2) transoarency factors for the
 color of the axes.}
 
-\item{width.axes}{= 1.1,the width of the axes}
+\item{width.axes}{(Default = 1.1) the width of the axes}
 
-\item{col.background}{=  adjustcolor('lavender',
-alpha.f = .2), The color of the background.}
+\item{col.background}{[Default =
+\code{adjustcolor('lavender', alpha.f = .2)}]
+The color of the background.}
 
-\item{nudge_x}{= 0. From ggrepel,
+\item{nudge_x}{= 0. From \code{ggrepel},
 nudge value for starting point for
  labels: x dimension.}
 
-\item{nudge_y}{= 0. From ggrepel,
+\item{nudge_y}{= 0. From \code{ggrepel},
 nudge value for starting point for
  labels: y dimension.}
 
 \item{...}{everything else for the functions}
 }
 \value{
-a list
-zeMap: The Complete Map (background Dots and Labels)
-zeMap_dots: The dots
-zeMap_text: The Labels
-factorScores:  The factor scores
-constraints: The list of the contraints
+a list with
+ 1) \code{zeMap:} The Complete Map (background Dots and Labels);
+ 2) \code{zeMap_background:} The background;
+3) \code{zeMap_dots:} The dots;
+4) \code{zeMap_text:} The labels;
+5) \code{factorScores}:  The factor scores; and
+6) \code{constraints:} The list of the contraints.
 }
 \description{
-Create ggplot2 factorial maps for dots and labels.
+\code{createFactorMapIJ}: Creates
+ \code{ggplot2} factorial maps for dots and labels.
 NB needs a base map to work correctly.
 #' create the base plot maps for CA type graphs with ggplot2
 }
+\section{Important_Note}{
+ When creating multiple layers graphs,
+because of the way \code{ggplot2} creates graphs, all the
+the matrices/dataframe should all the have the  same column names
+[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+When it is not the case, some strange and cryptic
+error may be produced
+(e.g., "cannot find Dimension").
+}
+
 \seealso{
 createFactorMaps createbaseMap
 }
