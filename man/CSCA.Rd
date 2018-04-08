@@ -20,7 +20,9 @@ a \eqn{K} elements weight vector for the matrices
 (should all be positive and sum to 1). When \code{NULL}
 \code{CSCA} computes them as the sum of each matrix
 divided by the grand total. Note that it is general better
-o have pre-normalized the matrices (e.g., with \code{normBrick4PTCA})}
+to have pre-normalized the matrices
+(e.g., with \code{normBrick4PTCA}),
+so that all matrices have the same weight.}
 }
 \value{
 A list with

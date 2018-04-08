@@ -354,7 +354,9 @@ print.genCA <- function(x, ...) {
 #' (should all be positive and sum to 1). When \code{NULL}
 #' \code{CSCA} computes them as the sum of each matrix
 #' divided by the grand total. Note that it is general better
-#' o have pre-normalized the matrices (e.g., with \code{normBrick4PTCA})
+#' to have pre-normalized the matrices
+#' (e.g., with \code{normBrick4PTCA}),
+#' so that all matrices have the same weight.
 #' @return A list with
 #' 1) \code{allMatrices.resCA} results for the analysis of
 #' the whole set of matrices stacked on top of each other,
@@ -559,19 +561,19 @@ test.Gk.K_M <- blockProj(Z.K_M, b, nI,
 resCA.Z_whole <- ExPosition::epCA(Z, graphs = FALSE, k = nfact)
 # Get the Products / Rows supplementary projections
 sup.Fi <- ExPosition::supplementaryRows(SUP.DATA = Z.K,
-                            res = resCA.Z_whole)
+                            res = resCA.Z_whole)$fii[,1:nfact]
 
 partial.G_K <- array(NA, c(nJ,nfact,nK))
 for (k in 1:nK){
 # get the index
   lindex <- ((k - 1)*nI + 1):(k*nI)
- partial.G_K[,,k] <- ExPosition::supplementaryCols(SUP.DATA = Z.K[lindex,],
-                                res = resCA.Z_whole)$fjj[,1:nfact]
+ partial.G_K[,,k] <- ExPosition::supplementaryCols(
+                          SUP.DATA = Z.K[lindex,],
+                          res = resCA.Z_whole)$fjj[,1:nfact]
 }
 dimnames(partial.G_K) <- dimnames(G_K)
-
+# Rv matrix
 Cmat4C5  <- createCmat4PTCA(brickOfMat, normalization = 'rv')
-
 # Save all the Results -----------------------------------------------
 # List for each components ----
 allMatrices.resCA <- structure(list(
