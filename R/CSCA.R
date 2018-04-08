@@ -562,6 +562,7 @@ resCA.Z_whole <- ExPosition::epCA(Z, graphs = FALSE, k = nfact)
 # Get the Products / Rows supplementary projections
 sup.Fi <- ExPosition::supplementaryRows(SUP.DATA = Z.K,
                             res = resCA.Z_whole)$fii[,1:nfact]
+colnames(sup.Fi) <- paste0("Dimension ",1:nfact)
 
 partial.G_K <- array(NA, c(nJ,nfact,nK))
 for (k in 1:nK){
