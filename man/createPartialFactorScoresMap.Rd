@@ -7,7 +7,7 @@
 the main map of the factor scores.}
 \usage{
 createPartialFactorScoresMap(factorScores, partialFactorScores, axis1 = 1,
-  axis2 = 2, colors4Items = NULL, colors4Block = NULL,
+  axis2 = 2, colors4Items = NULL, colors4Blocks = NULL,
   names4Partial = NULL, alpha.lines = 0.5, size.lines = 0.75,
   type.lines = 1, arrow.length = 0, alpha.points = 0.7,
   shape.points = 23, size.points = 1, alpha.labels = 0.7,
@@ -33,7 +33,7 @@ can be one element or a \eqn{I} by 1 vector of color names.
 If \code{NULL} (defaults), \code{prettyGraphsColorSelection()}
 is used to select the colors.}
 
-\item{colors4Block}{(Default: \code{NULL})
+\item{colors4Blocks}{(Default: \code{NULL})
 color name(s) for the Blocks,
 can be one element or a \eqn{K} by 1 vector of color names.
 If \code{NULL} (defaults), \code{prettyGraphsColorSelection()}

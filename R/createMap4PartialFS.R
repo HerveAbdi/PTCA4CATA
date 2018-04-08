@@ -244,9 +244,9 @@ if (is.null(arrow.length)){ arrow.length = 0 }
 nK <- dim(pFS)[[3]]
 if (is.null(dimnames(pFS)[[3]])){dimnames(pFS)[[3]] <- 1:nK}
 if (is.null(names4Partial)){names4Partial = dimnames(pFS)[[3]] }
-if (is.null(colors4Block)){# Color4Block by default
+if (is.null(colors4Blocks)){# Color4Blocks by default
   colors4Block <- prettyGraphsColorSelection(nK)}
-if (is.null(colors4Items)){# Color4Block by default
+if (is.null(colors4Items)){# Color4Blocks by default
   colors4Items <- prettyGraphsColorSelection(nI)}
 
 # check null colnames
