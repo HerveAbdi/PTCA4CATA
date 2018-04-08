@@ -111,7 +111,12 @@ analysis and the column factor
 scores (\code{fj})
 are obtained from partial projection using the
 correspondence analysis transition formula adapted to blocks
-of matrices. Note that the two table version
+of matrices. Note that in a two table version
+the partial column factor scores will be identical
+(and identical to the overall column factor score) and
+so in this case, the overal column factor scores can
+be plotted.
+Note that the two table version
 of  CSCA could be obtained
 from the analysis of the
 [\strong{X}_1 \strong{X}_2 || \strong{X}_2 \strong{X}_1]

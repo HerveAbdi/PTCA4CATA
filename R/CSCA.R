@@ -161,9 +161,9 @@ blockProj <- function(data, # the data to project
   } else {
     if(sum(nI) != nInK){stop('Incompatible value of nIs and size of data')}
   } # end if else
-  if (is.null(data.metric)){ # standard appraach
+  if (is.null(data.metric)){ # standard approach
   C.profiles <-  (apply(data, 2, function(x){ z <- x / sum(x)} ) )
-           } else { #
+           } else {# centers are provided
   C.profiles <- rdiag(data,data.metric)
            } # end of profile
   block.G <- array(NA, c(nJ,nF,nK)) # initialize array
@@ -171,7 +171,7 @@ blockProj <- function(data, # the data to project
   debut <- 1 # initialize
   for (k in 1:nK){
     fin   <- sum(nI[1:k])
-    lindex <- debut : fin
+    lindex <- debut:fin
     block.G[,,k] <- (1/b.weights[k]) * t(C.profiles[lindex,]) %*%
       FS[lindex,] %*% diag(1/sv[1:nF])
     debut <- fin + 1
@@ -436,7 +436,12 @@ print.genCA <- function(x, ...) {
 #' scores (\code{fj})
 #' are obtained from partial projection using the
 #' correspondence analysis transition formula adapted to blocks
-#' of matrices. Note that the two table version
+#' of matrices. Note that in a two table version
+#' the partial column factor scores will be identical
+#' (and identical to the overall column factor score) and
+#' so in this case, the overal column factor scores can
+#' be plotted.
+#' Note that the two table version
 #' of  CSCA could be obtained
 #' from the analysis of the
 #' [\strong{X}_1 \strong{X}_2 || \strong{X}_2 \strong{X}_1]
@@ -589,12 +594,13 @@ allMatrices.resCA <- structure(list(
 sumOfMatrices.resCA <- resCA.Z_whole$ExPosition.Data
 diffOfMatrices.resCA <- structure(list(
   fi = resCA.K_M$fi,
-  fj = test.Gk.K_M,
+  fj = resCA.K_M$fj,
+  partial.fj = test.Gk.K_M,
   Dv = resCA.K_M$Dv,
   eigs = resCA.K_M$eigs,
   tau = resCA.K_M$tau,
   Inertia = resCA.K_M$Inertia),
-  class = 'csca.block'
+  class = 'csca.block.diff'
 )
 partialProjOnSum.resCA <- structure(list(
   fi = sup.Fi,
@@ -691,6 +697,36 @@ print.csca.block <- function(x, ...) {
   cat("\n", rep("-", ndash), sep = "")
   cat("\n$fi      ", "An (I*K)*L matrix of row factor scores ")
   cat("\n$fj      ", "A  J*L*K array of column factor scores ")
+  cat("\n$Dv      ", "The vector of the singular values")
+  cat("\n$eigs    ", "The vector of the eigen values")
+  cat("\n$Inertia ", "The total Inertia (sum of eigen values)")
+  cat("\n",rep("-", ndash), sep = "")
+  cat("\n")
+  invisible(x)
+} # end of function print.csca.block ----
+# ____________________________________________________________________
+# ____________________________________________________________________
+# ____________________________________________________________________
+#
+#' Change the print function for objects of the class
+#' \code{csca.block}
+#'
+#' Change the print function for objects of the class
+#' \code{csca.block}.
+#'
+#' @param x a list:
+#' @param ... the rest
+#' @author Herve Abdi
+#' @export
+print.csca.block.diff <- function(x, ...) {
+  ndash = 78 # How many dashes for separation lines
+  cat(rep("-", ndash), sep = "")
+  cat("\n A list. Output of CSCA (Common and Specific CA, from PCTA4CATA)")
+  cat("\n         Analysis of the Specific Components (deviation to barycenter)")
+  cat("\n", rep("-", ndash), sep = "")
+  cat("\n$fi      ", "An (I*K)*L matrix of row factor scores ")
+  cat("\n$fj      ", "A  J*K matrix of column factor scores ")
+  cat("\n$part.fj ", "A  J*L*K array of partial column factor scores ")
   cat("\n$Dv      ", "The vector of the singular values")
   cat("\n$eigs    ", "The vector of the eigen values")
   cat("\n$Inertia ", "The total Inertia (sum of eigen values)")
