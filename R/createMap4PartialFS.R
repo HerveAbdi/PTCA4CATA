@@ -245,7 +245,7 @@ nK <- dim(pFS)[[3]]
 if (is.null(dimnames(pFS)[[3]])){dimnames(pFS)[[3]] <- 1:nK}
 if (is.null(names4Partial)){names4Partial = dimnames(pFS)[[3]] }
 if (is.null(colors4Blocks)){# Color4Blocks by default
-  colors4Block <- prettyGraphsColorSelection(nK)}
+  colors4Blocks <- prettyGraphsColorSelection(nK)}
 if (is.null(colors4Items)){# Color4Blocks by default
   colors4Items <- prettyGraphsColorSelection(nI)}
 
@@ -296,12 +296,12 @@ for (i in  1:nI){
   leGraph.points.partial.i[[i]] <- zePoints
   leGraph.names.partial.i[[i]] <- zeLabels
   zePoints <- geom_point(data = pFSi,
-                         color = colors4Block,
+                         color = colors4Blocks,
                          alpha = alpha.points,
                          shape = shape.points,
                          size  = size.points)
   zeLabels <- geom_text_repel(data = pFSi,,
-                              color = colors4Block,
+                              color = colors4Blocks,
                               label = names4Partial,
                               alpha = alpha.labels,
                               size  = size.labels,
@@ -313,7 +313,7 @@ for (i in  1:nI){
                     x = fS[i,1], y = fS[i,2],
                     xend = pFS[i,1,],
                     yend = pFS[i,2,],
-                    color = colors4Block,
+                    color = colors4Blocks,
                     alpha = alpha.lines,
                     size = size.lines,
                     linetype = type.lines,
