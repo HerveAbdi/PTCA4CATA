@@ -120,7 +120,7 @@ minmaxHelper4Partial <-  function(FactorScores, partialFactorScores,
 #' can be one element or a \eqn{I} by 1 vector of color names.
 #' If \code{NULL} (defaults), \code{prettyGraphsColorSelection()}
 #' is used to select the colors.
-#' @param colors4Block
+#' @param colors4Blocks
 #' (Default: \code{NULL})
 #' color name(s) for the Blocks,
 #' can be one element or a \eqn{K} by 1 vector of color names.
@@ -215,7 +215,7 @@ partialFactorScores,  # <- PartialFS
 axis1 = 1,
 axis2 = 2,
 colors4Items = NULL,  # as.vector(color4Products) # default is NULL
-colors4Block = NULL,  #
+colors4Blocks = NULL,  #
 names4Partial = NULL, #  c('5','C') # Short names NULL
 alpha.lines  = .5,
 size.lines   = .75,
