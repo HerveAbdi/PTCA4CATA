@@ -39,16 +39,45 @@ The projection as supplementary elements of the matrices
 onto their average,
 and 5) \code{RvCoefficients}
 the matrix of \code{Rv}-coefficient between the matrices.
-\code{allMatrices.resCA} and \code{ExPosition::epCA} are lists
-containing a) \code{}
+ # projZonDif.fi
+
+\code{allMatrices} is a list
+containing a)
 \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
 row factor scores, b) \code{fj}:
-  the \eqn{I*}\code{nfact}{*K} array
+  the \eqn{J*}\code{nfact}{*K} array
    by \code{nfact} array of the
 column factor scores, c) \code{Dv}: the singular values,
 d) \code{eigs}: the eigenvalues,
 e) \code{tau}: the percentage of Inertia, and
 f) \code{Inertia} the total inertia;
+
+\code{sumOfMatrices} is laist storing the output of
+the plain correspondence analysis of the
+\code{I*J} matrix of the sum of matrices as
+analyzed by \code{ExPosition::epCA} (see help there for
+more details).
+
+ \code{diffOfMatrices}
+ is a list
+containing a)
+\code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
+row factor scores, b) \code{fj}:
+  the \eqn{J*}\code{nfact}{*K} array
+   by \code{nfact} array of the
+column factor scores,
+ b) \code{part.fj}: A  \eqn{J*L*K}
+array of partial column factor scores,
+c) \code{projZonDif.fi}:
+An (I*K) by L matrix of  the
+projection of the original data
+onto the specific space (useful to explore the difference
+induced by the original data matrices),
+d) \code{Dv}: the singular values,
+e) \code{eigs}: the eigenvalues,
+f) \code{tau}: the percentage of Inertia, and
+g) \code{Inertia} the total inertia;
+
 \code{partialProjOnSum} is a
 list
 containing a)
@@ -77,6 +106,7 @@ of the Inertia such that All = Sum + Difference or
 and (\strong{X}_\eqn{K} - \strong{G})
 being the set of the differences of all the matrices
 to their barycenter.
+
 The matrix \strong{X}_\eqn{K}
 is obtained by stacking all the original matrices
 on top of each other
@@ -91,6 +121,7 @@ the matrix \strong{G}
 is obtained as the sum of all the matrices
 in \strong{X}_\eqn{K} (so \strong{G}
 is a \eqn{I} by \eqn{J} matrix).
+
 The analysis of the matrix \strong{G} is made with
 a standard CA program, but the correspondence analysis
 of matrices (\strong{X}_\eqn{K} - \strong{G})
@@ -111,12 +142,15 @@ analysis and the column factor
 scores (\code{fj})
 are obtained from partial projection using the
 correspondence analysis transition formula adapted to blocks
-of matrices. Note that in a two table version
+of matrices.
+
+Note that in a two table version
 the partial column factor scores will be identical
 (and identical to the overall column factor score) and
 so in this case, the overal column factor scores can
 be plotted.
-Note that the two table version
+
+Note, also, that the two table version
 of  CSCA could be obtained
 from the analysis of the
 [\strong{X}_1 \strong{X}_2 || \strong{X}_2 \strong{X}_1]
@@ -131,13 +165,17 @@ if(interactive()){
 }
 }
 \references{
-The ideas used here are derived from
+The ideas used here are derived from:
+
 1) Escofier, B., & Drouet, D. (1983). Analyse des différences
 entre plusieurs tableaux de fréquences.
 \emph{Les Cahiers de l'Analyse des Données, 8}, 491-499;
+
 2) Greenacre, M. (2003). Singular value decomposition of
 matched matrices. \emph{Journal of Applied Statistics, 30},
-1101-1113; and 3)
+1101-1113; and
+
+3)
 Takane Y. (2014). \emph{Constrained Principal Component Analysis
 and Related Techniques}, Boca Raton: CRC Press.
 }

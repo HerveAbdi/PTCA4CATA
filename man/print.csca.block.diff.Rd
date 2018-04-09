@@ -3,7 +3,7 @@
 \name{print.csca.block.diff}
 \alias{print.csca.block.diff}
 \title{Change the print function for objects of the class
-\code{csca.block}}
+\code{csca.block.diff}}
 \usage{
 \method{print}{csca.block.diff}(x, ...)
 }
@@ -14,7 +14,7 @@
 }
 \description{
 Change the print function for objects of the class
-\code{csca.block}.
+\code{csca.block.diff}.
 }
 \author{
 Herve Abdi

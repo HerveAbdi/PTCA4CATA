@@ -371,16 +371,45 @@ print.genCA <- function(x, ...) {
 #' onto their average,
 #' and 5) \code{RvCoefficients}
 #' the matrix of \code{Rv}-coefficient between the matrices.
-#' \code{allMatrices.resCA} and \code{ExPosition::epCA} are lists
-#' containing a) \code{}
+#'  # projZonDif.fi
+#'
+#' \code{allMatrices} is a list
+#' containing a)
 #' \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
 #' row factor scores, b) \code{fj}:
-#'   the \eqn{I*}\code{nfact}{*K} array
+#'   the \eqn{J*}\code{nfact}{*K} array
 #'    by \code{nfact} array of the
 #' column factor scores, c) \code{Dv}: the singular values,
 #' d) \code{eigs}: the eigenvalues,
 #' e) \code{tau}: the percentage of Inertia, and
 #' f) \code{Inertia} the total inertia;
+#'
+#' \code{sumOfMatrices} is laist storing the output of
+#' the plain correspondence analysis of the
+#' \code{I*J} matrix of the sum of matrices as
+#' analyzed by \code{ExPosition::epCA} (see help there for
+#' more details).
+#'
+#'  \code{diffOfMatrices}
+#'  is a list
+#' containing a)
+#' \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
+#' row factor scores, b) \code{fj}:
+#'   the \eqn{J*}\code{nfact}{*K} array
+#'    by \code{nfact} array of the
+#' column factor scores,
+#'  b) \code{part.fj}: A  \eqn{J*L*K}
+#' array of partial column factor scores,
+#' c) \code{projZonDif.fi}:
+#' An (I*K) by L matrix of  the
+#' projection of the original data
+#' onto the specific space (useful to explore the difference
+#' induced by the original data matrices),
+#' d) \code{Dv}: the singular values,
+#' e) \code{eigs}: the eigenvalues,
+#' f) \code{tau}: the percentage of Inertia, and
+#' g) \code{Inertia} the total inertia;
+#'
 #' \code{partialProjOnSum} is a
 #' list
 #' containing a)
@@ -389,6 +418,7 @@ print.genCA <- function(x, ...) {
 #'   the \eqn{I*}\code{nfact}{*K} array
 #'    by \code{nfact} array of the (supplementary)
 #' column factor scores.
+#'
 #' @details The analysis of the three matrices whose results are
 #' given in
 #' \code{allMatrices.resCA}, \code{sumOfMatrices.resCA}, and
@@ -402,6 +432,7 @@ print.genCA <- function(x, ...) {
 #' and (\strong{X}_\eqn{K} - \strong{G})
 #' being the set of the differences of all the matrices
 #' to their barycenter.
+#'
 #' The matrix \strong{X}_\eqn{K}
 #' is obtained by stacking all the original matrices
 #' on top of each other
@@ -416,6 +447,7 @@ print.genCA <- function(x, ...) {
 #' is obtained as the sum of all the matrices
 #' in \strong{X}_\eqn{K} (so \strong{G}
 #' is a \eqn{I} by \eqn{J} matrix).
+#'
 #' The analysis of the matrix \strong{G} is made with
 #' a standard CA program, but the correspondence analysis
 #' of matrices (\strong{X}_\eqn{K} - \strong{G})
@@ -436,25 +468,32 @@ print.genCA <- function(x, ...) {
 #' scores (\code{fj})
 #' are obtained from partial projection using the
 #' correspondence analysis transition formula adapted to blocks
-#' of matrices. Note that in a two table version
+#' of matrices.
+#'
+#' Note that in a two table version
 #' the partial column factor scores will be identical
 #' (and identical to the overall column factor score) and
 #' so in this case, the overal column factor scores can
 #' be plotted.
-#' Note that the two table version
+#'
+#' Note, also, that the two table version
 #' of  CSCA could be obtained
 #' from the analysis of the
 #' [\strong{X}_1 \strong{X}_2 || \strong{X}_2 \strong{X}_1]
 #' circulant matrix
 #' (see Greenacre, 2003).
 #' @seealso normBrick4PTCA genPCA
-#' @references The ideas used here are derived from
+#' @references The ideas used here are derived from:
+#'
 #' 1) Escofier, B., & Drouet, D. (1983). Analyse des différences
 #' entre plusieurs tableaux de fréquences.
 #' \emph{Les Cahiers de l'Analyse des Données, 8}, 491-499;
+#'
 #' 2) Greenacre, M. (2003). Singular value decomposition of
 #' matched matrices. \emph{Journal of Applied Statistics, 30},
-#' 1101-1113; and 3)
+#' 1101-1113; and
+#'
+#' 3)
 #' Takane Y. (2014). \emph{Constrained Principal Component Analysis
 #' and Related Techniques}, Boca Raton: CRC Press.
 #' @importFrom ExPosition epCA
@@ -546,6 +585,10 @@ resCA.K_M <- genCA(Z.K_M, nfact = nfact,
                    normalize.X = FALSE,
                    r.metric = 1/r, c.metric = 1/c,
                    r.center =  0, c.center = 0)
+# Add projection of Z onto the difference fj
+# Z onto fi._ ----
+projZonDif.fi  <- ldiag(1/(2*r), Z.K)  %*%
+  rdiag(resCA.K_M$fj, 1/resCA.K_M$Dv[1:nfact])
 # Works cf. In.A_B
 # Transition formula for the difference
 #test.Fj <- diag(1/c) %*% t(Z.K_M) %*%
@@ -596,6 +639,7 @@ diffOfMatrices.resCA <- structure(list(
   fi = resCA.K_M$fi,
   fj = resCA.K_M$fj,
   partial.fj = test.Gk.K_M,
+  projZonDif.fi = projZonDif.fi,
   Dv = resCA.K_M$Dv,
   eigs = resCA.K_M$eigs,
   tau = resCA.K_M$tau,
@@ -709,10 +753,10 @@ print.csca.block <- function(x, ...) {
 # ____________________________________________________________________
 #
 #' Change the print function for objects of the class
-#' \code{csca.block}
+#' \code{csca.block.diff}
 #'
 #' Change the print function for objects of the class
-#' \code{csca.block}.
+#' \code{csca.block.diff}.
 #'
 #' @param x a list:
 #' @param ... the rest
@@ -724,12 +768,14 @@ print.csca.block.diff <- function(x, ...) {
   cat("\n A list. Output of CSCA (Common and Specific CA, from PCTA4CATA)")
   cat("\n         Analysis of the Specific Components (deviation to barycenter)")
   cat("\n", rep("-", ndash), sep = "")
-  cat("\n$fi      ", "An (I*K)*L matrix of row factor scores ")
-  cat("\n$fj      ", "A  J*K matrix of column factor scores ")
-  cat("\n$part.fj ", "A  J*L*K array of partial column factor scores ")
-  cat("\n$Dv      ", "The vector of the singular values")
-  cat("\n$eigs    ", "The vector of the eigen values")
-  cat("\n$Inertia ", "The total Inertia (sum of eigen values)")
+  cat("\n$fi            ", "An (I*K)*L matrix of row factor scores ")
+  cat("\n$fj            ", "A  J*K matrix of column factor scores ")
+  cat("\n$part.fj       ", "A  J*L*K array of partial column factor scores ")
+  cat("\n$projZonDif.fi ","An (I*K) by L matrix of  the ")
+  cat("\n               ","   projection of the original data onto the specific space ")
+  cat("\n$Dv            ", "The vector of the singular values")
+  cat("\n$eigs          ", "The vector of the eigen values")
+  cat("\n$Inertia       ", "The total Inertia (sum of eigen values)")
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
