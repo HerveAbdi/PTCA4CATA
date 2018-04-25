@@ -485,15 +485,19 @@ print.genCA <- function(x, ...) {
 #' @seealso normBrick4PTCA genPCA
 #' @references The ideas used here are derived from:
 #'
-#' 1) Escofier, B., & Drouet, D. (1983). Analyse des différences
+#' 1) Escofier, B. (1983). Analyse de la différence
+#' entre deux mesures définies sur le produit de deux mêmes
+#' ensembles. \emph{Les Cahiers de l'Analyse des Données, 8}, 325-329.
+#'
+#' 2) Escofier, B., & Drouet, D. (1983). Analyse des différences
 #' entre plusieurs tableaux de fréquences.
 #' \emph{Les Cahiers de l'Analyse des Données, 8}, 491-499;
 #'
-#' 2) Greenacre, M. (2003). Singular value decomposition of
+#' 3) Greenacre, M. (2003). Singular value decomposition of
 #' matched matrices. \emph{Journal of Applied Statistics, 30},
 #' 1101-1113; and
 #'
-#' 3)
+#' 4)
 #' Takane Y. (2014). \emph{Constrained Principal Component Analysis
 #' and Related Techniques}, Boca Raton: CRC Press.
 #' @importFrom ExPosition epCA
