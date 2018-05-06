@@ -2,7 +2,7 @@
 % Please edit documentation in R/CSCA.R
 \name{rdiag}
 \alias{rdiag}
-\title{@title  right (i.e. post) Multiply a matrix by a diagonal matrix}
+\title{@title  right (i.e., post) Multiply a matrix by a diagonal matrix}
 \usage{
 rdiag(X, y)
 }
@@ -17,7 +17,7 @@ an \eqn{I} by \eqn{J} matrix equal to
 \strong{X} %*% diag(\strong{y}).
 }
 \description{
-\code{rdiag}: right (i.e. post) Multiply
+\code{rdiag}: right (i.e., post) Multiply
 a matrix by a diagonal matrix (with only
  the diagonal elements being given).
 }

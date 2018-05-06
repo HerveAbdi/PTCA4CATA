@@ -18,9 +18,9 @@
 # rdiag & ldiag
 # Two other local functions ----------------------------------------
 # to replace left and right diag multiplication
-#' @title  Left (i.e. pre) Multiply a matrix by a diagonal matrix
+#' @title  Left (i.e., pre) Multiply a matrix by a diagonal matrix
 #'
-#' @description  \code{ldiag}: Left (i.e. pre) Multiply
+#' @description  \code{ldiag}: Left (i.e., pre) Multiply
 #' a matrix by a diagonal matrix (with only
 #'  the diagonal elements being given).
 #' @param y a \eqn{I} element
@@ -40,9 +40,9 @@ ldiag <- function(y,X){
   nC <- ncol(X)
   return(matrix(y, nrow = nR, ncol = nC, byrow = FALSE) * X)
 }
-#'  @title  right (i.e. post) Multiply a matrix by a diagonal matrix
+#'  @title  right (i.e., post) Multiply a matrix by a diagonal matrix
 #'
-#' @description \code{rdiag}: right (i.e. post) Multiply
+#' @description \code{rdiag}: right (i.e., post) Multiply
 #' a matrix by a diagonal matrix (with only
 #'  the diagonal elements being given).
 #' @param y a \eqn{J} element
@@ -77,8 +77,8 @@ rdiag <- function(X,y){
 #' @description \code{blockProj}:
 #' Computes the partial projections for blocks in
 #' 3-way Correspondence Analysis (e.g., as in block-PTCA).
-#' Compute the projection for blocks on one set from
-#' the recontsitution formula from the other set.
+#' Compute the projection for blocks on one set (e.g., rows) from
+#' the reconstitution formula from the other set (e.g., columns).
 #'
 #' @param data An \eqn{I} * \eqn{J} data matrix structured in
 #' \eqn{K} blocks of rows, each described by the same
@@ -106,9 +106,9 @@ rdiag <- function(X,y){
 #' @return a \eqn{J} (variables) by \eqn{L} (factors)
 #' by \eqn{K} (blocks) array storing the \eqn{K} "slices"
 #' pf partial factor scores.
-#' @details This function is used when the orignal data table is
-#' made of blocks or rows (resp columns) all described by the
-#' same columns (resp rows). In the row case, the rows
+#' @details This function is used when the original data table is
+#' made of blocks of rows (resp columns) all described by the
+#' same columns (resp. rows). In the row case, the rows
 #' are clustered in blocks of size
 #' \eqn{I_}1, ... ,\eqn{I_k}, ... \eqn{I_K}
 #' (with sum \eqn{I_K} = \eqn{I}) all described by \eqn{J} variables
@@ -118,15 +118,23 @@ rdiag <- function(X,y){
 #' are barycentric to the whole set of projections
 #' (i.e., the barycenters off all \eqn{K}-blocks is
 #' equal to the factors for the whole matrix.
-#' the projection is obtained from the standard reconstitution
+#' The projections are obtained from the standard reconstitution
 #' formula generalized to the case of blocks with each block
 #' having a \eqn{b}-weight
-#' (with \eqn{b_k} > 0, and sum \eqn{b_k} = 1n).
+#' (with \eqn{b_k} > 0, and sum \eqn{b_k} = 1).
 #' When the data are obtained from a standard CA, the
-#' paramter \code{data.metric} does not need to be used.
+#' parameter \code{data.metric} does not need to be used.
 #' When the data are obtained from an unconventional CA
 #' (i.e., as performed  with the decomposition
-#' in common and specific factors).
+#' in common and specific factors), \code{data.metric}
+#' gives the metric needed; for example,
+#' for the decomposition
+#' in common and specific factors, the specific analysis
+#' isperformed with the same meetric aas the common analysis.
+#' @references Escofier, B. (1983).
+#' Analyse de la difference entre deux mesures definies
+#' sur le produit de deux memes ensembles.
+#' \emph{Les Cahiers de l'Analyse des Donnees, 8}, 325-329.
 #' @examples
 #' \dontrun{
 #' if(interactive()){
@@ -194,7 +202,7 @@ blockProj <- function(data, # the data to project
 #
 #Preambule genCA -----------------------------------------------------
 # ____________________________________________________________________
-# A genCA with choice of the masses and weights
+# A genCA with choice of the masses and weights.
 #' Generalized Correspondence Analysis with choice of
 #' row and column metrics and choice of row and column centers
 #'
@@ -340,51 +348,56 @@ print.genCA <- function(x, ...) {
 # CSCA ----
 # Parameters of the function here ------------------------------------
 #' @title Common and Specific Correspondence Analysis
-#' (CSDA)
-#' of a set of \eqn{K} \eqn{I*J} matched matrices
-#' @description \code{CSDA}: implements
+#' (CSCA)
+#' of a set of \eqn{K} matched matrices, each of order \eqn{I*J}.
+#'
+#' @description \code{CSCA}: implements
 #' Common and Specific Correspondence Analysis
-#' of a set of \eqn{K} \eqn{I*J} matched matrices.
-#' @param brickOfMat a \eqn{I} items by \eqn{J} descriptors *
+#' of a set of  \eqn{K}
+#'  matched matrices, each of order \eqn{I*J}.
+#'
+#' @param brickOfMat an \eqn{I} items by \eqn{J} descriptors by
 #' \eqn{K} blocks (e.g., matrices) suitable
 #' for correspondence analysis (i.e., all non-negative elements).
 #' @param nfact (Default = 3) number of factors to keep.
 #' @param b (Default = \code{NULL})
 #' a \eqn{K} elements weight vector for the matrices
 #' (should all be positive and sum to 1). When \code{NULL}
-#' \code{CSCA} computes them as the sum of each matrix
+#' \code{CSCA} computes the weights as the sum of each matrix
 #' divided by the grand total. Note that it is general better
-#' to have pre-normalized the matrices
+#' to have pre-normalized the matrices for CSCA
 #' (e.g., with \code{normBrick4PTCA}),
 #' so that all matrices have the same weight.
 #' @return A list with
-#' 1) \code{allMatrices.resCA} results for the analysis of
-#' the whole set of matrices stacked on top of each other,
-#' 2) \code{sumOfMatrices.resCA}
+#' 1) \code{allMatrices.resCA}: results for the analysis of
+#' the whole set of matrices stacked on top of each other;
+#' 2) \code{sumOfMatrices.resCA}:
 #' results (from \code{ExPosition::epCA}) for the analysis of
-#' the sum (i.e., average with CA) of all matrices,
-#' 3) \code{diffOfMatrices},
+#' the sum (i.e., average with CA) of all matrices;
+#' 3) \code{diffOfMatrices}:
 #' results for the analysis of
-#' the difference of the matrices to their average (from 2),
-#' 4) \code{partialProjOnSum},
+#' the difference of the matrices to their average (from 2);
+#' 4) \code{partialProjOnSum}:
 #' The projection as supplementary elements of the matrices
-#' onto their average,
-#' and 5) \code{RvCoefficients}
+#' onto their average;
+#' and 5) \code{RvCoefficients}:
 #' the matrix of \code{Rv}-coefficient between the matrices.
 #'  # projZonDif.fi
 #'
 #' \code{allMatrices} is a list
 #' containing a)
 #' \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-#' row factor scores, b) \code{fj}:
+#' row factor scores;
+#'  b) \code{fj}:
 #'   the \eqn{J*}\code{nfact}{*K} array
 #'    by \code{nfact} array of the
-#' column factor scores, c) \code{Dv}: the singular values,
-#' d) \code{eigs}: the eigenvalues,
-#' e) \code{tau}: the percentage of Inertia, and
+#' column factor scores;
+#' c) \code{Dv}: the singular values;
+#' d) \code{eigs}: the eigenvalues;
+#' e) \code{tau}: the percentage of Inertia; and
 #' f) \code{Inertia} the total inertia;
 #'
-#' \code{sumOfMatrices} is laist storing the output of
+#' \code{sumOfMatrices} is a list storing the output of
 #' the plain correspondence analysis of the
 #' \code{I*J} matrix of the sum of matrices as
 #' analyzed by \code{ExPosition::epCA} (see help there for
@@ -394,27 +407,29 @@ print.genCA <- function(x, ...) {
 #'  is a list
 #' containing a)
 #' \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-#' row factor scores, b) \code{fj}:
+#' row factor scores; b) \code{fj}:
 #'   the \eqn{J*}\code{nfact}{*K} array
 #'    by \code{nfact} array of the
-#' column factor scores,
+#' column factor scores;
 #'  b) \code{part.fj}: A  \eqn{J*L*K}
-#' array of partial column factor scores,
+#' array of partial column factor scores;
 #' c) \code{projZonDif.fi}:
 #' An (I*K) by L matrix of  the
 #' projection of the original data
 #' onto the specific space (useful to explore the difference
-#' induced by the original data matrices),
-#' d) \code{Dv}: the singular values,
-#' e) \code{eigs}: the eigenvalues,
-#' f) \code{tau}: the percentage of Inertia, and
-#' g) \code{Inertia} the total inertia;
+#' induced by the original data matrices);
+#' d) \code{Dv}: the singular values;
+#' e) \code{eigs}: the eigenvalues;
+#' f) \code{tau}: the percentage of Inertia;
+#'  and
+#' g) \code{Inertia} the total inertia.
 #'
 #' \code{partialProjOnSum} is a
 #' list
 #' containing a)
 #' \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-#' (supplementary) row factor scores, b) \code{fj}:
+#' (supplementary) row factor scores;
+#' b) \code{fj}:
 #'   the \eqn{I*}\code{nfact}{*K} array
 #'    by \code{nfact} array of the (supplementary)
 #' column factor scores.
@@ -493,11 +508,16 @@ print.genCA <- function(x, ...) {
 #' entre plusieurs tableaux de fréquences.
 #' \emph{Les Cahiers de l'Analyse des Données, 8}, 491-499;
 #'
-#' 3) Greenacre, M. (2003). Singular value decomposition of
+#' 3) Benali, H., & Escofier, B. (1990).
+#' Analyse factorielle lissée et analyse factorielle
+#' des différences locales
+#' \emph{Revue de statistique appliquée, 38}, 55-76.
+#'
+#' 4) Greenacre, M. (2003). Singular value decomposition of
 #' matched matrices. \emph{Journal of Applied Statistics, 30},
 #' 1101-1113; and
 #'
-#' 4)
+#' 5)
 #' Takane Y. (2014). \emph{Constrained Principal Component Analysis
 #' and Related Techniques}, Boca Raton: CRC Press.
 #' @importFrom ExPosition epCA
@@ -512,10 +532,11 @@ print.genCA <- function(x, ...) {
 #' @rdname CSCA
 #' @export
 #' @importFrom ExPosition epCA supplementaryRows supplementaryCols
-CSCA <- function(brickOfMat, # = DataCube_5C  # The set of K matrices
-nfact = 3, # how many factors to keep
- b = NULL  # in case of a priori weights
-){
+#'
+CSCA <- function(brickOfMat,  # An array: The set of K matrices
+                 nfact = 3,   # how many factors to keep
+                 b = NULL     # in case of a priori weights
+                 ){# CSCA starts here
 # ____________________________________________________________________
 # function starts here
 # Check that the Inertia of [A | B] relative to the
@@ -580,10 +601,12 @@ G_K <- blockProj(Z.K, b, nI, resCA.all$fi, resCA.all$Dv)
 # works cf, altCA.Z.AtopZ_B In.all
 # Sum matrix Z = \sum_k b_k Z_k
 # equivalent to the analysis of the sum matrix
-resCA.Z <- genCA(Z.long,  nfact = nfact,
-         normalize.X = FALSE,
-         r.metric = 1/r, c.metric = 1/c,
-         r.center =  r, c.center = c )
+# old code used for testing that
+# resCA.Z give the same results as plain CA on the sum matrix
+# resCA.Z <- genCA(Z.long,  nfact = nfact,
+#            normalize.X = FALSE,
+#             r.metric = 1/r, c.metric = 1/c,
+#             r.center =  r, c.center = c )
 # works cf. test4.AtopB In.AB
 resCA.K_M <- genCA(Z.K_M, nfact = nfact,
                    normalize.X = FALSE,
@@ -617,13 +640,13 @@ sup.Fi <- ExPosition::supplementaryRows(SUP.DATA = Z.K,
 colnames(sup.Fi) <- paste0("Dimension ",1:nfact)
 
 partial.G_K <- array(NA, c(nJ,nfact,nK))
-for (k in 1:nK){
+for  (k in 1:nK){
 # get the index
   lindex <- ((k - 1)*nI + 1):(k*nI)
- partial.G_K[,,k] <- ExPosition::supplementaryCols(
+  partial.G_K[,,k] <- ExPosition::supplementaryCols(
                           SUP.DATA = Z.K[lindex,],
                           res = resCA.Z_whole)$fjj[,1:nfact]
-}
+   }
 dimnames(partial.G_K) <- dimnames(G_K)
 # Rv matrix
 Cmat4C5  <- createCmat4PTCA(brickOfMat, normalization = 'rv')
@@ -663,6 +686,8 @@ return.list <- structure(list(
   partialProjOnSum  = partialProjOnSum.resCA,
   RvCoefficients =  Cmat4C5),
 class = 'csca')
+
+return(return.list)
 } # end of function CSCA
 # ____________________________________________________________________
 # end of function CSCA -----------------------------------------------
@@ -689,7 +714,6 @@ print.csca <- function(x, ...) {
   cat("\n$allMatrices.CA   ", "List: results for all the matrices stacked.")
   cat("\n$sumOfMatrices    ", "List: results for the sum of the matrices.  ")
   cat("\n$diffOfMatrices   ", "List: results for the difference matrices.")
-  cat("\n$partialProjOnSum ", "List: results for the projections as supplementary")
   cat("\n$partialProjOnSum ", "List: results for the projections as supplementary")
   cat("\n                  ", "      of the matrices onto the sum matrix.")
   cat("\n$RvCoefficients   ", "Matrix: K*K between matrices Rv-coefficient matrix.")

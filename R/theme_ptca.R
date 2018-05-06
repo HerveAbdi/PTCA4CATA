@@ -36,10 +36,15 @@ theme_ptca <- function(mire = TRUE, x0 = 0, y0 = 0) {
   theme_list <- list(
     theme_grey() %+replace%
       theme(
-        legend.key = element_rect(fill = NA, color = NA),
-        legend.title = element_text(color = "black", face = "bold"),
-        legend.text = element_text(color = 'black'),
-        panel.background = element_rect(fill = col.fill, color = col.bkg)
+        legend.key   = element_rect(fill = NA, color = NA),
+        legend.title = element_text(color = 'purple4', face = 'bold'),
+        legend.text  = element_text(color = 'purple4'),
+        axis.text    = element_text(color = 'purple4'),
+        axis.ticks   = element_line(color = 'purple4'),
+        axis.title   = element_text(color = 'purple4'),
+        panel.background = element_rect(fill = col.fill,
+                                          color = col.bkg),
+        aspect.ratio = 1
       ))
   if (mire) theme_list <- append(theme_list, list(
     geom_vline(xintercept = x0, color = col.axes, size = width.axes),

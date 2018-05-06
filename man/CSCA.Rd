@@ -3,13 +3,13 @@
 \name{CSCA}
 \alias{CSCA}
 \title{Common and Specific Correspondence Analysis
-(CSDA)
-of a set of \eqn{K} \eqn{I*J} matched matrices}
+(CSCA)
+of a set of \eqn{K} matched matrices, each of order \eqn{I*J}.}
 \usage{
 CSCA(brickOfMat, nfact = 3, b = NULL)
 }
 \arguments{
-\item{brickOfMat}{a \eqn{I} items by \eqn{J} descriptors *
+\item{brickOfMat}{an \eqn{I} items by \eqn{J} descriptors by
 \eqn{K} blocks (e.g., matrices) suitable
 for correspondence analysis (i.e., all non-negative elements).}
 
@@ -18,41 +18,43 @@ for correspondence analysis (i.e., all non-negative elements).}
 \item{b}{(Default = \code{NULL})
 a \eqn{K} elements weight vector for the matrices
 (should all be positive and sum to 1). When \code{NULL}
-\code{CSCA} computes them as the sum of each matrix
+\code{CSCA} computes the weights as the sum of each matrix
 divided by the grand total. Note that it is general better
-to have pre-normalized the matrices
+to have pre-normalized the matrices for CSCA
 (e.g., with \code{normBrick4PTCA}),
 so that all matrices have the same weight.}
 }
 \value{
 A list with
-1) \code{allMatrices.resCA} results for the analysis of
-the whole set of matrices stacked on top of each other,
-2) \code{sumOfMatrices.resCA}
+1) \code{allMatrices.resCA}: results for the analysis of
+the whole set of matrices stacked on top of each other;
+2) \code{sumOfMatrices.resCA}:
 results (from \code{ExPosition::epCA}) for the analysis of
-the sum (i.e., average with CA) of all matrices,
-3) \code{diffOfMatrices},
+the sum (i.e., average with CA) of all matrices;
+3) \code{diffOfMatrices}:
 results for the analysis of
-the difference of the matrices to their average (from 2),
-4) \code{partialProjOnSum},
+the difference of the matrices to their average (from 2);
+4) \code{partialProjOnSum}:
 The projection as supplementary elements of the matrices
-onto their average,
-and 5) \code{RvCoefficients}
+onto their average;
+and 5) \code{RvCoefficients}:
 the matrix of \code{Rv}-coefficient between the matrices.
  # projZonDif.fi
 
 \code{allMatrices} is a list
 containing a)
 \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-row factor scores, b) \code{fj}:
+row factor scores;
+ b) \code{fj}:
   the \eqn{J*}\code{nfact}{*K} array
    by \code{nfact} array of the
-column factor scores, c) \code{Dv}: the singular values,
-d) \code{eigs}: the eigenvalues,
-e) \code{tau}: the percentage of Inertia, and
+column factor scores;
+c) \code{Dv}: the singular values;
+d) \code{eigs}: the eigenvalues;
+e) \code{tau}: the percentage of Inertia; and
 f) \code{Inertia} the total inertia;
 
-\code{sumOfMatrices} is laist storing the output of
+\code{sumOfMatrices} is a list storing the output of
 the plain correspondence analysis of the
 \code{I*J} matrix of the sum of matrices as
 analyzed by \code{ExPosition::epCA} (see help there for
@@ -62,35 +64,38 @@ more details).
  is a list
 containing a)
 \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-row factor scores, b) \code{fj}:
+row factor scores; b) \code{fj}:
   the \eqn{J*}\code{nfact}{*K} array
    by \code{nfact} array of the
-column factor scores,
+column factor scores;
  b) \code{part.fj}: A  \eqn{J*L*K}
-array of partial column factor scores,
+array of partial column factor scores;
 c) \code{projZonDif.fi}:
 An (I*K) by L matrix of  the
 projection of the original data
 onto the specific space (useful to explore the difference
-induced by the original data matrices),
-d) \code{Dv}: the singular values,
-e) \code{eigs}: the eigenvalues,
-f) \code{tau}: the percentage of Inertia, and
-g) \code{Inertia} the total inertia;
+induced by the original data matrices);
+d) \code{Dv}: the singular values;
+e) \code{eigs}: the eigenvalues;
+f) \code{tau}: the percentage of Inertia;
+ and
+g) \code{Inertia} the total inertia.
 
 \code{partialProjOnSum} is a
 list
 containing a)
 \code{fi}: the \eqn{I*K} by \code{nfact} matrix of the
-(supplementary) row factor scores, b) \code{fj}:
+(supplementary) row factor scores;
+b) \code{fj}:
   the \eqn{I*}\code{nfact}{*K} array
    by \code{nfact} array of the (supplementary)
 column factor scores.
 }
 \description{
-\code{CSDA}: implements
+\code{CSCA}: implements
 Common and Specific Correspondence Analysis
-of a set of \eqn{K} \eqn{I*J} matched matrices.
+of a set of  \eqn{K}
+ matched matrices, each of order \eqn{I*J}.
 }
 \details{
 The analysis of the three matrices whose results are
@@ -175,11 +180,16 @@ ensembles. \emph{Les Cahiers de l'Analyse des Données, 8}, 325-329.
 entre plusieurs tableaux de fréquences.
 \emph{Les Cahiers de l'Analyse des Données, 8}, 491-499;
 
-3) Greenacre, M. (2003). Singular value decomposition of
+3) Benali, H., & Escofier, B. (1990).
+Analyse factorielle lissée et analyse factorielle
+des différences locales
+\emph{Revue de statistique appliquée, 38}, 55-76.
+
+4) Greenacre, M. (2003). Singular value decomposition of
 matched matrices. \emph{Journal of Applied Statistics, 30},
 1101-1113; and
 
-4)
+5)
 Takane Y. (2014). \emph{Constrained Principal Component Analysis
 and Related Techniques}, Boca Raton: CRC Press.
 }

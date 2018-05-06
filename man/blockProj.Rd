@@ -46,13 +46,13 @@ pf partial factor scores.
 \code{blockProj}:
 Computes the partial projections for blocks in
 3-way Correspondence Analysis (e.g., as in block-PTCA).
-Compute the projection for blocks on one set from
-the recontsitution formula from the other set.
+Compute the projection for blocks on one set (e.g., rows) from
+the reconstitution formula from the other set (e.g., columns).
 }
 \details{
-This function is used when the orignal data table is
-made of blocks or rows (resp columns) all described by the
-same columns (resp rows). In the row case, the rows
+This function is used when the original data table is
+made of blocks of rows (resp columns) all described by the
+same columns (resp. rows). In the row case, the rows
 are clustered in blocks of size
 \eqn{I_}1, ... ,\eqn{I_k}, ... \eqn{I_K}
 (with sum \eqn{I_K} = \eqn{I}) all described by \eqn{J} variables
@@ -62,15 +62,19 @@ of the \eqn{K} blocks of rows. The partial projections
 are barycentric to the whole set of projections
 (i.e., the barycenters off all \eqn{K}-blocks is
 equal to the factors for the whole matrix.
-the projection is obtained from the standard reconstitution
+The projections are obtained from the standard reconstitution
 formula generalized to the case of blocks with each block
 having a \eqn{b}-weight
-(with \eqn{b_k} > 0, and sum \eqn{b_k} = 1n).
+(with \eqn{b_k} > 0, and sum \eqn{b_k} = 1).
 When the data are obtained from a standard CA, the
-paramter \code{data.metric} does not need to be used.
+parameter \code{data.metric} does not need to be used.
 When the data are obtained from an unconventional CA
 (i.e., as performed  with the decomposition
-in common and specific factors).
+in common and specific factors), \code{data.metric}
+gives the metric needed; for example,
+for the decomposition
+in common and specific factors, the specific analysis
+isperformed with the same meetric aas the common analysis.
 }
 \examples{
 \dontrun{
@@ -78,6 +82,12 @@ if(interactive()){
  #EXAMPLE1
  }
 }
+}
+\references{
+Escofier, B. (1983).
+Analyse de la difference entre deux mesures definies
+sur le produit de deux memes ensembles.
+\emph{Les Cahiers de l'Analyse des Donnees, 8}, 325-329.
 }
 \seealso{
 genCA

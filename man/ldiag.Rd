@@ -2,7 +2,7 @@
 % Please edit documentation in R/CSCA.R
 \name{ldiag}
 \alias{ldiag}
-\title{Left (i.e. pre) Multiply a matrix by a diagonal matrix}
+\title{Left (i.e., pre) Multiply a matrix by a diagonal matrix}
 \usage{
 ldiag(y, X)
 }
@@ -17,7 +17,7 @@ an \eqn{I} by \eqn{J} matrix equal
 to diag(\strong{y}) %*% \strong{X}.
 }
 \description{
-\code{ldiag}: Left (i.e. pre) Multiply
+\code{ldiag}: Left (i.e., pre) Multiply
 a matrix by a diagonal matrix (with only
  the diagonal elements being given).
 }
