@@ -1,7 +1,8 @@
+#_____________________________________________________________________
 # function theme_ptca()
-# Hervé Abdi from original from VIncent Guillemot
-# April 11 / 2018.
-#_______________________________________________________________________________
+# Hervé Abdi from original from Vincent Guillemot
+# April 11, 2018. Current version: May 6, 2018.
+#_____________________________________________________________________
 # Preambule theme_ptca ----
 #' @title  A ggplot2 theme that matches the defaults
 #' of the factorial figures in PTCA4CATA
@@ -43,7 +44,7 @@ theme_ptca <- function(mire = TRUE, x0 = 0, y0 = 0) {
         axis.ticks   = element_line(color = 'purple4'),
         axis.title   = element_text(color = 'purple4'),
         panel.background = element_rect(fill = col.fill,
-                                          color = col.bkg),
+                                       color = col.bkg),
         aspect.ratio = 1
       ))
   if (mire) theme_list <- append(theme_list, list(
@@ -51,4 +52,4 @@ theme_ptca <- function(mire = TRUE, x0 = 0, y0 = 0) {
     geom_hline(yintercept = y0, color = col.axes, size = width.axes)))
   return(theme_list)
 } # end of theme_ptca() ----
-# ______________________________________________________________________________
+# ____________________________________________________________________
