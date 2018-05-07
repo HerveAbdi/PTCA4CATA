@@ -1,7 +1,9 @@
 #_____________________________________________________________________
 # function theme_ptca()
 # Hervé Abdi from original from Vincent Guillemot
-# April 11, 2018. Current version: May 6, 2018.
+# April 11, 2018. Current version: May 7, 2018.
+# A good place to pick up colors for theme_ptca() and alternative os
+# https://www.w3schools.com/colors/colors_picker.asp
 #_____________________________________________________________________
 # Preambule theme_ptca ----
 #' @title  A ggplot2 theme that matches the defaults
@@ -30,19 +32,20 @@
 #' }
 #' @export
 theme_ptca <- function(mire = TRUE, x0 = 0, y0 = 0) {
+  dark.col <-  '#26004d'  # a darker version of purple
   col.fill <- adjustcolor('lavender', alpha.f = .2)
   col.bkg <- 'darkorchid'
   col.axes <- adjustcolor('darkorchid', alpha.f = .2)
   width.axes <- 1.1
   theme_list <- list(
-    theme_grey() %+replace%
+    theme_grey() + # %+replace%
       theme(
         legend.key   = element_rect(fill = NA, color = NA),
-        legend.title = element_text(color = 'purple4', face = 'bold'),
-        legend.text  = element_text(color = 'purple4'),
-        axis.text    = element_text(color = 'purple4'),
-        axis.ticks   = element_line(color = 'purple4'),
-        axis.title   = element_text(color = 'purple4'),
+        legend.title = element_text(color = dark.col, face = 'bold'),
+        legend.text  = element_text(color = dark.col),
+        axis.text    = element_text(color = dark.col),
+        axis.ticks   = element_line(color = dark.col),
+        axis.title   = element_text(color = dark.col),
         panel.background = element_rect(fill = col.fill,
                                        color = col.bkg),
         aspect.ratio = 1
