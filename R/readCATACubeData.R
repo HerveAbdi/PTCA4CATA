@@ -1,6 +1,6 @@
 #
-# A function to read the data from a CATA Xls File
-# and create a DataCube
+# A function to read the data from a CATA xls File
+# and to create a DataCube
 # To be integrated in PTCA4CATA Package
 # Herve Abdi October 20, 2016.
 # Current version: July 11, 2017.
@@ -9,41 +9,46 @@
 # --------------------------------------------------------------------
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
-#' Read the CATA data from an Excel File and create a "Brick" of data
-#' to be analyzed bt PTCA4CATA
+#' Reads the CATA data from an Excel File and creates
+#' a "Brick" of data
+#' to be analyzed by PTCA4CATA
 #'
-#' read.xls.CATA
+#' \code{read.xls.CATA}
 #' reads the CATA data from an Excel File and creates a Brick of Data
 #' and a contingency table. The contingency table can be analyzed
 #' by correspondence analysis or Hellinger analysis.
 #' The cube of data is needed to perform correct
-#' cross-validation methos such as
+#' cross-validation methods such as
 #' permutations
 #' tests,  bootstrap confidence intervals, and
 #' bootstrap ratios.
-#' With I products, J adjectives and K judges
+#' With \eqn{I} products,  \eqn{J} adjectives and  \eqn{K} judges
 #' The data in the excel file are organized as:
 #'         row 1 column 1 = name of Judge 1
-#'           row 1 columns  (2 to J+1) name of the adjectives
+#'           row 1 columns  (2 to  \eqn{J} + 1) name of the adjectives
 #'         row 2 column 1 = name of product 1.
-#'           row 2 column (2 to J+1) 0/1 answers
-#'             of Judge 1 to the J adjectives for product 1
+#'           row 2 column (2 to  \eqn{J} + 1) 0/1 answers
+#'             of Judge 1 to the  \eqn{J} adjectives for product 1
 #'         ....
-#'         row I+1 column 1 = name of product I
-#'            row 2 column (2 to J+1) 0/1 answers
-#'         row I+2 column 1 = name of product 1.
-#'           row 2 column (2 to J+1) 0/1 answers
-#'             of Judge 2 to the J adjectives for product 1
+#'         row  \eqn{I}+1 column 1 = name of product  \eqn{I}
+#'            row 2 column (2 to  \eqn{J} + 1) 0/1 answers
+#'         row  \eqn{I} + 2 column 1 = name of product 1.
+#'           row 2 column (2 to  \eqn{J} + 1) 0/1 answers
+#'             of Judge 2 to the  \eqn{J} adjectives for product 1
 #'         ....
 #'         And so on till the last judge.
-#'         See df ***** as data for an example
+#'         See the help for the excel
+#'         file \code{OrangeJuiceCATARawData.xlsx}
+#'         for an example of how the excel file should
+#'         be organized.
+#'  @section Implementation
 #' Current version uses Wickham's \code{readxl} package
 #' and so does not need \code{rJava}.
 #' Current version: is July 11, 2017.
 #'
-#' @param path2file the name of the xls file with the data.
+#' @param path2file the name of the \code{xls} file with the data.
 #' @param sheet2read the name of the sheet in the excel file.
-#' @param orderProducts if TRUE (default) alphabetically
+#' @param orderProducts if \code{TRUE} (default) alphabetically
 #' order the products.
 #' @param threshold4cleaning the cleaning threshold:
 #' The columns whose total
@@ -55,7 +60,7 @@
 #' \code{threshold4cleaning = -1}
 #' @return A list with \code{CATA.Brick}
 #' a "product by adjective by judge" Brick of 0/1 data
-#' (1 if judge chose adjective for product, 0 if not);
+#' (1 if Judge chose adjective for product, 0 if not);
 #'  \code{ContingencyTable}:
 #' A "product by adjective" contingency table;
 #'  \code{CleanedContingencyTable}:
@@ -145,7 +150,7 @@ return.list <-createCube4CATA(df = df, # A data frame
 # NamesOfProducts =  df[1:nProducts,1]
 # NamesOfAttributes = colnames(df)[1:nVars+1]
 # NamesOfJudges = c(colnames(df)[1], df[seq(from = nProducts+1,
-#                           to = (nProducts+1)*(nJudges-1), by = nProducts+1),1])
+#              to = (nProducts+1)*(nJudges-1), by = nProducts+1),1])
 # # Fix a potential problme with repeated names of Judges
 # if ( length(unique( NamesOfJudges )) != nJudges){
 #   NamesOfJudges = paste0('J-',seq(1,nJudges))
@@ -187,8 +192,8 @@ return.list <-createCube4CATA(df = df, # A data frame
 #
 # return(return.list)
 # } # End of function
-#*****************************************************************
-#-----------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 #' Change the print function for readCATACube
 #'
 #' Change the print function for readCATACube
@@ -213,7 +218,7 @@ print.readCATACube <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.readCATACube
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 #  Test for read.xls.CATA
 # # library(XLConnect)
 # # Where are the Data?
@@ -224,16 +229,15 @@ print.readCATACube <- function (x, ...) {
 # sheet2read <- 'all data'
 #
 # DataFromCATA <- read.xls.CATA(path2file ,sheet2read)
-#---------------------------------------------------------------------
-
+#_____________________________________________________________________
 #
 # A function
 # to create a DataCube from a df
 # To be integrated in PTCA4CATA Package
 # Herve Abdi October 21, 2016
 #
-#----------------------------------------------------------------------
-# --------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
 #' create a "Brick" of data and contingency table from CATA df.
@@ -310,8 +314,8 @@ createCube4CATA <- function(df, # A data frame
   #                           Judge 75. row 740 = name of adjective
   #                                                          (2 to 58)
   #                           Column 1 Name of beers (rows 740 to 749)
-  #-----------------------------------------------------------------
-  #-----------------------------------------------------------------
+  #___________________________________________________________________
+  #___________________________________________________________________
   # Reformat the data for PTCA
   #   (partial triadic correspondence analysis)
   # Here we clean the Data
