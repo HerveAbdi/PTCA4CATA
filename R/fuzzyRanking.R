@@ -4,8 +4,9 @@
 #
 #  Preambule for fuzzyRanking----
 
-#' @title recode rating data (e.g., or Lickert type scale)
-#' into a fuzzy code (a.k.a. doublings, or thermometer code).
+#' @title recode rating data (e.g., Lickert type scale)
+#' into a fuzzy code creating 2 columns
+#' \emph{per} variable (a.k.a. doublings, or thermometer code).
 #'
 #' @description
 #' \code{fuzzyRanking}:
