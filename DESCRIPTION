@@ -18,7 +18,7 @@ Imports: ExPosition, coin, car,  prettyGraphs, graphics, stats, ggplot2, ggrepel
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 VignetteBuilder: utils
 URL: http://github.com/HerveAbdi/PTCA4CATA
 BugReports: http://github.com/HerveAbdi/PTCA4CATA/issues

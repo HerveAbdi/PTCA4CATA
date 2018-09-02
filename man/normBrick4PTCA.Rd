@@ -4,8 +4,8 @@
 \alias{normBrick4PTCA}
 \title{\code{normBrick4PTCA} norms an \eqn{I*J*N} CATA array.}
 \usage{
-normBrick4PTCA(array2Norm, normingConstant = 1, normalization = "byRow",
-  code4Groups = NULL)
+normBrick4PTCA(array2Norm, normingConstant = 1,
+  normalization = "byRow", code4Groups = NULL)
 }
 \arguments{
 \item{array2Norm}{a "to be normed" 3-D

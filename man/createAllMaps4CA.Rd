@@ -5,15 +5,16 @@
 \title{Creates all the partial ggplot2 maps for CA
 with all standard variants of normalization for factor scores.}
 \usage{
-createAllMaps4CA(allNormedFactors, axis1 = 1, axis2 = 2, title = NULL,
-  col.points.i = "blueviolet", alpha.points.i = 0.5, pch.i = 19,
-  cex.i = 2.5, segment.size.i = 0, col.labels.i = "darkorchid4",
-  alpha.labels.i = 1, text.cex.i = 4, font.face.i = "bold",
-  font.family.i = "sans", force.i = 1, col.points.j = "darkolivegreen4",
-  alpha.points.j = 0.5, pch.j = 18, cex.j = 2.5, segment.size.j = 0,
-  col.labels.j = "darkolivegreen", alpha.labels.j = 1, text.cex.j = 4,
-  font.face.j = "bold", font.family.j = "sans", force.j = 1,
-  col.axes = "darkorchid", alpha.axes = 0.2, width.axes = 1.1,
+createAllMaps4CA(allNormedFactors, axis1 = 1, axis2 = 2,
+  title = NULL, col.points.i = "blueviolet", alpha.points.i = 0.5,
+  pch.i = 19, cex.i = 2.5, segment.size.i = 0,
+  col.labels.i = "darkorchid4", alpha.labels.i = 1, text.cex.i = 4,
+  font.face.i = "bold", font.family.i = "sans", force.i = 1,
+  col.points.j = "darkolivegreen4", alpha.points.j = 0.5, pch.j = 18,
+  cex.j = 2.5, segment.size.j = 0, col.labels.j = "darkolivegreen",
+  alpha.labels.j = 1, text.cex.j = 4, font.face.j = "bold",
+  font.family.j = "sans", force.j = 1, col.axes = "darkorchid",
+  alpha.axes = 0.2, width.axes = 1.1,
   col.background = adjustcolor("lavender", alpha.f = 0.2), ...)
 }
 \arguments{

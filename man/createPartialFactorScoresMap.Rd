@@ -6,8 +6,8 @@
 (for \code{PTCA4CATA}, or\code{distatis}) to be added to
 the main map of the factor scores.}
 \usage{
-createPartialFactorScoresMap(factorScores, partialFactorScores, axis1 = 1,
-  axis2 = 2, colors4Items = NULL, colors4Blocks = NULL,
+createPartialFactorScoresMap(factorScores, partialFactorScores,
+  axis1 = 1, axis2 = 2, colors4Items = NULL, colors4Blocks = NULL,
   names4Partial = NULL, alpha.lines = 0.5, size.lines = 0.75,
   type.lines = 1, arrow.length = 0, alpha.points = 0.7,
   shape.points = 23, size.points = 1, alpha.labels = 0.7,

@@ -6,7 +6,8 @@
 \usage{
 createBaseMap(data, constraints = NULL, col.axes = "darkorchid",
   alpha.axes = 0.2, width.axes = 1.1,
-  col.background = adjustcolor("lavender", alpha.f = 0.2), title = NULL)
+  col.background = adjustcolor("lavender", alpha.f = 0.2),
+  title = NULL)
 }
 \arguments{
 \item{data}{the factor scores to plot}

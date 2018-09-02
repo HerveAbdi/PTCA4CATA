@@ -9,8 +9,9 @@ ellipses to factor score plots
 \usage{
 MakeToleranceIntervals(data, design, axis1 = 1, axis2 = 2,
   names.of.factors = paste0("Dimension ", c(axis1, axis2)), col = NULL,
-  centers = NULL, line.size = 1, line.type = 1, alpha.ellipse = 0.3,
-  alpha.line = 0.5, p.level = 0.66, type = "hull")
+  centers = NULL, line.size = 1, line.type = 1,
+  alpha.ellipse = 0.3, alpha.line = 0.5, p.level = 0.66,
+  type = "hull")
 }
 \arguments{
 \item{data}{A set of I*L factor scores
