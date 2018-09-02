@@ -2,7 +2,8 @@
 
 An  `R`-package. Implements Partial Triadic Correspondence Analysis (PTCA)
 for the analysis of data coming from "Check All That Apply" (CATA) and related designs.
-So the developped acronym means:
+Soc the developed acronym `PTCA4CATA` means:
+
 *Partial Triadic Correspondence Analysis for Check All That Apply*
 
 
