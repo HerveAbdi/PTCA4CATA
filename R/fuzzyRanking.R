@@ -5,30 +5,33 @@
 #  Preambule for fuzzyRanking----
 
 #' @title recode rating data (e.g., Lickert type scale)
-#' into a fuzzy code creating 2 columns
-#' \emph{per} variable (a.k.a. doublings, or thermometer code).
+#' into a fuzzy code  (a.k.a. doubling, or thermometer code)
+#' creating 2 columns
+#' \emph{per} variable.
 #'
 #' @description
 #' \code{fuzzyRanking}:
-#' recode a rank or Lickert type scale
-#' into a fuzzy code (a.k.a. doublings, or thermometer coding).
-#' \code{fuzzyRanking}: is used to recode rating scale data
-#' prior to perform Multiplle Correspondence Analysis on
-#' rating scale (e.g., Lickert scale).
+#' recodes a rank or Lickert type scale
+#' into a fuzzy code (a.k.a. doubling, or thermometer coding).
+#' \code{fuzzyRanking} is used to recode rating scale data
+#' prior to performing Multiplle Correspondence Analysis on
+#' this type of data.
 #' @param X an \eqn{I} by \eqn{J} matrix where
-#' the rows are object or stimuli and the columns are variables.
-#' At the intersection of a row and columns is the rating
+#' the rows are objects or stimuli and the columns are variables.
+#' At the intersection of a row and a column is the rating
 #' for the object in the row for the variable in the column.
 #' @param min (default = \code{NULL})
 #' the minimum value(s) for the scale.
 #' if \code{NULL} (default), the min is computed per column,
 #' if \code{min} is a scalar it is used for all column,
-#' if \code{min} is a vector of length \eqn{J} is is used per column.
+#' if \code{min} is a vector of length \eqn{J},
+#'  is is used for the columns.
 #' @param max (default = NULL)
 #' (default = \code{NULL}) the maximum value(s) for the scale.
 #' if \code{NULL} (default), the max is computed per column,
 #' if \code{max} is a scalar it is used for all column,
-#' if \code{max} is a vector of length \eqn{J} is is used per column.
+#' if \code{max} is a vector of length \eqn{J} is is used
+#' for the columns.
 #' @param neg.mark (default = '.neg') the suffix for the negative
 #' side of the scale.
 #' @param pos.mark (default = '.pos')
@@ -42,9 +45,9 @@
 #'\eqn{d.neg} = 1/4 and \eqn{d.pos} = 3/4.
 #'Note that \eqn{d.neg} and \eqn{d.pos} always sum to 1.
 #'
-#'If \code{X} has no column names, the dimension will be named
-#' \code{V1} to \code{VJ}.
-#' @return a data frame (or a matrix)
+#'If \code{X} has no column names, the columns will be named
+#' \code{V1} to \code{VJ} in the output.
+#' @return a data frame (or a matrix).
 #' @author Hervé Abdi
 #' @rdname fuzzyRanking
 #' @references
@@ -78,5 +81,5 @@ fuzzyRanking <- function(X,
   fuzzy.X <- cbind(neg.X,pos.X)
   return(fuzzy.X)
 }
-# End of  \code{fuzzyRanking}
+# End of function \code{fuzzyRanking}
 
