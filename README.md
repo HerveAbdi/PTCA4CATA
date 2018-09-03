@@ -22,9 +22,9 @@ devtools::install_github("HerveAbdi/PTCA4CATA") # install PTCA4CATA
 Note, `PTCA4CATA` uses other packages, to make sure that these pacakges are all installed,
 the first time you install `PTCA4CATA` use this command intead:
 ```
-devtools::install_github('HerveAbdi/PTCA4CATA', dependencies = TRUE,
+devtools::install_github('HerveAbdi/PTCA4CATA', dependencies = TRUE)
 ```
-The complete installation may take quite some time, so it could be good time for a coffee (or whatever else) break.
+The complete installation may take quite some time, so it could be a good time for a coffee (or whatever else you enjoy that does not take too much time) break.
 
 
 
