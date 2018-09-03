@@ -1,5 +1,5 @@
 # Function fuzzyRanking
-# How to recode by doubling rating scales for CA
+# How to recode ratings by doubling the rating scales for CA
 # Hervé Abdi: September 2, 2018
 #
 #  Preambule for fuzzyRanking----
@@ -35,28 +35,29 @@
 #'  the suffix for the positive
 #' side of the scale.
 #' @details
-#'Each column is recoded as two columns, The first one expressed
+#'Each column is recoded as two columns: The first one expresses
 #'the distance to the negative pole of the scale and the second one
-#'expressed the distance to the positive pole. For example for a 5 point
+#'expresses the distance to the positive pole. For example for a 5 point
 #'Lickert scale going from 1 to 5, a value of 2 will be recoded as
 #'\eqn{d.neg} = 1/4 and \eqn{d.pos} = 3/4.
 #'Note that \eqn{d.neg} and \eqn{d.pos} always sum to 1.
 #'
 #'If \code{X} has no column names, the dimension will be named
-#' \code{V1} to \code{VJ.}
+#' \code{V1} to \code{VJ}.
 #' @return a data frame (or a matrix)
 #' @author Hervé Abdi
 #' @rdname fuzzyRanking
 #' @references
 #'
-#' Greenacre M> (2017) \emph{Correspondence Analysis in Practice}.
+#' Greenacre M. (2017). \emph{Correspondence Analysis in Practice}.
 #' Boca Raton: CRC Press. pp 201-208.
 #'
 #' @examples
 #' Y <- matrix(c(1,5,2,4,1,4,2,2), nrow = 4)
 #' fuzzy.Y <- fuzzyRanking(Y)
 #' @export
-fuzzyRanking <- function(X, min = NULL, max = NULL,
+fuzzyRanking <- function(X,
+                         min = NULL, max = NULL,
                          neg.mark = '.neg',
                          pos.mark = '.pos'){
   # create the min and max
