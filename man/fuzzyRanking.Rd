@@ -2,29 +2,33 @@
 % Please edit documentation in R/fuzzyRanking.R
 \name{fuzzyRanking}
 \alias{fuzzyRanking}
-\title{recode rating data (e.g., or Lickert type scale)
-into a fuzzy code (a.k.a. doublings, or thermometer code).}
+\title{recode rating data (e.g., Lickert type scale)
+into a fuzzy code  (a.k.a. doubling, or thermometer code)
+creating 2 columns
+\emph{per} variable.}
 \usage{
 fuzzyRanking(X, min = NULL, max = NULL, neg.mark = ".neg",
   pos.mark = ".pos")
 }
 \arguments{
 \item{X}{an \eqn{I} by \eqn{J} matrix where
-the rows are object or stimuli and the columns are variables.
-At the intersection of a row and columns is the rating
+the rows are objects or stimuli and the columns are variables.
+At the intersection of a row and a column is the rating
 for the object in the row for the variable in the column.}
 
 \item{min}{(default = \code{NULL})
 the minimum value(s) for the scale.
 if \code{NULL} (default), the min is computed per column,
 if \code{min} is a scalar it is used for all column,
-if \code{min} is a vector of length \eqn{J} is is used per column.}
+if \code{min} is a vector of length \eqn{J},
+ is is used for the columns.}
 
 \item{max}{(default = NULL)
 (default = \code{NULL}) the maximum value(s) for the scale.
 if \code{NULL} (default), the max is computed per column,
 if \code{max} is a scalar it is used for all column,
-if \code{max} is a vector of length \eqn{J} is is used per column.}
+if \code{max} is a vector of length \eqn{J} is is used
+for the columns.}
 
 \item{neg.mark}{(default = '.neg') the suffix for the negative
 side of the scale.}
@@ -34,33 +38,33 @@ side of the scale.}
 side of the scale.}
 }
 \value{
-a data frame (or a matrix)
+a data frame (or a matrix).
 }
 \description{
 \code{fuzzyRanking}:
-recode a rank or Lickert type scale
-into a fuzzy code (a.k.a. doublings, or thermometer coding).
-\code{fuzzyRanking}: is used to recode rating scale data
-prior to perform Multiplle Correspondence Analysis on
-rating scale (e.g., Lickert scale).
+recodes a rank or Lickert type scale
+into a fuzzy code (a.k.a. doubling, or thermometer coding).
+\code{fuzzyRanking} is used to recode rating scale data
+prior to performing Multiplle Correspondence Analysis on
+this type of data.
 }
 \details{
-Each column is recoded as two columns, The first one expressed
+Each column is recoded as two columns: The first one expresses
 the distance to the negative pole of the scale and the second one
-expressed the distance to the positive pole. For example for a 5 point
+expresses the distance to the positive pole. For example for a 5 point
 Lickert scale going from 1 to 5, a value of 2 will be recoded as
 \eqn{d.neg} = 1/4 and \eqn{d.pos} = 3/4.
 Note that \eqn{d.neg} and \eqn{d.pos} always sum to 1.
 
-If \code{X} has no column names, the dimension will be named
-\code{V1} to \code{VJ.}
+If \code{X} has no column names, the columns will be named
+\code{V1} to \code{VJ} in the output.
 }
 \examples{
 Y <- matrix(c(1,5,2,4,1,4,2,2), nrow = 4)
-fussy.Y <- fuzzyRanking(Y)
+fuzzy.Y <- fuzzyRanking(Y)
 }
 \references{
-Greenacre M> (2017) \emph{Correspondence Analysis in Practice}.
+Greenacre M. (2017). \emph{Correspondence Analysis in Practice}.
 Boca Raton: CRC Press. pp 201-208.
 }
 \author{

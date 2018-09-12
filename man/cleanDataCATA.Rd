@@ -2,8 +2,7 @@
 % Please edit documentation in R/CleanZeData.R
 \name{cleanDataCATA}
 \alias{cleanDataCATA}
-\title{cleanDataCATA
-Clean a Brick of Data prior to a CATA analysis}
+\title{Clean a Brick of Data prior to a CATA analysis}
 \usage{
 cleanDataCATA(listCATA, threshold4cleaning = NULL)
 }
@@ -11,7 +10,7 @@ cleanDataCATA(listCATA, threshold4cleaning = NULL)
 \item{listCATA}{could be 1) a List as obtained,
 for example, from
 \code{read.xls.CATA},
-or 2) a Products * Variables *  Judges array
+or 2) a Products * Variables * Judges array
 (with only 0/1 values).}
 
 \item{threshold4cleaning}{(default = 10% of # Judges) the minimum number
@@ -38,7 +37,7 @@ to describe Product \emph{i}, 0 if not);
   The CATA Brick can be a list or an array. The list can be
   obtained, for example, from \code{PTCA4CATA::read.xls.CATA}.
   If so,
-  this list should include $CATA.Brick.
+  this list should include \code{$CATA.Brick}.
   If the data is an array, it should be
   a Products * Variables * Judges array.
   The level of "almost empty" is defined by the parameter

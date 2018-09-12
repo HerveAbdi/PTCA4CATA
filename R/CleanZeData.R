@@ -1,5 +1,5 @@
 
-#' cleanDataCATA
+# cleanDataCATA
 #' Clean a Brick of Data prior to a CATA analysis
 #'
 #'   \code{cleanDataCATA} cleans a \code{CATA} Brick
@@ -7,7 +7,7 @@
 #'   The CATA Brick can be a list or an array. The list can be
 #'   obtained, for example, from \code{PTCA4CATA::read.xls.CATA}.
 #'   If so,
-#'   this list should include $CATA.Brick.
+#'   this list should include \code{$CATA.Brick}.
 #'   If the data is an array, it should be
 #'   a Products * Variables * Judges array.
 #'   The level of "almost empty" is defined by the parameter
@@ -16,7 +16,7 @@
 #' @param   listCATA could be 1) a List as obtained,
 #' for example, from
 #' \code{read.xls.CATA},
-#' or 2) a Products * Variables *  Judges array
+#' or 2) a Products * Variables * Judges array
 #' (with only 0/1 values).
 #' @param   threshold4cleaning
 #' (default = 10% of # Judges) the minimum number
