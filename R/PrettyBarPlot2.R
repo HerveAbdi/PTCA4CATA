@@ -6,7 +6,7 @@
 # JolisPlots
 # Jolie Plot: the ggplots version of prettyBar etc.
 # Vincent Guillemot and Hervé Abdi
-# Created Septemebr 14, 2018
+# Created September 14, 2018
 #
 
 #_____________________________________________________________________
@@ -23,10 +23,10 @@
 #_____________________________________________________________________
 # areColors ----
 # Credit : https://stackoverflow.com/questions/13289009/check-if-character-string-is-a-valid-color-representation
-#' @title Check that colores names are the names of some real colors.
+#' @title Check that color names are the names of some real colors.
 #' @description  \code{areColors}: Check that colores names are the names of some real colors.
 #' @param x a string vectors with (to be checked) naesm of colors.
-#' @return x a logical vector with \code{TRUE} if a color, \code{FALSE} if not.
+#' @return a logical vector with \code{TRUE} if a color, \code{FALSE} if not.
 #' @details credit:
 #' \url{Credit: https://stackoverflow.com/questions/13289009/check-if-character-string-is-a-valid-color-representation}
 #' @examples
@@ -53,10 +53,10 @@ areColors <- function(x) {
 
 #' @title gives a lighter shade of a color
 #' @description \code{lighten} gives a lighter shade of a color.
-#' @param   colors a vector of color names.
-#' @param   factor (Default: 1.4) lightening factor
-#' @param   maxColorValue (Default: 255) the maximum possible for this
-#' @return  A lightened color
+#' @param colors a vector of color names.
+#' @param   factor (Default: 1.4) the lightening factor
+#' @param   maxColorValue (Default: 255) the maximum possible for a color component.
+#' @return  A lightened color.
 #' @details
 #'  Credit to Roland, see:
 #' \url{https://stackoverflow.com/questions/30219738/is-there-a-way-to-programmatically-darken-the-color-given-rgb-values}
