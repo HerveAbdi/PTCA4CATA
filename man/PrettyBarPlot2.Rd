@@ -13,7 +13,8 @@ PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
   color4ns = "gray75", color4bar = NULL, plotnames = TRUE,
   main = NULL, ylab = NULL, sortValues = FALSE, signifOnly = FALSE,
   horizontal = TRUE, angle.text = if (horizontal) {     90 } else {    
-  0 }, col.line = "red", font.shrink = 1)
+  0 }, font.shrink = 1, line.col = "red", line.type = 2,
+  line.size = 0.5, line.alpha = 0.5)
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) or contributions
@@ -72,12 +73,21 @@ the plot is horizontal, when \code{FALSE} the plot is vertical.}
 \item{angle.text}{(Default: \code{90}, i.e., so slant)
 the "slanting factor" for the text.}
 
-\item{col.line}{(\code{Default = 'red'}) the color for significance
-for the critical value line.}
-
 \item{font.shrink}{(\code{default = 1}): a proportion for
  how much the
 non-significant font shrinks.}
+
+\item{line.col}{(\code{Default = 'red'}) the color for significance
+for the critical value line.}
+
+\item{line.type}{The type of line for the critical line
+(\code{Default = 2}, a dashed line).}
+
+\item{line.size}{(\code{Default = .5 }), the thickness of the
+critical line.}
+
+\item{line.alpha}{(\code{Default = .5 }), the transparency of the
+critical line (0 = all transparent, 1 = opaque).}
 }
 \value{
 A \code{ggplot2} object containg the graph

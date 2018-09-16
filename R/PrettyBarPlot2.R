@@ -150,7 +150,7 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' @param line.size (\code{Default = .5 }), the thickness of the
 #' critical line.
 #' @param line.alpha (\code{Default = .5 }), the transparency of the
-#' critical line (0 = all transparent, 1 no transparent).
+#' critical line (0 = all transparent, 1 = opaque).
 #' @return A \code{ggplot2} object containg the graph
 #' (i.e., to be plotted with \code{print}).
 #' @details \code{PrettyBarPlot2} intergrates \code{PrettyBarPlot}
@@ -259,8 +259,10 @@ PrettyBarPlot2 <- function(bootratio,
   #   ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
   #   } # draw the red line
 #_____________________________________________________________________
-  if (all(bootratio >= 0)) {yint = c(threshold)}
-  if (all(bootratio >= 0)) {yint = -c(threshold)}
+  if (all(bootratio >= 0)) {yint = c(threshold) # fix the lim problem
+                            ylim[2] <- max(ylim[2],  threshold)}
+  if (all(bootratio >= 0)) {yint = -c(threshold) # fix the lim problem
+                            ylim[1] <- min(ylim[1], -threshold)}
   if (any(bootratio >= 0) & any(bootratio <= 0)) {
        yint =  c(threshold, -threshold)
        # fix the lim problem. make sure that the lim is always printed. HA
