@@ -261,7 +261,11 @@ PrettyBarPlot2 <- function(bootratio,
 #_____________________________________________________________________
   if (all(bootratio >= 0)) {yint = c(threshold)}
   if (all(bootratio >= 0)) {yint = -c(threshold)}
-  if (any(bootratio >= 0) & any(bootratio <= 0)) {yint =  c(threshold, -threshold)}
+  if (any(bootratio >= 0) & any(bootratio <= 0)) {
+       yint =  c(threshold, -threshold)
+       # fix the lim problem. make sure that the lim is always printed. HA
+       ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
+       }
   laLigneRouge =  geom_hline(yintercept = yint,
                                 col = line.col,
                                 alpha = line.alpha,
