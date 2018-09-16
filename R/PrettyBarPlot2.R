@@ -65,12 +65,14 @@ areColors <- function(x) {
 #' @rdname lighten
 #' @export
 #' @importFrom colorspace hex2RGB hex
+#' @importFrom methods as
+
 
 lighten <- function(colors, factor=1.4, maxColorValue=255){
   # require(colorspace)
   cols1 <- colorspace::hex2RGB(colors)
   # transform to hue/lightness/saturation colorspace
-  cols1 <- as(cols1, "HLS")
+  cols1 <- methods::as(cols1, "HLS")
   # multiplicative decrease of lightness
   cols1@coords[, "L"] <- cols1@coords[, "L"] * factor
   # going via rgb seems to work better
@@ -101,7 +103,8 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' @param bootratio the bootstrap ratios (BR) or contributions
 #' or similar statistics to be plotted.
 #' (e.g., obtained from Boot4PTCA).
-#' @param font.size PARAM_DESCRIPTION, Default: NULL
+#' @param font.size (Default: NULL) the font size to write
+#' the name of the item. When \code{NULL, font.size = 1}.
 #' @param threshold  (Default: 2)
 #' The critical value for significance
 #'  which matches a \eqn{p} < .05
@@ -137,15 +140,20 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' the "slanting factor" for the text.
 #' @param horizontal (Default: \code{TRUE}) when \code{TRUE},
 #' the plot is horizontal, when \code{FALSE} the plot is vertical.
+#' @param col.line (\code{Default = 'red'}) the color for significance
+#' for the critical value line.
+#' @param font.shrink (\code{default = 1}): a proportion for
+#'  how much the
+#' non-significant font shrinks.
 #' @return A \code{ggplot2} object containg the graph
 #' (i.e., to be plotted with \code{print}).
 #' @details \code{PrettyBarPlot2} intergrates \code{PrettyBarPlot}
 #' and \code{PrettyBarPlotColors}.
 #' @author Vincent Guillemot & Hervé Abdi
 #' @seealso \code{\link{PrettyBarPlot}}
-#' \code{\link{PrettyBarPlotColor}}
+#' \code{\link{PrettyBarPlotColor}} \code{\link{PrettyBarPlotColor4Q}}
 #' @examples
-#' toto <- 8*runif(7)
+#' toto <- 8*(.5 - runif(7))
 #' names(toto) <- paste0('V', 1:7)
 #' PrettyBarPlot2(toto)
 #' @rdname PrettyBarPlot2
@@ -172,8 +180,10 @@ PrettyBarPlot2 <- function(bootratio,
                            ylab = NULL,
                            sortValues = FALSE,
                            signifOnly = FALSE,
-                           angle.text = 90,
-                           horizontal = TRUE) {
+                           horizontal = TRUE,
+                           angle.text = if (horizontal) {90} else {0},
+                           col.line = 'red',
+                           font.shrink = 1) {
   if (signifOnly) {
     if (!is.null(color4bar)) {
       color4bar <- color4bar[abs(bootratio) > threshold]
@@ -206,13 +216,19 @@ PrettyBarPlot2 <- function(bootratio,
     lescouleurs.font <- lescouleurs.bord <- color4bar
     lescouleurs <- lighten(color4bar, factor = 1.3)
     lescouleurs[abs(bootratio) < threshold] <- color4ns
-    lescouleurs.bord[abs(bootratio) < threshold] <- NA
+    lescouleurs.bord[abs(bootratio) < threshold] <- color4ns # NA # HA
+    # comment HA: the color font for ns seems to come from
+    #   lescouleurs.bord rather than from lescouleurs.fonts. I am puzzled.
     lescouleurs.font[abs(bootratio) < threshold] <- color4ns
+    # print(lescouleurs.font)
+    # print(lescouleurs)
   }
-  if (is.null(font.size)) font.size <- 1
+  if (is.null(font.size)) font.size <- 3
   lafont <- rep(font.size, nel)
-  lafont[abs(bootratio) < threshold] = font.size / 2
+  lafont[abs(bootratio) < threshold] = font.size * font.shrink # HA 90%
   LesNoms2Print <- lesnoms
+  ID <- IDnum <- NULL # HA We need to avoind a strange error
+   # building the package
   dat <- data.frame(IDnum = factor(seq_along(LesNoms2Print)),
                     ID = LesNoms2Print,
                     bootratio = bootratio,
@@ -220,43 +236,63 @@ PrettyBarPlot2 <- function(bootratio,
                     lescouleurs.font = lescouleurs.font,
                     lescouleurs.bord = lescouleurs.bord,
                     stringsAsFactors = FALSE)
+  # define the "laLigneRouge" to be drawn only when there are ratios there
+  if (all(bootratio >= 0)){
+   laLigneRouge =  geom_hline(yintercept = c(threshold),
+                               col = col.line, alpha = 0.5, linetype = 2) }
+  if (all(bootratio <= 0)){
+    laLigneRouge =  geom_hline(yintercept = c(-threshold),
+                               col = col.line, alpha = 0.5, linetype = 2) }
+  if (any(bootratio >= 0) & any(bootratio <= 0)) {
+    laLigneRouge = geom_hline(yintercept = c(threshold, -threshold),
+                             col = col.line, alpha = 0.5, linetype = 2)
+      # fix the lim problem. make sure that the lim is always printed. HA
+    ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
+    } # draw the red line
+#_____________________________________________________________________
   if (horizontal) {
-    p <- ggplot(dat, aes(x = IDnum, y = bootratio, fill = IDnum, color = IDnum)) +
-      geom_hline(yintercept = c(threshold, -threshold),
-                 col="red", alpha=0.5, linetype=2) +
+#_____________________________________________________________________
+    p <- ggplot(dat, aes(x = IDnum, y = bootratio,
+                            fill = IDnum, color = IDnum)) +
+      laLigneRouge +
+      #      geom_hline(yintercept = c(threshold, -threshold),
+#                 col="red", alpha=0.5, linetype=2) +
       geom_col() +
       geom_text(aes(x = IDnum, y = 0, label = ID),
                 hjust = ifelse(bootratio >= 0, 1.1, -0.1),
                 size = lafont,
                 angle = angle.text) +
       geom_hline(yintercept = 0) +
-      scale_fill_manual(values=lescouleurs) +
-      scale_color_manual(values=lescouleurs.bord) +
-      guides(fill=FALSE, color=FALSE) +
+      scale_fill_manual(values = lescouleurs) +
+      scale_color_manual(values = lescouleurs.bord) +
+      guides(fill = FALSE, color = FALSE) +
       labs(x = "", y = ylab) +
       ggtitle(main) +
       theme_bw() +
-      theme(axis.line.y = element_line(colour = "black"),
-            axis.title.x = element_blank(),
-            axis.text.x = element_blank(),
-            axis.ticks.x = element_blank(),
+      theme(axis.line.y      = element_line(colour = "black"),
+            axis.title.x     = element_blank(),
+            axis.text.x      = element_blank(),
+            axis.ticks.x     = element_blank(),
             panel.grid.major = element_blank(),
             panel.grid.minor = element_blank(),
-            panel.border = element_blank(),
+            panel.border     = element_blank(),
             panel.background = element_blank()) +
       ylim(ylim)
+#_____________________________________________________________________
+
   } else {
-    p <- ggplot(dat, aes(x=IDnum, y=bootratio, fill=IDnum, color=IDnum)) +
-      geom_hline(yintercept = c(threshold, -threshold),
-                 col="red", alpha=0.5, linetype=2) +
+    p <- ggplot(dat, aes(x=IDnum, y = bootratio, fill = IDnum, color = IDnum)) +
+      laLigneRouge +
+#     geom_hline(yintercept = c(threshold, -threshold),
+#                 col="red", alpha=0.5, linetype=2) +
       geom_col() +
       geom_text(aes(x = IDnum, y = 0, label = ID),
                 hjust = ifelse(bootratio >= 0, 1.1, -0.1),
                 size = lafont,
                 angle = angle.text) +
       geom_hline(yintercept = 0) +
-      scale_fill_manual(values=lescouleurs) +
-      scale_color_manual(values=lescouleurs.bord) +
+      scale_fill_manual(values = lescouleurs) +
+      scale_color_manual(values = lescouleurs.bord) +
       guides(fill = FALSE, color = FALSE) +
       labs(x = "", y = ylab) +
       ggtitle(main) +
@@ -269,11 +305,9 @@ PrettyBarPlot2 <- function(bootratio,
             panel.grid.minor = element_blank(),
             panel.border     = element_blank(),
             panel.background = element_blank()) +
-      ylim(ylim) +
-      coord_flip()
+      ylim(ylim)    + coord_flip()
   }
-
   return(p)
-}
+ } # end of function PrettyBarPlot2
 #_____________________________________________________________________
 #_____________________________________________________________________

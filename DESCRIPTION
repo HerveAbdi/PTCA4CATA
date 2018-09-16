@@ -15,7 +15,7 @@ Description:
          can also be used.
 License: GPL-2
 Imports: ExPosition, coin, car,  prettyGraphs, graphics, stats,
-    ggplot2, ggrepel, readxl, reshape, officer, rvg, colorspace
+    ggplot2, ggrepel, readxl, reshape, officer, rvg, colorspace, methods
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true

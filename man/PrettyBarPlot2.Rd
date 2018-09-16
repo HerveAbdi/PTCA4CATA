@@ -12,14 +12,16 @@ PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
   color.letter = c("mediumpurple4", "darkolivegreen4", "gray75"),
   color4ns = "gray75", color4bar = NULL, plotnames = TRUE,
   main = NULL, ylab = NULL, sortValues = FALSE, signifOnly = FALSE,
-  angle.text = 90, horizontal = TRUE)
+  horizontal = TRUE, angle.text = if (horizontal) {     90 } else {    
+  0 }, col.line = "red", font.shrink = 1)
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) or contributions
 or similar statistics to be plotted.
 (e.g., obtained from Boot4PTCA).}
 
-\item{font.size}{PARAM_DESCRIPTION, Default: NULL}
+\item{font.size}{(Default: NULL) the font size to write
+the name of the item. When \code{NULL, font.size = 1}.}
 
 \item{threshold}{(Default: 2)
 The critical value for significance
@@ -64,11 +66,18 @@ sort the values to plot.}
 \item{signifOnly}{(Default: \code{FALSE}) when \code{TRUE}
 plot only the significant values.}
 
+\item{horizontal}{(Default: \code{TRUE}) when \code{TRUE},
+the plot is horizontal, when \code{FALSE} the plot is vertical.}
+
 \item{angle.text}{(Default: \code{90}, i.e., so slant)
 the "slanting factor" for the text.}
 
-\item{horizontal}{(Default: \code{TRUE}) when \code{TRUE},
-the plot is horizontal, when \code{FALSE} the plot is vertical.}
+\item{col.line}{(\code{Default = 'red'}) the color for significance
+for the critical value line.}
+
+\item{font.shrink}{(\code{default = 1}): a proportion for
+ how much the
+non-significant font shrinks.}
 }
 \value{
 A \code{ggplot2} object containg the graph
@@ -92,13 +101,13 @@ in color, non-significant items are plotted in gray.
 and \code{PrettyBarPlotColors}.
 }
 \examples{
-toto <- 8*runif(7)
+toto <- 8*(.5 - runif(7))
 names(toto) <- paste0('V', 1:7)
 PrettyBarPlot2(toto)
 }
 \seealso{
 \code{\link{PrettyBarPlot}}
-\code{\link{PrettyBarPlotColor}}
+\code{\link{PrettyBarPlotColor}} \code{\link{PrettyBarPlotColor4Q}}
 }
 \author{
 Vincent Guillemot & Hervé Abdi
