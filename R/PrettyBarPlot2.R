@@ -140,11 +140,17 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' the "slanting factor" for the text.
 #' @param horizontal (Default: \code{TRUE}) when \code{TRUE},
 #' the plot is horizontal, when \code{FALSE} the plot is vertical.
-#' @param col.line (\code{Default = 'red'}) the color for significance
-#' for the critical value line.
 #' @param font.shrink (\code{default = 1}): a proportion for
 #'  how much the
 #' non-significant font shrinks.
+#' @param line.col (\code{Default = 'red'}) the color for significance
+#' for the critical value line.
+#' @param line.type The type of line for the critical line
+#' (\code{Default = 2}, a dashed line).
+#' @param line.size (\code{Default = .5 }), the thickness of the
+#' critical line.
+#' @param line.alpha (\code{Default = .5 }), the transparency of the
+#' critical line (0 = all transparent, 1 no transparent).
 #' @return A \code{ggplot2} object containg the graph
 #' (i.e., to be plotted with \code{print}).
 #' @details \code{PrettyBarPlot2} intergrates \code{PrettyBarPlot}
@@ -182,8 +188,11 @@ PrettyBarPlot2 <- function(bootratio,
                            signifOnly = FALSE,
                            horizontal = TRUE,
                            angle.text = if (horizontal) {90} else {0},
-                           col.line = 'red',
-                           font.shrink = 1) {
+                           font.shrink = 1,
+                           line.col = 'red',
+                           line.type = 2,
+                           line.size = .5,
+                           line.alpha = .5) {
   if (signifOnly) {
     if (!is.null(color4bar)) {
       color4bar <- color4bar[abs(bootratio) > threshold]
@@ -237,21 +246,29 @@ PrettyBarPlot2 <- function(bootratio,
                     lescouleurs.bord = lescouleurs.bord,
                     stringsAsFactors = FALSE)
   # define the "laLigneRouge" to be drawn only when there are ratios there
-  if (all(bootratio >= 0)){
-   laLigneRouge =  geom_hline(yintercept = c(threshold),
-                               col = col.line, alpha = 0.5, linetype = 2) }
-  if (all(bootratio <= 0)){
-    laLigneRouge =  geom_hline(yintercept = c(-threshold),
-                               col = col.line, alpha = 0.5, linetype = 2) }
-  if (any(bootratio >= 0) & any(bootratio <= 0)) {
-    laLigneRouge = geom_hline(yintercept = c(threshold, -threshold),
-                             col = col.line, alpha = 0.5, linetype = 2)
-      # fix the lim problem. make sure that the lim is always printed. HA
-    ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
-    } # draw the red line
+  # if (all(bootratio >= 0)){
+  #  laLigneRouge =  geom_hline(yintercept = c(threshold),
+  #                              col = col.line, alpha = 0.5, linetype = 2) }
+  # if (all(bootratio <= 0)){
+  #   laLigneRouge =  geom_hline(yintercept = c(-threshold),
+  #                              col = col.line, alpha = 0.5, linetype = 2) }
+  # if (any(bootratio >= 0) & any(bootratio <= 0)) {
+  #   laLigneRouge = geom_hline(yintercept = c(threshold, -threshold),
+  #                            col = col.line, alpha = 0.5, linetype = 2)
+  #     # fix the lim problem. make sure that the lim is always printed. HA
+  #   ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
+  #   } # draw the red line
 #_____________________________________________________________________
-  if (horizontal) {
+  if (all(bootratio >= 0)) {yint = c(threshold)}
+  if (all(bootratio >= 0)) {yint = -c(threshold)}
+  if (any(bootratio >= 0) & any(bootratio <= 0)) {yint =  c(threshold, -threshold)}
+  laLigneRouge =  geom_hline(yintercept = yint,
+                                col = line.col,
+                                alpha = line.alpha,
+                                linetype = line.type,
+                                size = line.size)
 #_____________________________________________________________________
+  if (horizontal){
     p <- ggplot(dat, aes(x = IDnum, y = bootratio,
                             fill = IDnum, color = IDnum)) +
       laLigneRouge +
@@ -279,8 +296,7 @@ PrettyBarPlot2 <- function(bootratio,
             panel.background = element_blank()) +
       ylim(ylim)
 #_____________________________________________________________________
-
-  } else {
+    } else {
     p <- ggplot(dat, aes(x=IDnum, y = bootratio, fill = IDnum, color = IDnum)) +
       laLigneRouge +
 #     geom_hline(yintercept = c(threshold, -threshold),

@@ -2,7 +2,7 @@
 
 An  `R`-package: Implements Partial Triadic Correspondence Analysis (PTCA)
 for the analysis of data coming from "Check All That Apply" (CATA) and related designs.
-Soc the developed acronym `PTCA4CATA` means:
+So the developed acronym `PTCA4CATA` means:
 
 *Partial Triadic Correspondence Analysis for Check All That Apply*
 
@@ -19,12 +19,12 @@ To install `PTCA4CATA` from `Github` use the function `install_github()`  from t
 #install.packages("devtools") # decomment this line if devtools is not yet intalled
 devtools::install_github("HerveAbdi/PTCA4CATA") # install PTCA4CATA
 ```
-Note, `PTCA4CATA` uses other packages, to make sure that these pacakges are all installed,
+Note, `PTCA4CATA` uses other packages, to make sure that these packages are all installed,
 the first time you install `PTCA4CATA` use this command intead:
-```
+```{r}
 devtools::install_github('HerveAbdi/PTCA4CATA', dependencies = TRUE)
 ```
-The complete installation may take quite some time, so it could be a good time for a coffee (or whatever else you enjoy that does not take too much time) break.
+The complete installation may take quite some time, so it could be a good time for a coffee  break (or whatever else you enjoy that does not take too much time) .
 
 
 
