@@ -261,7 +261,7 @@ PrettyBarPlot2 <- function(bootratio,
 #_____________________________________________________________________
   if (all(bootratio >= 0)) {yint = c(threshold) # fix the lim problem
                             ylim[2] <- max(ylim[2],  threshold)}
-  if (all(bootratio >= 0)) {yint = -c(threshold) # fix the lim problem
+  if (all(bootratio <= 0)) {yint = -c(threshold) # fix the lim problem
                             ylim[1] <- min(ylim[1], -threshold)}
   if (any(bootratio >= 0) & any(bootratio <= 0)) {
        yint =  c(threshold, -threshold)
