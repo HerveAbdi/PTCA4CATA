@@ -9,7 +9,7 @@ lighten(colors, factor = 1.4, maxColorValue = 255)
 \arguments{
 \item{colors}{a vector of color names.}
 
-\item{factor}{(Default: 1.4) the lightening factor}
+\item{factor}{(Default: 1.4) the lightening factor.}
 
 \item{maxColorValue}{(Default: 255) the maximum possible for a color component.}
 }

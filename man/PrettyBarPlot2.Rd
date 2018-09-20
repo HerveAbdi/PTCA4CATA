@@ -107,7 +107,7 @@ Significant or important items are plotted
 in color, non-significant items are plotted in gray.
 }
 \details{
-\code{PrettyBarPlot2} intergrates \code{PrettyBarPlot}
+\code{PrettyBarPlot2} integrates \code{PrettyBarPlot}
 and \code{PrettyBarPlotColors}.
 }
 \examples{

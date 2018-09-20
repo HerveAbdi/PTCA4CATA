@@ -54,7 +54,7 @@ areColors <- function(x) {
 #' @title gives a lighter shade of a color
 #' @description \code{lighten} gives a lighter shade of a color.
 #' @param colors a vector of color names.
-#' @param   factor (Default: 1.4) the lightening factor
+#' @param   factor (Default: 1.4) the lightening factor.
 #' @param   maxColorValue (Default: 255) the maximum possible for a color component.
 #' @return  A lightened color.
 #' @details
@@ -153,7 +153,7 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' critical line (0 = all transparent, 1 = opaque).
 #' @return A \code{ggplot2} object containg the graph
 #' (i.e., to be plotted with \code{print}).
-#' @details \code{PrettyBarPlot2} intergrates \code{PrettyBarPlot}
+#' @details \code{PrettyBarPlot2} integrates \code{PrettyBarPlot}
 #' and \code{PrettyBarPlotColors}.
 #' @author Vincent Guillemot & Hervé Abdi
 #' @seealso \code{\link{PrettyBarPlot}}
