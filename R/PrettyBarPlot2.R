@@ -100,11 +100,10 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' Significant or important items are plotted
 #' in color, non-significant items are plotted in gray.
 
-
 #' @param bootratio the bootstrap ratios (BR) or contributions
 #' or similar statistics to be plotted.
-#' (e.g., obtained from Boot4PTCA).
-#' @param font.size (Default: NULL) the font size to write
+#' (e.g., obtained from \code{Boot4PTCA}).
+#' @param font.size (Default: \code{NULL}) the font size to write
 #' the name of the item. When \code{NULL, font.size = 1}.
 #' @param threshold  (Default: 2)
 #' The critical value for significance
@@ -237,7 +236,7 @@ PrettyBarPlot2 <- function(bootratio,
   lafont <- rep(font.size, nel)
   lafont[abs(bootratio) < threshold] = font.size * font.shrink # HA 90%
   LesNoms2Print <- lesnoms
-  ID <- IDnum <- NULL # HA We need to avoind a strange error
+  ID <- IDnum <- NULL # HA We need to avoid a strange error
    # building the package
   dat <- data.frame(IDnum = factor(seq_along(LesNoms2Print)),
                     ID = LesNoms2Print,
@@ -260,10 +259,15 @@ PrettyBarPlot2 <- function(bootratio,
   #   ylim = c(min(ylim[1],-threshold) , max(ylim[2],threshold))
   #   } # draw the red line
 #_____________________________________________________________________
+  # The dimensions need to be better computed from the letter size
+  #
   if (all(bootratio >= 0)) {yint = c(threshold)   # fix the lim problem
-                            ylim[2] <- max(ylim[2],  threshold)}
+                            ylim[2] <- max(ylim[2],  threshold)
+                            ylim[1] <- min(ylim[1],  0)
+                            }
   if (all(bootratio <= 0)) {yint = -c(threshold)  # fix the lim problem
-                            ylim[1] <- min(ylim[1], -threshold)}
+                            ylim[1] <- min(ylim[1], -threshold)
+                            ylim[2] <- max(0, ylim[2])}
   if (any(bootratio >= 0) & any(bootratio <= 0)) {
        yint =  c(threshold, -threshold)
        # fix the lim problem: Make sure that the lim is always printed. HA

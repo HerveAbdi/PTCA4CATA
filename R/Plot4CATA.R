@@ -121,41 +121,41 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
   return(list(ylim=ylim,threshold=threshold))
 } # End of function PrettyBarPlot
 # ******************************************************************************
-#' ShadesColor Create create lighter and darker versions of a color
+#' Create lighter and darker versions of a color.
 #'
-#' ShadesColor Create create lighter and darker versions of a color
-#'  used by PrettyBarPlotColor to create faked transparent colors.
+#' \code{ShadesColor}: Create lighter and darker versions of a color
+#'  used by \code{PrettyBarPlotColor} to create faked transparent colors.
 #'
 #' @author Hervé Abdi
-#' @param AColor the color to use
+#' @param aColor the color to use
 #' @param jiffy  A small amount to make darker or clearer
 #' default = 40.
 #' @return A list:
-#' 1) TestColorDarker the darker
-#' version of AColor
-#' 2) TestColorLighter the lighter
-#' version of AColor
-#' # @examples
+#' 1) \code{testColorDarker}: the darker
+#' version of \code{aColor};
+#' 2) \code{testColorLighter} the lighter
+#' version of \code{aColor}.
+#' @examples
 #' twoColors <- ShadesColor('Red',50)
 #' @export
 
-ShadesColor <- function(AColor,jiffy=40){
+ShadesColor <- function(aColor,jiffy=40){
   # create lighter and darker shades of a color
   # to be used for writing names in bars for PrettyColorBars
   # step 1 get it RGB
-  rgb_Col = col2rgb(AColor)
+  rgb_Col = col2rgb(aColor)
   # Jiffy A small amount to make darker or clearer
   darker_color = apply(rgb_Col-jiffy,1,function(i){max(i,0)} )
   lighter_color = apply(rgb_Col+jiffy,1,function(i){min(i,255)} )
-  TestColorDarker  = rgb(darker_color[1],
+  testColorDarker  = rgb(darker_color[1],
                          darker_color[2], darker_color[3],
                          maxColorValue=255)
-  TestColorLighter = rgb(lighter_color[1],
+  testColorLighter = rgb(lighter_color[1],
                          lighter_color[2],
                          lighter_color[3],
                          maxColorValue=255)
   # return the color as a list
-  return(c(TestColorDarker, TestColorLighter))
+  return(c(testColorDarker, testColorLighter))
 }
 # ******************************************************************************
 # function PrettyBarPlotColor.

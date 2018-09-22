@@ -2,28 +2,29 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{ShadesColor}
 \alias{ShadesColor}
-\title{ShadesColor Create create lighter and darker versions of a color}
+\title{Create lighter and darker versions of a color.}
 \usage{
-ShadesColor(AColor, jiffy = 40)
+ShadesColor(aColor, jiffy = 40)
 }
 \arguments{
-\item{AColor}{the color to use}
+\item{aColor}{the color to use}
 
 \item{jiffy}{A small amount to make darker or clearer
 default = 40.}
 }
 \value{
 A list:
-1) TestColorDarker the darker
-version of AColor
-2) TestColorLighter the lighter
-version of AColor
-# @examples
-twoColors <- ShadesColor('Red',50)
+1) \code{testColorDarker}: the darker
+version of \code{aColor};
+2) \code{testColorLighter} the lighter
+version of \code{aColor}.
 }
 \description{
-ShadesColor Create create lighter and darker versions of a color
- used by PrettyBarPlotColor to create faked transparent colors.
+\code{ShadesColor}: Create lighter and darker versions of a color
+ used by \code{PrettyBarPlotColor} to create faked transparent colors.
+}
+\examples{
+twoColors <- ShadesColor('Red',50)
 }
 \author{
 Hervé Abdi

@@ -19,9 +19,9 @@ PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) or contributions
 or similar statistics to be plotted.
-(e.g., obtained from Boot4PTCA).}
+(e.g., obtained from \code{Boot4PTCA}).}
 
-\item{font.size}{(Default: NULL) the font size to write
+\item{font.size}{(Default: \code{NULL}) the font size to write
 the name of the item. When \code{NULL, font.size = 1}.}
 
 \item{threshold}{(Default: 2)

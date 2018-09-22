@@ -108,7 +108,6 @@ print.bootRatios <- function (x, ...) {
 #_____________________________________________________________________
 
 
-
 # ********************************************************************
 # function Boot4PTCA.
 #   Compute the Bootstrapped Factors scores for I and J sets
