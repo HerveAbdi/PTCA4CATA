@@ -79,10 +79,11 @@ for the axes, default is .2.}
 \item{col.background}{the color theme of the background,
 default is \code{adjustcolor('lavender', alpha.f = .2)}.}
 
-\item{force}{(default = 1). How much \code{ggrepel} repels the label}
+\item{force}{\code{(default = 1)}.
+How much \code{ggrepel} repels the label}
 
-\item{segment.size}{(default = 0)
-size of segment line for \code{ggrpel}}
+\item{segment.size}{\code{(default = 0)}
+size of segment line for \code{ggrpel}.}
 
 \item{...}{stuff to be passed to other functions.}
 }
@@ -96,7 +97,8 @@ a list
 6) \code{constraints:} The list of the contraints'
 }
 \description{
-Create the ggplot2 basic factor maps for CA type graphs.
+\code{createFactorMap}:
+Creates the \code{ggplot2} basic factor maps for CA type graphs.
 The final maps are created by using overlays on top of the base map.
 See also \code{makeCAmap}.
 A map for CA is created with the baseMap to which

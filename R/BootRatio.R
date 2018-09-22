@@ -1,3 +1,4 @@
+# Preamble ----
 # This file contains the computational routines for PTCA4CATA
 # Current functions here:
 # boot.ratio.test()
@@ -11,12 +12,14 @@
 # Uptdates. August 07. HA / October 17 / 2016.
 # June 9 2017. HA
 # February 9 2018. HA
-#---------------------------------------------------------------------
+#_____________________________________________________________________
+
 
 # ********************************************************************
 # The functions start below
 # ********************************************************************
-# function from Derek's fucntion for bootstrap ratios
+# boot.ratio.test ----
+# function from Derek's function for bootstrap ratios
 #' \code{boot.ratio.test} computes bootstrap ratios
 #' from a "bootstrap cube."
 #'
@@ -102,7 +105,7 @@ print.bootRatios <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.bootRatios
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 
 
 
@@ -326,7 +329,8 @@ print.Boot4PTCA <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.cBoot4PTCA
-#--------------------------------------------------------------------
+#_____________________________________________________________________
+
 
 
 
@@ -453,7 +457,7 @@ InertiaTable = function(X){
 
 
 
-# --------------------------------------------------------------------
+#_____________________________________________________________________
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
 
@@ -535,24 +539,25 @@ DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
 } # End of DataCheckMark2Cube
 # ********************************************************************
 
-# --------------------------------------------------------------------
+#_____________________________________________________________________
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
-# 3. Taylor made functions from Sorting_Example4Bangkok.Rmd
-# --------------------------------------------------------------------
-#' vec2gray transforms a vector of non-negative numbers into
+#_____________________________________________________________________
+#' @title transforms a vector of non-negative numbers into
 #' gray values
 #'
+#' @description \code{vec2gray}:
 #' transforms a vector of non-negative numbers into
-#' gray values
+#' gray values.
 #' @author Hervé Abdi
 #' @param levec a vector of  non negative numbers
 #' @return a vector of gray values
 #' @examples # le.grey <- vec2gray(1:10)
-#' @import grDevices
+#' @importFrom grDevices gray
 #' @export
 vec2gray <- function(levec){# get grey value
-  le.grey <-  gray(1- (levec / (max(levec))))
+  le.grey <-  grDevices::gray(1 - (levec / (max(levec))))
   return(le.grey)}
-# --------------------------------------------------------------------
+#_____________________________________________________________________
+
 

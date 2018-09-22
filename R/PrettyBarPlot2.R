@@ -32,10 +32,11 @@
 #' @examples
 #' areColors(c(NA, "black", "blackk", "1", "#00", "#000000"))
 #' @rdname areColors
+#' @importFrom grDevices col2rgb
 #' @export
 areColors <- function(x) {
   sapply(x, function(X) {
-    tryCatch(is.matrix(col2rgb(X)),
+    tryCatch(is.matrix(grDevices::col2rgb(X)),
              error = function(e) FALSE)
   })
 }

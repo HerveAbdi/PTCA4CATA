@@ -2,7 +2,7 @@
 % Please edit documentation in R/CreateFactorMaps4CA.R
 \name{map4DotsAndLabels}
 \alias{map4DotsAndLabels}
-\title{Create ggplot2 factorial maps for dots and labels.
+\title{Create \code{ggplot2} factorial maps for dots and labels.
 NB needs a base map to work correctly}
 \usage{
 map4DotsAndLabels(data, axis1 = 1, axis2 = 2, display.points = TRUE,
@@ -16,10 +16,10 @@ map4DotsAndLabels(data, axis1 = 1, axis2 = 2, display.points = TRUE,
 \item{data}{the factor scores to plot}
 
 \item{axis1}{the column of X used for the horizontal axis
-of the plot. Default 1.}
+of the plot. \code{Default 1}.}
 
-\item{axis2}{the column of X used for the vertical axis
-of the plot. Default 2.}
+\item{axis2}{the column of \code{X} used for the vertical axis
+of the plot. \code{Default 2}.}
 
 \item{display.points}{if  \code{TRUE} (Default)
 create the map for the points.}
@@ -27,9 +27,9 @@ create the map for the points.}
 \item{col.points}{the color of the points/dots.
 Can be one color or a vector of colors. If a vector it needs
 to have exactly the number of items to be plotted.
-Default = 'blueviolet',}
+\code{Default = 'blueviolet'}.}
 
-\item{alpha.points}{(default = .5), the alpha
+\item{alpha.points}{\code{(default = .5)}, the alpha
 (transparency) for the points, should be
 between 1 (no transparency) and 0
 (completely transparent).}
@@ -90,9 +90,10 @@ a list with
  with the same scaling factors).
 }
 \description{
-Create ggplot2 factorial map for dots and labels.
-NB needs a base map to work correctly.
-#' create the base plot maps for CA type graphs with ggplot2
+\code{map4DotsAndLabels}:
+Creates \code{ggplot2} factorial map for dots and labels.
+NB: needs a base map to work correctly.
+create the base plot maps for CA type graphs with \code{ggplot2}
 }
 \section{Important_Note}{
  When creating multiple layers graphs,

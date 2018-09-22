@@ -151,7 +151,6 @@ a list with
 \code{createFactorMapIJ}: Creates
  \code{ggplot2} factorial maps for dots and labels.
 NB needs a base map to work correctly.
-#' create the base plot maps for CA type graphs with ggplot2
 }
 \section{Important_Note}{
  When creating multiple layers graphs,

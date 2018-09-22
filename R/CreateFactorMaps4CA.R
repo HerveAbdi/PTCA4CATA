@@ -1,6 +1,6 @@
-
+# Preamble ----
 #********************************************************************
-#
+#_____________________________________________________________________
 # function for creating Factor Based Map
 # createBaseMap
 # createFactorMap
@@ -10,13 +10,13 @@
 # fix problem with axis different from 1 and 2
 #
 
-
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 # function: createBaseMap
-#--------------------------------------------------------------------
+# creteBaseMap ----
+#_____________________________________________________________________
 #' create a base map for CA type graphs with ggplot2
 #'
-#' Create a ggplot2 basemap for CA type graphs.
+#' \code{createBaseMap}: Create a ggplot2 basemap for CA type graphs.
 #' The final maps are created by using overlays.
 #' See also: \code{makeCAmap}.
 #' A map CA is created with first the baseMap and
@@ -36,18 +36,18 @@
 #' default is \code{adjustcolor('lavender', alpha.f = .2)}.
 #' @param title a main title, default is \code{NULL} (no title)
 #' @return a basemap
-#' @import prettyGraphs ggplot2
+#' @import prettyGraphs ggplot2 grDevices
 #' @export
-#' @author Herve Abdi
-#' #' @section Important_Note: When creating multiple layers graphs,
+#' @author Hervé Abdi
+#' @section Important_Note: When creating multiple layers graphs,
 #' because of the way \code{ggplot2} create graphs, all the
-#' the matrices/dataframe should all the have the  same column names
+#' the matrices/dataframe should all the have the same column names
 #' [e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
 #' When it is not the case, some strange and cryptic
 #' error may be produced
 #' (e.g., "cannot find Dimension").
 #' @examples \dontrun{
-#' aBaseMap <- createBaseMap{Fi}
+#' aBaseMap <- createBaseMap(Fi)
 #' # with Fi being a map of factor scores
 #' }
 createBaseMap <- function(data,
@@ -56,8 +56,8 @@ createBaseMap <- function(data,
                           alpha.axes = .2,
                           width.axes = 1.1,
                           col.background =
-                            adjustcolor('lavender',
-                                        alpha.f = .2) ,
+                             adjustcolor('lavender',
+                                        alpha.f = .2),
                           title = NULL){
   if (is.null(col.background)){col.background = 'transparent'}
   data <- as.data.frame(data)
@@ -87,18 +87,17 @@ createBaseMap <- function(data,
 }
 # End of function createBaseMap
 
-#----------------------------------------------------------------------
-# function: createFactorMaps
-#----------------------------------------------------------------------
-
-# createFactorMap
+#_____________________________________________________________________
+# function: createFactorMap
+#_____________________________________________________________________
+# createFactorMap ----
 # create the base plot for factor type plots
 # gives a baseMap and one map for dots and one map for labels
-#
-
-#' create the base plot maps for CA type graphs with ggplot2
+#_____________________________________________________________________
+#' @title  create the base plot maps for CA type graphs with ggplot2
 #'
-#' Create the ggplot2 basic factor maps for CA type graphs.
+#' @description \code{createFactorMap}:
+#' Creates the \code{ggplot2} basic factor maps for CA type graphs.
 #' The final maps are created by using overlays on top of the base map.
 #' See also \code{makeCAmap}.
 #' A map for CA is created with the baseMap to which
@@ -153,9 +152,10 @@ createBaseMap <- function(data,
 #' @param width.axes the width of the axes, default is 1.1.
 #' @param col.background the color theme of the background,
 #' default is \code{adjustcolor('lavender', alpha.f = .2)}.
-#' @param force (default = 1). How much \code{ggrepel} repels the label
-#' @param segment.size (default = 0)
-#'  size of segment line for \code{ggrpel}
+#' @param force \code{(default = 1)}.
+#' How much \code{ggrepel} repels the label
+#' @param segment.size \code{(default = 0)}
+#'  size of segment line for \code{ggrpel}.
 #' @param ... stuff to be passed to other functions.
 #' @return a list
 #' 1) \code{zeMap}: The Complete Map (background Dots and Labels);
@@ -164,7 +164,7 @@ createBaseMap <- function(data,
 #' 4) \code{zeMap_text:} The Labels;
 #' 5) \code{factorScores:}  The factor scores; and
 #' 6) \code{constraints:} The list of the contraints'
-#; NB class = 'createFactorMap'
+#; NB class = \code{'createFactorMap'}.
 #' @section Important_Note: When creating multiple layers graphs,
 #' because of the way \code{ggplot2} create graphs, all the
 #' the matrices/dataframe should all the have the  same column names
@@ -172,7 +172,7 @@ createBaseMap <- function(data,
 #' When it is not the case, some strange and cryptic
 #' error may be produced
 #' (e.g., "cannot find Dimension").
-#' @import prettyGraphs
+#' @import prettyGraphs grDevices
 #' @export
 # @examples \dontrun{}
 #' @author Herve Abdi
@@ -226,7 +226,8 @@ createFactorMap <- function(X,
     constraints <-
       lapply(prettyGraphs::minmaxHelper(G[,c(axis1,axis2)]),'*',1.1)
   }
-  #  #-----------------------------------------------------------------------------
+  #
+  #___________________________________________________________________
   # NB geom_text_repel is from ggrepel
   LeG_b <- createBaseMap(data = G[,c(axis1,axis2)],
                          constraints = constraints,
@@ -283,7 +284,7 @@ createFactorMap <- function(X,
   return(return.list)
   #
 } # End of Function
-#
+#_____________________________________________________________________
 
 #' Change the print function for createFactorMap
 #'
@@ -293,7 +294,7 @@ createFactorMap <- function(X,
 #' @param ... everything else for the functions
 #' @author Herve Abdi
 #' @export
-print.createFactorMap <- function (x, ...) {
+print.createFactorMap <- function(x, ...) {
   ndash = 78 # How many dashes for separation lines
   cat(rep("-", ndash), sep = "")
   cat("\nBasic Factor Maps (with ggplot2) \n")
@@ -309,34 +310,31 @@ print.createFactorMap <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.createNormedFactors
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 
-
-
-
-
-#----------------------------------------------------------------------
+#_____________________________________________________________________
 # function: map4DotsAndLabels
-#----------------------------------------------------------------------
-#' Create ggplot2 factorial maps for dots and labels.
+#_____________________________________________________________________
+#' Create \code{ggplot2} factorial maps for dots and labels.
 #'NB needs a base map to work correctly
 #'
-#'  Create ggplot2 factorial map for dots and labels.
-#'NB needs a base map to work correctly.
-#'#' create the base plot maps for CA type graphs with ggplot2
+#'  \code{map4DotsAndLabels}:
+#' Creates \code{ggplot2} factorial map for dots and labels.
+#'NB: needs a base map to work correctly.
+#' create the base plot maps for CA type graphs with \code{ggplot2}
 #'
-#' @param  data the factor scores to plot
+#' @param data the factor scores to plot
 #' @param axis1 the column of X used for the horizontal axis
-#' of the plot. Default 1.
-#' @param axis2 the column of X used for the vertical axis
-#' of the plot. Default 2.
+#' of the plot. \code{Default 1}.
+#' @param axis2 the column of \code{X} used for the vertical axis
+#' of the plot. \code{Default 2}.
 #' @param   display.points  if  \code{TRUE} (Default)
 #' create the map for the points.
 #' @param  col.points the color of the points/dots.
 #' Can be one color or a vector of colors. If a vector it needs
 #' to have exactly the number of items to be plotted.
-#' Default = 'blueviolet',
-#' @param alpha.points (default = .5), the alpha
+#' \code{Default = 'blueviolet'}.
+#' @param alpha.points \code{(default = .5)}, the alpha
 #' (transparency) for the points, should be
 #' between 1 (no transparency) and 0
 #' (completely transparent).
@@ -390,7 +388,6 @@ print.createFactorMap <- function (x, ...) {
 #' (e.g., "cannot find Dimension").
 #' @import ggplot2 ggrepel
 #' @export
-# @examples \dontrun{}
 #' @author Herve Abdi
 #' @seealso createFactorMaps createbaseMap
 map4DotsAndLabels <- function(data,
@@ -456,20 +453,18 @@ map4DotsAndLabels <- function(data,
   return(list(leG.points = LeG_dot, leG.labels = LeG_text))
 } # End of function.
 # function map4DotsAndLabels ends  here
-#--------------------------------------------------------------------
-#
-#--------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 
-#----------------------------------------------------------------------
+#_____________________________________________________________________
 # function: createFactorMapIJ
-#----------------------------------------------------------------------
+#_____________________________________________________________________
 #' Create
 #' ggplot2 factorial maps for CA-type of maps dots and labels.
 #'
 #'  \code{createFactorMapIJ}: Creates
 #'  \code{ggplot2} factorial maps for dots and labels.
 #'NB needs a base map to work correctly.
-#'#' create the base plot maps for CA type graphs with ggplot2
 #'
 #' @param  Fi the \eqn{I}-set factor scores to plot
 #' @param  Fj the \eqn{J}-set factor scores to plot
@@ -650,8 +645,7 @@ createFactorMapIJ <- function(Fi,Fj,
     constraints <-
       lapply(prettyGraphs::minmaxHelper(Fi,Fj),'*',1.1)
   }
-  #  #-----------------------------------------------------------------------------
-  # NB geom_text_repel is from ggrepel
+  #___________________________________________________________________
   # First the basemao
   LeG_b <- createBaseMap(data = rbind(Fi,Fj),
                          constraints = constraints,
@@ -736,7 +730,7 @@ createFactorMapIJ <- function(Fi,Fj,
 } # End of Function
 #
 
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 # Change the print function for
 # the createFactorMapIJ environment
 #
@@ -763,8 +757,9 @@ print.createFactorMapIJ <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.createFactorMapIJ
-#--------------------------------------------------------------------
-#--------------------------------------------------------------------
+#_____________________________________________________________________
+
+#_____________________________________________________________________
 #' Creates all the partial ggplot2 maps for CA
 #' with all standard variants of normalization for factor scores.
 #'
@@ -1118,7 +1113,7 @@ createAllMaps4CA <- function(allNormedFactors,
 
 }
 
-#--------------------------------------------------------------------
+#_____________________________________________________________________
 # Change the print function for
 # the createAllMaps4CA environment
 #
@@ -1166,5 +1161,6 @@ print.createAllMaps4CA <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.createAllMaps4CA
-#--------------------------------------------------------------------
+#_____________________________________________________________________
+
 
