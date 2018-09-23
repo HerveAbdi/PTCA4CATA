@@ -2,17 +2,18 @@
 % Please edit documentation in R/CreateFactorMaps4CA.R
 \name{print.createFactorMap}
 \alias{print.createFactorMap}
-\title{Change the print function for createFactorMap}
+\title{Change the print function for \code{createFactorMap}}
 \usage{
 \method{print}{createFactorMap}(x, ...)
 }
 \arguments{
-\item{x}{a list: output of createFactorMap}
+\item{x}{a list: output of \code{createFactorMap}}
 
 \item{...}{everything else for the functions}
 }
 \description{
-Change the print function for createFactorMap
+Change the print function for objsects of the
+ class \code{createFactorMap}
 }
 \author{
 Herve Abdi

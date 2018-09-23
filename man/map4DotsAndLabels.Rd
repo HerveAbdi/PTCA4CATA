@@ -76,18 +76,20 @@ nudge value for starting point for
  between 1 (no transparency) and 0
  (completely transparent).}
 
-\item{...}{eveythings else for the functions}
+\item{...}{everything else to pass to the functions}
 }
 \value{
-a list with
-1) \code{zeMap}: The Complete Map (background Dots and Labels);
-2) \code{zeMap_background}: The Background map;
-3) \code{zeMap_dots:} The dots;
-4) \code{zeMap_text:} The Labels;
-5) \code{factorScores:}  The factor scores; and
-6) \code{constraints:} The list of the contraints
+a list with 6-elements:
+\enumerate{
+\item \code{zeMap}: The Complete Map (background Dots and Labels);
+\item \code{zeMap_background}: The Background map;
+\item \code{zeMap_dots:} The dots;
+\item \code{zeMap_text:} The Labels;
+\item \code{factorScores:}  The factor scores; and
+\item \code{constraints:} The list of the contraints
 (could be used to generate other graphs
  with the same scaling factors).
+ }
 }
 \description{
 \code{map4DotsAndLabels}:
@@ -97,16 +99,17 @@ create the base plot maps for CA type graphs with \code{ggplot2}
 }
 \section{Important_Note}{
  When creating multiple layers graphs,
-because of the way \code{ggplot2} create graphs, all the
+because of the way \code{ggplot2} create graphs, all
 the matrices/dataframe should all the have the  same column names
-[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+[e.g., \code{colnames()} equal to
+\code{c("Dimension 1", "Dimension 2")}].
 When it is not the case, some strange and cryptic
 error may be produced
-(e.g., "cannot find Dimension").
+(e.g., \code{"cannot find Dimension"}).
 }
 
 \seealso{
-createFactorMaps createbaseMap
+\code{\link{createFactorMap}} \code{\link{createBaseMap}}
 }
 \author{
 Herve Abdi

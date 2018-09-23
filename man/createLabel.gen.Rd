@@ -2,7 +2,7 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{createLabel.gen}
 \alias{createLabel.gen}
-\title{createLabel.gen creates x and y labels for ggplots2 scatterplots}
+\title{Creates \eqn{x} and \eqn{y} labels for \code{ggplots2} scatterplots}
 \usage{
 createLabel.gen(zeAxis, lambda, tau, axisName = "Dimension ")
 }
@@ -13,13 +13,15 @@ createLabel.gen(zeAxis, lambda, tau, axisName = "Dimension ")
 
 \item{tau}{the percentage of variance associated with this dimension}
 
-\item{axisName}{the name for the axes (default = 'Dimension')}
+\item{axisName}{the name for the axes (default = \code{'Dimension'})}
 }
 \description{
-createLabel.gen creates x and y labels for ggplots2 scatterplots
+\code{createLabel.gen}
+creates \eqn{x} and \eqn{y} labels for \code{ggplots2} scatterplots
 (e.g., correspondence analysis or principal component analysis).
 Compared to \code{createLabels},   \code{createLabels.gen}
-does not require the results from ExPosition.
+does not require the results from \code{ExPosition}
+and so can be used for any \code{ggplot2}-based scatterplot.
 }
 \author{
 Herve Abdi

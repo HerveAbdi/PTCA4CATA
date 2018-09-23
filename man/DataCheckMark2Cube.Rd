@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{DataCheckMark2Cube}
 \alias{DataCheckMark2Cube}
-\title{\code{DataCheckMark2Cube:} create a cube of data
+\title{create a cube of data
 from the results of a "pick-1" (aka Check-1 or "Best That Apply",
 BeTA)  data task
 (i.e., describe one object with one descriptor from a finite list
@@ -23,10 +23,11 @@ the descriptors. if \code{NULL} (default) descriptors are
 named \code{Descriptor-1} to \code{Descriptor-K}.}
 }
 \value{
-a Stimuli*Descriptors*Participants brick (i.e., an array)
+a Stimuli * Descriptors * Participants brick (i.e., an array)
 of counts.
 }
 \description{
+\code{DataCheckMark2Cube:}
 Create a cube of data from the results of a pick one
  descriptor to describe stimuli.
 The result of the check mark task is a

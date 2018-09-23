@@ -11,10 +11,10 @@ PlotScree(ev, p.ev = NULL, max.ev = NULL, alpha = 0.05,
   color4Kaiser = "darkorchid4", lwd4Kaiser = 2.5)
 }
 \arguments{
-\item{ev}{the eigen values to plot. no default}
+\item{ev}{the eigenvalues to plot. no default.}
 
 \item{p.ev}{the probabilities associated to the
-eigen-values}
+eigen-values.}
 
 \item{max.ev}{the max eigen-value
 needed because ExPosition does not return all ev
@@ -25,13 +25,13 @@ all eigen-values.}
 \item{alpha}{threshold for significance. Default = .05}
 
 \item{col.ns}{color for the non significant
-ev. Default is Green.}
+ev. Default is \code{'Green'}.}
 
 \item{col.sig}{color for significant eigen-values.
-Default is Violet.}
+Default is \code{'Violet'}.}
 
 \item{title}{a title for the graph
-default is "Explained Variance per Dimension"}
+default is \code{"Explained Variance per Dimension"}.}
 
 \item{plotKaiser}{when \code{TRUE} plot
 plot a line corresponding to the average inertia

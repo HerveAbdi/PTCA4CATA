@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{print.Boot4PTCA}
 \alias{print.Boot4PTCA}
-\title{Change the print function for Boot4PTCA}
+\title{Change the print function for Boot4PTCA.}
 \usage{
 \method{print}{Boot4PTCA}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{everything else for the functions}
 }
 \description{
-Change the print function for Boot4PTCA
+\code{print.Boot4PTCA} Change the print function for Boot4PTCA.
 }
 \author{
 Herve Abdi

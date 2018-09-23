@@ -8,10 +8,10 @@ gray values}
 vec2gray(levec)
 }
 \arguments{
-\item{levec}{a vector of  non negative numbers}
+\item{levec}{a vector of  non negative numbers.}
 }
 \value{
-a vector of gray values
+a vector of gray values.
 }
 \description{
 \code{vec2gray}:
@@ -19,7 +19,7 @@ transforms a vector of non-negative numbers into
 gray values.
 }
 \examples{
-# le.grey <- vec2gray(1:10)
+# le.grey <- vec2gray(1:10).
 }
 \author{
 Hervé Abdi

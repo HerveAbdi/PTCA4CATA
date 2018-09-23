@@ -9,19 +9,20 @@ of the "Check-Mark" (e.g. CATA) type of data.}
 InertiaPermutedTables(DataChecks, nPerm = 1000)
 }
 \arguments{
-\item{DataChecks}{An I*J matrix
+\item{DataChecks}{An \eqn{I}*\eqn{J} matrix
 storing integers.
-I are Participants, J are Stimuli
+\eqn{I} are Participants, \eqn{J} are Stimuli.
 The entries in Datacheks are integers that match the descriptors
 (i.e., 5 for Datacheks[2,3] means that Participant 2}
 
-\item{nPerm}{number of random permutations (default = 1000).
+\item{nPerm}{number of random permutations (default = \code{1000}).
 Note that the number of Descriptors is "guessed" by the program
-as the largest number is the dataset}
+as the largest number is the dataset.}
 }
 \value{
-# returns a 1*nPerm vector with the nPerm values
- of the inertia computed with the nPerm random Permutations
+returns a 1*\code{nPerm} vector with
+the \code{nPerm} values
+ of the inertia computed with the \code{nPerm} random Permutations.
 }
 \description{
 \code{InertiaPermutedTables} creates a cube of data

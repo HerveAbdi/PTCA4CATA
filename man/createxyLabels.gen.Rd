@@ -2,31 +2,33 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{createxyLabels.gen}
 \alias{createxyLabels.gen}
-\title{createxyLabels.gen creates x and y labels for ggplots2 scaterplots}
+\title{Creates \code{x} and \code{y} labels for ggplots2 scaterplots}
 \usage{
 createxyLabels.gen(x_axis = 1, y_axis = 2, lambda, tau,
   axisName = "Dimension ")
 }
 \arguments{
-\item{x_axis}{the number of the x axis; default = 1}
+\item{x_axis}{the number of the \eqn{x} axis; default = 1.}
 
-\item{y_axis}{the number of the y axis; default = 2}
+\item{y_axis}{the number of the \eqn{y} axis; default = 2.}
 
 \item{lambda}{a vector of eigenvalues (should have as many entries
-as max(axis_1,axis_2)).}
+as \code{max(axis_1, axis_2)}).}
 
 \item{tau}{a vector of percentage of explained variance
 (should have as many entries
-as max(axis_1,axis_2)).}
+as \code{max(axis_1, axis_2)}).}
 
-\item{axisName}{the name for the axes (default = 'Dimension')}
+\item{axisName}{the name for the axes (default = \code{'Dimension'})}
 }
 \description{
-createxyLabels.gen creates x and y labels for ggplots2 scaterplots
-(e.g., correspondence analysis or principal component analysis).
-Compared to \code{createxylabels},   \code{createxylabels.gen}
-does not require the results from ExPosition.
+\code{createxyLabels.gen}:
+creates \eqn{x} and \eqn{y} labels for \code{ggplots2} scaterplots
+(e.g., correspondence analysis or principal component analysis)
+such as, for example, the plots created by \code{createFactorMap}.
+Compared to \code{createxylabel}, \code{createxylabel.gen}
+does not require the results from \code{ExPosition}.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

@@ -3,7 +3,7 @@
 \name{prettyHist}
 \alias{prettyHist}
 \title{Plot a sampling distribution
-along with a value of a criterion.}
+along with a value of a criterion (e.g., for significance).}
 \usage{
 prettyHist(distribution, observed, show.observed = TRUE,
   observed.col = "mediumorchid4", xlim = c(-1.2, 1.2), breaks = 10,
@@ -16,43 +16,51 @@ prettyHist(distribution, observed, show.observed = TRUE,
 \item{distribution}{the empirical distribution
 (e.g., from a permutation test).}
 
-\item{observed}{the observaed value of the criterion}
+\item{observed}{the observed value of the criterion.}
 
-\item{show.observed}{if \code{TRUE} (default) plot the value of the criterion.}
+\item{show.observed}{if \code{TRUE} (default)
+plot the value of the criterion.}
 
-\item{observed.col}{color for the criterion (default is "mediumorchid4").}
+\item{observed.col}{a color for the criterion
+(default is \code{"mediumorchid4"}).}
 
-\item{xlim}{default is c(-1.2,1.2): value for the x-axis.
+\item{xlim}{default is \code{c(-1.2, 1.2)}:
+value for the \eqn{x}-axis.
 The default
-works well for CA or MCA but is unlikely to work for other techniques
+works well for CA or MCA but is unlikely
+to work for other techniques
 (such as, e.g., PCA, PLS, or Hellinger analysis).}
 
-\item{breaks}{(default is 10) How many bins
+\item{breaks}{(default is \code{10}) How many bins
 for the histogram of the distribution.}
 
-\item{border}{(default is "white") color for the border of the graph.}
+\item{border}{(default is \code{"white"}) color
+for the border of the graph.}
 
-\item{distr.col}{default is ("darkseagreen") color for the distribution.}
+\item{distr.col}{(default is (\code{"darksgreen"}) the
+color for the distribution.}
 
 \item{main}{(default "") the main title.}
 
-\item{xlab}{(default "") the x-axis label.}
+\item{xlab}{(default "") the \eqn{x}-axis label.}
 
-\item{ylab}{(default "") the y-axis label.}
+\item{ylab}{(default "") the \eqn{y}-axis label.}
 
-\item{counts}{if (TRUE default) shows the number of samples
-if FALSE shows a probability.}
+\item{counts}{if \code{TRUE} (default) shows the number of samples,
+if \code{FALSE} shows a probability.}
 
-\item{cutoffs}{[default is c(0.025,0.975)],
-the p-values (default for alpha = .05).}
+\item{cutoffs}{[default is \code{c(0.025,0.975)}],
+the \eqn{p}-values (default for alpha = .05).}
 
-\item{show.cutoffs}{if TRUE (default) show the critical value(s).}
+\item{show.cutoffs}{if \eqn{TRUE} (default) show the critical value(s).}
 
-\item{cutoff.col}{(default is "firebrick3") color for the critical value.}
+\item{cutoff.col}{(default is \code{"firebrick3"}) the color
+for the critical value.}
 
-\item{gray.distr}{if TRUE (TRUE) distribution is plotted in gray.}
+\item{gray.distr}{if \code{TRUE} (default) distribution
+is plotted in gray.}
 
-\item{tail.dir}{if "+" (default) the critical value
+\item{tail.dir}{if \code{"+"} (default) the critical value
 is on the right of the
 distribution, otherwise it is on the left.}
 }
@@ -60,13 +68,14 @@ distribution, otherwise it is on the left.}
 h the histogram of the distribution
 }
 \description{
-Plot a sampling distribution
+\code{pretyHist}: plots a sampling distribution
  (typically derived from a permutation test as
- performed, e.g., by InPosition::epCA.inference.battery).
- Plot the empirical critical value and position the
+ performed, e.g., by \code{InPosition::epCA.inference.battery}).
+ \code{pretyHist} plots the empirical critical value
+ and position the
  value of the criterion.
  along with a value of a criterion.
- User is _required_ to provide a distribution
+ User is \emph{required} to provide a distribution
  and an observed value.
 }
 \author{

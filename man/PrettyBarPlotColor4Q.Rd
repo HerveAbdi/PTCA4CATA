@@ -3,8 +3,8 @@
 \name{PrettyBarPlotColor4Q}
 \alias{PrettyBarPlotColor4Q}
 \title{\code{PrettyBarPlotColor4Q}
-Plot the result of Cochran's Q for the columns of a CATA
-table of data}
+Plot the result of Cochran's \eqn{Q} for the columns of a CATA
+table of data.}
 \usage{
 PrettyBarPlotColor4Q(bootratio, threshold, ylim = NULL,
   color4bar = "darkorchid4", color4ns = "gray75",
@@ -12,7 +12,7 @@ PrettyBarPlotColor4Q(bootratio, threshold, ylim = NULL,
   ylab = NULL)
 }
 \arguments{
-\item{bootratio}{the Q values to be plotted}
+\item{bootratio}{the \eqn{Q} values to be plotted}
 
 \item{threshold}{(no default)
 Treshold for significance, Q > threshold are plotted in gray}
@@ -34,14 +34,20 @@ plot the names in the bars}
 
 \item{main}{a title for the plot (default is \code{NULL})}
 
-\item{ylab}{a label for the y axis (default is \code{NULL})
+\item{ylab}{a label for the \eqn{y} axis (default is \code{NULL})
 # @examples # PrettyBarPlotColor4Q(bootratio,threshold)}
 }
 \description{
 \code{PrettyBarPlotColor4Q}:
-Plot the result of Cochran's Q for the columns of a CATA
+Plot the result of Cochran's \eqn{Q} for the columns
+of a \code{CATA}
 table of data along with the critical value (user provided)
 NB: This version is temporary and will likely be rewriten
+(see \code{PrettybarPlot2} for a \code{ggplot2}-based
+equivalent function).
+}
+\seealso{
+PrettyBarPlot2
 }
 \author{
 Hervé Abdi

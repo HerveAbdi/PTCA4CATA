@@ -12,15 +12,15 @@
 
 #_____________________________________________________________________
 # function: createBaseMap
-# creteBaseMap ----
+# createBaseMap ----
 #_____________________________________________________________________
 #' create a base map for CA type graphs with ggplot2
 #'
 #' \code{createBaseMap}: Create a ggplot2 basemap for CA type graphs.
 #' The final maps are created by using overlays.
-#' See also: \code{makeCAmap}.
 #' A map CA is created with first the baseMap and
 #' then adding a text/dot map.
+#' @seealso \code{\link{createFactorMapIJ}}
 #' @param data the factor scores to plot
 #' @param constraints a list with minx miny maxx maxy
 #' typically obtained from  \code{prettyGraphs::minmaxHelper()}.
@@ -42,10 +42,11 @@
 #' @section Important_Note: When creating multiple layers graphs,
 #' because of the way \code{ggplot2} create graphs, all the
 #' the matrices/dataframe should all the have the same column names
-#' [e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+#' [e.g., \code{colnames()} equal to
+#' \code{c("Dimension 1", "Dimension 2")}].
 #' When it is not the case, some strange and cryptic
 #' error may be produced
-#' (e.g., "cannot find Dimension").
+#' (e.g., \code{"cannot find Dimension"}).
 #' @examples \dontrun{
 #' aBaseMap <- createBaseMap(Fi)
 #' # with Fi being a map of factor scores
@@ -94,7 +95,7 @@ createBaseMap <- function(data,
 # create the base plot for factor type plots
 # gives a baseMap and one map for dots and one map for labels
 #_____________________________________________________________________
-#' @title  create the base plot maps for CA type graphs with ggplot2
+#' @title  create the base plot maps for CA type graphs with ggplot2.
 #'
 #' @description \code{createFactorMap}:
 #' Creates the \code{ggplot2} basic factor maps for CA type graphs.
@@ -105,16 +106,17 @@ createBaseMap <- function(data,
 #' \code{createFactorMap} calls the functions \code{map4DotsAndLabels}
 #' and \code{createBaseMap}.
 #'
-#' @seealso  \code{map4DotsAndLabels}
-#' \code{createBaseMap}.
+#' @seealso  \code{\link{map4DotsAndLabels}}
+#' \code{\link{createBaseMap}}
+#' .
 #' @param  X the factor scores to plot.
 #' @param axis1 the column of X used for the horizontal axis
-#' of the plot. Default 1.
+#' of the plot. Default = 1.
 #' @param axis2 the column of X used for the vertical axis
-#' of the plot. Default 2.
+#' of the plot. Default = 2.
 #' @param  constraints a list with \code{minx miny maxx maxy},
 #' typically obtained from \code{ExPosition}. If \code{NULL}
-#' (default) it  is computed with the function
+#' (default) it is computed with the function
 #'  \code{prettyGraphs::minmaxHelper()}.
 #' @param title A title for the graph. Default is \code{NULL}.
 #' @param  col.points the color of the points/dots.
@@ -157,25 +159,28 @@ createBaseMap <- function(data,
 #' @param segment.size \code{(default = 0)}
 #'  size of segment line for \code{ggrpel}.
 #' @param ... stuff to be passed to other functions.
-#' @return a list
-#' 1) \code{zeMap}: The Complete Map (background Dots and Labels);
-#' 2) \code{zeMap_background}: The Background;
-#' 3) \code{zeMap_dots:} The dots;
-#' 4) \code{zeMap_text:} The Labels;
-#' 5) \code{factorScores:}  The factor scores; and
-#' 6) \code{constraints:} The list of the contraints'
+#' @return a list with 6 elements:
+#' \enumerate{
+#' \item \code{zeMap}: The Complete Map (background Dots and Labels);
+#' \item  \code{zeMap_background}: The Background;
+#' \item  \code{zeMap_dots:} The dots;
+#' \item  \code{zeMap_text:} The Labels;
+#' \item  \code{factorScores:}  The factor scores; and
+#' \item  \code{constraints:} The list of the contraints'
+#' }
 #; NB class = \code{'createFactorMap'}.
 #' @section Important_Note: When creating multiple layers graphs,
-#' because of the way \code{ggplot2} create graphs, all the
+#' because of the way \code{ggplot2} create graphs, all
 #' the matrices/dataframe should all the have the  same column names
-#' [e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+#' [e.g., \code{colnames()} equal to
+#' \code{c("Dimension 1", "Dimension 2")}].
 #' When it is not the case, some strange and cryptic
 #' error may be produced
-#' (e.g., "cannot find Dimension").
+#' (e.g., \code{"cannot find Dimension"}).
 #' @import prettyGraphs grDevices
 #' @export
 # @examples \dontrun{}
-#' @author Herve Abdi
+#' @author Hervé Abdi
 createFactorMap <- function(X,
                             axis1 = 1, axis2 = 2,
                             constraints = NULL,
@@ -286,11 +291,12 @@ createFactorMap <- function(X,
 } # End of Function
 #_____________________________________________________________________
 
-#' Change the print function for createFactorMap
+#' Change the print function for \code{createFactorMap}
 #'
-#'  Change the print function for createFactorMap
+#'  Change the print function for objsects of the
+#'  class \code{createFactorMap}
 #'
-#' @param x a list: output of createFactorMap
+#' @param x a list: output of \code{createFactorMap}
 #' @param ... everything else for the functions
 #' @author Herve Abdi
 #' @export
@@ -313,7 +319,7 @@ print.createFactorMap <- function(x, ...) {
 #_____________________________________________________________________
 
 #_____________________________________________________________________
-# function: map4DotsAndLabels
+# function: map4DotsAndLabels ----
 #_____________________________________________________________________
 #' Create \code{ggplot2} factorial maps for dots and labels.
 #'NB needs a base map to work correctly
@@ -368,28 +374,32 @@ print.createFactorMap <- function(x, ...) {
 #'  (transparency) for the points, should be
 #'  between 1 (no transparency) and 0
 #'  (completely transparent).
-#' @param ... eveythings else for the functions
-#' @return a list with
-#' 1) \code{zeMap}: The Complete Map (background Dots and Labels);
-#' 2) \code{zeMap_background}: The Background map;
-#' 3) \code{zeMap_dots:} The dots;
-#' 4) \code{zeMap_text:} The Labels;
-#' 5) \code{factorScores:}  The factor scores; and
-#' 6) \code{constraints:} The list of the contraints
+#' @param ... everything else to pass to the functions
+#' @return a list with 6-elements:
+#' \enumerate{
+#' \item \code{zeMap}: The Complete Map (background Dots and Labels);
+#' \item \code{zeMap_background}: The Background map;
+#' \item \code{zeMap_dots:} The dots;
+#' \item \code{zeMap_text:} The Labels;
+#' \item \code{factorScores:}  The factor scores; and
+#' \item \code{constraints:} The list of the contraints
 #' (could be used to generate other graphs
 #'  with the same scaling factors).
+#'  }
 #; NB class = 'createFactorMap'
 #' @section Important_Note: When creating multiple layers graphs,
-#' because of the way \code{ggplot2} create graphs, all the
+#' because of the way \code{ggplot2} create graphs, all
 #' the matrices/dataframe should all the have the  same column names
-#' [e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+#' [e.g., \code{colnames()} equal to
+#' \code{c("Dimension 1", "Dimension 2")}].
 #' When it is not the case, some strange and cryptic
 #' error may be produced
-#' (e.g., "cannot find Dimension").
+#' (e.g., \code{"cannot find Dimension"}).
 #' @import ggplot2 ggrepel
 #' @export
 #' @author Herve Abdi
-#' @seealso createFactorMaps createbaseMap
+#' @rdname map4DotsAndLabels
+#' @seealso \code{\link{createFactorMap}} \code{\link{createBaseMap}}
 map4DotsAndLabels <- function(data,
                               axis1 = 1, axis2 = 2,
                               display.points = TRUE,

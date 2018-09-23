@@ -32,12 +32,20 @@ for the non-significant BR.}
 }
 \value{
 A list: 1) ylim min and max for y, 2) threshold.
-# @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 }
 \description{
 \code{PrettyBarPlotColor}: Create pretty bar plots
  with defined colors for the sigificant columns.
  NB \code{PrettyBarPlotColor} is a variation over \code{prettyBarPlot}.
+}
+\details{
+\code{PrettyBarPlot2},
+is a newer \code{ggplot2}-based version that can be used
+\emph{in lieu} of \code{PrettyBarPlotColor}.
+}
+\seealso{
+PrettyBarPlot2
+# @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 }
 \author{
 Hervé Abdi

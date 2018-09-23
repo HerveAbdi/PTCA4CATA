@@ -2,19 +2,20 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{createLabel}
 \alias{createLabel}
-\title{createLabel creates x and y labels for ggplots2 scatterplots}
+\title{Creates\eqn{x} and \eqn{y} labels for ggplots2 scatterplots}
 \usage{
 createLabel(resCA, zeAxis, axisName = "Dimension")
 }
 \arguments{
-\item{resCA}{the results of epCA or epPCA}
+\item{resCA}{the results of \code{epCA} or \code{epPCA}.}
 
 \item{zeAxis}{the number of the axis (no default)}
 
-\item{axisName}{the name for the axes (default = 'Dimension')}
+\item{axisName}{the name for the axes (default = \code{'Dimension'})}
 }
 \description{
-createLabel creates x and y labels for ggplots2 scatterplots
+\code{createLabel} creates \eqn{x} and \eqn{y}
+labels for \code{ggplots2} scatterplots
 (e.g., correspondence analysis or principal component analysis).
 }
 \author{

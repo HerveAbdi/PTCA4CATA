@@ -112,16 +112,17 @@ print.bootRatios <- function (x, ...) {
 # function Boot4PTCA.
 #   Compute the Bootstrapped Factors scores for I and J sets
 #'\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
-#' for the  I and J sets from
+#' for the  \eqn{I} and \eqn{J} sets from
 #' a Partial Triadic Correspondence analysis
 #' (PTCA).
 #'
 #' \code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube
 #' and computes bootstraped factor scores.
-#' @param ZeDataCube An \eqn{I*J*K} data cube (\eqn{K} are observations)
+#' @param ZeDataCube An  \eqn{I} * \eqn{J} * \eqn{K}
+#' data cube (\eqn{K} are observations)
 #' The third dimension (i.e., \eqn{K}) is bootstrapped.
 #' @param fi  The factor scores for \eqn{I} (rows)
-#' from the epCA program
+#' from the \code{epCA} program
 #' @param fj  The factor scores for \eqn{J}
 #' (columns) from the epCA program
 #' @param eigs  The eigenvalues from the epCA program
@@ -141,21 +142,27 @@ print.bootRatios <- function (x, ...) {
 #' matrix of bootstrapped eigenvalues. Default is \code{FALSE}.
 #' When \code{eigen} is \code{FALSE},
 #' \code{eigen.compact} has no effect.
-#' @return A list: if compact \code{FALSE}:
-#' 1a) \code{RowsBoot} a I*L*B cube of Bootstrapped
-#' coordinates for the I-set
-#' 1b) \code{RowsBoot.asym} a I*L*B cube of Bootstrapped
-#' coordinates for the I-set
-#' (asymmetric projections);
-#'  2a)  \code{ColumnsBoot} a J*L*B cube of Bootstrapped coordinates
-#'  for the J-set
-#'  if compact \code{FALSE} 2b)
-#'  \code{ColumnsBoot.asym} a \eqn{J*L*B} cube of Bootstrapped
-#'  coordinates for the \eqn{J}-set
-#'  with \eqn{I}: number of rows,
-#'   \eqn{J}: number of columns
+#' @return
+#' With notation:
+#'  \eqn{I}: number of rows (of \code{ZeDataCube}),
+#'   \eqn{J}: number of columns (of \code{ZeDataCube}),
 #'  \eqn{L}: number of factors kept (i.e., \code{nf2keep}),
-#'  \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter})
+#'  \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter});
+#'  \code{Boot4PTCA} returns
+#' a list if compact \code{FALSE}:
+#' 1a) \code{RowsBoot} an \eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
+#' coordinates for the \eqn{I}-set
+#' 1b) \code{RowsBoot.asym} an  \eqn{I} * \eqn{L} * \eqn{B}
+#'  cube of Bootstrapped
+#' coordinates for the \eqn{I}-set
+#' (asymmetric projections);
+#'  2a)  \code{ColumnsBoot} a \eqn{J} * \eqn{L} * \eqn{B}
+#'  cube of Bootstrapped coordinates
+#'  for the \eqn{J}-set
+#'  if compact \code{FALSE} 2b)
+#'  \code{ColumnsBoot.asym} a  \eqn{J} * \eqn{L} * \eqn{B}
+#'  cube of Bootstrapped
+#'  coordinates for the \eqn{J}-set.
 #' @author Herve Abdi
 #' @examples \dontrun{
 #' BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
@@ -295,18 +302,15 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
     colnames(res.bootEig) <- c('Total', paste0('Dimension ',
                                                     seq(1: leRang)))
 
-
     return.list$bootEigen =  res.bootEig
     if(!eigen.compact) return.list$bootMatrixEV = bootEig
   }
-
   return(return.list)
-
 }  # End of function Boot4PTCA
 # ********************************************************************
-#' Change the print function for Boot4PTCA
+#' Change the print function for Boot4PTCA.
 #'
-#'  Change the print function for Boot4PTCA
+#' \code{print.Boot4PTCA} Change the print function for Boot4PTCA.
 #'
 #' @param x a list: output of Boot4PTCA
 #' @param ... everything else for the functions
@@ -327,16 +331,11 @@ print.Boot4PTCA <- function (x, ...) {
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
-} # end of function print.cBoot4PTCA
+} # end of function print.Boot4PTCA
 #_____________________________________________________________________
 
-
-
-
-
-
 #*********************************************************************
-# Random permutations
+# Random permutations ----
 # uses the InertiaTable function
 #' \code{InertiaPermutedTables}
 #' A function to Compute the inertia of a set of random permutations
@@ -354,17 +353,18 @@ print.Boot4PTCA <- function (x, ...) {
 #' (i.e., 5 for Datacheks[2,3] means that Participant 2,
 #' choosed Descriptor 5 for Stimulus 3)
 #' @author Hervé Abdi
-#' @param DataChecks An I*J matrix
+#' @param DataChecks An \eqn{I}*\eqn{J} matrix
 #' storing integers.
-#' I are Participants, J are Stimuli
+#' \eqn{I} are Participants, \eqn{J} are Stimuli.
 #' The entries in Datacheks are integers that match the descriptors
 #' (i.e., 5 for Datacheks[2,3] means that Participant 2
-# ' choosed Descriptor 5 for Stimulus 3)
-#'@param nPerm number of random permutations (default = 1000).
+# ' chose Descriptor 5 for Stimulus 3).
+#'@param nPerm number of random permutations (default = \code{1000}).
 #' Note that the number of Descriptors is "guessed" by the program
-#' as the largest number is the dataset
-#' @return  # returns a 1*nPerm vector with the nPerm values
-#'  of the inertia computed with the nPerm random Permutations
+#' as the largest number is the dataset.
+#' @return  returns a 1*\code{nPerm} vector with
+#' the \code{nPerm} values
+#'  of the inertia computed with the \code{nPerm} random Permutations.
 #' @examples \dontrun{
 #' RandomnInertia <- InertiaPermutedTables(ACubeOfDataChecks)
 #' }
@@ -430,19 +430,24 @@ InertiaPermutedTables <- function(DataChecks, nPerm = 1000){
 # *******************************************************************************
 
 #********************** Inertia of a Table***************************************
-#' InertiaTable  A function to compute the inertia of a contingency table
+# InertiaTable----
+#' A function to compute the inertia of a contingency table
 #'
-#' InertiaTable  computes the inertia (i.e., phi square or chi-square / N)
+#' \code{InertiaTable}:  computes the inertia
+#' (i.e., phi square or chi-square / N)
 #' of a contingency table. The computation matches the value obtained
-#' from the correspondence analysis of the contingency table.
-#' Used for permutation tests.
+#' from the inertia of the correspondence analysis
+#' of the contingency table.
+#' \code{InertiaTable} is mostly used for permutation tests
+#' and bootstrap estimates.
 #' @author Hervé Abdi
 #' @param X A contingency table (non negative numbers)
-#' @return the inertia (a la correspondence analysis)
+#' @return the inertia (\emph{a la} correspondence analysis)
 #' of the contingency table
-#' @examples \dontrun{
+#' @examples
+#' set.seed(42)
+#' X = matrix(round(runif(12)*20), nrow = 3)
 #' InertiaOfATable <- InertiaTable(X)
-#' }
 #' @export
 InertiaTable = function(X){
   # Compute the inertia of a contingency table
@@ -462,13 +467,14 @@ InertiaTable = function(X){
 
 # ************************************************************************
 # DataCheckMark2Cube function to create the Cube of Data from the checks
-#' \code{DataCheckMark2Cube:} create a cube of data
+#'  create a cube of data
 #' from the results of a "pick-1" (aka Check-1 or "Best That Apply",
 #' BeTA)  data task
 #' (i.e., describe one object with one descriptor from a finite list
 #' of descriptors).
 #'
-#'  Create a cube of data from the results of a pick one
+#' \code{DataCheckMark2Cube:}
+#' Create a cube of data from the results of a pick one
 #'  descriptor to describe stimuli.
 #' The result of the check mark task is a
 #' data frame stored in \code{DataChecks}.
@@ -490,7 +496,7 @@ InertiaTable = function(X){
 #' @param NameOfDescriptor a length K vector of names of
 #' the descriptors. if \code{NULL} (default) descriptors are
 #' named \code{Descriptor-1} to \code{Descriptor-K}.
-#' @return a Stimuli*Descriptors*Participants brick (i.e., an array)
+#' @return a Stimuli * Descriptors * Participants brick (i.e., an array)
 #' of counts.
 #' @examples
 #' # use the colorOfMusic data set. See help(colorOfMusic)
@@ -549,9 +555,9 @@ DataCheckMark2Cube <- function(DataChecks,NameOfDescriptor = NULL){
 #' transforms a vector of non-negative numbers into
 #' gray values.
 #' @author Hervé Abdi
-#' @param levec a vector of  non negative numbers
-#' @return a vector of gray values
-#' @examples # le.grey <- vec2gray(1:10)
+#' @param levec a vector of  non negative numbers.
+#' @return a vector of gray values.
+#' @examples # le.grey <- vec2gray(1:10).
 #' @importFrom grDevices gray
 #' @export
 vec2gray <- function(levec){# get grey value

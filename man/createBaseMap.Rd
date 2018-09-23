@@ -37,7 +37,6 @@ a basemap
 \description{
 \code{createBaseMap}: Create a ggplot2 basemap for CA type graphs.
 The final maps are created by using overlays.
-See also: \code{makeCAmap}.
 A map CA is created with first the baseMap and
 then adding a text/dot map.
 }
@@ -45,10 +44,11 @@ then adding a text/dot map.
  When creating multiple layers graphs,
 because of the way \code{ggplot2} create graphs, all the
 the matrices/dataframe should all the have the same column names
-[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+[e.g., \code{colnames()} equal to
+\code{c("Dimension 1", "Dimension 2")}].
 When it is not the case, some strange and cryptic
 error may be produced
-(e.g., "cannot find Dimension").
+(e.g., \code{"cannot find Dimension"}).
 }
 
 \examples{
@@ -56,6 +56,9 @@ error may be produced
 aBaseMap <- createBaseMap(Fi)
 # with Fi being a map of factor scores
 }
+}
+\seealso{
+\code{\link{createFactorMapIJ}}
 }
 \author{
 Hervé Abdi

@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{InertiaTable}
 \alias{InertiaTable}
-\title{InertiaTable  A function to compute the inertia of a contingency table}
+\title{A function to compute the inertia of a contingency table}
 \usage{
 InertiaTable(X)
 }
@@ -10,19 +10,22 @@ InertiaTable(X)
 \item{X}{A contingency table (non negative numbers)}
 }
 \value{
-the inertia (a la correspondence analysis)
+the inertia (\emph{a la} correspondence analysis)
 of the contingency table
 }
 \description{
-InertiaTable  computes the inertia (i.e., phi square or chi-square / N)
+\code{InertiaTable}:  computes the inertia
+(i.e., phi square or chi-square / N)
 of a contingency table. The computation matches the value obtained
-from the correspondence analysis of the contingency table.
-Used for permutation tests.
+from the inertia of the correspondence analysis
+of the contingency table.
+\code{InertiaTable} is mostly used for permutation tests
+and bootstrap estimates.
 }
 \examples{
-\dontrun{
+set.seed(42)
+X = matrix(round(runif(12)*20), nrow = 3)
 InertiaOfATable <- InertiaTable(X)
-}
 }
 \author{
 Hervé Abdi

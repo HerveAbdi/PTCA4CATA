@@ -3,7 +3,7 @@
 \name{Boot4PTCA}
 \alias{Boot4PTCA}
 \title{\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
-for the  I and J sets from
+for the  \eqn{I} and \eqn{J} sets from
 a Partial Triadic Correspondence analysis
 (PTCA).}
 \usage{
@@ -11,11 +11,12 @@ Boot4PTCA(ZeDataCube, fi, fj, eigs, nf2keep = 2, nBootIter = 100,
   compact = FALSE, eigen = FALSE, eigen.compact = TRUE)
 }
 \arguments{
-\item{ZeDataCube}{An \eqn{I*J*K} data cube (\eqn{K} are observations)
+\item{ZeDataCube}{An  \eqn{I} * \eqn{J} * \eqn{K}
+data cube (\eqn{K} are observations)
 The third dimension (i.e., \eqn{K}) is bootstrapped.}
 
 \item{fi}{The factor scores for \eqn{I} (rows)
-from the epCA program}
+from the \code{epCA} program}
 
 \item{fj}{The factor scores for \eqn{J}
 (columns) from the epCA program}
@@ -44,21 +45,26 @@ When \code{eigen} is \code{FALSE},
 \code{eigen.compact} has no effect.}
 }
 \value{
-A list: if compact \code{FALSE}:
-1a) \code{RowsBoot} a I*L*B cube of Bootstrapped
-coordinates for the I-set
-1b) \code{RowsBoot.asym} a I*L*B cube of Bootstrapped
-coordinates for the I-set
-(asymmetric projections);
- 2a)  \code{ColumnsBoot} a J*L*B cube of Bootstrapped coordinates
- for the J-set
- if compact \code{FALSE} 2b)
- \code{ColumnsBoot.asym} a \eqn{J*L*B} cube of Bootstrapped
- coordinates for the \eqn{J}-set
- with \eqn{I}: number of rows,
-  \eqn{J}: number of columns
+With notation:
+ \eqn{I}: number of rows (of \code{ZeDataCube}),
+  \eqn{J}: number of columns (of \code{ZeDataCube}),
  \eqn{L}: number of factors kept (i.e., \code{nf2keep}),
- \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter})
+ \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter});
+ \code{Boot4PTCA} returns
+a list if compact \code{FALSE}:
+1a) \code{RowsBoot} an \eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
+coordinates for the \eqn{I}-set
+1b) \code{RowsBoot.asym} an  \eqn{I} * \eqn{L} * \eqn{B}
+ cube of Bootstrapped
+coordinates for the \eqn{I}-set
+(asymmetric projections);
+ 2a)  \code{ColumnsBoot} a \eqn{J} * \eqn{L} * \eqn{B}
+ cube of Bootstrapped coordinates
+ for the \eqn{J}-set
+ if compact \code{FALSE} 2b)
+ \code{ColumnsBoot.asym} a  \eqn{J} * \eqn{L} * \eqn{B}
+ cube of Bootstrapped
+ coordinates for the \eqn{J}-set.
 }
 \description{
 \code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube

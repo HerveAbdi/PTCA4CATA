@@ -2,7 +2,7 @@
 % Please edit documentation in R/CreateFactorMaps4CA.R
 \name{createFactorMap}
 \alias{createFactorMap}
-\title{create the base plot maps for CA type graphs with ggplot2}
+\title{create the base plot maps for CA type graphs with ggplot2.}
 \usage{
 createFactorMap(X, axis1 = 1, axis2 = 2, constraints = NULL,
   title = NULL, col.points = "blueviolet", alpha.points = 0.5,
@@ -17,14 +17,14 @@ createFactorMap(X, axis1 = 1, axis2 = 2, constraints = NULL,
 \item{X}{the factor scores to plot.}
 
 \item{axis1}{the column of X used for the horizontal axis
-of the plot. Default 1.}
+of the plot. Default = 1.}
 
 \item{axis2}{the column of X used for the vertical axis
-of the plot. Default 2.}
+of the plot. Default = 2.}
 
 \item{constraints}{a list with \code{minx miny maxx maxy},
 typically obtained from \code{ExPosition}. If \code{NULL}
-(default) it  is computed with the function
+(default) it is computed with the function
  \code{prettyGraphs::minmaxHelper()}.}
 
 \item{title}{A title for the graph. Default is \code{NULL}.}
@@ -88,13 +88,15 @@ size of segment line for \code{ggrpel}.}
 \item{...}{stuff to be passed to other functions.}
 }
 \value{
-a list
-1) \code{zeMap}: The Complete Map (background Dots and Labels);
-2) \code{zeMap_background}: The Background;
-3) \code{zeMap_dots:} The dots;
-4) \code{zeMap_text:} The Labels;
-5) \code{factorScores:}  The factor scores; and
-6) \code{constraints:} The list of the contraints'
+a list with 6 elements:
+\enumerate{
+\item \code{zeMap}: The Complete Map (background Dots and Labels);
+\item  \code{zeMap_background}: The Background;
+\item  \code{zeMap_dots:} The dots;
+\item  \code{zeMap_text:} The Labels;
+\item  \code{factorScores:}  The factor scores; and
+\item  \code{constraints:} The list of the contraints'
+}
 }
 \description{
 \code{createFactorMap}:
@@ -108,18 +110,20 @@ and \code{createBaseMap}.
 }
 \section{Important_Note}{
  When creating multiple layers graphs,
-because of the way \code{ggplot2} create graphs, all the
+because of the way \code{ggplot2} create graphs, all
 the matrices/dataframe should all the have the  same column names
-[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
+[e.g., \code{colnames()} equal to
+\code{c("Dimension 1", "Dimension 2")}].
 When it is not the case, some strange and cryptic
 error may be produced
-(e.g., "cannot find Dimension").
+(e.g., \code{"cannot find Dimension"}).
 }
 
 \seealso{
-\code{map4DotsAndLabels}
-\code{createBaseMap}.
+\code{\link{map4DotsAndLabels}}
+\code{\link{createBaseMap}}
+.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }
