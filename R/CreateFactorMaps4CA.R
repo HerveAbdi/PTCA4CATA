@@ -95,12 +95,13 @@ createBaseMap <- function(data,
 # create the base plot for factor type plots
 # gives a baseMap and one map for dots and one map for labels
 #_____________________________________________________________________
-#' @title  create the base plot maps for CA type graphs with ggplot2.
+#' @title  create the base plot maps for CA type
+#' graphs with \code{ggplot2}.
 #'
 #' @description \code{createFactorMap}:
 #' Creates the \code{ggplot2} basic factor maps for CA type graphs.
 #' The final maps are created by using overlays on top of the base map.
-#' See also \code{makeCAmap}.
+#'
 #' A map for CA is created with the baseMap to which
 #' is added text/dot map.
 #' \code{createFactorMap} calls the functions \code{map4DotsAndLabels}
@@ -125,12 +126,12 @@ createBaseMap <- function(data,
 #' Default = \code{'blueviolet'}.
 #' @param alpha.points (default = .5), the alpha
 #'  (transparency) for the points, should be
-#'  between 1 (no transparency) and 0
+#'  between 1 (opaque) and 0
 #'  (completely transparent).
 #' @param   display.points  if  \code{TRUE} (Default)
 #' create the map for the points.
 #' @param pch the character for the points,
-#' Default is 19 (Circles).
+#' Default is 19 (circles).
 #' @param  cex size of the dots. Default = 2.5
 #' @param display.labels if \code{TRUE} (Default),
 #' create the
@@ -149,7 +150,7 @@ createBaseMap <- function(data,
 #'   font family for labels.
 #' @param col.axes color for the axes, default is
 #' \code{'darkorchid'}.
-#' @param alpha.axes alpha parametere (transparency)
+#' @param alpha.axes alpha parameter (transparency)
 #' for the axes, default is .2.
 #' @param width.axes the width of the axes, default is 1.1.
 #' @param col.background the color theme of the background,
@@ -163,10 +164,10 @@ createBaseMap <- function(data,
 #' \enumerate{
 #' \item \code{zeMap}: The Complete Map (background Dots and Labels);
 #' \item  \code{zeMap_background}: The Background;
-#' \item  \code{zeMap_dots:} The dots;
-#' \item  \code{zeMap_text:} The Labels;
-#' \item  \code{factorScores:}  The factor scores; and
-#' \item  \code{constraints:} The list of the contraints'
+#' \item  \code{zeMap_dots:}: The dots;
+#' \item  \code{zeMap_text:}: The Labels;
+#' \item  \code{factorScores:}:  The factor scores; and
+#' \item  \code{constraints:}: The list of the contraints'
 #' }
 #; NB class = \code{'createFactorMap'}.
 #' @section Important_Note: When creating multiple layers graphs,

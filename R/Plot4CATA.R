@@ -11,11 +11,17 @@
 # ShadesColor()
 # PrettyBarPlotColor()
 # GraphPTCABoot()
+# PlotScree()
+# createlabel()
+# createxyLabels
+# createLabel.gen
+# createxyLabels.gen
 # Created August 05, 2016 by Hervé Abdi
 # Documented with roxygen2
 # Last Uptdate. February 04, 2018. HA
 # Small changes March 07. HA.
 # Problem with strange error when building the package on R
+# change September 23, 2018. HA
 #_____________________________________________________________________
 #_____________________________________________________________________
 
@@ -644,10 +650,10 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 }
 #_____________________________________________________________________
 #_____________________________________________________________________
-#' plot the scree for the eigen values
-#' of an SVD based multivariate analysis
+#' plot the scree for the eigenvalues
+#' of an SVD based multivariate analysis.
 #'
-#' \code{PlotScree}: Plot the scree for the eigen-values
+#' \code{PlotScree}: Plot the scree for the eigenvalues
 #' of an SVD-based multivariate analysis.
 #' Note that the function can recompute the
 #' eigen-values when a percentage is given.
@@ -662,15 +668,17 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 #' @author Hervé Abdi
 #' @param ev the eigenvalues to plot. no default.
 #' @param p.ev the probabilities associated to the
-#' eigen-values.
-#' @param max.ev the max eigen-value
-#'        needed because ExPosition does not return all ev
-#'        but only the requested one. but return all tau
+#' eigen-values, (default = \code{NULL}).
+#' @param max.ev the max eigenvalue
+#'        needed because \code{ExPosition} does not always return all
+#'        eigenvalues
+#'        but sometimes only the requested ones;
+#'        however \code{ExPosition} always returns all percentages i.e., tau),
 #'        so if \code{max.ev} is specified, it is used to recompute
-#'        all eigen-values.
+#'        all eigenvalues.
 #' @param alpha threshold for significance. Default = .05
 #' @param col.ns color for the non significant
-#' ev. Default is \code{'Green'}.
+#' eigenvalues. Default is \code{'Green'}.
 #' @param col.sig  color for significant eigen-values.
 #' Default is \code{'Violet'}.
 #' @param title a title for the graph
@@ -697,40 +705,40 @@ PlotScree <- function(ev,
                       lwd4Kaiser = 2.5
 ){
   # percentage of inertia
-  val.tau = (100*ev/sum(ev))
-  Top.y = ceiling(max(val.tau)*.1)*10
+  val.tau = (100*ev / sum(ev))
+  Top.y = ceiling(max(val.tau) * .1) * 10
   # if ev is already a percentage convert it back
-  if (!is.null(max.ev)){ev = ev*(max.ev/ev[1])}
+  if (!is.null(max.ev)){ev = ev * (max.ev / ev[1])}
   #
-  par(mar=c(5,6,4,4))
+  par(mar = c(5,6,4,4))
   # plot.window(xlim = c(0, length(val.tau)+5),
   #         ylim = c(0,Top.y),asp = .6)
-  plot(x = seq(1,length(val.tau)),y=val.tau,xlab='Dimensions',
+  plot(x = seq(1, length(val.tau)), y = val.tau, xlab = 'Dimensions',
        ylab = 'Percentage of Explained Variance',
        main = title,
-       type = 'l', col = col.ns, lwd= 1,
+       type = 'l', col = col.ns, lwd = 1,
        xlim = c(1, length(val.tau)),
        ylim = c(0,Top.y)
   )
-  points(x = seq(1,length(val.tau)),y=val.tau,
-         pch=16,  cex=1, col = col.ns, lwd= 2.5
+  points(x = seq(1,length(val.tau)),y = val.tau,
+         pch = 16,  cex = 1, col = col.ns, lwd = 2.5
   )
   if (!is.null(p.ev)){# plot the significant vp if exist
     # Plot the significant factors
     signi.vp = which(p.ev < alpha)
-    lines(x = seq(1,length(signi.vp)),y=val.tau[signi.vp],
-          type = 'l', col = col.sig, lwd= 1.5
+    lines(x = seq(1,length(signi.vp)),y = val.tau[signi.vp],
+          type = 'l', col = col.sig, lwd = 1.5
     )
-    points(x = seq(1,length(signi.vp)),y=val.tau[signi.vp],
-           pch=16,  cex=1.5, col = col.sig, lwd= 3.5)
+    points(x = seq(1,length(signi.vp)),y = val.tau[signi.vp],
+           pch = 16,  cex = 1.5, col = col.sig, lwd= 3.5)
   } # end of plot significant vp
   par(new = TRUE)
-  par(mar=c(5,6,4,4)+.5)
+  par(mar = c(5,6,4,4)+.5)
   le.max.vp = Top.y*(ev[1]/val.tau[1])
   plot(ev, ann = FALSE,axes = FALSE,type = "n",#line=3,
        ylim = c(0,le.max.vp))
   if (plotKaiser){
-  abline(h = 1/length(ev),  col = color4Kaiser, lwd = lwd4Kaiser)
+  abline(h = sum(ev)/length(ev),  col = color4Kaiser, lwd = lwd4Kaiser)
   }
   mtext("Inertia Extracted by the Components", side = 4, line = 3)
   axis(4)

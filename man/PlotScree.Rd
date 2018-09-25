@@ -2,8 +2,8 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{PlotScree}
 \alias{PlotScree}
-\title{plot the scree for the eigen values
-of an SVD based multivariate analysis}
+\title{plot the scree for the eigenvalues
+of an SVD based multivariate analysis.}
 \usage{
 PlotScree(ev, p.ev = NULL, max.ev = NULL, alpha = 0.05,
   col.ns = "#006D2C", col.sig = "#54278F",
@@ -14,18 +14,20 @@ PlotScree(ev, p.ev = NULL, max.ev = NULL, alpha = 0.05,
 \item{ev}{the eigenvalues to plot. no default.}
 
 \item{p.ev}{the probabilities associated to the
-eigen-values.}
+eigen-values, (default = \code{NULL}).}
 
-\item{max.ev}{the max eigen-value
-needed because ExPosition does not return all ev
-but only the requested one. but return all tau
+\item{max.ev}{the max eigenvalue
+needed because \code{ExPosition} does not always return all
+eigenvalues
+but sometimes only the requested ones;
+however \code{ExPosition} always returns all percentages i.e., tau),
 so if \code{max.ev} is specified, it is used to recompute
-all eigen-values.}
+all eigenvalues.}
 
 \item{alpha}{threshold for significance. Default = .05}
 
 \item{col.ns}{color for the non significant
-ev. Default is \code{'Green'}.}
+eigenvalues. Default is \code{'Green'}.}
 
 \item{col.sig}{color for significant eigen-values.
 Default is \code{'Violet'}.}
@@ -47,7 +49,7 @@ for Kaiser's criterion line.
 # @examples  # PlotScree(ev)}
 }
 \description{
-\code{PlotScree}: Plot the scree for the eigen-values
+\code{PlotScree}: Plot the scree for the eigenvalues
 of an SVD-based multivariate analysis.
 Note that the function can recompute the
 eigen-values when a percentage is given.

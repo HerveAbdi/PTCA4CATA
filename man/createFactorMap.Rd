@@ -2,7 +2,8 @@
 % Please edit documentation in R/CreateFactorMaps4CA.R
 \name{createFactorMap}
 \alias{createFactorMap}
-\title{create the base plot maps for CA type graphs with ggplot2.}
+\title{create the base plot maps for CA type
+graphs with \code{ggplot2}.}
 \usage{
 createFactorMap(X, axis1 = 1, axis2 = 2, constraints = NULL,
   title = NULL, col.points = "blueviolet", alpha.points = 0.5,
@@ -36,14 +37,14 @@ Default = \code{'blueviolet'}.}
 
 \item{alpha.points}{(default = .5), the alpha
 (transparency) for the points, should be
-between 1 (no transparency) and 0
+between 1 (opaque) and 0
 (completely transparent).}
 
 \item{display.points}{if  \code{TRUE} (Default)
 create the map for the points.}
 
 \item{pch}{the character for the points,
-Default is 19 (Circles).}
+Default is 19 (circles).}
 
 \item{cex}{size of the dots. Default = 2.5}
 
@@ -71,7 +72,7 @@ font family for labels.}
 \item{col.axes}{color for the axes, default is
 \code{'darkorchid'}.}
 
-\item{alpha.axes}{alpha parametere (transparency)
+\item{alpha.axes}{alpha parameter (transparency)
 for the axes, default is .2.}
 
 \item{width.axes}{the width of the axes, default is 1.1.}
@@ -92,17 +93,17 @@ a list with 6 elements:
 \enumerate{
 \item \code{zeMap}: The Complete Map (background Dots and Labels);
 \item  \code{zeMap_background}: The Background;
-\item  \code{zeMap_dots:} The dots;
-\item  \code{zeMap_text:} The Labels;
-\item  \code{factorScores:}  The factor scores; and
-\item  \code{constraints:} The list of the contraints'
+\item  \code{zeMap_dots:}: The dots;
+\item  \code{zeMap_text:}: The Labels;
+\item  \code{factorScores:}:  The factor scores; and
+\item  \code{constraints:}: The list of the contraints'
 }
 }
 \description{
 \code{createFactorMap}:
 Creates the \code{ggplot2} basic factor maps for CA type graphs.
 The final maps are created by using overlays on top of the base map.
-See also \code{makeCAmap}.
+
 A map for CA is created with the baseMap to which
 is added text/dot map.
 \code{createFactorMap} calls the functions \code{map4DotsAndLabels}
