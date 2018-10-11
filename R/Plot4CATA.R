@@ -733,7 +733,7 @@ PlotScree <- function(ev,
            pch = 16,  cex = 1.5, col = col.sig, lwd= 3.5)
   } # end of plot significant vp
   par(new = TRUE)
-  par(mar = c(5,6,4,4)+.5)
+  par(mar = c(5,6,4,4) + .5)
   le.max.vp = Top.y*(ev[1]/val.tau[1])
   plot(ev, ann = FALSE,axes = FALSE,type = "n",#line=3,
        ylim = c(0,le.max.vp))
