@@ -5,7 +5,7 @@
 \title{Draw a Polygon in a \code{ggplot2} based graph}
 \usage{
 ggdrawPolygon(F, order2draw = 1:nrow(F), color = "darkorchid",
-  linetype = 3, size = 1, fill = "darkorchid", alpha = 0.6, ...)
+  linetype = 3, size = 0.5, fill = "darkorchid", alpha = 0.2, ...)
 }
 \arguments{
 \item{F}{a set of 2-dimensional coordinates}
@@ -16,15 +16,15 @@ points to draw the polygon.}
 \item{color}{(Default: 'darkorchid') the color of the line
 of the polygon.}
 
-\item{linetype}{(Default: \code{3}, i.e., dotted line), 
+\item{linetype}{(Default: \code{3}, i.e., dotted line),
 the line type to draw the polygon.}
 
-\item{size}{(Default: \code{1}) the size of the line.}
+\item{size}{(Default: \code{.5}) the size of the line.}
 
 \item{fill}{(Default: \code{'darkorchid'}) the color to fill-in
 the polygon.}
 
-\item{alpha}{(Default: \code{.4}) the transparency fa ctor
+\item{alpha}{(Default: \code{.2}) the transparency fa ctor
 for the fill-in color of the polygon (gors from 0 completely
 transparent to 1: opaque).}
 
@@ -35,7 +35,7 @@ if needed.}
 a polygon to be added to a \code{ggplots2} image.
 }
 \description{
-\code{ggdrawPolygon}: Draws a Polygon in a 
+\code{ggdrawPolygon}: Draws a Polygon in a
 \code{ggplot2}-based factorial graph (e.g., from CA or PCA).
 }
 \details{
