@@ -2,7 +2,7 @@
 % Please edit documentation in R/CSCA.R
 \name{rdiag}
 \alias{rdiag}
-\title{@title  right (i.e., post) Multiply a matrix by a diagonal matrix}
+\title{right (i.e., post) Multiply a matrix by a diagonal matrix}
 \usage{
 rdiag(X, y)
 }
@@ -26,6 +26,9 @@ a matrix by a diagonal matrix (with only
  Z = rdiag(X,y)
  }
 }
+\seealso{
+\code{\link{ldiag}}
+}
 \author{
-Herve Abdi
+Hervé Abdi
 }

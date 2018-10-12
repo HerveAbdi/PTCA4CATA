@@ -15,7 +15,7 @@
 # is uncentered with the metrics of X.
 
 # sinew::makeOxygen(ldiag)
-# rdiag & ldiag
+# rdiag & ldiag ----
 # Two other local functions ----------------------------------------
 # to replace left and right diag multiplication
 #' @title  Left (i.e., pre) Multiply a matrix by a diagonal matrix
@@ -28,8 +28,9 @@
 #' @param X an \eqn{I} by \eqn{J} matrix.
 #' @return an \eqn{I} by \eqn{J} matrix equal
 #' to diag(\strong{y}) %*% \strong{X}.
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @rdname ldiag
+#' @seealso \code{\link{rdiag}}
 #' @examples
 #' \dontrun{
 #'  Z = ldiag(y, X)
@@ -40,7 +41,9 @@ ldiag <- function(y,X){
   nC <- ncol(X)
   return(matrix(y, nrow = nR, ncol = nC, byrow = FALSE) * X)
 }
-#'  @title  right (i.e., post) Multiply a matrix by a diagonal matrix
+#_____________________________________________________________________
+# rdiag preamble ----
+#'@title  right (i.e., post) Multiply a matrix by a diagonal matrix
 #'
 #' @description \code{rdiag}: right (i.e., post) Multiply
 #' a matrix by a diagonal matrix (with only
@@ -50,7 +53,8 @@ ldiag <- function(y,X){
 #' @param X an \eqn{I} by \eqn{J} matrix.
 #' @return an \eqn{I} by \eqn{J} matrix equal to
 #' \strong{X} %*% diag(\strong{y}).
-#' @author Herve Abdi
+#' @author Hervé Abdi
+#' @seealso \code{\link{ldiag}}
 #' @rdname rdiag
 #' @examples
 #' \dontrun{

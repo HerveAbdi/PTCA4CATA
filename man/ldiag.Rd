@@ -26,6 +26,9 @@ a matrix by a diagonal matrix (with only
  Z = ldiag(y, X)
  }
 }
+\seealso{
+\code{\link{rdiag}}
+}
 \author{
-Herve Abdi
+Hervé Abdi
 }
