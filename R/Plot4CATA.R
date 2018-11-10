@@ -22,13 +22,14 @@
 # Small changes March 07. HA.
 # Problem with strange error when building the package on R
 # change September 23, 2018. HA
+# changed November 4, 2018 HA (from Ju-Chi)
 #_____________________________________________________________________
 #_____________________________________________________________________
 
 # ********************************************************************
 # The functions start below
 # ********************************************************************
-# *****************************************************************************
+# ********************************************************************
 # function PrettyBarPlot. Create plot à la Wires (MATLAB)
 
 #' creates bar plots for a series of variables.
@@ -665,7 +666,7 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 #'  the average inertia (i.e., Kaiser criterion).
 #'  If provided with probabilities, \code{PlotScree} will
 #'  color differently the "significant" eigenvalues.
-#' @author Hervé Abdi
+#' @author Hervé Abdi with help of Derek Beaton and Ju-Chi Yu.
 #' @param ev the eigenvalues to plot. no default.
 #' @param p.ev the probabilities associated to the
 #' eigen-values, (default = \code{NULL}).
@@ -726,11 +727,12 @@ PlotScree <- function(ev,
   if (!is.null(p.ev)){# plot the significant vp if exist
     # Plot the significant factors
     signi.vp = which(p.ev < alpha)
-    lines(x = seq(1,length(signi.vp)),y = val.tau[signi.vp],
-          type = 'l', col = col.sig, lwd = 1.5
-    )
-    points(x = seq(1,length(signi.vp)),y = val.tau[signi.vp],
-           pch = 16,  cex = 1.5, col = col.sig, lwd= 3.5)
+    # These are the lines Ju-Chi changed ####
+    lines(x = seq(1, max(signi.vp)), y = val.tau[1:max(signi.vp)],
+          type = "l", col = col.sig, lwd = 1.5)
+    points(x = signi.vp, y = val.tau[signi.vp],
+           pch = 16, cex = 1.5, col = col.sig, lwd = 3.5)
+    #______________________________________________
   } # end of plot significant vp
   par(new = TRUE)
   par(mar = c(5,6,4,4) + .5)

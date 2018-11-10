@@ -771,16 +771,19 @@ print.createFactorMapIJ <- function (x, ...) {
 #_____________________________________________________________________
 
 #_____________________________________________________________________
-#' Creates all the partial ggplot2 maps for CA
+#' @title Creates all the partial ggplot2 maps for CA
 #' with all standard variants of normalization for factor scores.
 #'
-#'  \code{createAllMaps4CA} uses
-#'  \code{ggplot2} to create all the partial maps for CA
+#' @description  \code{createAllMaps4CA}: uses
+#'  \code{ggplot2} to
+#'  1) create all the partial maps for CA
 #' with the different types of normalizations: Asymmetric,
-#' Symmetric, True-Barycentric, Biplots, and SPSS pseudo Biplots.
-#'  Create ggplot2 factorial maps for dots and labels
-#'create the base plot maps for CA type graphs with ggplot2.
-#'Creates maps for the \eqn{I} (rows) and the
+#' Symmetric, True-Barycentric, Biplots, and \code{SPSS}
+#'  pseudo Biplots.
+#' 2)
+#'   to creates \code{ggplot2} factorial maps for dots and labels;
+#' 3) to create the base plot maps for CA type graphs, and 4)
+#' to creates maps for the \eqn{I} (rows) and the
 #'\eqn{J} (column) -sets.
 #'
 #' @param  allNormedFactors,
@@ -799,11 +802,12 @@ print.createFactorMapIJ <- function (x, ...) {
 #' Default = \code{'blueviolet'}.
 #' @param alpha.points.i (default = .5), the alpha
 #'  (transparency) for the points, should be
-#'  between 1 (no transparency) and 0
+#'  between 1 (opaque) and 0
 #'  (completely transparent).
 #' @param pch.i the character for the points for the \eqn{I}-set.
 #' Default is 19 (Circles).
-#' @param  cex.i size of the dots for the \eqn{I}-set. Default = 2.5
+#' @param  cex.i size of the dots for the \eqn{I}-set.
+#'  Default = 2.5
 #' @param  col.labels.i the color of the labels for
 #' the \eqn{I}-set.
 #' Can be one color or a vector of colors. If a vector, it needs
@@ -811,7 +815,7 @@ print.createFactorMapIJ <- function (x, ...) {
 #' Default =  \code{'darkorchid'}.
 #' @param alpha.labels.i (default = 1), the alpha
 #'  (transparency) for the labels, should be
-#'  between 1 (no transparency) and 0
+#'  between 1 (opaque) and 0
 #'  (completely transparent).
 #' @param text.cex.i = 4,  font size for labels for the I-set.
 #' @param segment.size.i = 0, # size of segment
@@ -829,7 +833,7 @@ print.createFactorMapIJ <- function (x, ...) {
 #' Default = \code{'darkolivegreen4'}.
 #' @param alpha.points.j (Default = .5), the alpha
 #'  (transparency) for the \eqn{J}-points, should be
-#'  between 1 (no transparency) and 0
+#'  between 1 (opaque) and 0
 #'  (completely transparent).
 #' @param pch.j the character for the points for the \eqn{J}-set.
 #' Default is 18 (Diamonds).
@@ -843,7 +847,7 @@ print.createFactorMapIJ <- function (x, ...) {
 #' Default =  \code{'darkolivegreen'}.
 #' @param alpha.labels.j (default = 1), the alpha
 #'  (transparency) for the \eqn{J}-labels, should be
-#'  between 1 (no transparency) and 0
+#'  between 1 (opaque) and 0
 #'  (completely transparent).
 #' @param text.cex.j (Default = 4)
 #' font size for labels for the \eqn{J}-set.
@@ -856,7 +860,7 @@ print.createFactorMapIJ <- function (x, ...) {
 #' @param col.axes (Default = \code{'darkorchid'})
 #' color for the axes.
 #' @param    alpha.axes
-#' (Default = .2) transparency factors for the
+#' (Default = .2) transparency factor for the
 #' color of the axes.
 #' @param  width.axes (Default = 1.1) the width of the axes
 #' @param col.background
@@ -880,24 +884,30 @@ print.createFactorMapIJ <- function (x, ...) {
 #'   \code{J_labels_B} The labels J-set (Barycentric).
 #'  \code{J_points_B}  The dots J-set (Barycentric).
 #; NB class = 'createAllMaps4CA'
-#' @details The final map are buit by combining the elementary maps.
-#' For example a map with the \eqn{J}-set being asymmetric
+#' @details The final maps are built
+#' by combining the elementary maps.
+#' For example, a map with the \eqn{J}-set being asymmetric
 #' and the \eqn{I}-set being Symmetric would be made
-#' by creating the Ja_Is as
+#' by creating the \code{Ja_Is} map as
 #' \code{Ja_Is <- baseMap_A + J_labels_A + I_labels_S}.
+#'
 #' Note than, in general, the \code{Asymmetric} is larger than the
-#' \code{Symmetric} map which is in trun larger than the
+#' \code{Symmetric} map which is in turn larger than the
 #' \code{Barycentric} map.
-#' @section Important_Note: When creating multiple layers graphs
-#' because of the way \code{ggplot2} create graphs all the
-#' the matrices/dataframe should all the have the  same column names
-#' [e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
-#' When it is not the case, some strange and cryptic
-#' error may be produced
+#' @section Important_Note:
+#' When creating multiple layers graphs,
+#' because of the way \code{ggplot2} create graphs,
+#' all
+#' the matrices/dataframe should all the have
+#' the  same column names
+#' [e.g., \code{colnames()}
+#' equal to c("Dimension 1", "Dimension 2")].
+#' When this is not the case, some strange and cryptic
+#' errors may be produced
 #' (e.g., "cannot find Dimension").
 #' @export
 # @examples \dontrun{}
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @seealso createFactorMaps createbaseMap
 createAllMaps4CA <- function(allNormedFactors,
                              # A list with all the

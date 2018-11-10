@@ -89,7 +89,7 @@ boot.ratio.test <- function(boot.cube,critical.value=2){
 #'
 #' @param x a list: output of bootRatios
 #' @param ... everything else for the functions
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @export
 print.bootRatios <- function (x, ...) {
   ndash = 78 # How many dashes for separation lines
@@ -111,11 +111,12 @@ print.bootRatios <- function (x, ...) {
 # ********************************************************************
 # function Boot4PTCA.
 #   Compute the Bootstrapped Factors scores for I and J sets
-#'\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
+#'@title Compute the Bootstrapped factors scores
 #' for the  \eqn{I} and \eqn{J} sets from
 #' a Partial Triadic Correspondence analysis
 #' (PTCA).
 #'
+#'@description
 #' \code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube
 #' and computes bootstraped factor scores.
 #' @param ZeDataCube An  \eqn{I} * \eqn{J} * \eqn{K}

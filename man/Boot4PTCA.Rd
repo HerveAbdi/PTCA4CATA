@@ -2,7 +2,7 @@
 % Please edit documentation in R/BootRatio.R
 \name{Boot4PTCA}
 \alias{Boot4PTCA}
-\title{\code{Boot4PTCA}. Compute the Bootstrapped Factors scores
+\title{Compute the Bootstrapped factors scores
 for the  \eqn{I} and \eqn{J} sets from
 a Partial Triadic Correspondence analysis
 (PTCA).}

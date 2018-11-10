@@ -38,13 +38,14 @@ Default = \code{'blueviolet'}.}
 
 \item{alpha.points.i}{(default = .5), the alpha
 (transparency) for the points, should be
-between 1 (no transparency) and 0
+between 1 (opaque) and 0
 (completely transparent).}
 
 \item{pch.i}{the character for the points for the \eqn{I}-set.
 Default is 19 (Circles).}
 
-\item{cex.i}{size of the dots for the \eqn{I}-set. Default = 2.5}
+\item{cex.i}{size of the dots for the \eqn{I}-set.
+Default = 2.5}
 
 \item{segment.size.i}{= 0, # size of segment}
 
@@ -56,7 +57,7 @@ Default =  \code{'darkorchid'}.}
 
 \item{alpha.labels.i}{(default = 1), the alpha
 (transparency) for the labels, should be
-between 1 (no transparency) and 0
+between 1 (opaque) and 0
 (completely transparent).}
 
 \item{text.cex.i}{= 4,  font size for labels for the I-set.}
@@ -78,7 +79,7 @@ Default = \code{'darkolivegreen4'}.}
 
 \item{alpha.points.j}{(Default = .5), the alpha
 (transparency) for the \eqn{J}-points, should be
-between 1 (no transparency) and 0
+between 1 (opaque) and 0
 (completely transparent).}
 
 \item{pch.j}{the character for the points for the \eqn{J}-set.
@@ -97,7 +98,7 @@ Default =  \code{'darkolivegreen'}.}
 
 \item{alpha.labels.j}{(default = 1), the alpha
 (transparency) for the \eqn{J}-labels, should be
-between 1 (no transparency) and 0
+between 1 (opaque) and 0
 (completely transparent).}
 
 \item{text.cex.j}{(Default = 4)
@@ -115,7 +116,7 @@ the labels for the \eqn{J}-set.}
 \item{col.axes}{(Default = \code{'darkorchid'})
 color for the axes.}
 
-\item{alpha.axes}{(Default = .2) transparency factors for the
+\item{alpha.axes}{(Default = .2) transparency factor for the
 color of the axes.}
 
 \item{width.axes}{(Default = 1.1) the width of the axes}
@@ -144,32 +145,41 @@ a list with
  \code{J_points_B}  The dots J-set (Barycentric).
 }
 \description{
-\code{createAllMaps4CA} uses
- \code{ggplot2} to create all the partial maps for CA
+\code{createAllMaps4CA}: uses
+ \code{ggplot2} to
+ 1) create all the partial maps for CA
 with the different types of normalizations: Asymmetric,
-Symmetric, True-Barycentric, Biplots, and SPSS pseudo Biplots.
- Create ggplot2 factorial maps for dots and labels
-create the base plot maps for CA type graphs with ggplot2.
-Creates maps for the \eqn{I} (rows) and the
+Symmetric, True-Barycentric, Biplots, and \code{SPSS}
+ pseudo Biplots.
+2)
+  to creates \code{ggplot2} factorial maps for dots and labels;
+3) to create the base plot maps for CA type graphs, and 4)
+to creates maps for the \eqn{I} (rows) and the
 \eqn{J} (column) -sets.
 }
 \details{
-The final map are buit by combining the elementary maps.
-For example a map with the \eqn{J}-set being asymmetric
+The final maps are built
+by combining the elementary maps.
+For example, a map with the \eqn{J}-set being asymmetric
 and the \eqn{I}-set being Symmetric would be made
-by creating the Ja_Is as
+by creating the \code{Ja_Is} map as
 \code{Ja_Is <- baseMap_A + J_labels_A + I_labels_S}.
+
 Note than, in general, the \code{Asymmetric} is larger than the
-\code{Symmetric} map which is in trun larger than the
+\code{Symmetric} map which is in turn larger than the
 \code{Barycentric} map.
 }
 \section{Important_Note}{
- When creating multiple layers graphs
-because of the way \code{ggplot2} create graphs all the
-the matrices/dataframe should all the have the  same column names
-[e.g., \code{colnames()} equal to c("Dimension 1", "Dimension 2")].
-When it is not the case, some strange and cryptic
-error may be produced
+
+When creating multiple layers graphs,
+because of the way \code{ggplot2} create graphs,
+all
+the matrices/dataframe should all the have
+the  same column names
+[e.g., \code{colnames()}
+equal to c("Dimension 1", "Dimension 2")].
+When this is not the case, some strange and cryptic
+errors may be produced
 (e.g., "cannot find Dimension").
 }
 
@@ -177,5 +187,5 @@ error may be produced
 createFactorMaps createbaseMap
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

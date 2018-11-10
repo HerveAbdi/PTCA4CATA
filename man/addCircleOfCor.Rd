@@ -37,6 +37,9 @@ The map should should be first created by, for example,
 \code{createFactorMap()} (or equivalent functions from
 \code{PTCA4CATA}), and then the circle of correlation is added
 (see example).
+
+\emph{Note}: This function is likely to move to another package
+such as \code{data4PCCAR}.
 }
 \examples{
 # Some PCA-like correlations

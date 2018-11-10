@@ -29,6 +29,10 @@
 #' \code{createFactorMap()} (or equivalent functions from
 #' \code{PTCA4CATA}), and then the circle of correlation is added
 #' (see example).
+#'
+#' \emph{Note}: This function is likely to move to another package
+#' such as \code{data4PCCAR}.
+#'
 #' @import ggplot2
 #' @author Herve Abdi
 #' @seealso \code{\link{createFactorMap}}
@@ -92,6 +96,12 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 #' (i.e., a PCA-like map),
 #' most likely  a plot of correlation produced by
 #' \code{createFactorMap} \emph{et alia}.
+#'
+#' @details
+#'
+#' \emph{Note}: This function is likely to move to another package
+#' such as \code{data4PCCAR}.
+#'
 #'
 #' @param X a data frame with the coordinates of the points
 #' (e.g., from \code{ExPosition::epCA()}).

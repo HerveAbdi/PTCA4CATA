@@ -15,5 +15,5 @@
 Change the print function for bootRatios
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

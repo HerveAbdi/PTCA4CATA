@@ -48,6 +48,9 @@ most likely  a plot of correlation produced by
 \code{createFactorMap} \emph{et alia}.
 }
 \details{
+\emph{Note}: This function is likely to move to another package
+such as \code{data4PCCAR}.
+
 The map should should first be created by, for example,
 \code{createFactorMap()} (or equivalent functions from
 \code{PTCA4CATA}), and then the arrows are added
