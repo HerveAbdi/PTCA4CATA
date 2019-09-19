@@ -312,6 +312,7 @@ print.perm4ptca <- function (x, ...) {
 #' @param ndigit4print (Default = 4) number of digits
 #' to use to print the results
 #' @author Herve Abdi
+#' @importFrom stats pchisq
 #' @return: A dataframe with the results of the test
 #' @export
 
@@ -341,7 +342,7 @@ Malinvaud4ptca  <-   function(Data, # The original data table
   Q     <- N.pp * cumsum(Val.P[nL:1])[nL:1]
   Q.nu  <- (nI - 1:nL)*(nJ - 1:nL)
   # Get the values from Chi Square
-  pQ = 1 - pchisq(Q,Q.nu)
+  pQ = 1 - stats::pchisq(Q,Q.nu)
   # Add NA to make clear that the last
   #     dimension is not tested
   Le.Q = c(Q,NA)

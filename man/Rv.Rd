@@ -53,6 +53,7 @@ RV coefficient, and Mantel Coefficient.
  In N.J. Salkind, D.M., Dougherty, & B. Frey (Eds.):
   \emph{Encyclopedia of Research Design}.
   Thousand Oaks (CA): Sage. pp. 222-229.
+  @importFrom stats pnorm
 }
 \author{
 Herve Abdi

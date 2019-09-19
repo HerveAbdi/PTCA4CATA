@@ -12,6 +12,7 @@
 # Uptdates. August 07. HA / October 17 / 2016.
 # June 9 2017. HA
 # February 9 2018. HA
+# September 19, 2019. HA
 #_____________________________________________________________________
 
 
@@ -42,7 +43,12 @@
 #' "to-be-bootstrapped-units"
 #' (e.g., judges, participants, assessors).
 #' @param critical.value The critical value for significance
-#' (default = 2, which matches a \eqn{p <} .05 significance level)
+#' (default = 2, which matches a \eqn{p <} .05 significance level).
+#' @param names4Dimensions names for
+#' the dimensions (a.k.a. Factors), Default: \code{'Dimension '}.
+#' If \code{names4Dimensions = NULL}, the name of
+#' the dimensions is inherited from the \code{colnames} of
+#' \code{boot.cube}.
 #' @return A list:
 #' 1) \code{sig.boot.ratios}:
 #' A logical vector that identifies the
@@ -53,25 +59,35 @@
 #' bootstrap ratios
 #' 4) \code{prob.boot.ratios.cor}:
 #' the (Sidak/Bonferonni) corrected probability associated to the
-#' bootstrap ratios
+#' bootstrap ratios.
+#' @importFrom stats dnorm
 #' @examples \dontrun{
 #' BR <- boot.ratio.test(BootI)
 #' }
 #' @export
-boot.ratio.test <- function(boot.cube,critical.value=2){
+boot.ratio.test <- function(boot.cube, critical.value = 2,
+                            names4Dimensions = 'Dimension '){
   boot.cube.mean <- apply(boot.cube,c(1,2),mean)
   boot.cube.mean_repeat <- array(boot.cube.mean,dim=c(dim(boot.cube)))
   boot.cube.dev <- (boot.cube - boot.cube.mean_repeat)^2
   s.boot<-(apply(boot.cube.dev,c(1,2),mean))^(1/2)
   boot.ratios <- boot.cube.mean / s.boot
   significant.boot.ratios <- (abs(boot.ratios) > critical.value)
-  prob.boot.ratios <-  dnorm(abs(boot.ratios))
+  prob.boot.ratios <-  stats::dnorm(abs(boot.ratios))
   ncomp =  dim(boot.cube)[1]
-  prob.boot.ratios.corr <- 1 - (1 - prob.boot.ratios)^(1/ncomp)
+  # Sidak - Bonferonni corrected
+  prob.boot.ratios.corr <- 1 - (1 - prob.boot.ratios)^(ncomp)
   rownames(boot.ratios) <- rownames(boot.cube)
   rownames(significant.boot.ratios) <- rownames(boot.cube)
   rownames(prob.boot.ratios) <- rownames(boot.cube)
   rownames(prob.boot.ratios.corr) <- rownames(boot.cube)
+  if (!is.null(names4Dimensions)){
+    name4col <- paste0(names4Dimensions, 1:NCOL(boot.ratios))
+         }  else { name4col  <-  dimnames(boot.cube)[2]}
+    colnames(boot.ratios)    <- name4col
+    colnames(significant.boot.ratios) <- name4col
+    colnames(prob.boot.ratios)  <- name4col
+    colnames(prob.boot.ratios.corr)  <- name4col
   return.list <-  structure(
          list(boot.ratios = boot.ratios,
               prob.boot.ratios = prob.boot.ratios,
@@ -166,7 +182,7 @@ print.bootRatios <- function (x, ...) {
 #'  coordinates for the \eqn{J}-set.
 #' @author Herve Abdi
 #' @examples \dontrun{
-#' BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+#' BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi,fj = fj, eigs = eigs)
 #' }
 #' @export
 Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped

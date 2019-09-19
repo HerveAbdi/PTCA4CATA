@@ -130,7 +130,8 @@ lighten <- function(colors, factor=1.4, maxColorValue=255){
 #' (same dimension as \code{bootratio})
 #' @param plotnames if TRUE (default) write the names of the items
 #' @param main (default is \code{NULL}) a title for the graph
-#' @param ylab (default is \code{NULL}) a label for the \eqn{y} axis (i.e., BR).
+#' @param ylab (default is \code{NULL}) a label for
+#' the \eqn{y} axis (i.e., BR).
 #' If \code{NULL} \code{ylab = 'Bootstrap ratios'}.
 #' @param sortValues (Default: \code{FALSE}) when \code{TRUE}
 #' sort the values to plot.

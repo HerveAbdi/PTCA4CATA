@@ -58,7 +58,8 @@ color for the non-significant \code{bootratio}.}
 
 \item{main}{(default is \code{NULL}) a title for the graph}
 
-\item{ylab}{(default is \code{NULL}) a label for the \eqn{y} axis (i.e., BR).
+\item{ylab}{(default is \code{NULL}) a label for
+the \eqn{y} axis (i.e., BR).
 If \code{NULL} \code{ylab = 'Bootstrap ratios'}.}
 
 \item{sortValues}{(Default: \code{FALSE}) when \code{TRUE}

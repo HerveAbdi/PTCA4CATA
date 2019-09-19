@@ -63,5 +63,5 @@ For example  \code{ExPosition} does not return all ev
  color differently the "significant" eigenvalues.
 }
 \author{
-Hervé Abdi
+Hervé Abdi with help of Derek Beaton and Ju-Chi Yu.
 }

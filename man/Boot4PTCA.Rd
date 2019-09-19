@@ -72,7 +72,7 @@ and computes bootstraped factor scores.
 }
 \examples{
 \dontrun{
-BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi=fi,fj=fj,eigs=eigs)
+BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi,fj = fj, eigs = eigs)
 }
 }
 \author{

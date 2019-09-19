@@ -461,7 +461,7 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 #' is on the right of the
 #' distribution, otherwise it is on the left.
 #' @return h the histogram of the distribution
-#' @import stats
+#' @importFrom  stats quantile
 #' @export
 ##User is _required_ to provide a distribution
 ##  and an observed value
@@ -538,8 +538,8 @@ prettyHist <- function(distribution, observed,
   }
   if(show.cutoffs){
 
-    tail.locs <- stats::quantile(distribution,prob=cutoffs)
-    abline(v=tail.locs,col=cutoff.col,lty=2,lwd=2)
+    tail.locs <- stats::quantile(distribution, prob = cutoffs)
+    abline(v = tail.locs, col = cutoff.col, lty = 2,lwd = 2)
     #lapply(tail.locs,abline,lwd=3,col=cutoff.col,lty=2)
     #abline(v=observed,lwd=3,col=observed.col)
     #text(observed, max(h$counts),

@@ -26,7 +26,7 @@ for a Cube of CATA Data
 I: Rows   are Products
 J: Columns are Variables
 K: Third Dimension is Assessors.
-x_{i,j,k} = 1 means 
+x_{i,j,k} = 1 means
 Assessor k chosed Variable j for Product i
 NB. uses function \code{Q4CATA.Slice}
 }

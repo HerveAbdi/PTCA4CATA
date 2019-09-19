@@ -284,6 +284,7 @@ RV4Brick <- function(aBrickOfData){
 #'  In N.J. Salkind, D.M., Dougherty, & B. Frey (Eds.):
 #'   \emph{Encyclopedia of Research Design}.
 #'   Thousand Oaks (CA): Sage. pp. 222-229.
+#'   @importFrom stats pnorm
 #' @export
 #' @author Herve Abdi
 Rv <- function(m1,m2, return.type = 'compact'){
@@ -335,7 +336,7 @@ Rv <- function(m1,m2, return.type = 'compact'){
     VRv = num/den
     ZRv = (Rv-ERv) / sqrt(VRv)
     # NB  Proz is bilateral here
-    pRv = 2*(1 - pnorm(abs(ZRv)))
+    pRv = 2*(1 - stats::pnorm(abs(ZRv)))
   }
   if (return.type == 'Rv'){
     return.list <- structure(list(Rv = Rv),

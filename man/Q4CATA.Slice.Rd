@@ -17,11 +17,11 @@ a vector with the value of \code{chi2}
 Cochran's Q test for a slice of a cube.
  Used as a subfunction of Q4CATA.Cube
  Needs the \code{coin} library.
- The data are stored in a matrix 
-that represents the choices of 
+ The data are stored in a matrix
+that represents the choices of
 J participants (col) for I products (row)
 about one variable
-with 
+with
     rows as products
     columns as assessors
 x(i,j) = 1 if p(i) was chosen by a(j), 0 if not.

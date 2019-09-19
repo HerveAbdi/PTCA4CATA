@@ -5,7 +5,8 @@
 \title{\code{boot.ratio.test} computes bootstrap ratios
 from a "bootstrap cube."}
 \usage{
-boot.ratio.test(boot.cube, critical.value = 2)
+boot.ratio.test(boot.cube, critical.value = 2,
+  names4Dimensions = "Dimension ")
 }
 \arguments{
 \item{boot.cube}{An I*L*B bootstrap brick
@@ -16,7 +17,13 @@ random factor of the
 (e.g., judges, participants, assessors).}
 
 \item{critical.value}{The critical value for significance
-(default = 2, which matches a \eqn{p <} .05 significance level)}
+(default = 2, which matches a \eqn{p <} .05 significance level).}
+
+\item{names4Dimensions}{names for
+the dimensions (a.k.a. Factors), Default: \code{'Dimension '}.
+If \code{names4Dimensions = NULL}, the name of
+the dimensions is inherited from the \code{colnames} of
+\code{boot.cube}.}
 }
 \value{
 A list:
@@ -29,7 +36,7 @@ the (uncorrected) probability associated to the
 bootstrap ratios
 4) \code{prob.boot.ratios.cor}:
 the (Sidak/Bonferonni) corrected probability associated to the
-bootstrap ratios
+bootstrap ratios.
 }
 \description{
 \code{boot.ratio.test} computes bootstrap ratios

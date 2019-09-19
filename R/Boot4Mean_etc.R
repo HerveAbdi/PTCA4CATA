@@ -13,10 +13,11 @@
 # or conversely how to project a supplementary observation
 # described by only part of the variables
 
-#---------------------------------------------------------------------
-#---------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
+#_____________________________________________________________________
 # Boot4Mean
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 # Bootstrap function for the factors
 #' @title  Boot4Mean computes a brick of bootstrap
 #' estimates for the means of groups of observations
@@ -52,6 +53,7 @@
 #' a step before plotting confidence interval ellipses for
 #' group means
 #' @importFrom utils setTxtProgressBar txtProgressBar
+#' @importFrom stats aggregate
 #' @examples
 #' \dontrun{
 #' if(interactive()){
@@ -68,7 +70,7 @@ Boot4Mean <- function(Data , design,
   # Private functions
   # Get the means
   GetMean <- function(Data = Data, design = design)
-  {MeanGroups = as.matrix(aggregate(Data,by = list(design),
+  {MeanGroups = as.matrix(stats::aggregate(Data,by = list(design),
                                     FUN = mean)[-1])
   }
   # ********* A function inspired from Derek *****************
@@ -122,8 +124,8 @@ Boot4Mean <- function(Data , design,
                             class = 'bootGroup')
   return(return.list)
 }  # End of function Boot4Mean
-#=====================================================================
-#---------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 #' Change the print function for bootGroup
 #'
 #'  Change the print function for bootGroup
@@ -145,5 +147,5 @@ print.bootGroup <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.bootGroup
-#---------------------------------------------------------------------
-#---------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________

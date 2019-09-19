@@ -11,7 +11,7 @@ p2Star(pValues, threshold = c(0.05, 0.01, 0.001))
 \item{pValues}{a vector of $p$ values (i.e., values between 0 and 1)}
 
 \item{threshold}{a vector giving the values for thresholding
-default is c(.05,.01,.001)}
+default is \code{c(.05,.01,.001)}.}
 }
 \value{
 pStared a vector of stars

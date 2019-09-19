@@ -66,6 +66,7 @@
 #' by the function  \code{CreateBaseMap()}.
 #' @author Herve Abdi
 #' @import ggplot2  prettyGraphs
+#' @importFrom stats complete.cases
 #' @examples
 #' \dontrun{
 #' Fij = rbind(Fi,Fj)
@@ -152,7 +153,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                           size=line.size,
                           linetype=line.type)
     } else {# Plot convex hulls with ggConvexHull
-      row2keep <-  complete.cases(X2plot[,c(axis1,axis2)])
+      row2keep <-  stats::complete.cases(X2plot[,c(axis1,axis2)])
       X.non.na <- X2plot[row2keep,c(axis1,axis2)]
       elli <- ggConvexHull(data = X.non.na,
                            x_axis = 1,

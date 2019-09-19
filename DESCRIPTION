@@ -14,13 +14,13 @@ Description:
          In addition to correspondence analysis, Hellinger analysis
          can also be used.
 License: GPL-2
-Imports: ExPosition, coin, car, prettyGraphs, graphics, stats,
+Imports: ExPosition, car, prettyGraphs, graphics, coin, stats,
     ggplot2, ggrepel, readxl, reshape, officer, rvg, colorspace, methods,
     grDevices
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
 VignetteBuilder: utils
 URL: http://github.com/HerveAbdi/PTCA4CATA
 BugReports: http://github.com/HerveAbdi/PTCA4CATA/issues
