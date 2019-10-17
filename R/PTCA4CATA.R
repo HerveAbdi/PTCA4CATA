@@ -1,4 +1,4 @@
-#
+# The PTCA4CATA package ----
 # You can learn more about package authoring with RStudio at:
 #
 #   http://r-pkgs.had.co.nz/
@@ -19,6 +19,7 @@
 # library('PTCA4CATA')
 # help(PTCA4CATA)
 # Documentation with roxygen2
+# doc ----
 #' @title
 #' PTCA4CATA  package to perform Partial Triadic Correspondence Analysis
 #' (PTCA) for Check All That Apply (CATA) Data

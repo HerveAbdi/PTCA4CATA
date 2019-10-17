@@ -1,4 +1,4 @@
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 # Filename: SaveAllGraphsIntoPttx
 # Contains saveGraph2pptx:
 # A nifty routine
@@ -13,7 +13,7 @@
 #
 #*********************************************************************
 
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 #*********************************************************************
 #' \code{saveGraph2pptx}:  saves all the graphics
 #' from the Global Environment into a powerpoint file.
@@ -81,7 +81,7 @@ saveGraph2pptx <- function(file2Save.pptx,
     pptxName <- rvg::ph_with_vg(pptxName, code = print(graph),
                                 type = "body") # The ggplot2 picture
   } # End of sauveImage
-  #-------------------------------------------------------------------
+  #___________________________________________________________________
   laDate = substr(as.POSIXlt(Sys.time()),1,10)
   # Make default title
   if (is.null(title)) {
@@ -110,8 +110,8 @@ saveGraph2pptx <- function(file2Save.pptx,
   doc <- add_slide(doc, layout = "Title Only", master = "Office Theme")
   doc <- ph_with_text(doc, type = 'title',
                       str =  title )
-  #-------------------------------------------------------------------
-  #-------------------------------------------------------------------
+  #___________________________________________________________________
+  #___________________________________________________________________
   # Save  in a powerpoint
   #   all the graphs created by either recordPlot or ggplots
   listOfGraphs <- list()
@@ -131,14 +131,14 @@ saveGraph2pptx <- function(file2Save.pptx,
       listOfGraphs[[k]] <- alist[[i]]
     }
   }
-  #-------------------------------------------------------------------
+  #___________________________________________________________________
   # Save the powerpoint Presentation
   suppressMessages(
     print(doc, target = file2Save.pptx )
   )
   # et voila
   #
-  #-------------------------------------------------------------------
+  #___________________________________________________________________
   return.list <- structure(
     list(
       listOfsavedGraphs = listOfGraphs,
@@ -173,10 +173,10 @@ print.savePptx <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.bootRatios
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 # Test the function here
 #res.save.pptx <- saveGraph2pptx(file2Save.pptx = 'toto.pptx',
 #                                title = 'Distatis Test')
-#---------------------------------------------------------------------
+#_____________________________________________________________________

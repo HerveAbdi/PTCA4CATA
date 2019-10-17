@@ -1,13 +1,17 @@
+#_____________________________________________________________________
 # Make Tolerance Ellipses / Hull
 # Hervé Abdi
 # September 22, 2017
-# Current Version: September 30 2017.
+# Current Version: October 17 2019.
+# Cleaning October 17 2019.
+# (fixed the problem with dimnames for hull)
 # For inclusion in PTCA4CATA
 #
-#=====================================================================
-#====================================================================
+#_____________________________________________________________________
+#_____________________________________________________________________
 # function MakeToleranceIntervals
-#====================================================================
+#_____________________________________________________________________
+# Preamble ----
 # function MakeToleranceIntervals
 #' @title \code{MakeToleranceIntervals}.
 #' Add Tolerance interval hulls or
@@ -35,9 +39,9 @@
 #' names of the factors.
 #'  if \code{NULL},  \code{name.of.factors} is dimnames(data)[2],
 #'  if dimnames(data)[2] is \code{NULL}, the dimensions
-#'  will be labelled \code{"Dimension"}.
-#'  This paramater is needed
-#'  to avoid conflict when plotting
+#'  will be labelled \code{"Dimension "}.
+#'  This parameter is needed
+#'  to avoid (strange) conflicts when plotting
 #'  these names as they must be the same as the names of the
 #'  data used to make the BaseMap plot (i.e., Fi/Fj/Fij)
 #' @param col (default = \code{NULL})
@@ -45,7 +49,7 @@
 #' if \code{NULL} use \code{prettyGraphs} scheme with
 #' \code{prettyGraphs::prettyGraphsColorSelection}
 #' @param  centers (default = \code{NULL}),
-#' if \code{NULL} centers the ellipses on their barycenter
+#' if \code{NULL} centers the ellipses on their respective barycenter
 #' to center on another center (i.e., item factor scores)
 #' provide an \eqn{I * K} data frame or matrix.
 #' @param  line.size (default = 1):
@@ -54,14 +58,20 @@
 #' the type of line for the ellipses
 #' @param   alpha.ellipse (default = .3):
 #' alpha value (transparency) for the ellipses.
-#' @param alpha.line    (default = .5):
+#' @param alpha.line (default = .5):
 #' alpha value (transparency) for the lines.
-#' @param   p.level = (default = .66)
+#' @param   p.level (default = .66)
 #' "\eqn{p}-value for the TI
 #' @param type (Default = \code{'hull'})
-#' type of interval can be c('ellipse','hull')
+#' type of interval can be \code{c('ellipse','hull')}.
+#' Note that fitting an \code{ellipse} to the
+#' whole distribution of points (i.e., \code{p.level = 1.00})
+#' can make the ellipses going out of the graphs
+#' and produce strange results or errors.
+#' Probably better to use the default
+#' option for \code{p.level} when using \code{type = 'ellipse'}.
 #' @return LeGraph.elli a graph with convex hulls
-#' or ellipse to be added to the base map as created,
+#' or ellipses to be added to the base map as created,
 #' for example,
 #' by the function  \code{CreateBaseMap()}.
 #' @author Herve Abdi
@@ -92,7 +102,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            # The colors for the ellipses
                            centers = NULL,
                            # The centers of the ellipses
-                           # if null use the boostrap means
+                           # if NULL use the factor scores means
                            # should be a I * # factors
                            line.size = 1,
                            line.type = 1,
@@ -109,8 +119,8 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
   if (is.null(names.of.factors)){
     names.of.factors = unlist(dimnames(X)[2])
   }
-  if (is.null(names.of.factors)){
-    names.of.factors = paste0('Dimension', c(axis1,axis2))
+  if (is.null(names.of.factors)){# HERE ----
+    names.of.factors = paste0('Dimension ', c(axis1,axis2))
   }
   # rm(data)  # Not needed any more
   # DimBoot <- dim(data)
@@ -128,7 +138,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                                       rep(items.colors[1],nItems)}
   LeGraph.elli <- list() # initialize
   for (i in  1:nItems){
-    X2plot <- as.data.frame(X[design==Nom2Rows[i],])
+    X2plot <- as.data.frame(X[design == Nom2Rows[i],])
     if (!is.null(centers)){
       # Stuff to finish. HA /02/01/2016
       # Recenter the ellipses on specific centers
@@ -138,9 +148,11 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
       X2plot <- truc # recentered
     }
     #df_ell <- data.frame()
+    # before if  ----
     if (tolower(type) == 'ellipse'){# Plot ellipses statellipse
+      # Ellipse ----
     elli <- ggplot2::stat_ellipse(data = X2plot[,c(axis1,axis2)],
-                          ggplot2::aes(color=alpha(
+                          ggplot2::aes_(color=alpha(
                                   items.colors[i],alpha.line )),
                           show.legend = FALSE,
                           geom = 'polygon',# center = c(0,0),
@@ -153,6 +165,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                           size=line.size,
                           linetype=line.type)
     } else {# Plot convex hulls with ggConvexHull
+      # ConvexHull ----
       row2keep <-  stats::complete.cases(X2plot[,c(axis1,axis2)])
       X.non.na <- X2plot[row2keep,c(axis1,axis2)]
       elli <- ggConvexHull(data = X.non.na,
@@ -172,9 +185,9 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
   }
   return(LeGraph.elli)
 } # End of function MakeToleranceIntervals
-#=====================================================================
+#_____________________________________________________________________=
 #
-#=====================================================================
+#_____________________________________________________________________=
 #' @title Create a peeled convex hull for a set of points
 #' described by 2 variables.
 #'
@@ -227,10 +240,10 @@ peelZeHull <- function (data_matrix,
 }
 
 # End of function PeelzeHull
-#---------------------------------------------------------------------
-# function ggConvexHull. Draw a convex Huell with ggplot
+#_____________________________________________________________________
+# function ggConvexHull. Draw a convex Hull with ggplot
 #
-#---------------------------------------------------------------------
+#_____________________________________________________________________
 #' @title ggConvexHull use ggplot2 to plot
 #' a peeled convex hull for a set of points
 #' described by 2 variables.
@@ -302,20 +315,23 @@ ggConvexHull <- function(data,
                           # alpha value (transparency) for the Hull.
                           names.of.factors = 'Dimension'
                           # names of the factors:  needed by ggplot
-){# Start ggConvexHull
-  X <-  data[,c(x_axis,y_axis)]
+){# Start ggConvexHull ----
+  X <-  as.data.frame(data[,c(x_axis,y_axis)])
   if (is.null(names.of.factors)){
     names.of.factors = unlist(dimnames(X)[2])
   }
   if (is.null(names.of.factors)){
-    names.of.factors = paste0('Dimension', c(1,2))
+    names.of.factors = paste0('Dimension ', c(1,2))
   }
   peeledHull <- peelZeHull(X, percentage =  percentage)
+
   ggHull     <-  ggplot2::geom_polygon(data = peeledHull,
                                 linetype = line.type,
                                 size = line.size,
-                                aes_string(colnames(X)[1],
-                                          colnames(X)[2]) ,
+#                                aes_string(colnames(X)[1],
+#                                           colnames(X)[2]) ,
+                                aes_string(x =  "get(colnames(X)[1])",
+                                           y =  "get(colnames(X)[2])" ),
                                 color = ggplot2::alpha(col.line,
                                          alpha =  alpha.line),
                                 alpha = alpha.hull,
@@ -324,5 +340,5 @@ ggConvexHull <- function(data,
   #            line.size = line.size)
   return(ggHull)
 } # End of function ggConvexHull
-#=====================================================================
+#_____________________________________________________________________
 

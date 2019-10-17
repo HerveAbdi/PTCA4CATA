@@ -28,9 +28,9 @@ of the Ith observations.}
 names of the factors.
  if \code{NULL},  \code{name.of.factors} is dimnames(data)[2],
  if dimnames(data)[2] is \code{NULL}, the dimensions
- will be labelled \code{"Dimension"}.
- This paramater is needed
- to avoid conflict when plotting
+ will be labelled \code{"Dimension "}.
+ This parameter is needed
+ to avoid (strange) conflicts when plotting
  these names as they must be the same as the names of the
  data used to make the BaseMap plot (i.e., Fi/Fj/Fij)}
 
@@ -40,7 +40,7 @@ if \code{NULL} use \code{prettyGraphs} scheme with
 \code{prettyGraphs::prettyGraphsColorSelection}}
 
 \item{centers}{(default = \code{NULL}),
-if \code{NULL} centers the ellipses on their barycenter
+if \code{NULL} centers the ellipses on their respective barycenter
 to center on another center (i.e., item factor scores)
 provide an \eqn{I * K} data frame or matrix.}
 
@@ -56,15 +56,21 @@ alpha value (transparency) for the ellipses.}
 \item{alpha.line}{(default = .5):
 alpha value (transparency) for the lines.}
 
-\item{p.level}{= (default = .66)
+\item{p.level}{(default = .66)
 "\eqn{p}-value for the TI}
 
 \item{type}{(Default = \code{'hull'})
-type of interval can be c('ellipse','hull')}
+type of interval can be \code{c('ellipse','hull')}.
+Note that fitting an \code{ellipse} to the
+whole distribution of points (i.e., \code{p.level = 1.00})
+can make the ellipses going out of the graphs
+and produce strange results or errors.
+Probably better to use the default
+option for \code{p.level} when using \code{type = 'ellipse'}.}
 }
 \value{
 LeGraph.elli a graph with convex hulls
-or ellipse to be added to the base map as created,
+or ellipses to be added to the base map as created,
 for example,
 by the function  \code{CreateBaseMap()}.
 }

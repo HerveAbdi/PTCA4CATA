@@ -1,12 +1,12 @@
-#
+#_____________________________________________________________________
 # A function to read the data from a CATA xls File
 # and to create a DataCube
 # To be integrated in PTCA4CATA Package
 # Herve Abdi October 20, 2016.
 # Current version: July 11, 2017.
 # Uses the readxl packages and so does not need rJava
-#----------------------------------------------------------------------
-# --------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
 #' Reads the CATA data from an Excel File and creates
@@ -90,7 +90,7 @@ read.xls.CATA <- function(path2file, # The file name of the data
   # with read_ readxl
   df <- as.data.frame(readxl::read_excel(path = path2file,
                                          sheet = sheet2read))
-  #-----------------------------------------------------------------
+#_____________________________________________________________________
 #
 # The data are organized as: Judge 1. row 1 = name of adjective
 #                              (2 to 58)
@@ -102,7 +102,8 @@ read.xls.CATA <- function(path2file, # The file name of the data
 #                           Judge 75. row 740 = name of adjective
 #                                                          (2 to 58)
 #                           Column 1 Name of beers (rows 740 to 749)
-#-----------------------------------------------------------------
+#_____________________________________________________________________
+
 return.list <-createCube4CATA(df = df, # A data frame
                               orderProducts = orderProducts,
                               threshold4cleaning = threshold4cleaning
@@ -112,8 +113,7 @@ return.list <-createCube4CATA(df = df, # A data frame
 
     return(return.list)
 } # end of function
-#-----------------------------------------------------------------
-
+#_____________________________________________________________________
 #
 # # Reformat the data for PTCA
 # #   (partial triadic correspondence analysis)
@@ -128,7 +128,7 @@ return.list <-createCube4CATA(df = df, # A data frame
 # # Number of Attributes
 # nVars = ncol(df) - 1
 # # the first column gives the name of the products
-# #-----------------------------------------------------------------
+#_____________________________________________________________________
 # # Make a Cube of Data from the xlsx file
 # Rows2Drop =  seq(from = nProducts+1,
 #                  to = nrow(df), by = nProducts+1)
@@ -156,7 +156,7 @@ return.list <-createCube4CATA(df = df, # A data frame
 #   NamesOfJudges = paste0('J-',seq(1,nJudges))
 #    }
 # #
-# #------------------------------------------------------------------
+#_____________________________________________________________________
 # # Give names to the dimensions
 # # Note the [[]]. Will not work otherwise
 # # change NamesOfProducts as NamesOfProducts
@@ -164,7 +164,7 @@ return.list <-createCube4CATA(df = df, # A data frame
 # dimnames(ZeRawDataCube)[[1]] <- NamesOfProducts
 # dimnames(ZeRawDataCube)[[2]] <- NamesOfAttributes
 # dimnames(ZeRawDataCube)[[3]] <- NamesOfJudges
-# #-----------------------------------------------------------------
+#_____________________________________________________________________
 #
 # # Now Create the Contingency table
 # # First step: Create the contingency table
@@ -178,14 +178,14 @@ return.list <-createCube4CATA(df = df, # A data frame
 # # do not create a problem for CA
 # ColTotals <- colSums(ContingencyTable)
 # # threshold4cleaning = 80
-# #-----------------------------------------------------------------
+#_____________________________________________________________________
 # # Do we clean the CATA.CT?
 # BadCol <- (ColTotals <= threshold4cleaning)
 # if (any(BadCol) ){
 #   CleanedContingencyTable    <- ContingencyTable[,!BadCol]
 #   return.list$CATA.CleanedCT <-  CleanedContingencyTable
 #       }
-# #-----------------------------------------------------------------
+#_____________________________________________________________________
 # return.list$nProducts <- nProducts
 # return.list$nVars <- nVars
 # return.list$nJudges <- nJudges
@@ -302,7 +302,7 @@ createCube4CATA <- function(df, # A data frame
   # read the data
   #wb = XLConnect::loadWorkbook(path2file)
   # df = XLConnect::readWorksheet(wb,sheet = sheet2read, header = TRUE)
-  #-----------------------------------------------------------------
+  #___________________________________________________________________
   #
   # The data are organized as: Judge 1. row 1 = name of adjective
   #                              (2 to 58)
@@ -329,7 +329,7 @@ createCube4CATA <- function(df, # A data frame
   # Number of Attributes
   nVars = ncol(df) - 1
   # the first column gives the name of the products
-  #-----------------------------------------------------------------
+  #___________________________________________________________________
   # Make a Cube of Data from the xlsx file
   Rows2Drop =  seq(from = nProducts+1,
                    to = nrow(df), by = nProducts+1)
@@ -358,7 +358,7 @@ createCube4CATA <- function(df, # A data frame
     NamesOfJudges = paste0('J-',seq(1,nJudges))
   }
   #
-  #------------------------------------------------------------------
+  #___________________________________________________________________
   # Give names to the dimensions
   # Note the [[]]. Will not work otherwise
   # change NamesOfProducts as NamesOfProducts
@@ -366,7 +366,7 @@ createCube4CATA <- function(df, # A data frame
   dimnames(ZeRawDataCube)[[1]] <- NamesOfProducts
   dimnames(ZeRawDataCube)[[2]] <- NamesOfAttributes
   dimnames(ZeRawDataCube)[[3]] <- NamesOfJudges
-  #-----------------------------------------------------------------
+  #___________________________________________________________________
   if (orderProducts){
     ZeRawDataCube <- ZeRawDataCube[
       order(dimnames(ZeRawDataCube)[[1]] ),,]
@@ -389,20 +389,19 @@ createCube4CATA <- function(df, # A data frame
   return.list$nJudges   <- nJudges
 
   # Old Cleaning Code
-  # #-----------------------------------------------------------------
+  # #_________________________________________________________________
   # # Do we clean the CATA.CT?
   # ColTotals <- colSums(ContingencyTable)
   # BadCol <- (ColTotals <= threshold4cleaning)
   # if (any(BadCol) ){
   #   CleanedContingencyTable    <- ContingencyTable[,!BadCol]
   #   return.list$CATA.CleanedCT <-  CleanedContingencyTable
-  #-------------------------------------------------------------------
+  #___________________________________________________________________
   # New Code calls the function cleanDataCATA()
 
   return.list <- cleanDataCATA(return.list,
                        threshold4cleaning = threshold4cleaning)
-
   return(return.list)
 } # End of function
 #*****************************************************************
-#-----------------------------------------------------------------
+#_____________________________________________________________________

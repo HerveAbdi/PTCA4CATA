@@ -1,8 +1,9 @@
+#_____________________________________________________________________
 # CI-Ellipse for PTCA4CATA
 # Create a CI- Ellipse Plot for a CA plot
 # Should work with the Asymmetric plots
-#====================================================================
-#====================================================================
+#_____________________________________________________________________
+#_____________________________________________________________________
 #' \code{MakeCIEllipses}.
 #' Add Confidence interval ellipses to a CA-like plots.
 #'
@@ -59,7 +60,7 @@
 #' ABaseMap + GraphElli # plot the I Set CI ellipses
 #' }
 #' @export
-#====================================================================
+#_____________________________________________________________________
 # function MakeCIEllipses.
 MakeCIEllipses <- function(data, # A cube of Bootstrap from Boot4PTCA
                            # I * #factor * nBooistrapIterations
@@ -120,4 +121,4 @@ MakeCIEllipses <- function(data, # A cube of Bootstrap from Boot4PTCA
   }
   return(LeGraph.elli)
 } # End of function MakeCIEllipses
-#====================================================================
+#_____________________________________________________________________

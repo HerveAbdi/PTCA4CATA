@@ -44,7 +44,7 @@ Q4CATA.Slice <- function(Data4Q){
   # with
   #     rows as products
   #     columns as assessors
-  # x(i,j) = 1 if p(i) was chosen by a(j), 0 if not
+  # \eqn{x(i,j) =} 1 if \eqn{p(i)} was chosen by \eqn{a(j)}, 0 if not
   # NB: require(coin)
   # Make Data4Q a Vector to use long form
   as.vec = as.vector(Data4Q)
