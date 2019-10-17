@@ -4,8 +4,8 @@
 # September 22, 2017
 # Current Version: October 17 2019.
 # Cleaning October 17 2019.
-# (fixed the problem with dimnames for hull)
-# For inclusion in PTCA4CATA
+# (fixed the problem with dimnames for 'hull' option)
+# currently part of PTCA4CATA
 #
 #_____________________________________________________________________
 #_____________________________________________________________________
@@ -13,27 +13,27 @@
 #_____________________________________________________________________
 # Preamble ----
 # function MakeToleranceIntervals
-#' @title \code{MakeToleranceIntervals}.
+#' @title  # \code{MakeToleranceIntervals}.
 #' Add Tolerance interval hulls or
 #' ellipses to factor score plots
 #' (e.g., PCA, CA).
 #'
 #' @description  \code{MakeToleranceIntervals}:
 #'  Creates the ToleranceIntervals (CI) convex hulls or ellipses
-#' for plots for the I or J sets of a CA, PCA,  MFA,
+#' for plots for the \eqn{I} or \eqn{J} sets of a CA, PCA,  MFA,
 #' STATIS, etc. type of analysis
-#' The results (Hull or Ellipses)
+#' The results (Hulls or Ellipses)
 #' of \code{MakeToleranceIntervals}
 #' should be added
-#' to the BaseMap
+#' to the \code{BaseMap}
 #' created (for example) by the function
 #'  \code{CreateBaseMap()}.
 #' @param data A set of I*L factor scores
 #' (as obtained, for example, from \code{ExPosition::epCA})
-#' @param design an I by 1 factor giving the group membership
-#' of the Ith observations.
-#' @param axis1 (default = 1): the horizontal axis
-#' @param axis2 (default = 2): the vertical axise
+#' @param design an \eqn{I} by 1 factor giving the group membership
+#' of the \eqn{I} observations.
+#' @param axis1 (default = 1): the horizontal axis.
+#' @param axis2 (default = 2): the vertical axis.
 #' @param names.of.factors
 #' (default is \code{paste0('Dimension ',c(axis1,axis2)}):
 #' names of the factors.
@@ -119,7 +119,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
   if (is.null(names.of.factors)){
     names.of.factors = unlist(dimnames(X)[2])
   }
-  if (is.null(names.of.factors)){# HERE ----
+  if (is.null(names.of.factors)){#
     names.of.factors = paste0('Dimension ', c(axis1,axis2))
   }
   # rm(data)  # Not needed any more
@@ -313,7 +313,7 @@ ggConvexHull <- function(data,
                           col.hull  =  'darkorchid',
                           alpha.hull = .4,
                           # alpha value (transparency) for the Hull.
-                          names.of.factors = 'Dimension'
+                          names.of.factors = 'Dimension '
                           # names of the factors:  needed by ggplot
 ){# Start ggConvexHull ----
   X <-  as.data.frame(data[,c(x_axis,y_axis)])
@@ -324,14 +324,13 @@ ggConvexHull <- function(data,
     names.of.factors = paste0('Dimension ', c(1,2))
   }
   peeledHull <- peelZeHull(X, percentage =  percentage)
-
   ggHull     <-  ggplot2::geom_polygon(data = peeledHull,
                                 linetype = line.type,
                                 size = line.size,
 #                                aes_string(colnames(X)[1],
 #                                           colnames(X)[2]) ,
-                                aes_string(x =  "get(colnames(X)[1])",
-                                           y =  "get(colnames(X)[2])" ),
+                              aes_string(x =  "get(colnames(X)[1])",
+                                         y =  "get(colnames(X)[2])" ),
                                 color = ggplot2::alpha(col.line,
                                          alpha =  alpha.line),
                                 alpha = alpha.hull,
