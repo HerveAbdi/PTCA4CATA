@@ -137,6 +137,8 @@ lighten <- function(colors,
 #' plot only the significant values.
 #' @param angle.text  (Default: \code{90}, i.e., so slant)
 #' the "slanting factor" for the text.
+#' @param abbreviate_labels (Default: \code{FALSE}).
+#' @param make_labels_into_paragraphs (Default: \code{FALSE}).
 #' @param horizontal (Default: \code{TRUE}) when \code{TRUE},
 #' the plot is horizontal, when \code{FALSE} the plot is vertical.
 #' @param font.shrink (\code{default = 1}): a proportion for
@@ -162,6 +164,8 @@ lighten <- function(colors,
 #' names(toto) <- paste0('V', 1:7)
 #' PrettyBarPlot2(toto)
 #' @rdname PrettyBarPlot2
+#' @importFrom stringr str_wrap
+#' @importFrom stats setNames
 #' @export
 
 
@@ -191,6 +195,8 @@ PrettyBarPlot2 <- function(bootratio,
                            } else {
                              0
                            },
+                           abbreviate_labels = FALSE,
+                           make_labels_into_paragraphs = FALSE,
                            font.shrink = 1,
                            line.col = 'red',
                            line.type = 2,
@@ -217,6 +223,16 @@ PrettyBarPlot2 <- function(bootratio,
   } else {
     stop("bootratio should be a vector, a data frame or a matrix")
   }
+  adapt_plot <- FALSE
+  if (all(bootratio >= 0)) {
+    adapt_plot <- TRUE
+    plot_position <- "bottom"
+    hjust <- 1
+  } else if (all(bootratio <= 0)) {
+    adapt_plot <- TRUE
+    plot_position <- "top"
+    hjust <- 0
+  }
 
   if (signifOnly) {
     if (!is.null(color4bar)) {
@@ -228,13 +244,23 @@ PrettyBarPlot2 <- function(bootratio,
     bootratio <- sort(bootratio)
   if (is.null(ylim)) {
     lemax <- round(max(abs(bootratio))) + 1
-    if (any(bootratio < 0)) {
+    if (any(bootratio < 0) & any(bootratio > 0)) {
       ylim <- c(-lemax, lemax)
-    } else {
+    } else if (all(bootratio >= 0)) {
       ylim <- c(0, lemax)
+    } else {
+      ylim <- c(-lemax, 0)
     }
   }
+
   lesnoms <- names(bootratio)
+  if (abbreviate_labels) {
+    lesnoms <- abbreviate(lesnoms)
+  }
+  if (make_labels_into_paragraphs) {
+    lesnoms <- stringr::str_wrap(string = lesnoms, width = 20)
+  }
+
   nel <- length(bootratio)
   if (is.null(color4bar)) {
     lescouleurs <-
@@ -296,9 +322,9 @@ PrettyBarPlot2 <- function(bootratio,
   # The dimensions need to be better computed from the letter size
   #
   if (all(bootratio >= 0)) {
-    yint = c(threshold)   # fix the lim problem
-    ylim[2] <- max(ylim[2],  threshold)
-    ylim[1] <- min(ylim[1],  0)
+    yint <- c(threshold)   # fix the lim problem
+    # ylim[2] <- max(ylim[2],  threshold)
+    # ylim[1] <- min(ylim[1],  0)
   }
   if (all(bootratio <= 0)) {
     yint = -c(threshold)  # fix the lim problem
@@ -306,11 +332,11 @@ PrettyBarPlot2 <- function(bootratio,
     ylim[2] <- max(0, ylim[2])
   }
   if (any(bootratio >= 0) & any(bootratio <= 0)) {
-    yint =  c(threshold,-threshold)
+    yint <-  c(threshold,-threshold)
     # fix the lim problem: Make sure that the lim is always printed. HA
     ylim = c(min(ylim[1], -threshold) , max(ylim[2], threshold))
   }
-  laLigneRouge =  geom_hline(
+  laLigneRouge <- geom_hline(
     yintercept = yint,
     col = line.col,
     alpha = line.alpha,
@@ -318,6 +344,40 @@ PrettyBarPlot2 <- function(bootratio,
     size = line.size
   )
   #_____________________________________________________________________
+  if (adapt_plot) {
+  # commented by HA
+   #  print("Inside adapt plot")
+    p <- ggplot(dat, aes(
+      x = ID,
+      y = bootratio,
+      fill = IDnum,
+      color = IDnum
+    )) +
+      laLigneRouge +
+      geom_col() +
+      geom_hline(yintercept = 0) +
+      scale_fill_manual(values = lescouleurs) +
+      scale_color_manual(values = lescouleurs.bord) +
+      guides(fill = FALSE, color = FALSE) +
+      labs(x = "", y = ylab) +
+      ggtitle(main) +
+      theme_bw() +
+      theme(
+        axis.line.y      = element_line(colour = "black", ),
+        axis.ticks.x     = element_blank(),
+        # axis.line.x      = element_line(colour = "black"),
+        axis.text.x      = element_text(angle = 90, hjust = hjust, vjust = 0.5, color = lescouleurs.bord),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border     = element_blank(),
+        panel.background = element_blank()
+      ) +
+      scale_x_discrete(position = plot_position) +
+      ylim(ylim)
+    if (horizontal) return(p)
+    else return(p + coord_flip())
+  }
+
   if (horizontal) {
     p <- ggplot(dat, aes(
       x = IDnum,

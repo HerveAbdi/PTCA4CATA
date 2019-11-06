@@ -2,7 +2,7 @@
 % Please edit documentation in R/MakeTIEllipses.R
 \name{MakeToleranceIntervals}
 \alias{MakeToleranceIntervals}
-\title{\code{MakeToleranceIntervals}.
+\title{# \code{MakeToleranceIntervals}.
 Add Tolerance interval hulls or
 ellipses to factor score plots
 (e.g., PCA, CA).}
@@ -17,12 +17,12 @@ MakeToleranceIntervals(data, design, axis1 = 1, axis2 = 2,
 \item{data}{A set of I*L factor scores
 (as obtained, for example, from \code{ExPosition::epCA})}
 
-\item{design}{an I by 1 factor giving the group membership
-of the Ith observations.}
+\item{design}{an \eqn{I} by 1 factor giving the group membership
+of the \eqn{I} observations.}
 
-\item{axis1}{(default = 1): the horizontal axis}
+\item{axis1}{(default = 1): the horizontal axis.}
 
-\item{axis2}{(default = 2): the vertical axise}
+\item{axis2}{(default = 2): the vertical axis.}
 
 \item{names.of.factors}{(default is \code{paste0('Dimension ',c(axis1,axis2)}):
 names of the factors.
@@ -77,12 +77,12 @@ by the function  \code{CreateBaseMap()}.
 \description{
 \code{MakeToleranceIntervals}:
  Creates the ToleranceIntervals (CI) convex hulls or ellipses
-for plots for the I or J sets of a CA, PCA,  MFA,
+for plots for the \eqn{I} or \eqn{J} sets of a CA, PCA,  MFA,
 STATIS, etc. type of analysis
-The results (Hull or Ellipses)
+The results (Hulls or Ellipses)
 of \code{MakeToleranceIntervals}
 should be added
-to the BaseMap
+to the \code{BaseMap}
 created (for example) by the function
  \code{CreateBaseMap()}.
 }

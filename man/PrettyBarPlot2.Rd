@@ -13,7 +13,8 @@ PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
   color4ns = "gray75", color4bar = NULL, plotnames = TRUE,
   main = NULL, ylab = NULL, sortValues = FALSE, signifOnly = FALSE,
   horizontal = TRUE, angle.text = if (horizontal) {     90 } else {    
-  0 }, font.shrink = 1, line.col = "red", line.type = 2,
+  0 }, abbreviate_labels = FALSE, make_labels_into_paragraphs = FALSE,
+  font.shrink = 1, line.col = "red", line.type = 2,
   line.size = 0.5, line.alpha = 0.5)
 }
 \arguments{
@@ -73,6 +74,10 @@ the plot is horizontal, when \code{FALSE} the plot is vertical.}
 
 \item{angle.text}{(Default: \code{90}, i.e., so slant)
 the "slanting factor" for the text.}
+
+\item{abbreviate_labels}{(Default: \code{FALSE}).}
+
+\item{make_labels_into_paragraphs}{(Default: \code{FALSE}).}
 
 \item{font.shrink}{(\code{default = 1}): a proportion for
  how much the

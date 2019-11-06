@@ -9,7 +9,7 @@ described by 2 variables.}
 ggConvexHull(data, x_axis = 1, y_axis = 2, percentage = 0.66,
   col.line = "darkorchid4", alpha.line = 1, line.size = 1,
   line.type = 1, col.hull = "darkorchid", alpha.hull = 0.4,
-  names.of.factors = "Dimension")
+  names.of.factors = "Dimension ")
 }
 \arguments{
 \item{data}{an item by variables data,frame or matrix.}

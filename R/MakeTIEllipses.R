@@ -1,5 +1,5 @@
 #_____________________________________________________________________
-# Make Tolerance Ellipses / Hull
+# Make Tolerance Ellipses / Hulls
 # Hervé Abdi
 # September 22, 2017
 # Current Version: October 17 2019.
