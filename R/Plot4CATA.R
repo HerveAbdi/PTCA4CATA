@@ -704,7 +704,10 @@ PlotScree <- function(ev,
                       plotKaiser = FALSE,
                       color4Kaiser = 'darkorchid4',
                       lwd4Kaiser = 2.5
-){
+){# fix the strange problem when all p.ev are larger then
+  if (!is.null(p.ev)){
+    if (all(p.ev > alpha)) p.ev <- NULL
+  }
   # percentage of inertia
   val.tau = (100*ev / sum(ev))
   Top.y = ceiling(max(val.tau) * .1) * 10
