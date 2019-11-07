@@ -125,9 +125,10 @@ lighten <- function(colors,
 #' @param color4ns (Default: \code{'gray75'})
 #' color for the non-significant \code{bootratio}.
 #' @param color4bar (Default: NULL) a vector of color names
-#' (same dimension as \code{bootratio})
-#' @param plotnames if TRUE (default) write the names of the items
-#' @param main (default is \code{NULL}) a title for the graph
+#' (same dimension as \code{bootratio}). Needs to be either a name
+#' from the set \code{colors()} or in \code{hex} format.
+#' @param plotnames if TRUE (default) write the names of the items.
+#' @param main (default is \code{NULL}) a title for the graph.
 #' @param ylab (default is \code{NULL}) a label for
 #' the \eqn{y} axis (i.e., BR).
 #' If \code{NULL} \code{ylab = 'Bootstrap ratios'}.
@@ -165,6 +166,7 @@ lighten <- function(colors,
 #' PrettyBarPlot2(toto)
 #' @rdname PrettyBarPlot2
 #' @importFrom stringr str_wrap
+#' @importFrom gplots col2hex
 #' @importFrom stats setNames
 #' @export
 
@@ -204,7 +206,9 @@ PrettyBarPlot2 <- function(bootratio,
                            line.alpha = .5
                            # label.size = 1 # a future feature
                            ) {
+
   if (is.vector(bootratio)) {
+    if (!is.null(color4bar)){color4bar <- gplots::col2hex(color4bar)}
     if (is.null(names(bootratio))) {
       warning("The bootstrap ratio vector has no names, generating random names.")
       names(bootratio) <- paste0("V", seq_along(bootratio))

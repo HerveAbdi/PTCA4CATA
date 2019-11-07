@@ -53,11 +53,12 @@ Default is c("mediumpurple4",'darkolivegreen4','gray75')}
 color for the non-significant \code{bootratio}.}
 
 \item{color4bar}{(Default: NULL) a vector of color names
-(same dimension as \code{bootratio})}
+(same dimension as \code{bootratio}). Needs to be either a name
+from the set \code{colors()} or in \code{hex} format.}
 
-\item{plotnames}{if TRUE (default) write the names of the items}
+\item{plotnames}{if TRUE (default) write the names of the items.}
 
-\item{main}{(default is \code{NULL}) a title for the graph}
+\item{main}{(default is \code{NULL}) a title for the graph.}
 
 \item{ylab}{(default is \code{NULL}) a label for
 the \eqn{y} axis (i.e., BR).

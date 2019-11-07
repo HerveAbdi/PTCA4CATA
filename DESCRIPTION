@@ -16,7 +16,7 @@ Description:
 License: GPL-2
 Imports: ExPosition, car, prettyGraphs, graphics, coin, stats,
     ggplot2, ggrepel, readxl, reshape, officer, rvg, colorspace, methods,
-    grDevices, stringr
+    grDevices, stringr, gplots
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
