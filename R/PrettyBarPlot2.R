@@ -201,8 +201,9 @@ PrettyBarPlot2 <- function(bootratio,
                            line.col = 'red',
                            line.type = 2,
                            line.size = .5,
-                           line.alpha = .5,
-                           label.size = 1) {
+                           line.alpha = .5
+                           # label.size = 1 # a future feature
+                           ) {
   if (is.vector(bootratio)) {
     if (is.null(names(bootratio))) {
       warning("The bootstrap ratio vector has no names, generating random names.")
