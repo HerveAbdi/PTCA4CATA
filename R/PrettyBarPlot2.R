@@ -201,7 +201,8 @@ PrettyBarPlot2 <- function(bootratio,
                            line.col = 'red',
                            line.type = 2,
                            line.size = .5,
-                           line.alpha = .5) {
+                           line.alpha = .5,
+                           label.size = 1) {
   if (is.vector(bootratio)) {
     if (is.null(names(bootratio))) {
       warning("The bootstrap ratio vector has no names, generating random names.")
@@ -296,7 +297,11 @@ PrettyBarPlot2 <- function(bootratio,
   LesNoms2Print <- lesnoms
   ID <- IDnum <- NULL # HA We need to avoid a strange error
   # building the package
-  dat <- data.frame(
+  #print("lesnoms")
+  #print(lesnoms)
+  #print("LesNoms2Print")
+  #print(LesNoms2Print)
+    dat <- data.frame(
     IDnum = factor(seq_along(LesNoms2Print)),
     ID = LesNoms2Print,
     bootratio = bootratio,
@@ -346,9 +351,10 @@ PrettyBarPlot2 <- function(bootratio,
   #_____________________________________________________________________
   if (adapt_plot) {
   # commented by HA
-   #  print("Inside adapt plot")
+  #  print("Inside adapt plot")
+  #  print(lafont)
     p <- ggplot(dat, aes(
-      x = ID,
+      x = factor(ID, levels = ID), # from Luke original x = ID
       y = bootratio,
       fill = IDnum,
       color = IDnum
@@ -366,7 +372,7 @@ PrettyBarPlot2 <- function(bootratio,
         axis.line.y      = element_line(colour = "black", ),
         axis.ticks.x     = element_blank(),
         # axis.line.x      = element_line(colour = "black"),
-        axis.text.x      = element_text(angle = 90, hjust = hjust, vjust = 0.5, color = lescouleurs.bord),
+        axis.text.x      = element_text(angle = angle.text, hjust = hjust, vjust = 0.5, color = lescouleurs.bord, size = rel(font.size/3)),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.border     = element_blank(),

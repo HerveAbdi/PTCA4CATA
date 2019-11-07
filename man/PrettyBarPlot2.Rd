@@ -15,7 +15,7 @@ PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
   horizontal = TRUE, angle.text = if (horizontal) {     90 } else {    
   0 }, abbreviate_labels = FALSE, make_labels_into_paragraphs = FALSE,
   font.shrink = 1, line.col = "red", line.type = 2,
-  line.size = 0.5, line.alpha = 0.5)
+  line.size = 0.5, line.alpha = 0.5, label.size = 1)
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) or contributions
