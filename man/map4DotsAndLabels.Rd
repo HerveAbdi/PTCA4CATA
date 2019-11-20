@@ -5,12 +5,27 @@
 \title{Create \code{ggplot2} factorial maps for dots and labels.
 NB needs a base map to work correctly}
 \usage{
-map4DotsAndLabels(data, axis1 = 1, axis2 = 2, display.points = TRUE,
-  col.points = "blueviolet", alpha.points = 0.5, pch = 19,
-  cex = 2.5, display.labels = TRUE, col.labels = "darkorchid4",
-  alpha.labels = 1, force = 1, segment.size = 0, text.cex = 4,
-  font.face = "bold", font.family = "sans", nudge_x = 0,
-  nudge_y = 0, ...)
+map4DotsAndLabels(
+  data,
+  axis1 = 1,
+  axis2 = 2,
+  display.points = TRUE,
+  col.points = "blueviolet",
+  alpha.points = 0.5,
+  pch = 19,
+  cex = 2.5,
+  display.labels = TRUE,
+  col.labels = "darkorchid4",
+  alpha.labels = 1,
+  force = 1,
+  segment.size = 0,
+  text.cex = 4,
+  font.face = "bold",
+  font.family = "sans",
+  nudge_x = 0,
+  nudge_y = 0,
+  ...
+)
 }
 \arguments{
 \item{data}{the factor scores to plot}

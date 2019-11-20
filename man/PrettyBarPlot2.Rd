@@ -2,20 +2,37 @@
 % Please edit documentation in R/PrettyBarPlot2.R
 \name{PrettyBarPlot2}
 \alias{PrettyBarPlot2}
-\title{a \code{ggplot2}-based function to plot bar plots for a series
+\title{a \code{ggplot2}-based function to plot bar plots
+for a series
 of variables:
-Used for plotting bootstrap ratios or contributions in PCA, PLS, etc.}
+Used for plotting bootstrap ratios or contributions for
+PCA, CA, MCA, PLS, etc.}
 \usage{
-PrettyBarPlot2(bootratio, font.size = NULL, threshold = 3,
-  ylim = NULL, color.bar = c("lavender", "darkolivegreen3", "gray90"),
+PrettyBarPlot2(
+  bootratio,
+  font.size = NULL,
+  threshold = 3,
+  ylim = NULL,
+  color.bar = c("lavender", "darkolivegreen3", "gray90"),
   color.bord = c("mediumpurple4", "darkolivegreen4", "gray75"),
   color.letter = c("mediumpurple4", "darkolivegreen4", "gray75"),
-  color4ns = "gray75", color4bar = NULL, plotnames = TRUE,
-  main = NULL, ylab = NULL, sortValues = FALSE, signifOnly = FALSE,
-  horizontal = TRUE, angle.text = if (horizontal) {     90 } else {    
-  0 }, abbreviate_labels = FALSE, make_labels_into_paragraphs = FALSE,
-  font.shrink = 1, line.col = "red", line.type = 2,
-  line.size = 0.5, line.alpha = 0.5)
+  color4ns = "gray75",
+  color4bar = NULL,
+  plotnames = TRUE,
+  main = NULL,
+  ylab = NULL,
+  sortValues = FALSE,
+  signifOnly = FALSE,
+  horizontal = TRUE,
+  angle.text = if (horizontal) {     90 } else {     0 },
+  abbreviate_labels = FALSE,
+  make_labels_into_paragraphs = FALSE,
+  font.shrink = 1,
+  line.col = "red",
+  line.type = 2,
+  line.size = 0.5,
+  line.alpha = 0.5
+)
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) or contributions
@@ -44,7 +61,8 @@ Default is c('lavender','darkolivegreen3','gray90').}
 \item{color.bord}{The color for the boder of the bars,
 Default: c("mediumpurple4", "darkolivegreen4", "gray75").}
 
-\item{color.letter}{a 3-element vector of color names for the names of
+\item{color.letter}{a 3-element vector of color names
+for the names of
 the items for (respectively)
 significant positive, significant negative, and non-significant.
 Default is c("mediumpurple4",'darkolivegreen4','gray75')}
@@ -106,7 +124,8 @@ a \code{ggplot2}-based version of \code{PrettybarPlot} and
 \code{PrettyBarPlotColor}.
 \code{PrettyBarPlot2}
 creates bar plots for a set of items
-(e.g., observations or variables) analyzed with multivariate methods
+(e.g., observations or variables) analyzed
+with multivariate methods
 such as PCA, CA, MCA, PLS etc.
 PrettyBarPlot is used to display the bootstrap ratios
 or contributions plots for CA/MCA/PCA/PLS.

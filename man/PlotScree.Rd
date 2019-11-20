@@ -5,10 +5,18 @@
 \title{plot the scree for the eigenvalues
 of an SVD based multivariate analysis.}
 \usage{
-PlotScree(ev, p.ev = NULL, max.ev = NULL, alpha = 0.05,
-  col.ns = "#006D2C", col.sig = "#54278F",
-  title = "Explained Variance per Dimension", plotKaiser = FALSE,
-  color4Kaiser = "darkorchid4", lwd4Kaiser = 2.5)
+PlotScree(
+  ev,
+  p.ev = NULL,
+  max.ev = NULL,
+  alpha = 0.05,
+  col.ns = "#006D2C",
+  col.sig = "#54278F",
+  title = "Explained Variance per Dimension",
+  plotKaiser = FALSE,
+  color4Kaiser = "darkorchid4",
+  lwd4Kaiser = 2.5
+)
 }
 \arguments{
 \item{ev}{the eigenvalues to plot. no default.}

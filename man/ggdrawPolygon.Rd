@@ -4,8 +4,16 @@
 \alias{ggdrawPolygon}
 \title{Draw a Polygon in a \code{ggplot2} based graph}
 \usage{
-ggdrawPolygon(F, order2draw = 1:nrow(F), color = "darkorchid",
-  linetype = 3, size = 0.5, fill = "darkorchid", alpha = 0.2, ...)
+ggdrawPolygon(
+  F,
+  order2draw = 1:nrow(F),
+  color = "darkorchid",
+  linetype = 3,
+  size = 0.5,
+  fill = "darkorchid",
+  alpha = 0.2,
+  ...
+)
 }
 \arguments{
 \item{F}{a set of 2-dimensional coordinates}

@@ -82,16 +82,19 @@ lighten <- function(colors,
 #  sinew::makeOxygen(PrettyBarPlot2)
 #_____________________________________________________________________
 # PrettyBarPlot2 preamble ----
-#' @title a \code{ggplot2}-based function to plot bar plots for a series
+#' @title a \code{ggplot2}-based function to plot bar plots
+#' for a series
 #' of variables:
-#' Used for plotting bootstrap ratios or contributions in PCA, PLS, etc.
+#' Used for plotting bootstrap ratios or contributions for
+#' PCA, CA, MCA, PLS, etc.
 #'
 #' @description \code{PrettyBarPlot2}:
 #' a \code{ggplot2}-based version of \code{PrettybarPlot} and
 #' \code{PrettyBarPlotColor}.
 #' \code{PrettyBarPlot2}
 #' creates bar plots for a set of items
-#' (e.g., observations or variables) analyzed with multivariate methods
+#' (e.g., observations or variables) analyzed
+#' with multivariate methods
 #' such as PCA, CA, MCA, PLS etc.
 #' PrettyBarPlot is used to display the bootstrap ratios
 #' or contributions plots for CA/MCA/PCA/PLS.
@@ -118,7 +121,8 @@ lighten <- function(colors,
 #' Default is c('lavender','darkolivegreen3','gray90').
 #' @param color.bord The color for the boder of the bars,
 #' Default: c("mediumpurple4", "darkolivegreen4", "gray75").
-#' @param color.letter a 3-element vector of color names for the names of
+#' @param color.letter a 3-element vector of color names
+#' for the names of
 #' the items for (respectively)
 #' significant positive, significant negative, and non-significant.
 #' Default is c("mediumpurple4",'darkolivegreen4','gray75')

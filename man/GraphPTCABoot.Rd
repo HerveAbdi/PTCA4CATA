@@ -4,11 +4,27 @@
 \alias{GraphPTCABoot}
 \title{GraphPTCABoot plots the bootstrapped results of a CA}
 \usage{
-GraphPTCABoot(FS, FBoot, axis1 = 1, axis2 = 2, item.colors = NULL,
-  ZeTitle = "PTCA-Bootstrap", constraints = NULL, nude = FALSE,
-  Ctr = NULL, lwd = 3.5, ellipses = TRUE, fill = TRUE,
-  fill.alpha = 0.27, percentage = 0.95, dev.new = TRUE,
-  new.plot = TRUE, cex = 1, text.cex = 0.8, pos = 2)
+GraphPTCABoot(
+  FS,
+  FBoot,
+  axis1 = 1,
+  axis2 = 2,
+  item.colors = NULL,
+  ZeTitle = "PTCA-Bootstrap",
+  constraints = NULL,
+  nude = FALSE,
+  Ctr = NULL,
+  lwd = 3.5,
+  ellipses = TRUE,
+  fill = TRUE,
+  fill.alpha = 0.27,
+  percentage = 0.95,
+  dev.new = TRUE,
+  new.plot = TRUE,
+  cex = 1,
+  text.cex = 0.8,
+  pos = 2
+)
 }
 \arguments{
 \item{FS}{(factor scores) The coordinates

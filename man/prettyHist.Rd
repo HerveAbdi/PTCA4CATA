@@ -5,12 +5,25 @@
 \title{Plot a sampling distribution
 along with a value of a criterion (e.g., for significance).}
 \usage{
-prettyHist(distribution, observed, show.observed = TRUE,
-  observed.col = "mediumorchid4", xlim = c(-1.2, 1.2), breaks = 10,
-  border = "white", distr.col = "darkseagreen", main = "",
-  xlab = "", ylab = "", counts = TRUE, cutoffs = c(0.025, 0.975),
-  show.cutoffs = TRUE, cutoff.col = "firebrick3", gray.distr = TRUE,
-  tail.dir = "+")
+prettyHist(
+  distribution,
+  observed,
+  show.observed = TRUE,
+  observed.col = "mediumorchid4",
+  xlim = c(-1.2, 1.2),
+  breaks = 10,
+  border = "white",
+  distr.col = "darkseagreen",
+  main = "",
+  xlab = "",
+  ylab = "",
+  counts = TRUE,
+  cutoffs = c(0.025, 0.975),
+  show.cutoffs = TRUE,
+  cutoff.col = "firebrick3",
+  gray.distr = TRUE,
+  tail.dir = "+"
+)
 }
 \arguments{
 \item{distribution}{the empirical distribution

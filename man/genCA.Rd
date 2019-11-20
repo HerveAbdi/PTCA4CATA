@@ -5,8 +5,15 @@
 \title{Generalized Correspondence Analysis with choice of
 row and column metrics and choice of row and column centers}
 \usage{
-genCA(X, nfact = 3, normalize.X = TRUE, r.metric = NULL,
-  c.metric = NULL, r.center = NULL, c.center = NULL)
+genCA(
+  X,
+  nfact = 3,
+  normalize.X = TRUE,
+  r.metric = NULL,
+  c.metric = NULL,
+  r.center = NULL,
+  c.center = NULL
+)
 }
 \arguments{
 \item{X}{an \eqn{I} by \eqn{J} data table suitable for

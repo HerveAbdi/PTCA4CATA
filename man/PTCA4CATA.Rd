@@ -3,7 +3,6 @@
 \docType{package}
 \name{PTCA4CATA}
 \alias{PTCA4CATA}
-\alias{PTCA4CATA-package}
 \title{PTCA4CATA  package to perform Partial Triadic Correspondence Analysis
 (PTCA) for Check All That Apply (CATA) Data}
 \description{

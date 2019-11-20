@@ -7,8 +7,7 @@ into a fuzzy code  (a.k.a. doubling, or thermometer code)
 creating 2 columns
 \emph{per} variable.}
 \usage{
-fuzzyRanking(X, min = NULL, max = NULL, neg.mark = ".neg",
-  pos.mark = ".pos")
+fuzzyRanking(X, min = NULL, max = NULL, neg.mark = ".neg", pos.mark = ".pos")
 }
 \arguments{
 \item{X}{an \eqn{I} by \eqn{J} matrix where

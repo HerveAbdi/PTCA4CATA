@@ -7,8 +7,14 @@ for all \code{prettyGraphs}  \code{PTCA4CATA} plotting functions
 that display bootstrapped based confidence, tolerance, or
 prediction intervals}
 \usage{
-minmaxHelper4Brick(aBrick, axis1 = 1, axis2 = 2, expandFactor = 1,
-  trimPercent = 0, ...)
+minmaxHelper4Brick(
+  aBrick,
+  axis1 = 1,
+  axis2 = 2,
+  expandFactor = 1,
+  trimPercent = 0,
+  ...
+)
 }
 \arguments{
 \item{aBrick}{a brick of bootstrapped factor scores

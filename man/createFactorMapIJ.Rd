@@ -5,18 +5,43 @@
 \title{Create
 ggplot2 factorial maps for CA-type of maps dots and labels.}
 \usage{
-createFactorMapIJ(Fi, Fj, axis1 = 1, axis2 = 2, constraints = NULL,
-  title = NULL, col.points.i = "blueviolet", alpha.points.i = 0.5,
-  pch.i = 19, cex.i = 2.5, segment.size.i = 0,
-  col.labels.i = "darkorchid4", alpha.labels.i = 1, text.cex.i = 4,
-  font.face.i = "bold", font.family.i = "sans", force.i = 1,
-  col.points.j = "darkolivegreen4", alpha.points.j = 0.5, pch.j = 18,
-  cex.j = 2.5, segment.size.j = 0, col.labels.j = "darkolivegreen",
-  alpha.labels.j = 0.5, text.cex.j = 4, font.face.j = "bold",
-  font.family.j = "sans", force.j = 1, col.axes = "darkorchid",
-  alpha.axes = 0.2, width.axes = 1.1,
-  col.background = adjustcolor("lavender", alpha.f = 0.2), nudge_x = 0,
-  nudge_y = 0, ...)
+createFactorMapIJ(
+  Fi,
+  Fj,
+  axis1 = 1,
+  axis2 = 2,
+  constraints = NULL,
+  title = NULL,
+  col.points.i = "blueviolet",
+  alpha.points.i = 0.5,
+  pch.i = 19,
+  cex.i = 2.5,
+  segment.size.i = 0,
+  col.labels.i = "darkorchid4",
+  alpha.labels.i = 1,
+  text.cex.i = 4,
+  font.face.i = "bold",
+  font.family.i = "sans",
+  force.i = 1,
+  col.points.j = "darkolivegreen4",
+  alpha.points.j = 0.5,
+  pch.j = 18,
+  cex.j = 2.5,
+  segment.size.j = 0,
+  col.labels.j = "darkolivegreen",
+  alpha.labels.j = 0.5,
+  text.cex.j = 4,
+  font.face.j = "bold",
+  font.family.j = "sans",
+  force.j = 1,
+  col.axes = "darkorchid",
+  alpha.axes = 0.2,
+  width.axes = 1.1,
+  col.background = adjustcolor("lavender", alpha.f = 0.2),
+  nudge_x = 0,
+  nudge_y = 0,
+  ...
+)
 }
 \arguments{
 \item{Fi}{the \eqn{I}-set factor scores to plot}

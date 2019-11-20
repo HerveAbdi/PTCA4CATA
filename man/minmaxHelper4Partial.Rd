@@ -8,8 +8,13 @@ Used
 for all \code{prettyGraphs} and \code{prettyGraph}-like
 (e.d. \code{PTCA4CATA}) functions.}
 \usage{
-minmaxHelper4Partial(FactorScores, partialFactorScores, axis1 = 1,
-  axis2 = 2, expansionFactor = 1.1)
+minmaxHelper4Partial(
+  FactorScores,
+  partialFactorScores,
+  axis1 = 1,
+  axis2 = 2,
+  expansionFactor = 1.1
+)
 }
 \arguments{
 \item{FactorScores}{An \eqn{I} observations by \eqn{J}

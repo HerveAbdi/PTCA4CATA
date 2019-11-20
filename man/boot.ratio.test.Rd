@@ -5,8 +5,7 @@
 \title{\code{boot.ratio.test} computes bootstrap ratios
 from a "bootstrap cube."}
 \usage{
-boot.ratio.test(boot.cube, critical.value = 2,
-  names4Dimensions = "Dimension ")
+boot.ratio.test(boot.cube, critical.value = 2, names4Dimensions = "Dimension ")
 }
 \arguments{
 \item{boot.cube}{An I*L*B bootstrap brick

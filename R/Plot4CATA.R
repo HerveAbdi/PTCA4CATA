@@ -5,7 +5,7 @@
 # These ones are based on prettyPlots
 # a second set based on ggplots is in development.
 #
-# Herve Abdi. August 7, 2016
+# Hervé Abdi. August 7, 2016
 # Current functions here:
 # PrettyBarPlot()
 # ShadesColor()
@@ -22,7 +22,7 @@
 # Small changes March 07. HA.
 # Problem with strange error when building the package on R
 # change September 23, 2018. HA
-# changed November 4, 2018 HA (from Ju-Chi)
+# changed November  4, 2018 HA (from Ju-Chi)
 #_____________________________________________________________________
 #_____________________________________________________________________
 
@@ -53,19 +53,22 @@
 #' The critical value for significance
 #' (default = 2, which matches a \eqn{p < }.05 significance level)
 #' \code{|BR|} < threshold are plotted in gray
-#' @param ylim a 2-element vector giving min and max for the y-axis;
-#'  when NULL (default) set to \code{c(-max(abs(y)), max(abs(y)))}
+#' @param ylim a 2-element vector giving \code{min}
+#'  and \code{max} for the y-axis;
+#'  when NULL (default) set to
+#'  \code{c(min(0, min(y)), max(0,max(y)))}.
 #' @param color.bar a 3-element vector of color names
 #' for the bars for (respectively)
 #' significant positive, significant negative, and non-significant.
-#' Default is \code{c('lavender','darkolivegreen3','gray90')}
+#' Default is \code{c('lavender','darkolivegreen3','gray90')}.
 #' @param color.letter a 3-element vector of color names
 #' for the names of the items for (respectively)
 #' significant positive, significant negative, and non-significant.
-#' Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}
+#' Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}.
 #' @param  plotnames if TRUE (default) write the names of the items
-#' @param main  (default is \code{NULL}) a title for the graph
-#' @param ylab  (default is \code{NULL}) a label for the y axis (i.e., BR)
+#' @param main  (default is \code{NULL}) a title for the graph.
+#' @param ylab  (default is \code{NULL})
+#' a label for the y axis (i.e., BR).
 #' @return A list: 1) ylim min and max for y, 2) threshold
 #' @import graphics
 #' @details
@@ -73,7 +76,7 @@
 #' is a newer \code{ggplot2}-based version that can be used
 #' \emph{in lieu} of \code{PrettyBarPlot}.
 #' @seealso \code{\link{PrettyBarPlot2}}
-#' @author Hervé Abdi & Derek Beaton
+#' @author Hervé Abdi,  Derek Beaton, and Vincent Guillemot.
 #' @export
 PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
                           color.bar = c('lavender','darkolivegreen3','gray90'),
@@ -90,8 +93,11 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
   # plotnames: when TRUE, plot the names in the bars
   lesnoms = names(bootratio)
   if (is.null(ylim)){ # get the limits if they are not there
-    lemax = round(max(abs(bootratio)))+1
-    ylim = c(-lemax, lemax)
+    # lemax = round(max(abs(bootratio)))+1
+    expansion.factor = 1.1
+    lemax <- max(0, max(bootratio) * expansion.factor)
+    lemin <- min(0, min(bootratio) * expansion.factor)
+    ylim = c(lemin, lemax)
   }
   # get the colors for the bars
   nel = length(bootratio) # how many observations to plot

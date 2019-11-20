@@ -6,8 +6,12 @@
 a "Brick" of data
 to be analyzed by PTCA4CATA}
 \usage{
-read.xls.CATA(path2file, sheet2read, orderProducts = TRUE,
-  threshold4cleaning = 0)
+read.xls.CATA(
+  path2file,
+  sheet2read,
+  orderProducts = TRUE,
+  threshold4cleaning = 0
+)
 }
 \arguments{
 \item{path2file}{the name of the \code{xls} file with the data.}

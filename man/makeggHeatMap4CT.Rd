@@ -5,9 +5,16 @@
 \title{makeggHeatMap4CT makes a \code{ggplot2} HeatMap representation of
 a contingency table (i.e., CATA data).}
 \usage{
-makeggHeatMap4CT(aContingencyTable, colorAttributes = NULL,
-  colorProducts = NULL, angle.x = 70, fontSize.x = 10,
-  face.x = "plain", fontSize.y = 15, face.y = "bold")
+makeggHeatMap4CT(
+  aContingencyTable,
+  colorAttributes = NULL,
+  colorProducts = NULL,
+  angle.x = 70,
+  fontSize.x = 10,
+  face.x = "plain",
+  fontSize.y = 15,
+  face.y = "bold"
+)
 }
 \arguments{
 \item{aContingencyTable}{a contingency table to be plotted}

@@ -4,8 +4,7 @@
 \alias{truc4ptca}
 \title{truc4ptca: a private function}
 \usage{
-truc4ptca(aCube, longueur = min(dim(aCube)[1:2]) - 1,
-  permType = permType)
+truc4ptca(aCube, longueur = min(dim(aCube)[1:2]) - 1, permType = permType)
 }
 \arguments{
 \item{aCube}{A cube of PTCA Data.}

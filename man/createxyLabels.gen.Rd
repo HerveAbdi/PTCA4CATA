@@ -4,8 +4,13 @@
 \alias{createxyLabels.gen}
 \title{Creates \code{x} and \code{y} labels for ggplots2 scaterplots}
 \usage{
-createxyLabels.gen(x_axis = 1, y_axis = 2, lambda, tau,
-  axisName = "Dimension ")
+createxyLabels.gen(
+  x_axis = 1,
+  y_axis = 2,
+  lambda,
+  tau,
+  axisName = "Dimension "
+)
 }
 \arguments{
 \item{x_axis}{the number of the \eqn{x} axis; default = 1.}

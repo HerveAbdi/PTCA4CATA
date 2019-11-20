@@ -4,8 +4,13 @@
 \alias{perm4PTCA}
 \title{\code{perm4PTCA} Permutation test for the inertia and eigenvalues for PTCA}
 \usage{
-perm4PTCA(aCube, nIter = 1000, permType = "byRows", compact = FALSE,
-  Malinvaud = TRUE)
+perm4PTCA(
+  aCube,
+  nIter = 1000,
+  permType = "byRows",
+  compact = FALSE,
+  Malinvaud = TRUE
+)
 }
 \arguments{
 \item{aCube}{an I*J*K (i.e., products*Descriptors*Assessors)

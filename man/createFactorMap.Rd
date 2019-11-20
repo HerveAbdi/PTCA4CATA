@@ -5,14 +5,31 @@
 \title{create the base plot maps for CA type
 graphs with \code{ggplot2}.}
 \usage{
-createFactorMap(X, axis1 = 1, axis2 = 2, constraints = NULL,
-  title = NULL, col.points = "blueviolet", alpha.points = 0.5,
-  display.points = TRUE, pch = 19, cex = 2.5,
-  display.labels = TRUE, col.labels = "darkorchid4",
-  alpha.labels = 1, text.cex = 4, font.face = "bold",
-  font.family = "sans", col.axes = "darkorchid", alpha.axes = 0.2,
-  width.axes = 1.1, col.background = adjustcolor("lavender", alpha.f =
-  0.2), force = 1, segment.size = 0, ...)
+createFactorMap(
+  X,
+  axis1 = 1,
+  axis2 = 2,
+  constraints = NULL,
+  title = NULL,
+  col.points = "blueviolet",
+  alpha.points = 0.5,
+  display.points = TRUE,
+  pch = 19,
+  cex = 2.5,
+  display.labels = TRUE,
+  col.labels = "darkorchid4",
+  alpha.labels = 1,
+  text.cex = 4,
+  font.face = "bold",
+  font.family = "sans",
+  col.axes = "darkorchid",
+  alpha.axes = 0.2,
+  width.axes = 1.1,
+  col.background = adjustcolor("lavender", alpha.f = 0.2),
+  force = 1,
+  segment.size = 0,
+  ...
+)
 }
 \arguments{
 \item{X}{the factor scores to plot.}

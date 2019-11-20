@@ -7,8 +7,17 @@ for the  \eqn{I} and \eqn{J} sets from
 a Partial Triadic Correspondence analysis
 (PTCA).}
 \usage{
-Boot4PTCA(ZeDataCube, fi, fj, eigs, nf2keep = 2, nBootIter = 100,
-  compact = FALSE, eigen = FALSE, eigen.compact = TRUE)
+Boot4PTCA(
+  ZeDataCube,
+  fi,
+  fj,
+  eigs,
+  nf2keep = 2,
+  nBootIter = 100,
+  compact = FALSE,
+  eigen = FALSE,
+  eigen.compact = TRUE
+)
 }
 \arguments{
 \item{ZeDataCube}{An  \eqn{I} * \eqn{J} * \eqn{K}

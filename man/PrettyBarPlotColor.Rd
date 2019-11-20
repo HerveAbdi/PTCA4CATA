@@ -5,8 +5,16 @@
 \title{\code{PrettyBarPlotColor}: create pretty bar plots
  with defined colors for the sigificant columns}
 \usage{
-PrettyBarPlotColor(bootratio, threshold = 2, ylim = NULL, color4bar,
-  color4ns = "gray75", plotnames = TRUE, main = NULL, ylab = NULL)
+PrettyBarPlotColor(
+  bootratio,
+  threshold = 2,
+  ylim = NULL,
+  color4bar,
+  color4ns = "gray75",
+  plotnames = TRUE,
+  main = NULL,
+  ylab = NULL
+)
 }
 \arguments{
 \item{bootratio}{the bootstrap ratios (BR) to be plotted

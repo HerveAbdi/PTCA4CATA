@@ -6,10 +6,17 @@
 Plot the result of Cochran's \eqn{Q} for the columns of a CATA
 table of data.}
 \usage{
-PrettyBarPlotColor4Q(bootratio, threshold, ylim = NULL,
-  color4bar = "darkorchid4", color4ns = "gray75",
-  PrintSignificantOnly = TRUE, plotnames = TRUE, main = NULL,
-  ylab = NULL)
+PrettyBarPlotColor4Q(
+  bootratio,
+  threshold,
+  ylim = NULL,
+  color4bar = "darkorchid4",
+  color4ns = "gray75",
+  PrintSignificantOnly = TRUE,
+  plotnames = TRUE,
+  main = NULL,
+  ylab = NULL
+)
 }
 \arguments{
 \item{bootratio}{the \eqn{Q} values to be plotted}
