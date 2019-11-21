@@ -119,7 +119,7 @@ lighten <- function(colors,
 #' significant positive,
 #' significant negative, and non-significant.
 #' Default is c('lavender','darkolivegreen3','gray90').
-#' @param color.bord The color for the boder of the bars,
+#' @param color.bord The color for the border of the bars,
 #' Default: c("mediumpurple4", "darkolivegreen4", "gray75").
 #' @param color.letter a 3-element vector of color names
 #' for the names of
@@ -149,7 +149,8 @@ lighten <- function(colors,
 #' @param font.shrink (\code{default = 1}): a proportion for
 #'  how much the
 #' non-significant font shrinks.
-#' @param line.col (\code{Default = 'red'}) the color for significance
+#' @param line.col (\code{Default = 'red'})
+#' the color for significance
 #' for the critical value line.
 #' @param line.type The type of line for the critical line
 #' (\code{Default = 2}, a dashed line).
@@ -163,7 +164,8 @@ lighten <- function(colors,
 #' and \code{PrettyBarPlotColors}.
 #' @author Vincent Guillemot & Hervé Abdi
 #' @seealso \code{\link{PrettyBarPlot}}
-#' \code{\link{PrettyBarPlotColor}} \code{\link{PrettyBarPlotColor4Q}}
+#' \code{\link{PrettyBarPlotColor}}
+#' \code{\link{PrettyBarPlotColor4Q}}
 #' @examples
 #' toto <- 8*(.5 - runif(7))
 #' names(toto) <- paste0('V', 1:7)
@@ -253,16 +255,18 @@ PrettyBarPlot2 <- function(bootratio,
   if (sortValues)
     bootratio <- sort(bootratio)
   if (is.null(ylim)) {
-    lemax <- round(max(abs(bootratio))) + 1
+    # lemax <- round(max(abs(bootratio))) + 1
+    expansion.factor = 1.1
+    lemax <- max(0, max(bootratio) * expansion.factor)
+    lemin <- min(0, min(bootratio) * expansion.factor)
     if (any(bootratio < 0) & any(bootratio > 0)) {
-      ylim <- c(-lemax, lemax)
+      ylim = c(lemin, lemax)
     } else if (all(bootratio >= 0)) {
       ylim <- c(0, lemax)
     } else {
-      ylim <- c(-lemax, 0)
+      ylim <- c(lemin, 0)
     }
   }
-
   lesnoms <- names(bootratio)
   if (abbreviate_labels) {
     lesnoms <- abbreviate(lesnoms)
@@ -350,7 +354,7 @@ PrettyBarPlot2 <- function(bootratio,
     # fix the lim problem: Make sure that the lim is always printed. HA
     ylim = c(min(ylim[1], -threshold) , max(ylim[2], threshold))
   }
-  laLigneRouge <- geom_hline(
+      laLigneRouge <- geom_hline(
     yintercept = yint,
     col = line.col,
     alpha = line.alpha,
