@@ -28,7 +28,7 @@
 #' x(i,j) = 1 if p(i) was chosen by a(j), 0 if not.
 #'
 #' @param Data4Q a slice of CATA cube
-#' @importFrom coin symmetry_test statistic
+#' @importFrom coin symmetry_test statistic pvalue
 #' @return a vector with the value of \code{chi2}
 #'  and \code{pvalue}. The value for the chi2
 #' @author Herve Abdi
@@ -53,7 +53,7 @@ Q4CATA.Slice <- function(Data4Q){
   F4Products   <- factor(rep(seq(1:nP),nS ))
   F4Participant <- factor((1:nS)%x%rep(1,nP))
   # Use symmetry_test from library(coin)
-  Res4Q = coin::symmetry_test(as.vec ~ F4Products |
+  Res4Q <- coin::symmetry_test(as.vec ~ F4Products |
                           F4Participant,
                         data = data.frame(as.vec,
                                 F4Products,F4Participant),
