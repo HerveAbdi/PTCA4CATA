@@ -47,21 +47,21 @@ Q4CATA.Slice <- function(Data4Q){
   # \eqn{x(i,j) =} 1 if \eqn{p(i)} was chosen by \eqn{a(j)}, 0 if not
   # NB: require(coin)
   # Make Data4Q a Vector to use long form
-  as.vec = as.vector(Data4Q)
-  nP = nrow(Data4Q)
-  nS = ncol(Data4Q)
-  F4Products   = factor(rep(seq(1:nP),nS ))
-  F4Participant = factor((1:nS)%x%rep(1,nP))
+  as.vec <- as.vector(Data4Q)
+  nP <- nrow(Data4Q)
+  nS <- ncol(Data4Q)
+  F4Products   <- factor(rep(seq(1:nP),nS ))
+  F4Participant <- factor((1:nS)%x%rep(1,nP))
   # Use symmetry_test from library(coin)
   Res4Q = coin::symmetry_test(as.vec ~ F4Products |
                           F4Participant,
                         data = data.frame(as.vec,
                                 F4Products,F4Participant),
                         teststat = "quad")
-  pvalue <- pvalue(Res4Q)
-  chi2   <- statistic(Res4Q)
-  #Qres = list(p = pvalue,chi2 = chi2)
-  Qres = c(chi2,pvalue)
+  pvalue <- coin::pvalue(Res4Q)
+  chi2   <- coin::statistic(Res4Q)
+  # Qres = list(p = pvalue, chi2 = chi2)
+  Qres <- c(chi2, pvalue)
   return(Qres)
 } # End of function Q4CATASlice
 #

@@ -58,7 +58,7 @@ significant positive,
 significant negative, and non-significant.
 Default is c('lavender','darkolivegreen3','gray90').}
 
-\item{color.bord}{The color for the boder of the bars,
+\item{color.bord}{The color for the border of the bars,
 Default: c("mediumpurple4", "darkolivegreen4", "gray75").}
 
 \item{color.letter}{a 3-element vector of color names
@@ -102,7 +102,8 @@ the "slanting factor" for the text.}
  how much the
 non-significant font shrinks.}
 
-\item{line.col}{(\code{Default = 'red'}) the color for significance
+\item{line.col}{(\code{Default = 'red'})
+the color for significance
 for the critical value line.}
 
 \item{line.type}{The type of line for the critical line
@@ -143,7 +144,8 @@ PrettyBarPlot2(toto)
 }
 \seealso{
 \code{\link{PrettyBarPlot}}
-\code{\link{PrettyBarPlotColor}} \code{\link{PrettyBarPlotColor4Q}}
+\code{\link{PrettyBarPlotColor}}
+\code{\link{PrettyBarPlotColor4Q}}
 }
 \author{
 Vincent Guillemot & Hervé Abdi
