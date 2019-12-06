@@ -58,10 +58,10 @@ Q4CATA.Slice <- function(Data4Q){
                         data = data.frame(as.vec,
                                 F4Products,F4Participant),
                         teststat = "quad")
-  pvalue <- coin::pvalue(Res4Q)
+  pval <- coin::pvalue(Res4Q)
   chi2   <- coin::statistic(Res4Q)
   # Qres = list(p = pvalue, chi2 = chi2)
-  Qres <- c(chi2, pvalue)
+  Qres <- c(chi2, pval)
   return(Qres)
 } # End of function Q4CATASlice
 #
