@@ -49,8 +49,10 @@
 #' @examples \dontrun{
 #' toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
 #' }
-#' @importFrom officer add_slide ph_with_text read_pptx
-#' @importFrom rvg ph_with_vg
+#' @import rvg officer
+## ' @importFrom officer add_slide ph_with_text read_pptx
+## @importFrom rvg ph_with_vg
+## ' @importFrom officer ph_with
 #' @export
 
 
@@ -76,10 +78,16 @@ saveGraph2pptx <- function(file2Save.pptx,
     pptxName <- officer::add_slide(pptxName,
                                    layout = "Title and Content",
                                    master = "Office Theme")
-    pptxName <- officer::ph_with_text(pptxName, type = 'title',
-                                      str =  title )# The title
-    pptxName <- rvg::ph_with_vg(pptxName, code = print(graph),
-                                type = "body") # The ggplot2 picture
+    pptxName <- officer::ph_with(pptxName,
+                                 title,
+                                 ph_location_type(type = 'title'))# The title
+  # Note old code ph_with_vg is now deprecated
+  # pptxName <- rvg::ph_with_vg(pptxName, code = print(graph),
+  #                         type = "body") # The ggplot2 picture
+
+  pptxName <- officer::ph_with(pptxName,
+                               dml(print(graph)),
+                               ph_location_type(type = 'body')) # The ggplot2 picture
   } # End of sauveImage
   #___________________________________________________________________
   laDate = substr(as.POSIXlt(Sys.time()),1,10)
@@ -108,8 +116,14 @@ saveGraph2pptx <- function(file2Save.pptx,
   doc <- officer::read_pptx() # Create the pptx file
   # Create title slide
   doc <- add_slide(doc, layout = "Title Only", master = "Office Theme")
-  doc <- ph_with_text(doc, type = 'title',
-                      str =  title )
+  #doc <- ph_with_text(doc, type = 'title',
+  #                    str =  title )
+  doc <- officer::ph_with(doc,
+                          value = title ,
+                          location = ph_location_type(type = 'title')
+                         )
+
+    #
   #___________________________________________________________________
   #___________________________________________________________________
   # Save  in a powerpoint

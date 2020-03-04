@@ -11,7 +11,7 @@ Q4CATA.Slice(Data4Q)
 }
 \value{
 a vector with the value of \code{chi2}
- and \code{pvalue}. The value for the chi2
+ and \code{pvalue}.
 }
 \description{
 Cochran's Q test for a slice of a cube.
@@ -24,8 +24,8 @@ about one variable
 with
     rows as products
     columns as assessors
-x(i,j) = 1 if p(i) was chosen by a(j), 0 if not.
+\eqn{x(i,j) =} 1 if \eqn{p(i)} was chosen by \eqn{a(j)}, 0 if not.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

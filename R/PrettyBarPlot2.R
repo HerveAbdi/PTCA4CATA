@@ -99,14 +99,15 @@ lighten <- function(colors,
 #' PrettyBarPlot is used to display the bootstrap ratios
 #' or contributions plots for CA/MCA/PCA/PLS.
 #' Significant or important items are plotted
-#' in color, non-significant items are plotted in gray.
+#' in color, non-significant (or un-important)
+#' items are plotted in gray.
 
 #' @param bootratio the bootstrap ratios (BR) or contributions
 #' or similar statistics to be plotted.
 #' (e.g., obtained from \code{Boot4PTCA}).
 #' @param font.size (Default: \code{NULL}) the font size to write
 #' the name of the item. When \code{NULL, font.size = 1}.
-#' @param threshold  (Default: 2)
+#' @param threshold  (Default: \code{2})
 #' The critical value for significance
 #'  which matches a \eqn{p} < .05
 #' significance level. The |BR| < threshold are plotted in gray,

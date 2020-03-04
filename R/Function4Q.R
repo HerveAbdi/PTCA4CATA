@@ -1,18 +1,22 @@
-#
+#_____________________________________________________________________
 # Functions for package PTCA4CATA
 # Here the functions are for Cochran Q
+#  functions in this file: Q4CATA.Slice Q4CATA.Cube
+#
 #
 # Work in progress. Hervé Abdi
 # Started October 16, 2016.
 # Last update  October 16, 2016.
 #
-# --------------------------------------------------------------------
+#_____________________________________________________________________
+#_____________________________________________________________________
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
-# --------------------------------------------------------------------
+#_____________________________________________________________________
 # 4. Taylor made functions from  CATA_Example4Bangkok.Rmd
-# --------------------------------------------------------------------
+#_____________________________________________________________________
 
+# Preamble Q4CATA.Slice ----
 #' Cochran's Q test for a slice of a cube
 #'
 #'  Cochran's Q test for a slice of a cube.
@@ -25,13 +29,13 @@
 #' with
 #'     rows as products
 #'     columns as assessors
-#' x(i,j) = 1 if p(i) was chosen by a(j), 0 if not.
+#' \eqn{x(i,j) =} 1 if \eqn{p(i)} was chosen by \eqn{a(j)}, 0 if not.
 #'
 #' @param Data4Q a slice of CATA cube
 #' @importFrom coin symmetry_test statistic pvalue
 #' @return a vector with the value of \code{chi2}
-#'  and \code{pvalue}. The value for the chi2
-#' @author Herve Abdi
+#'  and \code{pvalue}.
+#' @author Hervé Abdi
 #' @export
 #'
 
@@ -65,31 +69,31 @@ Q4CATA.Slice <- function(Data4Q){
   return(Qres)
 } # End of function Q4CATASlice
 #
-# ------------------------------------------------------------------
-
+#_____________________________________________________________________
+## Preamble Q4CATA.Cube ----
 # Q4CATA.Cube
-#' Compute Cochran's Q
-#' for a Cube of CATA Data
+#' @title Compute Cochran's \eqn{Q}
+#' for a Cube of CATA Data.
 #'
-#' Compute Cochran's Q
+#' @description Compute Cochran's \eqn{Q}
 #' for a Cube of CATA Data
-#' (as created, e.g., by \code{readCATAfromXL})
-#' I: Rows   are Products
-#' J: Columns are Variables
-#' K: Third Dimension is Assessors.
-#' x_{i,j,k} = 1 means
-#' Assessor k chosed Variable j for Product i
-#' NB. uses function \code{Q4CATA.Slice}
+#' (as created, e.g., by \code{readCATAfromXL}):
+#' \code{I}: Rows   are Products,
+#' \code{J}: Columns are Variables,
+#' \code{K}: Third Dimension are Assessors.
+#' \eqn{x_{i,j,k} =} 1 means
+#' Assessor \eqn{k} chose Variable \eqn{j} for Product \eqn{i}.
+#' NB. uses function \code{Q4CATA.Slice}.
 #'
 #' @param ZeCube A cube of 0/1 CATA data
-#' @return a 4 * J matrix.
+#' @return a 4 * \eqn{J} matrix.
 #' Row 1 gives the value of chi2
 #' Row 2 gives the uncorrected p-value
 #' Row 3 gives the  Sidak corrected (for multiple
-#' comparisons)  p-value
+#' comparisons)  \eqn{p}-value
 #' Row 4 gives the  Bonferroni corrected (for multiple
-#' comparisons)  p-value
-#' @author Herve Abdi
+#' comparisons)  \eqn{p}-value
+#' @author Hervé Abdi
 #  #' @import coin # do not seem to need it
 #' @export
 #
@@ -97,11 +101,11 @@ Q4CATA.Cube <- function(ZeCube){
   # Compute Cochran's Q
   # for a Cube of CATA Data
   # Rows   are Products
-  # Colums are Variables
+  # Columns are Variables
   # Third Dimension are Assessors
   # 1 mean Assessor chose Variable for Product
   res4Q.12 <- apply(ZeCube,2,Q4CATA.Slice)
-  #aPF   = 1 - (1 - alpha)^(1/nVars)
+  #aPF   = 1 - (1 - alpha)^(1 / nVars)
   nC = ncol(res4Q.12) # How many attributes
   pS <- 1 - (1 - res4Q.12[2,])^nC # Sidak correction for multiple tests
   pB <-  res4Q.12[2,]*nC # Bonferroni correction for multiple tests
@@ -115,4 +119,5 @@ Q4CATA.Cube <- function(ZeCube){
   res4Q[4,] <- pB
   return(res4Q)
 } # End of function Q4CATA.Cube
-## -------------------------------------------------------------------
+##_____________________________________________________________________
+

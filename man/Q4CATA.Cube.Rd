@@ -2,8 +2,8 @@
 % Please edit documentation in R/Function4Q.R
 \name{Q4CATA.Cube}
 \alias{Q4CATA.Cube}
-\title{Compute Cochran's Q
-for a Cube of CATA Data}
+\title{Compute Cochran's \eqn{Q}
+for a Cube of CATA Data.}
 \usage{
 Q4CATA.Cube(ZeCube)
 }
@@ -11,25 +11,25 @@ Q4CATA.Cube(ZeCube)
 \item{ZeCube}{A cube of 0/1 CATA data}
 }
 \value{
-a 4 * J matrix.
+a 4 * \eqn{J} matrix.
 Row 1 gives the value of chi2
 Row 2 gives the uncorrected p-value
 Row 3 gives the  Sidak corrected (for multiple
-comparisons)  p-value
+comparisons)  \eqn{p}-value
 Row 4 gives the  Bonferroni corrected (for multiple
-comparisons)  p-value
+comparisons)  \eqn{p}-value
 }
 \description{
-Compute Cochran's Q
+Compute Cochran's \eqn{Q}
 for a Cube of CATA Data
-(as created, e.g., by \code{readCATAfromXL})
-I: Rows   are Products
-J: Columns are Variables
-K: Third Dimension is Assessors.
-x_{i,j,k} = 1 means
-Assessor k chosed Variable j for Product i
-NB. uses function \code{Q4CATA.Slice}
+(as created, e.g., by \code{readCATAfromXL}):
+\code{I}: Rows   are Products,
+\code{J}: Columns are Variables,
+\code{K}: Third Dimension are Assessors.
+\eqn{x_{i,j,k} =} 1 means
+Assessor \eqn{k} chose Variable \eqn{j} for Product \eqn{i}.
+NB. uses function \code{Q4CATA.Slice}.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }
