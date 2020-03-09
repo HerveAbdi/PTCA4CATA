@@ -4,7 +4,7 @@
 # A nifty routine
 # save all the graphs present in the Global Environment
 # Created February 20, 2018. by Hervé Abdi
-# Current version February 23, 2018
+# Current version March 09, 2020, HA + VG
 #
 # This file contains the functions
 # saveGraph2pptx() (includes the internal function sauveImage() )
@@ -15,6 +15,7 @@
 
 #_____________________________________________________________________
 #*********************************************************************
+#* Preamble saveGraph2pptx ----
 #' \code{saveGraph2pptx}:  saves all the graphics
 #' from the Global Environment into a powerpoint file.
 #'
@@ -45,13 +46,15 @@
 #' to print the first graph of the list
 #' saved as \code{listOfGraph} use
 #' \code{print(get(listOfGraph$listOfsavedGraphs[[1]]))}.
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @examples \dontrun{
 #' toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
 #' }
 #' @import rvg officer
+#' # Below. Old @importFrom with specific import
+#' # does not work anymore as of 03-03-2020. HA
 ## ' @importFrom officer add_slide ph_with_text read_pptx
-## @importFrom rvg ph_with_vg
+##  @importFrom rvg ph_with_vg
 ## ' @importFrom officer ph_with
 #' @export
 
@@ -123,7 +126,7 @@ saveGraph2pptx <- function(file2Save.pptx,
                           location = ph_location_type(type = 'title')
                          )
 
-    #
+  #
   #___________________________________________________________________
   #___________________________________________________________________
   # Save  in a powerpoint
@@ -161,7 +164,7 @@ saveGraph2pptx <- function(file2Save.pptx,
 
 
   return(return.list) #  Return the name of the file
-} # End of function saveGraph2pptx
+} # End of function saveGraph2pptx ----
 #*********************************************************************
 # ********************************************************************
 # ********************************************************************
@@ -186,7 +189,7 @@ print.savePptx <- function (x, ...) {
   cat("\n",rep("-", ndash), sep = "")
   cat("\n")
   invisible(x)
-} # end of function print.bootRatios
+} # end of function print.savePptx
 #_____________________________________________________________________
 
 #_____________________________________________________________________

@@ -18,7 +18,7 @@
 # Credit : https://stackoverflow.com/questions/13289009/check-if-character-string-is-a-valid-color-representation
 #' @title Check that color names are the names of some real colors.
 #' @description  \code{areColors}: Check that colores names are the names of some real colors.
-#' @param x a string vectors with (to be checked) naesm of colors.
+#' @param x a string vectors with (to be checked) names of colors.
 #' @return a logical vector with \code{TRUE} if a color, \code{FALSE} if not.
 #' @details credit:
 #' \url{Credit: https://stackoverflow.com/questions/13289009/check-if-character-string-is-a-valid-color-representation}
@@ -96,11 +96,16 @@ lighten <- function(colors,
 #' (e.g., observations or variables) analyzed
 #' with multivariate methods
 #' such as PCA, CA, MCA, PLS etc.
-#' PrettyBarPlot is used to display the bootstrap ratios
+#' \code{PrettyBarPlot2} is used to display the bootstrap ratios
 #' or contributions plots for CA/MCA/PCA/PLS.
 #' Significant or important items are plotted
 #' in color, non-significant (or un-important)
 #' items are plotted in gray.
+#'
+#' @details Note that this version is still in
+#' development. Current version generates a (strange) warning message
+#' from \code{ggplot2}
+#' about \code{element_text()}.
 
 #' @param bootratio the bootstrap ratios (BR) or contributions
 #' or similar statistics to be plotted.
@@ -217,7 +222,7 @@ PrettyBarPlot2 <- function(bootratio,
   if (is.vector(bootratio)) {
     if (!is.null(color4bar)){color4bar <- gplots::col2hex(color4bar)}
     if (is.null(names(bootratio))) {
-      warning("The bootstrap ratio vector has no names, generating random names.")
+      warning("The bootstrap ratio vector has no names, generating arbritary names.")
       names(bootratio) <- paste0("V", seq_along(bootratio))
     }
   } else if (class(bootratio) == "data.frame" |
@@ -228,7 +233,7 @@ PrettyBarPlot2 <- function(bootratio,
       )
     tmp <- bootratio
     if (is.null(rownames(bootratio))) {
-      warning("The bootstrap ratio vector has no names, generating random names.")
+      warning("The bootstrap ratio vector has no names, generating arbritary names.")
       rownames(tmp) <- paste0("V", seq_along(bootratio[,1]))
     }
     bootratio <-
