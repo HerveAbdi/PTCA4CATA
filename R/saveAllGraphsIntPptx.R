@@ -16,24 +16,25 @@
 #_____________________________________________________________________
 #*********************************************************************
 #* Preamble saveGraph2pptx ----
-#' \code{saveGraph2pptx}:  saves all the graphics
-#' from the Global Environment into a powerpoint file.
+#' \code{saveGraph2pptx}:  saves all the graphics present in
+#'  the Global Environment into a PowerPoint file.
 #'
 #' \code{saveGraph2pptx}: a nifty function that
 #' saves all the graphics
-#' from the Global Environment (i.e., \code{.GlobalEnv})
-#' into a powerpoint file. Requires packages \code{rsv}
-#' and \code{officer}. Graphics saved are those created
+#' present in the Global Environment (i.e., \code{.GlobalEnv})
+#' into a PowerPoint file. Requires packages \code{rsv}
+#' and \code{officer}. Graphics saved are only those created
 #' with \code{recordPlot()} or \code{ggplot2}.
-#' @param file2Save.pptx the name of the powerpoint
+#' @param file2Save.pptx the name of the PowerPoint
 #' file for saving the graphs. If this file already exists,
 #' the old file is renamed and a warning message is printed
 #' in the console.
-#' @param title main title of the powerpoint file.
-#' \code{default:} "All Graphics for Current Analysis. As of: " +
+#' @param title main title of the PowerPoint file.
+#' \code{default:}
+#' "\code{All Graphics for Current Analysis. As of:}" +
 #' date.
-#' @param addGraphNames when TRUE: use the name of
-#' the graph as its title for the powerpoint slide
+#' @param addGraphNames when \code{TRUE}: use the name of
+#' the graph as its title for the PowerPoint slide
 #' (default is \code{FALSE}).
 #' @return a list (of class \code{"savePptx"})
 #' with  \code{listOfsavedGraphs} (the list of the graph objects
@@ -51,11 +52,11 @@
 #' toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
 #' }
 #' @import rvg officer
-#' # Below. Old @importFrom with specific import
-#' # does not work anymore as of 03-03-2020. HA
-## ' @importFrom officer add_slide ph_with_text read_pptx
-##  @importFrom rvg ph_with_vg
-## ' @importFrom officer ph_with
+# #' # Below. Old @importFrom with specific import
+# #' # does not work anymore as of 03-03-2020. HA
+# ## ' @importFrom officer add_slide ph_with_text read_pptx
+# ##  @importFrom rvg ph_with_vg
+# ## ' @importFrom officer ph_with
 #' @export
 
 

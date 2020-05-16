@@ -128,13 +128,18 @@ creates bar plots for a set of items
 (e.g., observations or variables) analyzed
 with multivariate methods
 such as PCA, CA, MCA, PLS etc.
-PrettyBarPlot is used to display the bootstrap ratios
+\code{PrettyBarPlot2} is used to display the bootstrap ratios
 or contributions plots for CA/MCA/PCA/PLS.
 Significant or important items are plotted
 in color, non-significant (or un-important)
 items are plotted in gray.
 }
 \details{
+Note that this version is still in
+development. Current version generates a (strange) warning message
+from \code{ggplot2}
+about \code{element_text()}.
+
 \code{PrettyBarPlot2} integrates \code{PrettyBarPlot}
 and \code{PrettyBarPlotColors}.
 }

@@ -4,7 +4,7 @@
 #  PrettyBarPlot2
 #_____________________________________________________________________
 # JolisPlots
-# Jolie Plot: the ggplots version of prettyBar etc.
+# JoliPlot: the ggplots version of prettyBar etc.
 # Vincent Guillemot and Hervé Abdi
 # Created September 14, 2018
 #_____________________________________________________________________

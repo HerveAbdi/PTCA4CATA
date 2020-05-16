@@ -7,7 +7,7 @@
 areColors(x)
 }
 \arguments{
-\item{x}{a string vectors with (to be checked) naesm of colors.}
+\item{x}{a string vectors with (to be checked) names of colors.}
 }
 \value{
 a logical vector with \code{TRUE} if a color, \code{FALSE} if not.
