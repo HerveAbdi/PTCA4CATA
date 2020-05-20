@@ -1,8 +1,8 @@
 #_____________________________________________________________________
 # Filename: SaveAllGraphsIntoPttx
 # Contains saveGraph2pptx:
-# A nifty routine
-# save all the graphs present in the Global Environment
+# A nifty routine:
+# saves all the graphs present in the Global Environment
 # Created February 20, 2018. by Hervé Abdi
 # Current version March 09, 2020, HA + VG
 #
@@ -16,7 +16,7 @@
 #_____________________________________________________________________
 #*********************************************************************
 #* Preamble saveGraph2pptx ----
-#' \code{saveGraph2pptx}:  saves all the graphics present in
+#'  saves all the graphics present in
 #'  the Global Environment into a PowerPoint file.
 #'
 #' \code{saveGraph2pptx}: a nifty function that
@@ -32,7 +32,7 @@
 #' @param title main title of the PowerPoint file.
 #' \code{default:}
 #' "\code{All Graphics for Current Analysis. As of:}" +
-#' date.
+#' \code{date}.
 #' @param addGraphNames when \code{TRUE}: use the name of
 #' the graph as its title for the PowerPoint slide
 #' (default is \code{FALSE}).
