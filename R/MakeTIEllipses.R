@@ -90,7 +90,7 @@
 #' @export
 MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            design, # A design factor
-                           # I * #factor * nBooistrapIterations
+                           # I * #factor * nBootstrapIterations
                            axis1 = 1, axis2 = 2, # Axes to plots
                            names.of.factors =
                              paste0('Dimension ',c(axis1,axis2)),
