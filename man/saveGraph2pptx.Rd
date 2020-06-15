@@ -2,7 +2,7 @@
 % Please edit documentation in R/saveAllGraphsIntPptx.R
 \name{saveGraph2pptx}
 \alias{saveGraph2pptx}
-\title{\code{saveGraph2pptx}:  saves all the graphics present in
+\title{saves all the graphics present in
  the Global Environment into a PowerPoint file.}
 \usage{
 saveGraph2pptx(file2Save.pptx, title = NULL, addGraphNames = FALSE)
@@ -16,7 +16,7 @@ in the console.}
 \item{title}{main title of the PowerPoint file.
 \code{default:}
 "\code{All Graphics for Current Analysis. As of:}" +
-date.}
+\code{date}.}
 
 \item{addGraphNames}{when \code{TRUE}: use the name of
 the graph as its title for the PowerPoint slide

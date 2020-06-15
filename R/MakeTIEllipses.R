@@ -112,7 +112,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                            type = 'hull' # 'hull' or 'ellipse'
 ){ design   <- factor(design)
   Nom2Rows  <- levels(design)
-  X <-  data[,c(axis1,axis2)]
+  X <-  data[,c(axis1,axis2)] # Select the columns here
   if(length(design) != NROW(X)){
     stop('Length of Design should be equal to nrow(Data)')
   }
@@ -151,8 +151,8 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
     # before if  ----
     if (tolower(type) == 'ellipse'){# Plot ellipses statellipse
       # Ellipse ----
-    elli <- ggplot2::stat_ellipse(data = X2plot[,c(axis1,axis2)],
-                          ggplot2::aes_(color=alpha(
+    elli <- ggplot2::stat_ellipse(data = X2plot,# no need to select columns
+                          ggplot2::aes_(color = alpha(
                                   items.colors[i],alpha.line )),
                           show.legend = FALSE,
                           geom = 'polygon',# center = c(0,0),
@@ -166,8 +166,8 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                           linetype=line.type)
     } else {# Plot convex hulls with ggConvexHull
       # ConvexHull ----
-      row2keep <-  stats::complete.cases(X2plot[,c(axis1,axis2)])
-      X.non.na <- X2plot[row2keep,c(axis1,axis2)]
+      row2keep <-  stats::complete.cases(X2plot) # Check this HA
+      X.non.na <- X2plot[row2keep,] # NB keep the , after row2keep
       elli <- ggConvexHull(data = X.non.na,
                            x_axis = 1,
                            y_axis = 2,
