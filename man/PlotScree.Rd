@@ -13,6 +13,7 @@ PlotScree(
   col.ns = "#006D2C",
   col.sig = "#54278F",
   title = "Explained Variance per Dimension",
+  xlab = "Dimensions",
   plotKaiser = FALSE,
   color4Kaiser = "darkorchid4",
   lwd4Kaiser = 2.5
@@ -42,6 +43,9 @@ Default is \code{'Violet'}.}
 
 \item{title}{a title for the graph
 default is \code{"Explained Variance per Dimension"}.}
+
+\item{xlab}{The names of the dimensions
+(default \code{'Dimensions '}).}
 
 \item{plotKaiser}{when \code{TRUE} plot
 plot a line corresponding to the average inertia

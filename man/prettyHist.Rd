@@ -81,7 +81,7 @@ distribution, otherwise it is on the left.}
 h the histogram of the distribution
 }
 \description{
-\code{pretyHist}: plots a sampling distribution
+\code{prettyHist}: plots a sampling distribution
  (typically derived from a permutation test as
  performed, e.g., by \code{InPosition::epCA.inference.battery}).
  \code{pretyHist} plots the empirical critical value

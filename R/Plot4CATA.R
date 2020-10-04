@@ -1,10 +1,10 @@
 #_____________________________________________________________________
 #_____________________________________________________________________
-#_____________________________________________________________________
+# Entéte ----
 # This file contains the graphic routines for PTCA4CATA
 # These ones are based on prettyPlots
 # a second set based on ggplots is in development.
-#
+# Preamble ----
 # Hervé Abdi. August 7, 2016
 # Current functions here:
 # PrettyBarPlot()
@@ -31,7 +31,7 @@
 # ********************************************************************
 # ********************************************************************
 # function PrettyBarPlot. Create plot à la Wires (MATLAB)
-
+# PrettyBarPlot ----
 #' creates bar plots for a series of variables.
 #' It is used for plotting bootstrap ratios or contributions from
 #' principal component analysis or related methods
@@ -85,7 +85,7 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
                           plotnames = TRUE, main = NULL, ylab = NULL
 ){
   # bootratio: the bootstrap ratios (BR) to be plotted
-  # threshold: Treshold for significance, BR > threshold are plotted in gray
+  # threshold: Threshold for significance, BR > threshold are plotted in gray
   # color.bar: colors for the
   #    positive-significant, negative significant, and ns values
   # color.letter: colors for the names
@@ -142,6 +142,7 @@ PrettyBarPlot <- function(bootratio, threshold = 2, ylim = NULL,
   return(list(ylim=ylim,threshold=threshold))
 } # End of function PrettyBarPlot
 # ******************************************************************************
+# ShadesColr ----
 #' Create lighter and darker versions of a color.
 #'
 #' \code{ShadesColor}: Create lighter and darker versions of a color
@@ -180,7 +181,7 @@ ShadesColor <- function(aColor,jiffy=40){
 }
 # ******************************************************************************
 # function PrettyBarPlotColor.
-
+# PrettyBarPlotColor. ----
 #' \code{PrettyBarPlotColor}: create pretty bar plots
 #'  with defined colors for the sigificant columns
 #'
@@ -275,6 +276,7 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 # *****************************************************************************
 # *****************************************************************************
 # ****************************   Boot PTCA graphs   ***************************
+# GraphPTCABoot ----
 #'GraphPTCABoot plots the bootstrapped results of a CA
 #'
 #' \code{GraphPTCABoot} plots the results of a CA
@@ -294,12 +296,14 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 #' @param item.colors (default is \code{NULL}),
 #' a color matrix/vector for the items
 #'  (could be provided from a previous call to the graph routine).
-#' @param ZeTitle (default is  'PTCA-Bootstrap') a Title for the plot
+#' @param ZeTitle (default is  'PTCA-Bootstrap')
+#' a Title for the plot
 #' @param constraints (default is \code{NULL})
 #' the dimensions of the plot as a list
 #' giving the constraints
-#' = list(minx=number1,miny=number2, maxx=number3,maxy=number4)
-#' often provided from a previous plot.
+#' = \code{list(minx=number1,miny=number2,
+#' maxx=number3,maxy=number4)}.
+#' Often provided from a previous plot.
 #' @param nude  (default is \code{FALSE}),
 #' when \code{TRUE} do not plot names.
 #' @param Ctr (default is \code{NULL}),
@@ -419,10 +423,11 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 #_____________________________________________________________________
 # From Derek's function for pretty distributions
 # October 17, 2013
+# prettyHist ----
 #' Plot a sampling distribution
 #' along with a value of a criterion (e.g., for significance).
 #'
-#'  \code{pretyHist}: plots a sampling distribution
+#'  \code{prettyHist}: plots a sampling distribution
 #'  (typically derived from a permutation test as
 #'  performed, e.g., by \code{InPosition::epCA.inference.battery}).
 #'  \code{pretyHist} plots the empirical critical value
@@ -558,6 +563,7 @@ prettyHist <- function(distribution, observed,
 #        1         2         3         4         5         6         7
 #234567890123456789012345678901234567890123456789012345678901234567890
 #_____________________________________________________________________
+# PrettyBarPlotColor4Q ----
 #' \code{PrettyBarPlotColor4Q}
 #' Plot the result of Cochran's \eqn{Q} for the columns of a CATA
 #' table of data.
@@ -657,6 +663,7 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 }
 #_____________________________________________________________________
 #_____________________________________________________________________
+# PlotScree ----
 #' plot the scree for the eigenvalues
 #' of an SVD based multivariate analysis.
 #'
@@ -690,6 +697,8 @@ PrettyBarPlotColor4Q <- function(bootratio,threshold,
 #' Default is \code{'Violet'}.
 #' @param title a title for the graph
 #' default is \code{"Explained Variance per Dimension"}.
+#' @param xlab The names of the dimensions
+#' (default \code{'Dimensions '}).
 #' @param plotKaiser  when \code{TRUE} plot
 #' plot a line corresponding to the average inertia
 #' (Kaiser criterion); do not plot when
@@ -707,6 +716,7 @@ PlotScree <- function(ev,
                       alpha = .05,
                       col.ns = '#006D2C', col.sig = '#54278F',
                       title = "Explained Variance per Dimension",
+                      xlab = 'Dimensions',
                       plotKaiser = FALSE,
                       color4Kaiser = 'darkorchid4',
                       lwd4Kaiser = 2.5
@@ -723,7 +733,8 @@ PlotScree <- function(ev,
   par(mar = c(5,6,4,4))
   # plot.window(xlim = c(0, length(val.tau)+5),
   #         ylim = c(0,Top.y),asp = .6)
-  plot(x = seq(1, length(val.tau)), y = val.tau, xlab = 'Dimensions',
+  plot(x = seq(1, length(val.tau)), y = val.tau,
+       xlab = xlab,
        ylab = 'Percentage of Explained Variance',
        main = title,
        type = 'l', col = col.ns, lwd = 1,
@@ -749,7 +760,8 @@ PlotScree <- function(ev,
   plot(ev, ann = FALSE,axes = FALSE,type = "n",#line=3,
        ylim = c(0,le.max.vp))
   if (plotKaiser){
-  abline(h = sum(ev)/length(ev),  col = color4Kaiser, lwd = lwd4Kaiser)
+  abline(h = sum(ev)/length(ev),
+          col = color4Kaiser, lwd = lwd4Kaiser)
   }
   mtext("Inertia Extracted by the Components", side = 4, line = 3)
   axis(4)
@@ -771,11 +783,11 @@ PlotScree <- function(ev,
 #'@param resCA the results of \code{epCA} or \code{epPCA}.
 #'@param zeAxis the number of the axis (no default)
 #'@param axisName the name for the axes (default = \code{'Dimension'})
-#'@author Herve Abdi
+#'@author Hervé Abdi
 #'@export
 #'
 createLabel <- function(resCA, zeAxis,
-                        axisName = 'Dimension'
+                        axisName = 'Dimension '
                       ){
   lambda <- round(resCA$ExPosition.Data$eigs[zeAxis],3)
   tau <- round(resCA$ExPosition.Data$t[zeAxis],0)
@@ -842,12 +854,15 @@ createLabel.gen <- function(zeAxis, lambda,tau,
   return(genLabel)
 } # End of function createLabel
 # function createxyLabels
+# createxyLabels ----
 #' Creates \code{x} and \code{y} labels for ggplots2 scaterplots
 #'
 #'\code{createxyLabels.gen}:
-#'creates \eqn{x} and \eqn{y} labels for \code{ggplots2} scaterplots
+#'creates \eqn{x} and \eqn{y} labels for
+#'\code{ggplots2} scaterplots
 #'(e.g., correspondence analysis or principal component analysis)
-#'such as, for example, the plots created by \code{createFactorMap}.
+#'such as, for example,
+#'the plots created by \code{createFactorMap}.
 #' Compared to \code{createxylabel}, \code{createxylabel.gen}
 #' does not require the results from \code{ExPosition}.
 #'@param x_axis the number of the \eqn{x} axis; default = 1.

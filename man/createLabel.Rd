@@ -4,7 +4,7 @@
 \alias{createLabel}
 \title{Creates\eqn{x} and \eqn{y} labels for ggplots2 scatterplots}
 \usage{
-createLabel(resCA, zeAxis, axisName = "Dimension")
+createLabel(resCA, zeAxis, axisName = "Dimension ")
 }
 \arguments{
 \item{resCA}{the results of \code{epCA} or \code{epPCA}.}
@@ -19,5 +19,5 @@ labels for \code{ggplots2} scatterplots
 (e.g., correspondence analysis or principal component analysis).
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

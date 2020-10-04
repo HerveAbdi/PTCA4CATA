@@ -42,13 +42,15 @@ of the  vertical axis}
 a color matrix/vector for the items
  (could be provided from a previous call to the graph routine).}
 
-\item{ZeTitle}{(default is  'PTCA-Bootstrap') a Title for the plot}
+\item{ZeTitle}{(default is  'PTCA-Bootstrap')
+a Title for the plot}
 
 \item{constraints}{(default is \code{NULL})
 the dimensions of the plot as a list
 giving the constraints
-= list(minx=number1,miny=number2, maxx=number3,maxy=number4)
-often provided from a previous plot.}
+= \code{list(minx=number1,miny=number2,
+maxx=number3,maxy=number4)}.
+Often provided from a previous plot.}
 
 \item{nude}{(default is \code{FALSE}),
 when \code{TRUE} do not plot names.}

@@ -28,9 +28,11 @@ as \code{max(axis_1, axis_2)}).}
 }
 \description{
 \code{createxyLabels.gen}:
-creates \eqn{x} and \eqn{y} labels for \code{ggplots2} scaterplots
+creates \eqn{x} and \eqn{y} labels for
+\code{ggplots2} scaterplots
 (e.g., correspondence analysis or principal component analysis)
-such as, for example, the plots created by \code{createFactorMap}.
+such as, for example,
+the plots created by \code{createFactorMap}.
 Compared to \code{createxylabel}, \code{createxylabel.gen}
 does not require the results from \code{ExPosition}.
 }
