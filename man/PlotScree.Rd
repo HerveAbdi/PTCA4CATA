@@ -26,11 +26,14 @@ PlotScree(
 eigen-values, (default = \code{NULL}).}
 
 \item{max.ev}{the max eigenvalue
-needed because \code{ExPosition} does not always return all
+needed because \code{ExPosition}
+does not always return all
 eigenvalues
 but sometimes only the requested ones;
-however \code{ExPosition} always returns all percentages i.e., tau),
-so if \code{max.ev} is specified, it is used to recompute
+however \code{ExPosition} always returns
+all percentages i.e., tau),
+so if \code{max.ev} is specified,
+it is used to recompute
 all eigenvalues.}
 
 \item{alpha}{threshold for significance. Default = .05}
@@ -69,11 +72,12 @@ For example  \code{ExPosition} does not return all ev
        but only the requested one. but return all percentage
        so if max.ev is specified, it is used to recompute
        all eigenvalues.
- By default \code{PlotScree} will not plot the line corresponding to
+ By default \code{PlotScree}
+ will not plot the line corresponding to
  the average inertia (i.e., Kaiser criterion).
  If provided with probabilities, \code{PlotScree} will
  color differently the "significant" eigenvalues.
 }
 \author{
-Hervé Abdi with help of Derek Beaton and Ju-Chi Yu.
+Hervé Abdi with help from Derek Beaton and Ju-Chi Yu.
 }

@@ -23,7 +23,8 @@ PrettyBarPlot(
 (e.g.,  obtained from \code{Boot4PTCA}).}
 
 \item{threshold}{The critical value for significance
-(default = 2, which matches a \eqn{p < }.05 significance level)
+(default = 2, a value that matches a \eqn{p < }.05
+significance level)
 \code{|BR|} < threshold are plotted in gray}
 
 \item{ylim}{a 2-element vector giving \code{min}
@@ -33,7 +34,8 @@ when NULL (default) set to
 
 \item{color.bar}{a 3-element vector of color names
 for the bars for (respectively)
-significant positive, significant negative, and non-significant.
+significant positive, significant negative,
+and non-significant.
 Default is \code{c('lavender','darkolivegreen3','gray90')}.}
 
 \item{color.letter}{a 3-element vector of color names
@@ -41,28 +43,31 @@ for the names of the items for (respectively)
 significant positive, significant negative, and non-significant.
 Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}.}
 
-\item{plotnames}{if TRUE (default) write the names of the items}
+\item{plotnames}{if \code{TRUE} (default) write the names of the items}
 
 \item{main}{(default is \code{NULL}) a title for the graph.}
 
 \item{ylab}{(default is \code{NULL})
-a label for the y axis (i.e., BR).}
+a label for the y-axis (i.e., BR).}
 }
 \value{
-A list: 1) ylim min and max for y, 2) threshold
+A list: 1) \code{ylim}: min and max for y,
+and 2) threshold.
 }
 \description{
-\code{PrettyBarPlot}: creates bar plots for a set of items
+\code{PrettyBarPlot}: Creates bar plots for a set of items
 (e.g., observations or variables) analyzed with multivariate
-methods such as PCA, CA, MCA, PLS etc.
- \code{PrettyBarPlot} is
+methods such as PCA, CA, MCA, PLS, etc.
+}
+\details{
+\code{PrettyBarPlot} is
 used to display the bootstrap ratios or contributions plots
 for CA/MCA/PCA/PLS, etc.
 Significant or important items are plotted in color,
 non-significant
 items are plotted in gray.
-}
-\details{
+
+
 \code{PrettyBarPlot2},
 is a newer \code{ggplot2}-based version that can be used
 \emph{in lieu} of \code{PrettyBarPlot}.
@@ -73,5 +78,5 @@ is a newer \code{ggplot2}-based version that can be used
 \author{
 Hervé Abdi
 
-Hervé Abdi,  Derek Beaton, and Vincent Guillemot.
+Hervé Abdi, Derek Beaton, and Vincent Guillemot.
 }

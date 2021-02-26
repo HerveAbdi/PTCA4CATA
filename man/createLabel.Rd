@@ -11,7 +11,8 @@ createLabel(resCA, zeAxis, axisName = "Dimension ")
 
 \item{zeAxis}{the number of the axis (no default)}
 
-\item{axisName}{the name for the axes (default = \code{'Dimension'})}
+\item{axisName}{the name for the axes
+(default = \code{'Dimension'})}
 }
 \description{
 \code{createLabel} creates \eqn{x} and \eqn{y}

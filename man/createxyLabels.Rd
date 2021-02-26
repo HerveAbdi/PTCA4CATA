@@ -2,23 +2,27 @@
 % Please edit documentation in R/Plot4CATA.R
 \name{createxyLabels}
 \alias{createxyLabels}
-\title{createxyLabels creates x and y labels for ggplots2 scaterplots}
+\title{creates x and y labels for
+\code{ggplots2} scaterplots.}
 \usage{
 createxyLabels(resCA, x_axis = 1, y_axis = 2, axisName = "Dimension ")
 }
 \arguments{
-\item{resCA}{the results of epCA or epPCA}
+\item{resCA}{the results of epCA or epPCA.}
 
-\item{x_axis}{the number of the x axis; default = 1}
+\item{x_axis}{the number of the x axis; default = 1.}
 
-\item{y_axis}{the number of the y axis; default = 2}
+\item{y_axis}{the number of the y axis; default = 2.}
 
-\item{axisName}{the name for the axes (default = 'Dimension')}
+\item{axisName}{the name for the axes
+(default = \code{'Dimension'})}
 }
 \description{
-createxyLabels creates x and y labels for ggplots2 scaterplots
-(e.g., correspondence analysis or principal component analysis).
+\code{createxyLabels} creates x and y labels for
+\code{ggplots2} scaterplots
+(e.g., correspondence analysis
+or principal component analysis).
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

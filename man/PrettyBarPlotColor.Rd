@@ -25,21 +25,24 @@ PrettyBarPlotColor(
 |BR| < threshold are plotted in gray.}
 
 \item{ylim}{a 2-element vector giving min and mac for y
-if NULL (default) set to c(-abs(BR),abs(BR)).}
+if \code{NULL} (default) set to \code{c(-abs(BR),abs(BR))}.}
 
 \item{color4bar}{a vector of color names (same dimension as BR)}
 
-\item{color4ns}{(default 'gray75') color
-for the non-significant BR.}
+\item{color4ns}{(default is \code{'gray75'}) color
+for the non-significant BRs.}
 
-\item{plotnames}{if TRUE (default) write the names of the items.}
+\item{plotnames}{if \code{TRUE} (default)
+write the names of the items.}
 
-\item{main}{(default is NULL) a title for the graph.}
+\item{main}{(default is \code{NULL}) a title for the graph.}
 
-\item{ylab}{(default is NULL) a label for the y axis (i.e., BR).}
+\item{ylab}{(default is \code{NULL})
+a label for the y axis (i.e., BR).}
 }
 \value{
-A list: 1) ylim min and max for y, 2) threshold.
+A list: 1) \code{ylim} min and max for y,
+and 2) threshold.
 }
 \description{
 \code{PrettyBarPlotColor}: Create pretty bar plots
@@ -48,13 +51,16 @@ A list: 1) ylim min and max for y, 2) threshold.
 }
 \details{
 \code{PrettyBarPlot2},
-is a newer \code{ggplot2}-based version that can be used
+is a newer \code{ggplot2}-based plotting function
+that can be used
 \emph{in lieu} of \code{PrettyBarPlotColor}.
 }
 \seealso{
 PrettyBarPlot2
-# @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 }
 \author{
 Hervé Abdi
+
+Vincnet Guillemeot, Hervé Abdi.
+# @examples #   PrettyBarPlotColor(boot.ratio.test, color4BR)
 }

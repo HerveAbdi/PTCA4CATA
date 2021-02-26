@@ -59,15 +59,18 @@ color for the distribution.}
 
 \item{ylab}{(default "") the \eqn{y}-axis label.}
 
-\item{counts}{if \code{TRUE} (default) shows the number of samples,
+\item{counts}{if \code{TRUE}
+(default) shows the number of samples,
 if \code{FALSE} shows a probability.}
 
 \item{cutoffs}{[default is \code{c(0.025,0.975)}],
 the \eqn{p}-values (default for alpha = .05).}
 
-\item{show.cutoffs}{if \eqn{TRUE} (default) show the critical value(s).}
+\item{show.cutoffs}{if \eqn{TRUE} (default)
+show the critical value(s).}
 
-\item{cutoff.col}{(default is \code{"firebrick3"}) the color
+\item{cutoff.col}{(default is \code{"firebrick3"})
+the color
 for the critical value.}
 
 \item{gray.distr}{if \code{TRUE} (default) distribution
@@ -83,7 +86,8 @@ h the histogram of the distribution
 \description{
 \code{prettyHist}: plots a sampling distribution
  (typically derived from a permutation test as
- performed, e.g., by \code{InPosition::epCA.inference.battery}).
+ performed, e.g., by
+ \code{InPosition::epCA.inference.battery}).
  \code{pretyHist} plots the empirical critical value
  and position the
  value of the criterion.

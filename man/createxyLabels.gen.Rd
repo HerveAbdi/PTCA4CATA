@@ -17,20 +17,23 @@ createxyLabels.gen(
 
 \item{y_axis}{the number of the \eqn{y} axis; default = 2.}
 
-\item{lambda}{a vector of eigenvalues (should have as many entries
+\item{lambda}{a vector of eigenvalues
+(should have as many entries
 as \code{max(axis_1, axis_2)}).}
 
 \item{tau}{a vector of percentage of explained variance
 (should have as many entries
 as \code{max(axis_1, axis_2)}).}
 
-\item{axisName}{the name for the axes (default = \code{'Dimension'})}
+\item{axisName}{the name for the axes
+(default = \code{'Dimension '}).}
 }
 \description{
 \code{createxyLabels.gen}:
 creates \eqn{x} and \eqn{y} labels for
 \code{ggplots2} scaterplots
-(e.g., correspondence analysis or principal component analysis)
+(e.g., correspondence analysis
+or principal component analysis)
 such as, for example,
 the plots created by \code{createFactorMap}.
 Compared to \code{createxylabel}, \code{createxylabel.gen}

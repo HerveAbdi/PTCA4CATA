@@ -2,13 +2,14 @@
 # Part of PTCA4CATA.
 # Created July 8, 2017. Hervé Abdi
 # Current version: July 917 2017. HA
+# Revisited: February 2021. HA
 #====================================================================
 #===================================================================
 # Function partialProj4CA
-#' \code{partialProj4CA} Compute blocks (of variables)
+#' Compute blocks (of variables)
 #' partial projections for a Correspondence Analysis.
 #'
-#' \code{partialProj4CA} Compute blocks (of variables)
+#' \code{partialProj4CA} computes blocks (of variables)
 #' partial projections for a Correspondence Analysis (CA).
 #' Blocks are non-overlapping sets of variables (columns)
 #' of a data table analyzed with
@@ -19,9 +20,10 @@
 #' because the barycenters of the
 #' partial projections are equal to the factor scores
 #' for the whole table.
-#' @param resCA the results of the (CA) analysis from epCA,
+#' @param resCA the results of the (CA) analysis from \code{epCA},
 #' for example \code{reFromCA <- epCA(X)}.
-#' @param code4Blocks a vector indicating which variabless belong
+#' @param code4Blocks a vector indicating
+#' which variables belong
 #' to what block  (i.e.,
 #' the variables of the same block have the same level for
 #' \code{code4Block}): Needs to be of length equal to the
@@ -31,22 +33,34 @@
 #' on blocks of observations instead of blocks of variables and
 #' exchange the roles of the observations and variables.
 #' @return a list with (1) \code{Fk}:
-#' an I*L*K array of the partial projections
-#' of the K blocks, for the I observations, and the L factors
-#' from \code{epCA}; (2) \code{Ctrk} an I*L matrix of the "relative"
+#' an \eqn{I*L*K} array of the partial projections
+#' of the \eqn{K} blocks, for the I observations,
+#' and the \code{L} factors
+#' from \code{epCA}; (2) \code{Ctrk} an \eqn{I*L}
+#' matrix of the "relative"
 #' block contributions [for a given component
 #' the relative contributions sum to 1];
-#' (3) \code{absCtrk} an I*L matrix of the "absolute"
+#' (3) \code{absCtrk} an \eqn{I*L} matrix of the "absolute"
 #' block contributions [for a given component
 #' the absolute contributions sum to the eigenvalue
 #' for this component];
-#' (4) \code{bk} a K*1 vector storing the weights for the blocks,
+#' (4) \code{bk} a \eqn{K*}1 vector storing the weights for the blocks,
 #' (5) \code{resRV} a list with
-#' (a) a matrix storing the RV coefficients
+#' (a) a matrix storing the \eqn{RV} coefficients
 #' between the blocks and, if the package \code{FactoMineR} is
-#' installed, (b) the p-value for the RV-coefficient (as
+#' installed, (b) the \eqn{p}-value for the eqn{RV}-coefficient (as
 #' computed with \code{FactoMineR::coeffRV}).
-#' @author Herve Abdi
+#' @examples
+#' \dontrun{
+#' # Get the data/CA function from Exposition
+#'  library(ExPosition)
+#'  data(authors, package = 'ExPosition')
+#'  X <- (authors$ca$data) # the data
+#'  zeBlocks <- as.factor(c(1,1,2,2,3,3)) # 3 blocks
+#'  resCA <- epCA(X, graphs = FALSE) # CA of X
+#'  resPart <- partialProj4CA(resCA, zeBlocks, rowBlocks = TRUE)
+#' }
+#' @author Hervé Abdi
 #' @export
 #'
 #'
@@ -58,8 +72,8 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   #resCA <- ResCATACA  # The results of epCA
   #code4Blocks <- NewCode4Attributes # what variable belongs to what block
   code4Blocks <- as.factor(code4Blocks) # in case it is not a factor
-  # Two local functions. maube moved later on
-  # How to avoid mutiplying by 0.
+  # Two local functions. maybe moved later on
+  # How to avoid multiplying by 0.
   # Can be seen as a variation of repmat!
   leftdiagMult <-function(aVec,aMat){# begin leftdiagMult
     resmult <-  matrix(aVec,
@@ -73,7 +87,8 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   } # end of rightdiagMult
   if (rowBlocks){# get the dual
     Fi <-  resCA$ExPosition.Data$fj
-    wj <-  1 / resCA$ExPosition.Data$M
+      wj <-  1 / resCA$ExPosition.Data$M # old version
+     # wj <-  resCA$ExPosition.Data$M # new version
     #Q  <- resCA$ExPosition.Data$pdq$p
     Q <- leftdiagMult(resCA$ExPosition.Data$M,
                       resCA$ExPosition.Data$pdq$p)
@@ -86,7 +101,8 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
     cj <- resCA$ExPosition.Data$ci
   } else {
     Fi <- resCA$ExPosition.Data$fi
-    wj <- resCA$ExPosition.Data$W
+     wj <- resCA$ExPosition.Data$W # old version
+    #wj <- 1 / resCA$ExPosition.Data$W
     X  <- resCA$ExPosition.Data$X
     Q  <- resCA$ExPosition.Data$pdq$q
     cj <- resCA$ExPosition.Data$cj
@@ -104,13 +120,21 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   colnames(Ctrk) <- dimnames(Fk)[[2]]
   # Horrible Loop to find the Partial Factor Scores
   # print(dim(X))
+   wj <- 1 / wj # New addon HA
+  # print('wj below')
+  # print(wj)
   for (k in 1:nBlocks){# Begin k loop
-    BlockVar = code4Blocks==levels(code4Blocks)[k]
-    bk[k]   = sum(wj[BlockVar]) / sum(wj)
+    BlockVar = code4Blocks == levels(code4Blocks)[k]
+    # print('iteration k')
+    # bk[k]   = sum(wj[BlockVar]) / sum(wj) old
+    #bk[k]   = 1 / sum(wj[BlockVar]) # try 1
+    bk[k]  <-  sum(wj[BlockVar]) # try 2
+    # print(bk[k])
     #  bk[k]    = sum(BlockVar) / nVars # May need to be changed
     Xk =  X[, BlockVar]
     Qk =  Q[BlockVar,]
-    Wk = diag(wj[BlockVar])
+    Wk = diag(wj[BlockVar]) # old
+    Wk = diag(1 / wj[BlockVar])  # new
     Fk[,,k]  = (1/bk[k]) * Xk%*%Wk%*%Qk
     # Compute the contributions for the Blocks
     Ctrk[k,] = colSums(cj[BlockVar,])

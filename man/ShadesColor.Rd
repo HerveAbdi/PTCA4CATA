@@ -20,8 +20,10 @@ version of \code{aColor};
 version of \code{aColor}.
 }
 \description{
-\code{ShadesColor}: Create lighter and darker versions of a color
- used by \code{PrettyBarPlotColor} to create faked transparent colors.
+\code{ShadesColor}: Create lighter and darker
+versions of a color
+ used by \code{PrettyBarPlotColor}
+ to create faked transparent colors.
 }
 \examples{
 twoColors <- ShadesColor('Red',50)

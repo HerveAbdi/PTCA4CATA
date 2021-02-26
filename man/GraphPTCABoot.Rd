@@ -42,7 +42,7 @@ of the  vertical axis}
 a color matrix/vector for the items
  (could be provided from a previous call to the graph routine).}
 
-\item{ZeTitle}{(default is  'PTCA-Bootstrap')
+\item{ZeTitle}{(default is  \code{'PTCA-Bootstrap'})
 a Title for the plot}
 
 \item{constraints}{(default is \code{NULL})
@@ -70,15 +70,18 @@ when \code{FALSE} plot convex hulls,}
 when \code{TRUE}
 fill in the ellipses with lighter colors.}
 
-\item{fill.alpha}{(default is .27)  alpha-transparency for filling
+\item{fill.alpha}{(default is .27)  alpha-transparency
+for filling
 (see parameter \code{fill}) ellipses/convex-hulls.}
 
-\item{percentage}{(default is 0.95)  critical value for the CIs}
+\item{percentage}{(default is 0.95)
+critical value for the CIs}
 
 \item{dev.new}{(default is \code{TRUE})  when \code{TRUE}
 create a new window for plotting.}
 
-\item{new.plot}{when  \code{TRUE} (default)  Clean the devise}
+\item{new.plot}{when  \code{TRUE} (default)
+Clean the device.}
 
 \item{cex}{(default is 1)   size of the dots}
 
@@ -93,8 +96,9 @@ PTCA.out: the output from prettyPlot
 }
 \description{
 \code{GraphPTCABoot} plots the results of a CA
-with boostrap computed  Ellipsoids
-or Convex Hulls confidence interval
+with bootstrap computed  Ellipsoids
+or Convex Hulls confidence interval.
+ \code{GraphPTCABoot}
 needs packages \code{prettyGraphs} (for the graph)
 and the convex Hulls
 and \code{car} (for the ellipses).

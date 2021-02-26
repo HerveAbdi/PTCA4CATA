@@ -9,11 +9,14 @@ createLabel.gen(zeAxis, lambda, tau, axisName = "Dimension ")
 \arguments{
 \item{zeAxis}{the number of the axis (no default)}
 
-\item{lambda}{the eigen-value associated with this dimension}
+\item{lambda}{the eigen-value
+associated with this dimension}
 
-\item{tau}{the percentage of variance associated with this dimension}
+\item{tau}{the percentage of variance
+associated with this dimension}
 
-\item{axisName}{the name for the axes (default = \code{'Dimension'})}
+\item{axisName}{the name for the axes
+(default = \code{'Dimension'})}
 }
 \description{
 \code{createLabel.gen}
