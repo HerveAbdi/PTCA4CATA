@@ -2,18 +2,20 @@
 % Please edit documentation in R/BlockProjections.R
 \name{RV4Brick}
 \alias{RV4Brick}
-\title{Compute the RV coefficient between the slices of a data array.}
+\title{Compute the \eqn{RV}
+coefficient between the slices of a data array.}
 \usage{
 RV4Brick(aBrickOfData)
 }
 \arguments{
-\item{aBrickOfData}{a brick of data I*J_k*K. The RV coefficient
-is computed between the K-slices of the brick}
+\item{aBrickOfData}{a brick of data
+\eqn{I*J_k*K}. The \eqn{RV} coefficient
+is computed between the \eqn{K}-slices of the brick}
 }
 \value{
-a list with a matrix of the RV coefficients
+a list with a matrix of the \eqn{RV} coefficients
 (\code{$RV}), and
-a matrix of p-values ((\code{$pRV})).
+a matrix of \eqn{p}-values ((\code{$pRV})).
 }
 \description{
 \code{RV4Brick} computes the RV coefficient
@@ -22,5 +24,5 @@ such as block projection
 for CA in PTCA4CATA.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

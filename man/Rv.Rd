@@ -61,5 +61,5 @@ RV coefficient, and Mantel Coefficient.
   @importFrom stats pnorm
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

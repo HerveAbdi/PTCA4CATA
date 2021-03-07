@@ -24,11 +24,17 @@
 #' partial projections are equal to the factor scores
 #' for the whole table.
 #' @details
-#' \emph{Current version does not handle blocks with only one
-#' column (or row)}. This problem is due to the way R handles
-#' vectors vs matrices and is likely to be fixed
+#' \emph{Current version
+#' does not handle blocks with only one
+#' column (or row)}. This problem is due to the way
+#' **R** handles
+#' vectors vs. matrices and is likely to be fixed
 #' in the (soon to come)
 #'  next version.
+#'
+#'  In CA, the (barycentric) partial projections
+#'  are obtained by rewriting the "reconstitution" formula.
+#'
 #' @param resCA the results of the (CA) analysis
 #' from \code{epCA},
 #' for example \code{reFromCA <- epCA(X)}.
@@ -60,20 +66,24 @@
 #' block contributions [for a given component
 #' the absolute contributions sum to the eigenvalue
 #' for this component];
-#' (4) \code{bk} a \eqn{K*}1 vector storing the weights for the blocks,
+#' (4) \code{bk} a \eqn{K*}1 vector
+#' storing the weights for the blocks,
 #' (5) \code{resRV} a list with
 #' (a) a matrix storing the \eqn{RV} coefficients
-#' between the blocks and, if the package \code{FactoMineR} is
-#' installed, (b) the \eqn{p}-value for the eqn{RV}-coefficient (as
+#' between the blocks and, if the package
+#' \code{FactoMineR} is
+#' installed, (b) the \eqn{p}-value for the
+#' \eqn{RV}-coefficient
+#'  (as
 #' computed with \code{FactoMineR::coeffRV}).
-#' @details In CA, the (barycentric) partial projections
-#'  are obtained by rewriting the "reconstitution" formula.
-#'  @references
-#'  Escofier, B. (1980). Analyse factorielle
+#'
+#'@references
+#'Escofier, B. (1980). Analyse factorielle
 #'  de très grands tableaux
 #'  par division en sous-tableaux.
 #'  In Diday \emph{et al.}: \emph{Data Analysis and
 #'  Informatics}. Amsterdam: North-Holland. pp 277-284.
+#'
 #' @examples
 #' \dontrun{
 #' # Get the data/CA function from Exposition
@@ -83,6 +93,7 @@
 #'  zeBlocks <- as.factor(c(1,1,2,2,3,3)) # 3 blocks
 #'  resCA <- epCA(X, graphs = FALSE) # CA of X
 #'  resPart <- partialProj4CA(resCA, zeBlocks, rowBlocks = TRUE)
+#'  # partial factor scores are in \code{resPart}
 #' }
 #' @author Hervé Abdi
 #' @export
@@ -231,20 +242,22 @@ RV2Mat <- function(m1,m2){
 # A function to compute the RV coefficient
 # on a cube of Data
 #
-# compute the RV coefficients between the tables
+# compute the \eqn{RV} coefficients between the tables
 #
-#' Compute the RV coefficient between the slices of a data array.
+#' Compute the \eqn{RV}
+#' coefficient between the slices of a data array.
 #'
 #' \code{RV4Brick} computes the RV coefficient
 #' between the slices of a data array,
 #' such as block projection
 #' for CA in PTCA4CATA.
-#' @param aBrickOfData a brick of data I*J_k*K. The RV coefficient
-#' is computed between the K-slices of the brick
-#' @return a list with a matrix of the RV coefficients
+#' @param aBrickOfData a brick of data
+#' \eqn{I*J_k*K}. The \eqn{RV} coefficient
+#' is computed between the \eqn{K}-slices of the brick
+#' @return a list with a matrix of the \eqn{RV} coefficients
 #' (\code{$RV}), and
-#' a matrix of p-values ((\code{$pRV})).
-#' @author Herve Abdi
+#' a matrix of \eqn{p}-values ((\code{$pRV})).
+#' @author Hervé Abdi
 #' @export
 
 RV4Brick <- function(aBrickOfData){
@@ -331,7 +344,7 @@ RV4Brick <- function(aBrickOfData){
 #'   Thousand Oaks (CA): Sage. pp. 222-229.
 #'   @importFrom stats pnorm
 #' @export
-#' @author Herve Abdi
+#' @author Hervé Abdi
 Rv <- function(m1,m2, return.type = 'compact'){
   if (nrow(m1) != nrow(m2)){
     stop('The input matrices need to have the same number of rows')

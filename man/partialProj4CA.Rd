@@ -43,11 +43,15 @@ the relative contributions sum to 1];
 block contributions [for a given component
 the absolute contributions sum to the eigenvalue
 for this component];
-(4) \code{bk} a \eqn{K*}1 vector storing the weights for the blocks,
+(4) \code{bk} a \eqn{K*}1 vector
+storing the weights for the blocks,
 (5) \code{resRV} a list with
 (a) a matrix storing the \eqn{RV} coefficients
-between the blocks and, if the package \code{FactoMineR} is
-installed, (b) the \eqn{p}-value for the eqn{RV}-coefficient (as
+between the blocks and, if the package
+\code{FactoMineR} is
+installed, (b) the \eqn{p}-value for the
+\eqn{RV}-coefficient
+ (as
 computed with \code{FactoMineR::coeffRV}).
 }
 \description{
@@ -64,20 +68,16 @@ partial projections are equal to the factor scores
 for the whole table.
 }
 \details{
-\emph{Current version does not handle blocks with only one
-column (or row)}. This problem is due to the way R handles
-vectors vs matrices and is likely to be fixed
+\emph{Current version
+does not handle blocks with only one
+column (or row)}. This problem is due to the way
+**R** handles
+vectors vs. matrices and is likely to be fixed
 in the (soon to come)
  next version.
 
-In CA, the (barycentric) partial projections
+ In CA, the (barycentric) partial projections
  are obtained by rewriting the "reconstitution" formula.
- @references
- Escofier, B. (1980). Analyse factorielle
- de très grands tableaux
- par division en sous-tableaux.
- In Diday \emph{et al.}: \emph{Data Analysis and
- Informatics}. Amsterdam: North-Holland. pp 277-284.
 }
 \examples{
 \dontrun{
@@ -88,7 +88,15 @@ In CA, the (barycentric) partial projections
  zeBlocks <- as.factor(c(1,1,2,2,3,3)) # 3 blocks
  resCA <- epCA(X, graphs = FALSE) # CA of X
  resPart <- partialProj4CA(resCA, zeBlocks, rowBlocks = TRUE)
+ # partial factor scores are in \code{resPart}
 }
+}
+\references{
+Escofier, B. (1980). Analyse factorielle
+ de très grands tableaux
+ par division en sous-tableaux.
+ In Diday \emph{et al.}: \emph{Data Analysis and
+ Informatics}. Amsterdam: North-Holland. pp 277-284.
 }
 \author{
 Hervé Abdi
