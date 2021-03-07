@@ -68,16 +68,10 @@ partial projections are equal to the factor scores
 for the whole table.
 }
 \details{
-\emph{Current version
-does not handle blocks with only one
-column (or row)}. This problem is due to the way
-**R** handles
-vectors vs. matrices and is likely to be fixed
-in the (soon to come)
- next version.
-
- In CA, the (barycentric) partial projections
- are obtained by rewriting the "reconstitution" formula.
+In CA, the (barycentric) partial projections
+ are obtained by rewriting the
+ CA "reconstitution" formula
+ (see Escofier, 1980; Abdi & Béra, 2018).
 }
 \examples{
 \dontrun{
@@ -97,6 +91,13 @@ Escofier, B. (1980). Analyse factorielle
  par division en sous-tableaux.
  In Diday \emph{et al.}: \emph{Data Analysis and
  Informatics}. Amsterdam: North-Holland. pp 277-284.
+
+ Abdi H., & Béra, M. (2018).
+  Correspondence analysis.
+   In R. Alhajj and J. Rokne (Eds.),
+  \emph{Encyclopedia of Social Networks and Mining}
+  (2nd Edition).
+  New York: Springer Verlag.
 }
 \author{
 Hervé Abdi

@@ -24,16 +24,11 @@
 #' partial projections are equal to the factor scores
 #' for the whole table.
 #' @details
-#' \emph{Current version
-#' does not handle blocks with only one
-#' column (or row)}. This problem is due to the way
-#' **R** handles
-#' vectors vs. matrices and is likely to be fixed
-#' in the (soon to come)
-#'  next version.
 #'
 #'  In CA, the (barycentric) partial projections
-#'  are obtained by rewriting the "reconstitution" formula.
+#'  are obtained by rewriting the
+#'  CA "reconstitution" formula
+#'  (see Escofier, 1980; Abdi & Béra, 2018).
 #'
 #' @param resCA the results of the (CA) analysis
 #' from \code{epCA},
@@ -83,6 +78,13 @@
 #'  par division en sous-tableaux.
 #'  In Diday \emph{et al.}: \emph{Data Analysis and
 #'  Informatics}. Amsterdam: North-Holland. pp 277-284.
+#'
+#'  Abdi H., & Béra, M. (2018).
+#'   Correspondence analysis.
+#'    In R. Alhajj and J. Rokne (Eds.),
+#'   \emph{Encyclopedia of Social Networks and Mining}
+#'   (2nd Edition).
+#'   New York: Springer Verlag.
 #'
 #' @examples
 #' \dontrun{
@@ -152,17 +154,20 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
    wj <- 1 / wj # New addon HA
   for (k in 1:nBlocks){# Begin k loop
     BlockVar = code4Blocks == levels(code4Blocks)[k]
-    bk[k]  <-  sum(wj[BlockVar]) # try 2
-    Xk =  X[, BlockVar]
-    Qk =  Q[BlockVar,]
-    Wk = diag(wj[BlockVar]) # old
+    bk[k]  <-  sum(wj[BlockVar, drop = FALSE]) # try 2
+    Xk =  X[, BlockVar, drop = FALSE]
+    Qk =  Q[BlockVar, , drop = FALSE]
+    # Wk = diag(wj[BlockVar, drop = FALSE]) # old
+    if (sum(BlockVar) > 1) {
     Wk = diag(1 / wj[BlockVar])  # new
-    Fk[,,k]  = (1/bk[k]) * Xk%*%Wk%*%Qk
+    } else {Wk = 1 / wj[BlockVar]}
+    Fk[,,k]  = (1/bk[k]) * Xk %*% Wk %*% Qk
     # Compute the contributions for the Blocks
-    Ctrk[k,] = colSums(cj[BlockVar,])
+    Ctrk[k,] = colSums(cj[BlockVar, , drop = FALSE])
   } # End k loop
   # Absolute contributions
-  absCtrk <-t(resCA$ExPosition.Data$eigs * as.data.frame(t(Ctrk)))
+  absCtrk <-t(resCA$ExPosition.Data$eigs *
+                          as.data.frame(t(Ctrk)))
   # RV Coefficient
   resRV <- RV4Brick(Fk)
   return.list  <- structure(list(Fk = Fk,
