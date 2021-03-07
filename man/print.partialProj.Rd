@@ -12,7 +12,8 @@
 \item{...}{everything else for the functions}
 }
 \description{
-Change the print function for partialProj class
+Change the print function
+ for partialProj class
  objects
  (e.g.,output of partialProj4CA).
 }

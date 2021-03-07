@@ -1,17 +1,20 @@
-# Functions for CA Block (of Variables) Projections
+# Préambule -----
+#Functions for CA Block (columns or rows) Projections
 # Part of PTCA4CATA.
 # Created July 8, 2017. Hervé Abdi
-# Current version: July 917 2017. HA
-# Revisited: February 2021. HA
-#====================================================================
-#===================================================================
-# Function partialProj4CA
-#' Compute blocks (of variables)
+# Current major version: February /27/ 2021
+# Revisited: March 2021. HA
+# Last revision March/07/2021. HA
+#________________________________________________
+#________________________________________________
+#
+# Function partialProj4CA ----
+#' Compute blocks (of columns or rows)
 #' partial projections for a Correspondence Analysis.
 #'
-#' \code{partialProj4CA} computes blocks (of variables)
+#' \code{partialProj4CA} computes blocks (of columns or rows)
 #' partial projections for a Correspondence Analysis (CA).
-#' Blocks are non-overlapping sets of variables (columns)
+#' Blocks are non-overlapping sets of of columns or rows
 #' of a data table analyzed with
 #' CA (as performed with \code{epCA} from \code{ExPosition}).
 #' \code{partialProj4CA} gives
@@ -20,27 +23,40 @@
 #' because the barycenters of the
 #' partial projections are equal to the factor scores
 #' for the whole table.
-#' @param resCA the results of the (CA) analysis from \code{epCA},
+#' @details
+#' \emph{Current version does not handle blocks with only one
+#' column (or row)}. This problem is due to the way R handles
+#' vectors vs matrices and is likely to be fixed
+#' in the (soon to come)
+#'  next version.
+#' @param resCA the results of the (CA) analysis
+#' from \code{epCA},
 #' for example \code{reFromCA <- epCA(X)}.
 #' @param code4Blocks a vector indicating
-#' which variables belong
+#' which columns (or rows) belong
 #' to what block  (i.e.,
-#' the variables of the same block have the same level for
+#' the of columns or rows of the same
+#' block have the same level for
 #' \code{code4Block}): Needs to be of length equal to the
-#' number of variables of the analysis.
+#' number of variables (resp. rows) of the analysis.
 #' @param rowBlocks = \code{FALSE} (default).
-#' When \code{TRUE}, \code{partialProj4CA} runs the analysis
-#' on blocks of observations instead of blocks of variables and
-#' exchange the roles of the observations and variables.
+#' When \code{TRUE},
+#' \code{partialProj4CA} runs the analysis
+#' on blocks of rows instead of blocks of columns and
+#' exchange the roles of the of columns and rows.
 #' @return a list with (1) \code{Fk}:
 #' an \eqn{I*L*K} array of the partial projections
-#' of the \eqn{K} blocks, for the I observations,
-#' and the \code{L} factors
-#' from \code{epCA}; (2) \code{Ctrk} an \eqn{I*L}
+#' for the \code{L} factors (from \code{epCA})
+#' of the \eqn{K} blocks, for the \eqn{I} rows
+#' (if \code{rowBlock} is \code{FALSE} for the \eqn{J}
+#' columns if
+#' \code{rowBlock} is \code{TRUE});
+#'  (2) \code{Ctrk} an \eqn{I*L} (resp. \eqn{J*L})
 #' matrix of the "relative"
 #' block contributions [for a given component
 #' the relative contributions sum to 1];
-#' (3) \code{absCtrk} an \eqn{I*L} matrix of the "absolute"
+#' (3) \code{absCtrk} an \eqn{I*L} (resp  \eqn{I*L})
+#'  matrix of the "absolute"
 #' block contributions [for a given component
 #' the absolute contributions sum to the eigenvalue
 #' for this component];
@@ -50,6 +66,14 @@
 #' between the blocks and, if the package \code{FactoMineR} is
 #' installed, (b) the \eqn{p}-value for the eqn{RV}-coefficient (as
 #' computed with \code{FactoMineR::coeffRV}).
+#' @details In CA, the (barycentric) partial projections
+#'  are obtained by rewriting the "reconstitution" formula.
+#'  @references
+#'  Escofier, B. (1980). Analyse factorielle
+#'  de très grands tableaux
+#'  par division en sous-tableaux.
+#'  In Diday \emph{et al.}: \emph{Data Analysis and
+#'  Informatics}. Amsterdam: North-Holland. pp 277-284.
 #' @examples
 #' \dontrun{
 #' # Get the data/CA function from Exposition
@@ -87,22 +111,17 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   } # end of rightdiagMult
   if (rowBlocks){# get the dual
     Fi <-  resCA$ExPosition.Data$fj
-      wj <-  1 / resCA$ExPosition.Data$M # old version
-     # wj <-  resCA$ExPosition.Data$M # new version
-    #Q  <- resCA$ExPosition.Data$pdq$p
+    wj <-  1 / resCA$ExPosition.Data$M
     Q <- leftdiagMult(resCA$ExPosition.Data$M,
                       resCA$ExPosition.Data$pdq$p)
-    # test2.leC <- ( rightdiagMult( leftdiagMult(wj,t(leX)),le.r))
-    X <- (rightdiagMult( leftdiagMult(resCA$ExPosition.Data$W,
-                                      t(resCA$ExPosition.Data$X)),
-                         resCA$ExPosition.Data$M))
-    #X <- diag(resCA$ExPosition.Data$W) %*%
-    #          t(resCA$ExPosition.Data$X) %*% diag(resCA$ExPosition.Data$M)
+    X <- (rightdiagMult( leftdiagMult(
+                             resCA$ExPosition.Data$W,
+                             t(resCA$ExPosition.Data$X)),
+                             resCA$ExPosition.Data$M))
     cj <- resCA$ExPosition.Data$ci
   } else {
     Fi <- resCA$ExPosition.Data$fi
-     wj <- resCA$ExPosition.Data$W # old version
-    #wj <- 1 / resCA$ExPosition.Data$W
+    wj <- resCA$ExPosition.Data$W
     X  <- resCA$ExPosition.Data$X
     Q  <- resCA$ExPosition.Data$pdq$q
     cj <- resCA$ExPosition.Data$cj
@@ -119,18 +138,10 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   rownames(Ctrk) <- levels(code4Blocks)
   colnames(Ctrk) <- dimnames(Fk)[[2]]
   # Horrible Loop to find the Partial Factor Scores
-  # print(dim(X))
    wj <- 1 / wj # New addon HA
-  # print('wj below')
-  # print(wj)
   for (k in 1:nBlocks){# Begin k loop
     BlockVar = code4Blocks == levels(code4Blocks)[k]
-    # print('iteration k')
-    # bk[k]   = sum(wj[BlockVar]) / sum(wj) old
-    #bk[k]   = 1 / sum(wj[BlockVar]) # try 1
     bk[k]  <-  sum(wj[BlockVar]) # try 2
-    # print(bk[k])
-    #  bk[k]    = sum(BlockVar) / nVars # May need to be changed
     Xk =  X[, BlockVar]
     Qk =  Q[BlockVar,]
     Wk = diag(wj[BlockVar]) # old
@@ -155,12 +166,13 @@ partialProj4CA <- function(resCA, #output from ExPosition::epCA
   #
   return(return.list)
 } # End of function partialProj4CA
-#====================================================================
+#________________________________________________
 # Print function for class partialProj
-# *******************************************************************
+#________________________________________________
 #' Change the print function for partialProj.
 #'
-#'  Change the print function for partialProj class
+#'  Change the print function
+#'  for partialProj class
 #'  objects
 #'  (e.g.,output of partialProj4CA).
 #'
@@ -185,8 +197,9 @@ print.partialProj <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.partialProj
-#------------------------------------------------------------------------------
-#======================================================================
+#________________________________________________
+#________________________________________________
+# RV2Mat -----
 # A quick and dirty RV function
 #' RV2Mat
 #' Compute the RV coefficient between two matrices
@@ -212,8 +225,9 @@ RV2Mat <- function(m1,m2){
   rv <-
     sum(c(M1)*c(M2)) / sqrt(sum(M1^2)*sum(M2^2))
   return(rv)}
-# End of function RV2Mat
-#--------------------------------------------------------------------
+# End of function RV2Mat ----
+#________________________________________________
+# RV4Brick -----
 # A function to compute the RV coefficient
 # on a cube of Data
 #
@@ -253,8 +267,9 @@ RV4Brick <- function(aBrickOfData){
     return.list <- list(RV = RV, pRV = pRV)
   return(return.list)
 }
-#====================================================================
-# RV function. Herve Abdi.
+#_________________________________________________
+# Rv ----
+# RV function. Hervé Abdi.
 # July 14, 2017.
 # Clone from HA's Matlab RV function
 #
@@ -266,8 +281,8 @@ RV4Brick <- function(aBrickOfData){
 #      Schlich (1996)
 # See also FactoMineR coefRV
 #
-#------------------------------------------------------------------------------
-#======================================================================
+#________________________________________________
+#________________________________________________
 # A quick and dirty RV function
 #' \code{Rv}
 #' Compute the RV coefficient between two matrices
@@ -282,17 +297,20 @@ RV4Brick <- function(aBrickOfData){
 #' <XX',YY'> /sqrt(<XX'*XX'>*<YY'*YY'>),
 #' with <> being the scalar product.
 #' Rv works like a squared correlation coefficient.
-#' Depending the options chosen, \code{Rv} will return the
-#' Rv coefficient and associated p-values.
+#' Depending the options chosen,
+#' \code{Rv} will return the
+#' \eqn{Rv} coefficient and associated \eqn{p}-values.
 #' The estimation of the p-values are made following
-#' Kazi-Aoual et al. (CSDA 1995). See also Schlich (1996),
+#' Kazi-Aoual et al. (CSDA 1995).
+#' See also Schlich (1996),
 #' and Abdi (2010, 2007).
-#' @param m1 an I*J matrix
-#' @param m2 an I*K matrix
+#' @param m1 an \eqn{I*J} matrix
+#' @param m2 an \eqn{I*K} matrix
 #' @param return.type what is in the "returned list."
 #' \code{"compact"} (default) returns \code{Rv} and (pRv),
 #' \code{"Rv"} returns \code{Rv}, \code{"full"} return
-#' \code{Rv}, \code{ERv},  \code{VRv},  \code{ZRv},  \code{pRv}.
+#' \code{Rv}, \code{ERv},  \code{VRv},
+#'  \code{ZRv},  \code{pRv}.
 #' @return a list
 #' with, depending upon the option
 #' chosen in \code{return.type}, some (or all) of these:
@@ -300,10 +318,13 @@ RV4Brick <- function(aBrickOfData){
 #'   \code{ERv} (Expected value of Rv),
 #'   \code{VRv} (Variance of Rv),
 #'   \code{ZRv} (Z-score for Rv),  \code{pRv} (p-value for Rv).
-#' @references Abdi, H. (2007). Multiple correlation coefficient.
-#'   In N.J. Salkind (Ed.): \emph{Encyclopedia of Measurement and Statistics.}
+#' @references
+#' Abdi, H. (2007). Multiple correlation coefficient.
+#'   In N.J. Salkind (Ed.):
+#'   \emph{Encyclopedia of Measurement and Statistics.}
 #'   Thousand Oaks (CA): Sage. pp. 648-651.
-#' @references Abdi, H. (2010). Congruence: Congruence coefficient,
+#' @references Abdi, H. (2010). Congruence:
+#' Congruence coefficient,
 #' RV coefficient, and Mantel Coefficient.
 #'  In N.J. Salkind, D.M., Dougherty, & B. Frey (Eds.):
 #'   \emph{Encyclopedia of Research Design}.
@@ -314,8 +335,9 @@ RV4Brick <- function(aBrickOfData){
 Rv <- function(m1,m2, return.type = 'compact'){
   if (nrow(m1) != nrow(m2)){
     stop('The input matrices need to have the same number of rows')
-  }#-----------------------------------------------------------------
-  #-----------------------------------------------------------------
+  }
+  #________________________________________________
+  #________________________________________________
   # First local functions
   le_beta <- function(W){
     l <- eigen(W,only.values = TRUE,symmetric = TRUE)$values
@@ -323,19 +345,19 @@ Rv <- function(m1,m2, return.type = 'compact'){
     return.list = list(l = l, b = b)
     return(return.list)
   }
-  #-----------------------------------------------------------------
+  #________________________________________________
   le_delta <- function(dd,l){
     d <- sum(dd^2) / sum(l^2)
     return(d)
   }
-  #-----------------------------------------------------------------
+  #________________________________________________
   le_c <- function(n,b,d){
     c = ( (n-1)*(n*(n+1)*d-(n-1)*(b+2))) / ( (n-3)*(n-1-b))
     return(c)
   }
   # end of local functions
-  #-----------------------------------------------------------------
-  #-----------------------------------------------------------------
+  #________________________________________________
+  #________________________________________________
   if ((return.type != 'full') & (return.type != 'Rv')){
     return.type <- 'compact' # enforce the default
   }
@@ -379,9 +401,9 @@ Rv <- function(m1,m2, return.type = 'compact'){
   return(return.list)
 }
 # End of function Rv
-#====================================================================
+#________________________________________________
 # Print function for class rvCoeff
-# *******************************************************************
+#________________________________________________
 #' Change the print function for rvCoeff.
 #'
 #'  Change the print function for rvCoeff class
@@ -407,7 +429,8 @@ print.rvCoeff <- function (x, ...) {
   cat("\n")
   invisible(x)
 } # end of function print.rvCoeff
-#------------------------------------------------------------------------------
+#________________________________________________
+# Test ----
 # # Test here
 # Xraw <- matrix(c(1,6,7,5,3,2,6,1,1,7,1,2,2,5,4,3,4,4),6,3,byrow=TRUE)
 # Yraw <- matrix(c(2,5,7,6,4,4,4,2,5,2,1,1,7,2,1,2,3,5,6,5,3,5,4,5),6,4,
@@ -416,4 +439,6 @@ print.rvCoeff <- function (x, ...) {
 # YYt  <- Yraw %*% t(Yraw)
 # LeRV <- Rv(Xraw,Yraw)
 #
-#==============================================================================
+#________________________________________________
+# EoF ----
+#________________________________________________

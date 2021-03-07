@@ -2,37 +2,44 @@
 % Please edit documentation in R/BlockProjections.R
 \name{partialProj4CA}
 \alias{partialProj4CA}
-\title{Compute blocks (of variables)
+\title{Compute blocks (of columns or rows)
 partial projections for a Correspondence Analysis.}
 \usage{
 partialProj4CA(resCA, code4Blocks, rowBlocks = FALSE)
 }
 \arguments{
-\item{resCA}{the results of the (CA) analysis from \code{epCA},
+\item{resCA}{the results of the (CA) analysis
+from \code{epCA},
 for example \code{reFromCA <- epCA(X)}.}
 
 \item{code4Blocks}{a vector indicating
-which variables belong
+which columns (or rows) belong
 to what block  (i.e.,
-the variables of the same block have the same level for
+the of columns or rows of the same
+block have the same level for
 \code{code4Block}): Needs to be of length equal to the
-number of variables of the analysis.}
+number of variables (resp. rows) of the analysis.}
 
 \item{rowBlocks}{= \code{FALSE} (default).
-When \code{TRUE}, \code{partialProj4CA} runs the analysis
-on blocks of observations instead of blocks of variables and
-exchange the roles of the observations and variables.}
+When \code{TRUE},
+\code{partialProj4CA} runs the analysis
+on blocks of rows instead of blocks of columns and
+exchange the roles of the of columns and rows.}
 }
 \value{
 a list with (1) \code{Fk}:
 an \eqn{I*L*K} array of the partial projections
-of the \eqn{K} blocks, for the I observations,
-and the \code{L} factors
-from \code{epCA}; (2) \code{Ctrk} an \eqn{I*L}
+for the \code{L} factors (from \code{epCA})
+of the \eqn{K} blocks, for the \eqn{I} rows
+(if \code{rowBlock} is \code{FALSE} for the \eqn{J}
+columns if
+\code{rowBlock} is \code{TRUE});
+ (2) \code{Ctrk} an \eqn{I*L} (resp. \eqn{J*L})
 matrix of the "relative"
 block contributions [for a given component
 the relative contributions sum to 1];
-(3) \code{absCtrk} an \eqn{I*L} matrix of the "absolute"
+(3) \code{absCtrk} an \eqn{I*L} (resp  \eqn{I*L})
+ matrix of the "absolute"
 block contributions [for a given component
 the absolute contributions sum to the eigenvalue
 for this component];
@@ -44,9 +51,9 @@ installed, (b) the \eqn{p}-value for the eqn{RV}-coefficient (as
 computed with \code{FactoMineR::coeffRV}).
 }
 \description{
-\code{partialProj4CA} computes blocks (of variables)
+\code{partialProj4CA} computes blocks (of columns or rows)
 partial projections for a Correspondence Analysis (CA).
-Blocks are non-overlapping sets of variables (columns)
+Blocks are non-overlapping sets of of columns or rows
 of a data table analyzed with
 CA (as performed with \code{epCA} from \code{ExPosition}).
 \code{partialProj4CA} gives
@@ -55,6 +62,22 @@ These projections are barycentric
 because the barycenters of the
 partial projections are equal to the factor scores
 for the whole table.
+}
+\details{
+\emph{Current version does not handle blocks with only one
+column (or row)}. This problem is due to the way R handles
+vectors vs matrices and is likely to be fixed
+in the (soon to come)
+ next version.
+
+In CA, the (barycentric) partial projections
+ are obtained by rewriting the "reconstitution" formula.
+ @references
+ Escofier, B. (1980). Analyse factorielle
+ de très grands tableaux
+ par division en sous-tableaux.
+ In Diday \emph{et al.}: \emph{Data Analysis and
+ Informatics}. Amsterdam: North-Holland. pp 277-284.
 }
 \examples{
 \dontrun{

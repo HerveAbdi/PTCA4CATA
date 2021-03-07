@@ -9,14 +9,15 @@ with the same number of rows.}
 Rv(m1, m2, return.type = "compact")
 }
 \arguments{
-\item{m1}{an I*J matrix}
+\item{m1}{an \eqn{I*J} matrix}
 
-\item{m2}{an I*K matrix}
+\item{m2}{an \eqn{I*K} matrix}
 
 \item{return.type}{what is in the "returned list."
 \code{"compact"} (default) returns \code{Rv} and (pRv),
 \code{"Rv"} returns \code{Rv}, \code{"full"} return
-\code{Rv}, \code{ERv},  \code{VRv},  \code{ZRv},  \code{pRv}.}
+\code{Rv}, \code{ERv},  \code{VRv},
+ \code{ZRv},  \code{pRv}.}
 }
 \value{
 a list
@@ -37,18 +38,22 @@ With X and Y matrices, RV is equal to
 <XX',YY'> /sqrt(<XX'*XX'>*<YY'*YY'>),
 with <> being the scalar product.
 Rv works like a squared correlation coefficient.
-Depending the options chosen, \code{Rv} will return the
-Rv coefficient and associated p-values.
+Depending the options chosen,
+\code{Rv} will return the
+\eqn{Rv} coefficient and associated \eqn{p}-values.
 The estimation of the p-values are made following
-Kazi-Aoual et al. (CSDA 1995). See also Schlich (1996),
+Kazi-Aoual et al. (CSDA 1995).
+See also Schlich (1996),
 and Abdi (2010, 2007).
 }
 \references{
 Abdi, H. (2007). Multiple correlation coefficient.
-  In N.J. Salkind (Ed.): \emph{Encyclopedia of Measurement and Statistics.}
+  In N.J. Salkind (Ed.):
+  \emph{Encyclopedia of Measurement and Statistics.}
   Thousand Oaks (CA): Sage. pp. 648-651.
 
-Abdi, H. (2010). Congruence: Congruence coefficient,
+Abdi, H. (2010). Congruence:
+Congruence coefficient,
 RV coefficient, and Mantel Coefficient.
  In N.J. Salkind, D.M., Dougherty, & B. Frey (Eds.):
   \emph{Encyclopedia of Research Design}.
