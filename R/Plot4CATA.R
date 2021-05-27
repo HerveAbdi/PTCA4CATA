@@ -576,7 +576,7 @@ prettyHist <- function(distribution, observed,
     # "Observed value" , pos = 2 , cex = 0.75, col=observed.col)
   }
 
-  return(h)
+  invisible(h)
 }
 #_____________________________________________________________________
 #        1         2         3         4         5         6         7
