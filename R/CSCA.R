@@ -109,7 +109,7 @@ rdiag <- function(X,y){
 #' prior to the barycentric projection.
 #' @return a \eqn{J} (variables) by \eqn{L} (factors)
 #' by \eqn{K} (blocks) array storing the \eqn{K} "slices"
-#' pf partial factor scores.
+#' of partial factor scores.
 #' @details This function is used when the original data table is
 #' made of blocks of rows (resp columns) all described by the
 #' same columns (resp. rows). In the row case, the rows

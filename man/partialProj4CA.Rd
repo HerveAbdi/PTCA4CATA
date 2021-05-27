@@ -55,11 +55,13 @@ installed, (b) the \eqn{p}-value for the
 computed with \code{FactoMineR::coeffRV}).
 }
 \description{
-\code{partialProj4CA} computes blocks (of columns or rows)
+\code{partialProj4CA} computes blocks
+(of columns or rows)
 partial projections for a Correspondence Analysis (CA).
 Blocks are non-overlapping sets of of columns or rows
 of a data table analyzed with
-CA (as performed with \code{epCA} from \code{ExPosition}).
+CA (as performed with
+\code{epCA} from \code{ExPosition}).
 \code{partialProj4CA} gives
 the partial projection for the blocks.
 These projections are barycentric

@@ -34,7 +34,7 @@
 #' such as \code{data4PCCAR}.
 #'
 #' @import ggplot2
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @seealso \code{\link{createFactorMap}}
 #' @examples
 #' # Some PCA-like correlations
@@ -73,7 +73,8 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
   #___________________________________________________________________
   dat <- .circleFun(center, radius, npoints = nPoints)
   x <- y <- NULL # needed to appease the parser that
-                 # thinks that x and y are glocal undefined variables
+                 #  thinks that x and y are global
+                 #  undefined variables
   aCircle <- geom_path(data = dat, mapping = aes(x = x, y = y),
                        color = color , alpha = alpha, size = size)
   return(aCircle)

@@ -40,7 +40,7 @@ prior to the barycentric projection.}
 \value{
 a \eqn{J} (variables) by \eqn{L} (factors)
 by \eqn{K} (blocks) array storing the \eqn{K} "slices"
-pf partial factor scores.
+of partial factor scores.
 }
 \description{
 \code{blockProj}:

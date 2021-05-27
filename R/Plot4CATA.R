@@ -439,6 +439,7 @@ PrettyBarPlotColor <- function(bootratio,threshold=2,ylim=NULL,
 # From Derek's function for pretty distributions
 # October 17, 2013
 # prettyHist ----
+# Current version: 05/27/2021.
 #' Plot a sampling distribution
 #' along with a value of a criterion (e.g., for significance).
 #'
@@ -576,7 +577,7 @@ prettyHist <- function(distribution, observed,
     # "Observed value" , pos = 2 , cex = 0.75, col=observed.col)
   }
 
-  return(h)
+  invisible(h)
 }
 #_____________________________________________________________________
 #        1         2         3         4         5         6         7

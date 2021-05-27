@@ -64,5 +64,5 @@ ggMapWithCircle <- MapCor$zeMap  + addCircleOfCor()
 \code{\link{createFactorMap}}
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }
