@@ -265,7 +265,7 @@ createFactorMap <- function(X,
     # font family for labels
     # below are ggrepel values
     force = force, # labels' repulsion for ggrepel
-    segment.size = 0,
+    segment.size = segment.size,
     # segment width for ggrepel
     nudge_x = 0,
     nudge_y = 0 # from ggrepel
@@ -451,7 +451,7 @@ map4DotsAndLabels <- function(data,
         data = data,
         aes_string(V1, V2),
         #aes(G[,1],G[,2]),
-        segment.size = 0,
+        segment.size = segment.size,
         size = text.cex,
         fontface = font.face,
         family = font.family,
