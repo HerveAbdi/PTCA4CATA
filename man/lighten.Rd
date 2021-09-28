@@ -11,13 +11,15 @@ lighten(colors, factor = 1.4, maxColorValue = 255)
 
 \item{factor}{(Default: 1.4) the lightening factor.}
 
-\item{maxColorValue}{(Default: 255) the maximum possible for a color component.}
+\item{maxColorValue}{(Default: 255)
+the maximum possible for a color component.}
 }
 \value{
 A lightened color.
 }
 \description{
-\code{lighten} gives a lighter shade of a color.
+\code{lighten} gives a
+lighter shade of a color.
 }
 \details{
 Credit to Roland, see:

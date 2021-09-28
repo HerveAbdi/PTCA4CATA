@@ -2,18 +2,22 @@
 % Please edit documentation in R/PrettyBarPlot2.R
 \name{areColors}
 \alias{areColors}
-\title{Check that color names are the names of some real colors.}
+\title{Check that color names are
+the names of some real colors.}
 \usage{
 areColors(x)
 }
 \arguments{
-\item{x}{a string vectors with (to be checked) names of colors.}
+\item{x}{a string vectors with (to be checked)
+names of colors.}
 }
 \value{
-a logical vector with \code{TRUE} if a color, \code{FALSE} if not.
+a logical vector with
+\code{TRUE} if a color, \code{FALSE} if not.
 }
 \description{
-\code{areColors}: Check that colores names are the names of some real colors.
+\code{areColors}: Check that color
+names are the names of some real colors.
 }
 \details{
 credit:

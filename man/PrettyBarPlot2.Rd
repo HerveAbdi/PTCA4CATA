@@ -2,10 +2,12 @@
 % Please edit documentation in R/PrettyBarPlot2.R
 \name{PrettyBarPlot2}
 \alias{PrettyBarPlot2}
-\title{a \code{ggplot2}-based function to plot bar plots
+\title{a \code{ggplot2}-based
+function to plot bar plots
 for a series
 of variables:
-Used for plotting bootstrap ratios or contributions for
+Used for plotting bootstrap ratios
+or contributions for
 PCA, CA, MCA, PLS, etc.}
 \usage{
 PrettyBarPlot2(
@@ -35,46 +37,58 @@ PrettyBarPlot2(
 )
 }
 \arguments{
-\item{bootratio}{the bootstrap ratios (BR) or contributions
+\item{bootratio}{the bootstrap ratios
+(BR) or contributions
 or similar statistics to be plotted.
 (e.g., obtained from \code{Boot4PTCA}).}
 
-\item{font.size}{(Default: \code{NULL}) the font size to write
-the name of the item. When \code{NULL, font.size = 1}.}
+\item{font.size}{(Default: \code{NULL})
+the font size to write
+the name of the item. When \code{NULL,
+font.size = 1}.}
 
 \item{threshold}{(Default: \code{2})
 The critical value for significance
  which matches a \eqn{p} < .05
-significance level. The |BR| < threshold are plotted in gray,
+significance level.
+The |BR| < threshold are plotted in gray,
 the other BR are plotted in colors.}
 
-\item{ylim}{(Default: NULL)
-a 2-element vector giving min and max for the y-axis;
-when NULL (default) set to c(-max(abs(y)), max(abs(y)))}
+\item{ylim}{(Default: \code{NULL})
+a 2-element vector giving \code{min} and
+\code{max} for the y-axis;
+when NULL (default) set to
+\code{c(-max(abs(y)), max(abs(y)))}}
 
 \item{color.bar}{a 3-element vector
 of color names for the bars for (respectively)
 significant positive,
 significant negative, and non-significant.
-Default is c('lavender','darkolivegreen3','gray90').}
+Default is
+\code{c('lavender','darkolivegreen3','gray90')}.}
 
 \item{color.bord}{The color for the border of the bars,
-Default: c("mediumpurple4", "darkolivegreen4", "gray75").}
+Default:
+\code{c("mediumpurple4", "darkolivegreen4", "gray75")}.}
 
 \item{color.letter}{a 3-element vector of color names
 for the names of
 the items for (respectively)
-significant positive, significant negative, and non-significant.
-Default is c("mediumpurple4",'darkolivegreen4','gray75')}
+significant positive, significant negative,
+and non-significant.
+Default is
+\code{c("mediumpurple4",'darkolivegreen4','gray75')}}
 
 \item{color4ns}{(Default: \code{'gray75'})
 color for the non-significant \code{bootratio}.}
 
-\item{color4bar}{(Default: NULL) a vector of color names
-(same dimension as \code{bootratio}). Needs to be either a name
-from the set \code{colors()} or in \code{hex} format.}
+\item{color4bar}{(Default: \code{NULL}) a vector of color names
+(same dimension as \code{bootratio}).
+Needs to be either a name
+from the set \code{colors()}
+or in \code{hex} format.}
 
-\item{plotnames}{if TRUE (default) write the names of the items.}
+\item{plotnames}{if code{TRUE} (default) write the names of the items.}
 
 \item{main}{(default is \code{NULL}) a title for the graph.}
 
@@ -109,10 +123,12 @@ for the critical value line.}
 \item{line.type}{The type of line for the critical line
 (\code{Default = 2}, a dashed line).}
 
-\item{line.size}{(\code{Default = .5 }), the thickness of the
+\item{line.size}{(\code{Default = .5 }),
+the thickness of the
 critical line.}
 
-\item{line.alpha}{(\code{Default = .5 }), the transparency of the
+\item{line.alpha}{(\code{Default = .5 }),
+the transparency of the
 critical line (0 = all transparent, 1 = opaque).}
 }
 \value{
@@ -121,22 +137,26 @@ A \code{ggplot2} object containg the graph
 }
 \description{
 \code{PrettyBarPlot2}:
-a \code{ggplot2}-based version of \code{PrettybarPlot} and
+a \code{ggplot2}-based version of
+\code{PrettybarPlot} and
 \code{PrettyBarPlotColor}.
 \code{PrettyBarPlot2}
 creates bar plots for a set of items
 (e.g., observations or variables) analyzed
 with multivariate methods
 such as PCA, CA, MCA, PLS etc.
-\code{PrettyBarPlot2} is used to display the bootstrap ratios
+\code{PrettyBarPlot2}
+is used to display the bootstrap ratios
 or contributions plots for CA/MCA/PCA/PLS.
 Significant or important items are plotted
 in color, non-significant (or un-important)
 items are plotted in gray.
 }
 \details{
-Note that this version is still in
-development. Current version generates a (strange) warning message
+Note that this version
+is still in
+development. Current version generates
+a (strange) warning message
 from \code{ggplot2}
 about \code{element_text()}.
 

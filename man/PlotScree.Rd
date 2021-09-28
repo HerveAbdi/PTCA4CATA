@@ -20,7 +20,8 @@ PlotScree(
 )
 }
 \arguments{
-\item{ev}{the eigenvalues to plot. no default.}
+\item{ev}{the eigenvalues to plot.
+No default.}
 
 \item{p.ev}{the probabilities
 associated to the
@@ -32,7 +33,7 @@ does not always return all
 eigenvalues
 but sometimes only the requested ones;
 however \code{ExPosition} always returns
-all percentages i.e., tau),
+all percentages i.e., \code{tau}),
 so if \code{max.ev} is specified,
 it is used to recompute
 all eigenvalues.}
@@ -81,7 +82,8 @@ For example  \code{ExPosition} does not return all ev
  By default \code{PlotScree}
  will not plot the line corresponding to
  the average inertia (i.e., Kaiser criterion).
- If provided with probabilities, \code{PlotScree} will
+ If provided with probabilities,
+ \code{PlotScree} will
  color differently the "significant"
  eigenvalues.
 }
