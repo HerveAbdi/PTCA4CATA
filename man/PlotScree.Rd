@@ -22,7 +22,8 @@ PlotScree(
 \arguments{
 \item{ev}{the eigenvalues to plot. no default.}
 
-\item{p.ev}{the probabilities associated to the
+\item{p.ev}{the probabilities
+associated to the
 eigen-values, (default = \code{NULL}).}
 
 \item{max.ev}{the max eigenvalue
@@ -36,29 +37,34 @@ so if \code{max.ev} is specified,
 it is used to recompute
 all eigenvalues.}
 
-\item{alpha}{threshold for significance. Default = .05}
+\item{alpha}{threshold for significance
+\code{Default = .05}).}
 
 \item{col.ns}{color for the non significant
 eigenvalues. Default is \code{'Green'}.}
 
-\item{col.sig}{color for significant eigen-values.
+\item{col.sig}{color for significant
+eigen-values.
 Default is \code{'Violet'}.}
 
 \item{title}{a title for the graph
-default is \code{"Explained Variance per Dimension"}.}
+default is
+\code{"Explained Variance per Dimension"}.}
 
 \item{xlab}{The names of the dimensions
 (default \code{'Dimensions '}).}
 
-\item{plotKaiser}{when \code{TRUE} plot
+\item{plotKaiser}{when \code{TRUE}
 plot a line corresponding to the average inertia
 (Kaiser criterion); do not plot when
 \code{FALSE} (default).}
 
-\item{color4Kaiser}{color for Kaiser's criterion
+\item{color4Kaiser}{color for Kaiser's
+line
 (default is \code{'darkorchid4'})}
 
-\item{lwd4Kaiser}{\code{lwd} value (i.e., width)
+\item{lwd4Kaiser}{\code{lwd} value
+(i.e., width)
 for Kaiser's criterion line.
 (default is \code{'2.5'})
 # @examples  # PlotScree(ev)}
@@ -76,8 +82,10 @@ For example  \code{ExPosition} does not return all ev
  will not plot the line corresponding to
  the average inertia (i.e., Kaiser criterion).
  If provided with probabilities, \code{PlotScree} will
- color differently the "significant" eigenvalues.
+ color differently the "significant"
+ eigenvalues.
 }
 \author{
-Hervé Abdi with help from Derek Beaton and Ju-Chi Yu.
+Hervé Abdi with help
+from Derek Beaton and Ju-Chi Yu.
 }
