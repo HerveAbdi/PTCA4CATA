@@ -13,7 +13,8 @@ addArrows(
   alpha = 0.6,
   size = 1,
   center = c(0, 0),
-  arrowLength = 0.3
+  arrowLength = 0.3,
+  linetype = 1
 )
 }
 \arguments{
@@ -43,6 +44,10 @@ segment}
 
 \item{arrowLength}{(\code{Default: 0.3}), the lenth (in cm.) of
 the terminal arrow.}
+
+\item{linetype}{(\code{Default = 1} = solid),
+the type of the line matches \code{ggplots2 linetype}
+or basic \code{R, lty} (e.g., 2 = dashed, 3 = dotted).}
 }
 \value{
 a \code{ggplot2} component to be added to a
