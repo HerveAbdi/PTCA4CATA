@@ -100,14 +100,16 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 #'
 #' @details
 #'
-#' \emph{Note}: This function is likely to move to another package
+#' \emph{Note}: This function is likely
+#' to move to another package
 #' such as \code{data4PCCAR}.
 #'
 #'
 #' @param X a data frame with the coordinates of the points
 #' (e.g., from \code{ExPosition::epCA()}).
 #' @param axis1  (\code{default} = 1)
-#'    The number of the column of \code{X} for the horizontal axis.
+#'    The number of the column of
+#'    \code{X} for the horizontal axis.
 #' @param axis2 (\code{default} = 2)
 #' The number of the column of \code{X} for the vertical  axis.
 #' @param color
@@ -125,7 +127,8 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 #' @param size (\code{Default = 1}), the thickness of the
 #' segment
 #' @param linetype (\code{Default = 1} = solid),
-#' the type of the line matches \code{ggplots2 linetype}
+#' the type of the line;
+#' should match \code{ggplots2 linetype}
 #' or basic \code{R, lty} (e.g., 2 = dashed, 3 = dotted).
 #'
 #' @return a \code{ggplot2} component to be added to a
