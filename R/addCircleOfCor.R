@@ -161,8 +161,8 @@ addArrows <- function(X, axis1 = 1, axis2 = 2,
                       alpha  = .6,
                       size = 1,
                       center = c(0,0),
-                      arrowLength = .3,
-                      linetype = 1){
+             arrowLength = 0.3,
+             linetype = 1){
   X = data.frame(X)
   zeArrows <- ggplot2::annotate("segment",
                                 x = center[1],
@@ -172,8 +172,8 @@ addArrows <- function(X, axis1 = 1, axis2 = 2,
                                 color = color,
                                 alpha = alpha,
                                 size = size,
-         linetype = linetype,
-         arrow = arrow(length = unit(.3, "cm") ) )
+         arrow =  arrow(length = unit(arrowLength, "cm")),
+         linetype = linetype )
   return(zeArrows)
 }
 # End addArrows ----

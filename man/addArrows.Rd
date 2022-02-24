@@ -22,7 +22,8 @@ addArrows(
 (e.g., from \code{ExPosition::epCA()}).}
 
 \item{axis1}{(\code{default} = 1)
-The number of the column of \code{X} for the horizontal axis.}
+The number of the column of
+\code{X} for the horizontal axis.}
 
 \item{axis2}{(\code{default} = 2)
 The number of the column of \code{X} for the vertical  axis.}
@@ -46,7 +47,8 @@ segment}
 the terminal arrow.}
 
 \item{linetype}{(\code{Default = 1} = solid),
-the type of the line matches \code{ggplots2 linetype}
+the type of the line;
+should match \code{ggplots2 linetype}
 or basic \code{R, lty} (e.g., 2 = dashed, 3 = dotted).}
 }
 \value{
@@ -61,7 +63,8 @@ most likely  a plot of correlation produced by
 \code{createFactorMap} \emph{et alia}.
 }
 \details{
-\emph{Note}: This function is likely to move to another package
+\emph{Note}: This function is likely
+to move to another package
 such as \code{data4PCCAR}.
 
 The map should should first be created by, for example,
