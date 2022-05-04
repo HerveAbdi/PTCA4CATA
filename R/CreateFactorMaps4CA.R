@@ -702,7 +702,7 @@ createFactorMapIJ <- function(Fi,Fj,
     segment.size = segment.size.i,
     # segment width for ggrepel
     nudge_x = nudge_x  ,
-    nudge_y = nudge_y # from ggrepel
+    nudge_y = nudge_y, # from ggrepel
     # nudge value for starting point for
     #  labels (ggrepel)
     max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps)
