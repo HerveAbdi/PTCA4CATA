@@ -158,7 +158,9 @@ createBaseMap <- function(data,
 #' @param force \code{(default = 1)}.
 #' How much \code{ggrepel} repels the label
 #' @param segment.size \code{(default = 0)}
-#'  size of segment line for \code{ggrpel}.
+#'  size of segment line for \code{ggrepel}.
+#' @param max_overlaps \code{(default = 10)}
+#'  number of text overlaps allowed for \code{ggrepel}.
 #' @param ... stuff to be passed to other functions.
 #' @return a list with 6 elements:
 #' \enumerate{
@@ -212,6 +214,7 @@ createFactorMap <- function(X,
                                           alpha.f = .2),
                             force = 1, # for ggrepel
                             segment.size = 0, # size of segment line
+                            max_overlaps = 10, # change the maximum number of overlaps
                             # background color
                             ... # more stuff
 ){  #col.labels <- ggplot2::alpha(col.labels, alpha = alpha.labels)
@@ -268,9 +271,10 @@ createFactorMap <- function(X,
     segment.size = segment.size,
     # segment width for ggrepel
     nudge_x = 0,
-    nudge_y = 0 # from ggrepel
+    nudge_y = 0, # from ggrepel
     # nudge value for starting point for
     #  labels (ggrepel)
+    max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps)
     , ... # in case we need more stuff for ggrepel
   )
 
@@ -375,6 +379,8 @@ print.createFactorMap <- function(x, ...) {
 #'  (transparency) for the points, should be
 #'  between 1 (no transparency) and 0
 #'  (completely transparent).
+#' @param max_overlaps (default = 10).
+#'   number of text overlaps allowed for \code{ggrepel}.
 #' @param ... everything else to pass to the functions
 #' @return a list with 6-elements:
 #' \enumerate{
@@ -423,6 +429,7 @@ map4DotsAndLabels <- function(data,
                               nudge_x = 0, nudge_y = 0, # from ggrepel
                               # nudge value for starting point for
                               #  labels
+                              max_overlaps = 10,
                               ... # for ggrepel in case
 ){# function map4DotsAndLabels  start here
   data <- as.data.frame(data) # make sure that we a df
@@ -458,7 +465,8 @@ map4DotsAndLabels <- function(data,
         color = col.labels,
         alpha = alpha.labels,
         nudge_x = nudge_x,
-        nudge_y = nudge_y
+        nudge_y = nudge_y,
+        max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps)
       )
   }
   return(list(leG.points = LeG_dot, leG.labels = LeG_text))
@@ -560,6 +568,8 @@ map4DotsAndLabels <- function(data,
 #' @param nudge_y = 0. From \code{ggrepel},
 #' nudge value for starting point for
 #'  labels: y dimension.
+#' @param max_overlaps = 10. From \code{ggrepel},
+#'   number of text overlaps allowed.
 #' @param ... everything else for the functions
 #' @return a list with
 #'  1) \code{zeMap:} The Complete Map (background Dots and Labels);
@@ -635,6 +645,7 @@ createFactorMapIJ <- function(Fi,Fj,
                               # background color
                               nudge_x = 0,
                               nudge_y = 0,
+                              max_overlaps = 10,
                               ... # more stuff
 ){
   #
@@ -657,7 +668,7 @@ createFactorMapIJ <- function(Fi,Fj,
       lapply(prettyGraphs::minmaxHelper(Fi,Fj),'*',1.1)
   }
   #___________________________________________________________________
-  # First the basemao
+  # First the basemap
   LeG_b <- createBaseMap(data = rbind(Fi,Fj),
                          constraints = constraints,
                          col.axes = col.axes, #  'darkorchid',
@@ -694,6 +705,7 @@ createFactorMapIJ <- function(Fi,Fj,
     nudge_y = nudge_y # from ggrepel
     # nudge value for starting point for
     #  labels (ggrepel)
+    max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps)
     , ... # in case we need more stuff for ggrepel
   )
 
@@ -726,6 +738,7 @@ createFactorMapIJ <- function(Fi,Fj,
     nudge_y = nudge_y # from ggrepel
     # nudge value for starting point for
     #  labels (ggrepel)
+    max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps)
     , ... # in case we need more stuff for ggrepel
   )
 
@@ -866,6 +879,8 @@ print.createFactorMapIJ <- function (x, ...) {
 #' @param col.background
 #' [Default =  \code{adjustcolor('lavender', alpha.f = .2)}],
 #' The color of the background.
+#' @param max_overlaps (default = 10). From \code{ggrepel},
+#'   number of text overlaps allowed.
 #' @param ... eveythings else for the functions.
 #' @return a list with
 #' \code{baseMap_S:} The Background (Symmetric)
@@ -960,6 +975,8 @@ createAllMaps4CA <- function(allNormedFactors,
                              col.background =
                                adjustcolor('lavender',
                                            alpha.f = .2),
+                             # number of text overlaps
+                             max_overlaps = 10,
                              # background color
                              ... # more stuff
 ){
@@ -1009,6 +1026,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       # width of the axes
                       col.background = col.background ,
                       # background color
+                      max.overlaps = getOption("ggrepel.max.overlaps", default = max_overlaps),
                       ... # more stuff
     )
   # Asymetric Maps
@@ -1056,6 +1074,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       width.axes =  width.axes,
                       # width of the axes
                       col.background = col.background ,
+                      max_overlaps = max_overlaps,
                       # background color
                       ... # more stuff
     )
@@ -1106,6 +1125,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       # width of the axes
                       col.background = col.background ,
                       # background color
+                      max_overlaps = max_overlaps,
                       ... # more stuff
     )
 
