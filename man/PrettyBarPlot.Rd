@@ -40,10 +40,13 @@ Default is \code{c('lavender','darkolivegreen3','gray90')}.}
 
 \item{color.letter}{a 3-element vector of color names
 for the names of the items for (respectively)
-significant positive, significant negative, and non-significant.
-Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}.}
+significant positive,
+significant negative, and non-significant.
+Default is
+\code{c('mediumpurple4','darkolivegreen4','gray75')}.}
 
-\item{plotnames}{if \code{TRUE} (default) write the names of the items}
+\item{plotnames}{if \code{TRUE} (default)
+write the names of the items}
 
 \item{main}{(default is \code{NULL}) a title for the graph.}
 

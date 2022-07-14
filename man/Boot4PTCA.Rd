@@ -39,7 +39,7 @@ from the \code{epCA} program}
 
 \item{compact}{(default = \code{FALSE})
 if \code{TRUE} gives a compact
-version with only the results for the symmetric approch.}
+version with only the results for the symmetric approach.}
 
 \item{eigen}{if \code{FALSE} compute also the bootstraped
 eigenvalues. NB It seems that the bootstrapped eigenvalues are
@@ -56,12 +56,13 @@ When \code{eigen} is \code{FALSE},
 \value{
 With notation:
  \eqn{I}: number of rows (of \code{ZeDataCube}),
-  \eqn{J}: number of columns (of \code{ZeDataCube}),
+ \eqn{J}: number of columns (of \code{ZeDataCube}),
  \eqn{L}: number of factors kept (i.e., \code{nf2keep}),
  \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter});
  \code{Boot4PTCA} returns
 a list if compact \code{FALSE}:
-1a) \code{RowsBoot} an \eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
+1a) \code{RowsBoot} an
+\eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
 coordinates for the \eqn{I}-set
 1b) \code{RowsBoot.asym} an  \eqn{I} * \eqn{L} * \eqn{B}
  cube of Bootstrapped
@@ -70,20 +71,20 @@ coordinates for the \eqn{I}-set
  2a)  \code{ColumnsBoot} a \eqn{J} * \eqn{L} * \eqn{B}
  cube of Bootstrapped coordinates
  for the \eqn{J}-set
- if compact \code{FALSE} 2b)
+ if compact is \code{FALSE} 2b)
  \code{ColumnsBoot.asym} a  \eqn{J} * \eqn{L} * \eqn{B}
  cube of Bootstrapped
  coordinates for the \eqn{J}-set.
 }
 \description{
 \code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube
-and computes bootstraped factor scores.
+and computes bootstrapped factor scores.
 }
 \examples{
 \dontrun{
-BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi,fj = fj, eigs = eigs)
+BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi, fj = fj, eigs = eigs)
 }
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

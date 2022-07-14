@@ -20,12 +20,14 @@ PrettyBarPlotColor(
 \item{bootratio}{the bootstrap ratios (BR) to be plotted
 (typically obtained from Boot4PTCA).}
 
-\item{threshold}{critical.value The critical value for significance
+\item{threshold}{critical.value.
+ The critical value for significance
 (default = 2, which matches a $p < .05$ significance level)
 |BR| < threshold are plotted in gray.}
 
-\item{ylim}{a 2-element vector giving min and mac for y
-if \code{NULL} (default) set to \code{c(-abs(BR),abs(BR))}.}
+\item{ylim}{a 2-element vector giving min and mac for \eqn{y}
+if \code{NULL} (default) set to
+\code{c(-abs(BR),abs(BR))}.}
 
 \item{color4bar}{a vector of color names (same dimension as BR)}
 
@@ -47,7 +49,8 @@ and 2) threshold.
 \description{
 \code{PrettyBarPlotColor}: Create pretty bar plots
  with defined colors for the sigificant columns.
- NB \code{PrettyBarPlotColor} is a variation over \code{prettyBarPlot}.
+ NB \code{PrettyBarPlotColor} is a variation over
+\code{prettyBarPlot}.
 }
 \details{
 \code{PrettyBarPlot2},

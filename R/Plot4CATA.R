@@ -71,9 +71,12 @@
 #' Default is \code{c('lavender','darkolivegreen3','gray90')}.
 #' @param color.letter a 3-element vector of color names
 #' for the names of the items for (respectively)
-#' significant positive, significant negative, and non-significant.
-#' Default is \code{c("mediumpurple4",'darkolivegreen4','gray75')}.
-#' @param  plotnames if \code{TRUE} (default) write the names of the items
+#' significant positive,
+#' significant negative, and non-significant.
+#' Default is
+#' \code{c('mediumpurple4','darkolivegreen4','gray75')}.
+#' @param  plotnames if \code{TRUE} (default)
+#' write the names of the items
 #' @param main  (default is \code{NULL}) a title for the graph.
 #' @param ylab  (default is \code{NULL})
 #' a label for the y-axis (i.e., BR).
@@ -198,15 +201,18 @@ ShadesColor <- function(aColor,jiffy=40){
 #'
 #'  \code{PrettyBarPlotColor}: Create pretty bar plots
 #'  with defined colors for the sigificant columns.
-#'  NB \code{PrettyBarPlotColor} is a variation over \code{prettyBarPlot}.
+#'  NB \code{PrettyBarPlotColor} is a variation over
+#'\code{prettyBarPlot}.
 #' @author Hervé Abdi
 #' @param bootratio the bootstrap ratios (BR) to be plotted
 #' (typically obtained from Boot4PTCA).
-#' @param threshold critical.value The critical value for significance
+#' @param threshold critical.value.
+#'  The critical value for significance
 #' (default = 2, which matches a $p < .05$ significance level)
 #' |BR| < threshold are plotted in gray.
-#' @param ylim a 2-element vector giving min and mac for y
-#' if \code{NULL} (default) set to \code{c(-abs(BR),abs(BR))}.
+#' @param ylim a 2-element vector giving min and mac for \eqn{y}
+#' if \code{NULL} (default) set to
+#' \code{c(-abs(BR),abs(BR))}.
 #' @param color4bar a vector of color names (same dimension as BR)
 #' @param  color4ns  (default is \code{'gray75'}) color
 #' for the non-significant BRs.

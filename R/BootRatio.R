@@ -126,7 +126,8 @@ print.bootRatios <- function (x, ...) {
 
 # ********************************************************************
 # function Boot4PTCA.
-#   Compute the Bootstrapped Factors scores for I and J sets
+#   Compute the Bootstrapped Factors scores for \
+#   the I and J sets.
 #'@title Compute the Bootstrapped factors scores
 #' for the  \eqn{I} and \eqn{J} sets from
 #' a Partial Triadic Correspondence analysis
@@ -134,7 +135,7 @@ print.bootRatios <- function (x, ...) {
 #'
 #'@description
 #' \code{Boot4PTCA} bootstraps the \eqn{K}-th dimension of a data cube
-#' and computes bootstraped factor scores.
+#' and computes bootstrapped factor scores.
 #' @param ZeDataCube An  \eqn{I} * \eqn{J} * \eqn{K}
 #' data cube (\eqn{K} are observations)
 #' The third dimension (i.e., \eqn{K}) is bootstrapped.
@@ -148,7 +149,7 @@ print.bootRatios <- function (x, ...) {
 #' \code{(RowsBoot = ZeBootCube_I, ColumnsBoot = ZeBootCube_J)}.
 #' @param compact (default = \code{FALSE})
 #' if \code{TRUE} gives a compact
-#' version with only the results for the symmetric approch.
+#' version with only the results for the symmetric approach.
 #' @param eigen if \code{FALSE} compute also the bootstraped
 #' eigenvalues. NB It seems that the bootstrapped eigenvalues are
 #' biased (i.e., their mean is not equal
@@ -162,12 +163,13 @@ print.bootRatios <- function (x, ...) {
 #' @return
 #' With notation:
 #'  \eqn{I}: number of rows (of \code{ZeDataCube}),
-#'   \eqn{J}: number of columns (of \code{ZeDataCube}),
+#'  \eqn{J}: number of columns (of \code{ZeDataCube}),
 #'  \eqn{L}: number of factors kept (i.e., \code{nf2keep}),
 #'  \eqn{B}: number of Bootstrap replicates (i.e., \code{nBootIter});
 #'  \code{Boot4PTCA} returns
 #' a list if compact \code{FALSE}:
-#' 1a) \code{RowsBoot} an \eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
+#' 1a) \code{RowsBoot} an
+#' \eqn{I} * \eqn{L} * \eqn{B} cube of Bootstrapped
 #' coordinates for the \eqn{I}-set
 #' 1b) \code{RowsBoot.asym} an  \eqn{I} * \eqn{L} * \eqn{B}
 #'  cube of Bootstrapped
@@ -176,18 +178,18 @@ print.bootRatios <- function (x, ...) {
 #'  2a)  \code{ColumnsBoot} a \eqn{J} * \eqn{L} * \eqn{B}
 #'  cube of Bootstrapped coordinates
 #'  for the \eqn{J}-set
-#'  if compact \code{FALSE} 2b)
+#'  if compact is \code{FALSE} 2b)
 #'  \code{ColumnsBoot.asym} a  \eqn{J} * \eqn{L} * \eqn{B}
 #'  cube of Bootstrapped
 #'  coordinates for the \eqn{J}-set.
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @examples \dontrun{
-#' BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi,fj = fj, eigs = eigs)
+#' BootFactorsIJ <- Boot4PTCAt(A.Cube.Of.Data,fi = fi, fj = fj, eigs = eigs)
 #' }
 #' @export
 Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
   # factor scores for I & J set
-  # from the CA obtained by the sum of individual contigency tables
+  # from the CA obtained by the sum of individual contingency tables
   # stores in a observations * variables * individuals
   # with individuals being a random factor
   #*****************    Hervé Abdi. January, 17, 2013 *************
@@ -197,7 +199,7 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
   eigs, # The eigenvalues from the CA analysis
   nf2keep = 2, # how many factors to keep,  default to 2
   nBootIter = 100 , # How many Bootstrap samples, default to 100
-  compact = FALSE, # If compact == TRUE: give only the symetric version
+  compact = FALSE, # If compact == TRUE: give only the symmetric version
   eigen = FALSE, # if eigen is TRUE compute bootstrapped eigenvalues
   eigen.compact = TRUE # if eigen.compact is FALSE return the
      # bootstrapped eigenvalues
@@ -331,7 +333,7 @@ Boot4PTCA <- function( # Boot4PTCA: Create Bootstraped
 #'
 #' @param x a list: output of Boot4PTCA
 #' @param ... everything else for the functions
-#' @author Herve Abdi
+#' @author Hervé Abdi
 #' @export
 print.Boot4PTCA <- function (x, ...) {
   ndash = 78 # How many dashes for separation lines
@@ -360,15 +362,15 @@ print.Boot4PTCA <- function (x, ...) {
 #'
 #' \code{InertiaPermutedTables} creates a cube of data
 #' from the results of a "Check-Mark"
-#' data set collected in DataChecks.
+#' data set collected in \code{DataChecks}.
 #' These data correspond to participants matching (or not)
 #' one Descriptor to
 #' each stimulus of a set of stimuli.
-#' The Stimuli are the columns of DataChecks
-#' The Participants are the rows of DataChecks
-#' The Descriptors are the numbers in DataChecks
-#' (i.e., 5 for Datacheks[2,3] means that Participant 2,
-#' choosed Descriptor 5 for Stimulus 3)
+#' The Stimuli are the columns of \code{DataChecks}
+#' The Participants are the rows of \code{DataChecks}
+#' The Descriptors are the numbers in \code{DataChecks}
+#' (i.e., 5 for \code{Datacheks[2,3]} means that Participant 2,
+#' chose Descriptor 5 for Stimulus 3)
 #' @author Hervé Abdi
 #' @param DataChecks An \eqn{I}*\eqn{J} matrix
 #' storing integers.

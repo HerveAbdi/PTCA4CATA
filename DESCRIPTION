@@ -1,6 +1,6 @@
 Package: PTCA4CATA
 Type: Package
-Title: Partial Triadic Analysis for Check All That Apply (CATA) Data
+Title: Partial Triadic Analysis (PTCA) for Check All That Apply (CATA) Data
 Version: 0.1.0
 Author: Herve Abdi
 Maintainer: Herve Abdi  <herve@utdallas.edu>
@@ -17,10 +17,10 @@ License: GPL-2
 Imports: ExPosition, car, prettyGraphs, graphics, coin, stats,
     ggplot2, ggrepel, readxl, reshape, officer, rvg, colorspace, methods,
     grDevices, stringr, gplots
-Depends: R (>= 3.0.0)
+Depends: R (>= 3.5.0)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 VignetteBuilder: utils
 URL: http://github.com/HerveAbdi/PTCA4CATA
 BugReports: http://github.com/HerveAbdi/PTCA4CATA/issues

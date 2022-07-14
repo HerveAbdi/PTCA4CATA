@@ -15,5 +15,5 @@
 \code{print.Boot4PTCA} Change the print function for Boot4PTCA.
 }
 \author{
-Herve Abdi
+Hervé Abdi
 }

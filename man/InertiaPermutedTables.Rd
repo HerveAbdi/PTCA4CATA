@@ -27,15 +27,15 @@ the \code{nPerm} values
 \description{
 \code{InertiaPermutedTables} creates a cube of data
 from the results of a "Check-Mark"
-data set collected in DataChecks.
+data set collected in \code{DataChecks}.
 These data correspond to participants matching (or not)
 one Descriptor to
 each stimulus of a set of stimuli.
-The Stimuli are the columns of DataChecks
-The Participants are the rows of DataChecks
-The Descriptors are the numbers in DataChecks
-(i.e., 5 for Datacheks[2,3] means that Participant 2,
-choosed Descriptor 5 for Stimulus 3)
+The Stimuli are the columns of \code{DataChecks}
+The Participants are the rows of \code{DataChecks}
+The Descriptors are the numbers in \code{DataChecks}
+(i.e., 5 for \code{Datacheks[2,3]} means that Participant 2,
+chose Descriptor 5 for Stimulus 3)
 }
 \examples{
 \dontrun{

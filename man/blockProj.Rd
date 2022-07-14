@@ -54,7 +54,7 @@ This function is used when the original data table is
 made of blocks of rows (resp columns) all described by the
 same columns (resp. rows). In the row case, the rows
 are clustered in blocks of size
-\eqn{I_}1, ... ,\eqn{I_k}, ... \eqn{I_K}
+\eqn{I_1}, ... ,\eqn{I_k}, ... \eqn{I_K}
 (with sum \eqn{I_K} = \eqn{I}) all described by \eqn{J} variables
 (i.e., columns). \code{blockProj} computes the variables
 (i.e., the \eqn{J}-set) partial projections
@@ -74,7 +74,7 @@ in common and specific factors), \code{data.metric}
 gives the metric needed; for example,
 for the decomposition
 in common and specific factors, the specific analysis
-isperformed with the same meetric aas the common analysis.
+is performed with the same metric as the common analysis.
 }
 \examples{
 \dontrun{

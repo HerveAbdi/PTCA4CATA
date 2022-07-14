@@ -200,7 +200,8 @@ lighten <- function(colors,
 #' (Default: \code{FALSE}).
 #' @param horizontal
 #' (Default: \code{TRUE}) when \code{TRUE},
-#' the plot is horizontal, when \code{FALSE} the plot is vertical.
+#' the plot is horizontal,
+#' when \code{FALSE} the plot is vertical.
 #' @param font.shrink
 #' (\code{default = 1}): a proportion for
 #'  how much the

@@ -26,7 +26,11 @@ PrettyBarPlot2(
   sortValues = FALSE,
   signifOnly = FALSE,
   horizontal = TRUE,
-  angle.text = if (horizontal) {     90 } else {     0 },
+  angle.text = if (horizontal) {
+     90
+ } else {
+     0
+ },
   abbreviate_labels = FALSE,
   make_labels_into_paragraphs = FALSE,
   font.shrink = 1,
@@ -103,7 +107,8 @@ sort the values to plot.}
 plot only the significant values.}
 
 \item{horizontal}{(Default: \code{TRUE}) when \code{TRUE},
-the plot is horizontal, when \code{FALSE} the plot is vertical.}
+the plot is horizontal,
+when \code{FALSE} the plot is vertical.}
 
 \item{angle.text}{(Default: \code{90}, i.e., so slant)
 the "slanting factor" for the text.}

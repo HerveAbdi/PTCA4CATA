@@ -11,7 +11,7 @@
 #' @title Add a Circle of Correlation to a PCA-like map
 #' of correlation produced by \code{createFactorMap()} \emph{et alia.}
 #' @description
-#' \code{addCircleOfCor}:
+#' \code{addCircleOfCor.ptca}:
 #' Add a Circle of Correlation to a PCA-like map
 #' of correlation produced by \code{createFactorMap} \emph{et alia}.
 #'
@@ -30,8 +30,10 @@
 #' \code{PTCA4CATA}), and then the circle of correlation is added
 #' (see example).
 #'
-#' \emph{Note}: This function is likely to move to another package
-#' such as \code{data4PCCAR}.
+#' \emph{Note}: The lastest version of this function is
+#' in the other package
+#'  \code{data4PCCAR}
+#'  (under the name \code{addCircleOfCor}).
 #'
 #' @import ggplot2
 #' @author Hervé Abdi
@@ -45,15 +47,15 @@
 #'          constraints = list(minx = -1, miny = -1,
 #'                             maxx = 1 , maxy = 1) )
 #' # Add a circle to the base Map
-#' ggMapWithCircle <- MapCor$zeMap  + addCircleOfCor()
+#' ggMapWithCircle <- MapCor$zeMap  + addCircleOfCor.ptca()
 #' # To print the map with the circle:
 #' # print(ggMapWithCircle)
-#' @rdname addCircleOfCor
+#' @rdname addCircleOfCor.ptca
 #' @export
 #_____________________________________________________________________
 # end addCirlceOfCor
 #_____________________________________________________________________
-addCircleOfCor <- function(color = 'darkorchid', # color of the circle
+addCircleOfCor.ptca <- function(color = 'darkorchid', # color of the circle
                            alpha = .3,
                            size  = 1,
                            center = c(0,0),
@@ -88,21 +90,23 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 # addArrows: How to add lines/arrows to a circle of correlation
 # Add arrows to a plot
 #  install.packages('sinew')
-#  sinew::makeOxygen(addArrows)
+#  sinew::makeOxygen(addArrows.ptca)
 #
 #' @title Add arrows to a factorial map
 #' (best with a circle of Correlation).
 #'
-#' @description  \code{addArrows}: Add arrows to a factorial map
+#' @description  \code{addArrows.ptca}:
+#' Add arrows to a factorial map
 #' (i.e., a PCA-like map),
 #' most likely  a plot of correlation produced by
 #' \code{createFactorMap} \emph{et alia}.
 #'
 #' @details
 #'
-#' \emph{Note}: This function is likely
-#' to move to another package
-#' such as \code{data4PCCAR}.
+#' The lastest version of this function is
+#' in the other package
+#'  \code{data4PCCAR}
+#'  (under the name \code{addArrows}).
 #'
 #'
 #' @param X a data frame with the coordinates of the points
@@ -138,9 +142,9 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 #' \code{createFactorMap()} (or equivalent functions from
 #' \code{PTCA4CATA}), and then the arrows are added
 #' (see example).  \code{addArrows} is typically used
-#' with \code{\link{addCircleOfCor}}.
+#' with \code{\link{addCircleOfCor.ptca}}.
 #' @seealso
-#'  \code{\link[ggplot2]{annotate}} \code{\link{addCircleOfCor}} \code{\link{createFactorMap}}
+#'  \code{\link[ggplot2]{annotate}} \code{\link{addCircleOfCor.ptca}} \code{\link{createFactorMap}}
 #' @examples
 #' # Some PCA-like correlations
 #' corXY <- matrix(c(.5,-.5, .1,.7, .8,.5, -.1,.9,  -.6,-.6),
@@ -150,13 +154,14 @@ addCircleOfCor <- function(color = 'darkorchid', # color of the circle
 #'          constraints = list(minx = -1, miny = -1,
 #'                             maxx = 1 , maxy = 1) )
 #' # Add arrows and a circle to the base Map
-#' ggMapWithCircle <- MapCor$zeMap +  addArrows(corXY) + addCircleOfCor()
+#' ggMapWithCircle <- MapCor$zeMap +
+#'  addArrows.ptca(corXY) + addCircleOfCor.ptca()
 #' # To print the map with arrows and circle:
 #' # print(ggMapWithCircle)
-#' @rdname addArrows
+#' @rdname addArrows.ptca
 #' @export
 #' @importFrom ggplot2 annotate
-addArrows <- function(X, axis1 = 1, axis2 = 2,
+addArrows.ptca <- function(X, axis1 = 1, axis2 = 2,
                       color  = 'darkorchid',
                       alpha  = .6,
                       size = 1,
