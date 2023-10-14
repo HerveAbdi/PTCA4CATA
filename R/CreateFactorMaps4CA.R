@@ -159,6 +159,9 @@ createBaseMap <- function(data,
 #' How much \code{ggrepel} repels the label
 #' @param segment.size \code{(default = 0)}
 #'  size of segment line for \code{ggrpel}.
+#' @param point.padding \code{(default = 0)}
+#' amount of padding around point. Change to NA
+#' to not repel
 #' @param ... stuff to be passed to other functions.
 #' @return a list with 6 elements:
 #' \enumerate{
@@ -211,6 +214,7 @@ createFactorMap <- function(X,
                               adjustcolor('lavender',
                                           alpha.f = .2),
                             force = 1, # for ggrepel
+                            point.padding = 0, # for ggrepel
                             segment.size = 0, # size of segment line
                             # background color
                             ... # more stuff
@@ -271,6 +275,9 @@ createFactorMap <- function(X,
     nudge_y = 0 # from ggrepel
     # nudge value for starting point for
     #  labels (ggrepel)
+    ,
+    point.padding = 0 # from ggrepel
+    # set to NA to not repel
     , ... # in case we need more stuff for ggrepel
   )
 
@@ -371,6 +378,8 @@ print.createFactorMap <- function(x, ...) {
 #' @param nudge_y (default = 0). From \code{ggrepel},
 #' nudge value for starting point for
 #'  labels: y dimension.
+#' @param point.padding (default = 0). From \code{ggrepel},
+#' padding around points. Change to NA to not repel.
 #'  @param alpha.point (default = .5), the alpha
 #'  (transparency) for the points, should be
 #'  between 1 (no transparency) and 0
@@ -423,6 +432,8 @@ map4DotsAndLabels <- function(data,
                               nudge_x = 0, nudge_y = 0, # from ggrepel
                               # nudge value for starting point for
                               #  labels
+                              point.padding = 0, # from ggrepel
+                              # padding around points
                               ... # for ggrepel in case
 ){# function map4DotsAndLabels  start here
   data <- as.data.frame(data) # make sure that we a df
@@ -517,6 +528,8 @@ map4DotsAndLabels <- function(data,
 #'  font family for the \eqn{I}-set.
 #' @param force.i (Default = 1). How much ggrepel repels the labels
 #' for the  \eqn{I}-set.
+#' @param point.padding.i (Default = 0). Amount of padding around
+#' points for the \eqn{I}-set. Change to NA to not repel.
 #' @param  col.points.j the color of the points/dots
 #' for the \eqn{J}-set.
 #' Can be one color or a vector of colors. If a vector it needs
@@ -546,6 +559,8 @@ map4DotsAndLabels <- function(data,
 #'  font family for the \eqn{J}-set.
 #' @param force.j = 1. How much ggrepel repels
 #' the labels for the \eqn{J}-set.
+#' @param point.padding.j (Default = 0). Amount of padding around
+#' points for the \eqn{J}-set. Change to NA to not repel.
 #' @param col.axes (Default = \code{'darkorchid'})
 #' color for the axes
 #' @param    alpha.axes (Default = .2) transoarency factors for the
@@ -608,6 +623,8 @@ createFactorMapIJ <- function(Fi,Fj,
                               font.face.i =   'bold', # font for labels
                               font.family.i = 'sans' ,
                               force.i = 1 , # force repel factor for ggrepel
+                              point.padding.i = 0, # padding around points
+                              # for ggrepel
                               # The J-set
                               col.points.j = 'darkolivegreen4',
                               #display.points.j = TRUE,
@@ -622,6 +639,8 @@ createFactorMapIJ <- function(Fi,Fj,
                               font.face.j =   'bold', # font for labels
                               font.family.j = 'sans' ,
                               force.j  = 1 , # force repel factor for ggrepel
+                              point.padding.j = 0, # padding around points
+                              # for ggrepel
                               # font family for labels
                               col.axes = 'darkorchid',
                               # color for the axes
@@ -688,6 +707,8 @@ createFactorMapIJ <- function(Fi,Fj,
     # font family for labels
     # below are ggrepel values
     force = force.i, # labels' repulsion for ggrepel
+    point.padding = point.padding.i, # padding around
+    # points for ggrepel
     segment.size = segment.size.i,
     # segment width for ggrepel
     nudge_x = nudge_x  ,
@@ -720,6 +741,8 @@ createFactorMapIJ <- function(Fi,Fj,
     # font family for labels
     # below are ggrepel values
     force = force.j, # labels' repulsion for ggrepel
+    point.padding = point.padding.j, # padding around
+    # points for ggrepel
     segment.size = segment.size.j,
     # segment width for ggrepel
     nudge_x = nudge_x  ,
@@ -826,6 +849,8 @@ print.createFactorMapIJ <- function (x, ...) {
 #' @param force.i (Default = 1)
 #' How much \code{ggrepel} repels the labels
 #' for the  \eqn{I}-set.
+#' @param point.padding.i (Default = 0). Point padding
+#' for the \eqn{I}-set. Change to NA for no repel.
 #' @param  col.points.j
 #' the color of the points/dots for the \eqn{J}-set.
 #' Can be one color or a vector of colors. If a vector, it needs
@@ -857,6 +882,8 @@ print.createFactorMapIJ <- function (x, ...) {
 #'  font family for the \eqn{J}-set.
 #' @param force.j (Default = 1). How much \code{ggrepel} repels
 #' the labels for the \eqn{J}-set.
+#' @param point.padding.j (Default = 0). Point padding
+#' for the \eqn{J}-set. Change to NA for no repel.
 #' @param col.axes (Default = \code{'darkorchid'})
 #' color for the axes.
 #' @param    alpha.axes
@@ -935,6 +962,7 @@ createAllMaps4CA <- function(allNormedFactors,
                              font.face.i =   'bold', # font for labels
                              font.family.i = 'sans' ,
                              force.i = 1 , # force repel factor for ggrepel
+                             point.padding.i = 0, # point padding for ggrepel
                              # The J-set
                              col.points.j = 'darkolivegreen4',
                              alpha.points.j = .5,
@@ -951,6 +979,7 @@ createAllMaps4CA <- function(allNormedFactors,
                              font.family.j = 'sans' ,
                              # font family for labels
                              force.j  = 1 , # force repel factor for ggrepel
+                             point.padding.j = 0, # point padding for ggrepel
                              col.axes = 'darkorchid',
                              # color for the axes
                              alpha.axes = .2,
@@ -988,6 +1017,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       text.cex.i = text.cex.i, # font size for labels
                       font.face.i = font.face.i  , # font for labels
                       font.family.i =   font.family.i,
+                      point.padding.i = point.padding.i,
                       # The J-set
                       col.points.j = col.points.j,
                       alpha.points.j = alpha.points.j,
@@ -1008,6 +1038,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       width.axes =  width.axes,
                       # width of the axes
                       col.background = col.background ,
+                      point.padding.j = point.padding.j,
                       # background color
                       ... # more stuff
     )
@@ -1036,6 +1067,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       text.cex.i = text.cex.i, # font size for labels
                       font.face.i = font.face.i  , # font for labels
                       font.family.i =   font.family.i,
+                      point.padding.i = point.padding.i,
                       # The J-set
                       col.points.j = col.points.j,
                       alpha.points.j = alpha.points.j,
@@ -1049,6 +1081,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       font.face.j =   font.face.j, # font for labels
                       font.family.j =  font.family.j ,
                       # font family for labels
+                      point.padding.j = point.padding.j, 
                       col.axes = col.axes,
                       # color for the axes
                       alpha.axes = alpha.axes,
@@ -1085,6 +1118,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       text.cex.i = text.cex.i, # font size for labels
                       font.face.i = font.face.i  , # font for labels
                       font.family.i =   font.family.i,
+                      point.padding.i = point.padding.i,
                       # The J-set
                       col.points.j = col.points.j,
                       alpha.points.j = alpha.points.j,
@@ -1098,6 +1132,7 @@ createAllMaps4CA <- function(allNormedFactors,
                       font.face.j =   font.face.j, # font for labels
                       font.family.j =  font.family.j ,
                       # font family for labels
+                      point.padding.j = point.padding.j,
                       col.axes = col.axes,
                       # color for the axes
                       alpha.axes = alpha.axes,
