@@ -162,7 +162,7 @@ MakeToleranceIntervals <- function(data, # A set of Factor Scores
                           na.rm = TRUE,
                           level = p.level,
                           color = items.colors[i],
-                          size=line.size,
+                          linewidth=line.size,
                           linetype=line.type)
     } else {# Plot convex hulls with ggConvexHull
       # ConvexHull ----
@@ -326,7 +326,7 @@ ggConvexHull <- function(data,
   peeledHull <- peelZeHull(X, percentage =  percentage)
   ggHull     <-  ggplot2::geom_polygon(data = peeledHull,
                                 linetype = line.type,
-                                size = line.size,
+                                linewidth = line.size,
 #                                aes_string(colnames(X)[1],
 #                                           colnames(X)[2]) ,
                               aes_string(x =  "get(colnames(X)[1])",
