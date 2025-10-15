@@ -36,6 +36,5 @@
 #' to analyze the
 #' pseudo-contingency table obtained from a CATA task.
 #'@author Herve Abdi \email{herve@utdallas.edu}
-#'@docType package
 #'@name PTCA4CATA
 NULL
