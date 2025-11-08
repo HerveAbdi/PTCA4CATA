@@ -52,11 +52,12 @@ ggdrawPolygon <- function(F,
   F2draw <- data.frame( F[c(order2draw,order2draw[1]),],
                         row.names = NULL)
   # Use ggplot geom_polygon
+  V1 <- colnames(F2draw)[1]
+  V2 <- colnames(F2draw)[2]
   thePolygon <- ggplot2::geom_polygon(data = F2draw,
                                       linetype = linetype,
                                       linewidth = size,
-                                      aes_string(colnames(F2draw)[1],
-                                                 colnames(F2draw)[2]),
+                                      aes(.data[[V1]], .data[[V2]]),
                                       color = color,
                                       alpha = alpha,
                                       fill = fill,...)

@@ -324,13 +324,14 @@ ggConvexHull <- function(data,
     names.of.factors = paste0('Dimension ', c(1,2))
   }
   peeledHull <- peelZeHull(X, percentage =  percentage)
+  V1 <- colnames(X)[1]
+  V2 <- colnames(X)[2]
   ggHull     <-  ggplot2::geom_polygon(data = peeledHull,
                                 linetype = line.type,
                                 linewidth = line.size,
-#                                aes_string(colnames(X)[1],
-#                                           colnames(X)[2]) ,
-                              aes_string(x =  "get(colnames(X)[1])",
-                                         y =  "get(colnames(X)[2])" ),
+                              aes(
+                                x = .data[[V1]],
+                                y = .data[[V2]]),
                                 color = ggplot2::alpha(col.line,
                                          alpha =  alpha.line),
                                 alpha = alpha.hull,

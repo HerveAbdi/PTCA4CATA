@@ -69,10 +69,9 @@ createBaseMap <- function(data,
   V1 = as.name(colnames(data)[1])
   V2 = as.name(colnames(data)[2])
   # Create a Background Map
-  LeG_b <- ggplot(data = data,
-                  # aes(data[,1],data[2])
-                  aes_string(V1, V2)
-  ) +
+  LeG_b <- ggplot(
+    data = data,
+    mapping = aes(.data[[V1]], .data[[V2]])) +
     coord_fixed(ratio = 1)
   LeG_b = LeG_b +
     xlim(constraints$minx,constraints$maxx) +
@@ -435,7 +434,7 @@ map4DotsAndLabels <- function(data,
       # Next describe the points
       ggplot2::geom_point(
         data = data,
-        aes_string(V1, V2),
+        aes(.data[[V1]], .data[[V2]]),
         shape = pch,
         size = cex,
         color = col.points,
@@ -449,7 +448,7 @@ map4DotsAndLabels <- function(data,
       ggrepel::geom_text_repel(
         label = rownames(data),
         data = data,
-        aes_string(V1, V2),
+        aes(.data[[V1]], .data[[V2]]),
         #aes(G[,1],G[,2]),
         segment.size = segment.size,
         size = text.cex,
