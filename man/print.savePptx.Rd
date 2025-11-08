@@ -2,18 +2,21 @@
 % Please edit documentation in R/saveAllGraphsIntPptx.R
 \name{print.savePptx}
 \alias{print.savePptx}
-\title{Change the print function for object of class savePptx}
+\title{Change the print function
+for object of class savePptx}
 \usage{
 \method{print}{savePptx}(x, ...)
 }
 \arguments{
-\item{x}{a list: object of class \code{savePptx},
-output of function: \code{saveGraph2pptx}.}
+\item{x}{a list: object of class
+\code{savePptx},
+  output of function: \code{saveGraph2pptx}.}
 
 \item{...}{everything else for the function}
 }
 \description{
-Change the print function for objects of class \code{savePptx}.
+Change the print function
+ for objects of class \code{savePptx}.
 }
 \author{
 Herve Abdi

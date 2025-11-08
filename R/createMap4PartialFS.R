@@ -289,7 +289,7 @@ for (i in  1:nI){
             yend = pFS[i,2,],
             color = colors4Items[i],
             alpha = alpha.lines,
-            size = size.lines,
+            linewidth = size.lines,
             linetype = type.lines,
             arrow =  arrow(length = unit(arrow.length, "cm"))))
   leGraph.lines.partial.i[[i]]  <- zeLines
@@ -315,7 +315,7 @@ for (i in  1:nI){
                     yend = pFS[i,2,],
                     color = colors4Blocks,
                     alpha = alpha.lines,
-                    size = size.lines,
+                    linewidth = size.lines,
                     linetype = type.lines,
               arrow =  arrow(length = unit(arrow.length, "cm"))))
   leGraph.lines.partial.b[[i]]  <- zeLines

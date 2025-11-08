@@ -427,7 +427,7 @@ PrettyBarPlot2 <- function(
     col = line.col,
     alpha = line.alpha,
     linetype = line.type,
-    size = line.size
+    linewidth = line.size
   )
   #_____________________________________________________________________
   if (adapt_plot) {

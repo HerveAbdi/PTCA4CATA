@@ -78,7 +78,7 @@ addCircleOfCor.ptca <- function(color = 'darkorchid', # color of the circle
                  #  thinks that x and y are global
                  #  undefined variables
   aCircle <- geom_path(data = dat, mapping = aes(x = x, y = y),
-                       color = color , alpha = alpha, size = size)
+                       color = color , alpha = alpha, linewidth = size)
   return(aCircle)
 
 } # end addCircleOfCor ----
@@ -176,7 +176,7 @@ addArrows.ptca <- function(X, axis1 = 1, axis2 = 2,
                                 yend = X[,axis2],
                                 color = color,
                                 alpha = alpha,
-                                size = size,
+                                linewidth = size,
          arrow =  arrow(length = unit(arrowLength, "cm")),
          linetype = linetype )
   return(zeArrows)

@@ -77,9 +77,9 @@ createBaseMap <- function(data,
   LeG_b = LeG_b +
     xlim(constraints$minx,constraints$maxx) +
     ylim(constraints$miny,constraints$maxy)
-  LeG_b <- LeG_b + geom_hline(yintercept = 0, size = width.axes,
+  LeG_b <- LeG_b + geom_hline(yintercept = 0, linewidth = width.axes,
                               color =  col.axes,alpha = alpha.axes) +
-    geom_vline(xintercept = 0, size = width.axes ,
+    geom_vline(xintercept = 0, linewidth = width.axes ,
                color = col.axes,alpha = alpha.axes) +
     theme(panel.background = element_rect(fill = col.background,
                                           color = col.axes))

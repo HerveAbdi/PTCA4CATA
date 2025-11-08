@@ -51,8 +51,8 @@ theme_ptca <- function(mire = TRUE, x0 = 0, y0 = 0) {
         aspect.ratio = 1
       ))
   if (mire) theme_list <- append(theme_list, list(
-    geom_vline(xintercept = x0, color = col.axes, size = width.axes),
-    geom_hline(yintercept = y0, color = col.axes, size = width.axes)))
+    geom_vline(xintercept = x0, color = col.axes, linewidth = width.axes),
+    geom_hline(yintercept = y0, color = col.axes, linewidth = width.axes)))
   return(theme_list)
 } # end of theme_ptca() ----
 # ____________________________________________________________________

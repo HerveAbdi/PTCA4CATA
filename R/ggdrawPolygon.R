@@ -54,7 +54,7 @@ ggdrawPolygon <- function(F,
   # Use ggplot geom_polygon
   thePolygon <- ggplot2::geom_polygon(data = F2draw,
                                       linetype = linetype,
-                                      size = size,
+                                      linewidth = size,
                                       aes_string(colnames(F2draw)[1],
                                                  colnames(F2draw)[2]),
                                       color = color,

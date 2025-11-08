@@ -9,43 +9,56 @@ saveGraph2pptx(file2Save.pptx, title = NULL, addGraphNames = FALSE)
 }
 \arguments{
 \item{file2Save.pptx}{the name of the PowerPoint
-file for saving the graphs. If this file already exists,
-the old file is renamed and a warning message is printed
+file for saving the graphs.
+If this file already exists,
+the old file is renamed and
+a warning message is printed
 in the console.}
 
 \item{title}{main title of the PowerPoint file.
 \code{default:}
-"\code{All Graphics for Current Analysis. As of:}" +
+"\code{All Graphics
+for Current Analysis. As of:}" +
 \code{date}.}
 
-\item{addGraphNames}{when \code{TRUE}: use the name of
-the graph as its title for the PowerPoint slide
+\item{addGraphNames}{when
+\code{TRUE}: use the name of
+the graph as its title
+for the PowerPoint slide
 (default is \code{FALSE}).}
 }
 \value{
 a list (of class \code{"savePptx"})
-with  \code{listOfsavedGraphs} (the list of the graph objects
+with  \code{listOfsavedGraphs}
+(the list of the graph objects
 saved)  and
-\code{nameOfSavingFile4pptx} (name of the files where
+\code{nameOfSavingFile4pptx}
+(name of the files where
 the graphics are saved).
 Note: to print one of the graphs from
 \code{nameOfSavingFile4pptx}, use
-\code{print(get())}. For example,
-to print the first graph of the list
+\code{print(get())}.
+For example,
+to print the first graph
+of the list
 saved as \code{listOfGraph} use
 \code{print(get(listOfGraph$listOfsavedGraphs[[1]]))}.
 }
 \description{
 \code{saveGraph2pptx}: a nifty function that
 saves all the graphics
-present in the Global Environment (i.e., \code{.GlobalEnv})
-into a PowerPoint file. Requires packages \code{rsv}
-and \code{officer}. Graphics saved are only those created
+present in the Global Environment
+(i.e., \code{.GlobalEnv})
+into a PowerPoint file.
+Requires packages \code{rvg}
+and \code{officer}.
+Graphics saved are only those created
 with \code{recordPlot()} or \code{ggplot2}.
 }
 \examples{
 \dontrun{
-toto <- saveGraph2pptx("myFile.pptx", "Pretty Graphs of the Day")
+toto <- saveGraph2pptx("myFile.pptx",
+"Pretty Graphs of the Day")
 }
 }
 \author{

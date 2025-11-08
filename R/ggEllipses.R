@@ -120,7 +120,7 @@ MakeCIEllipses <- function(data, # A cube of Bootstrap from Boot4PTCA
             fill = ggplot2::alpha(items.colors[i], alpha.ellipse),
                                   type = 't',level = p.level,
                                   color = items.colors[i],
-                                  size=line.size, linetype=line.type)
+                                  linewidth = line.size, linetype=line.type)
     LeGraph.elli[[i]] <-  elli
   }
   return(LeGraph.elli)
